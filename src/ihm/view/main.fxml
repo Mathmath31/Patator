@@ -49,9 +49,9 @@
          <children>
             <ButtonBar prefHeight="40.0" prefWidth="1177.0">
               <buttons>
-                <Button mnemonicParsing="false" text="Choix Cinéma" />
-                  <Button mnemonicParsing="false" text="Choix Film" />
-                  <Button mnemonicParsing="false" text="Choix Position" />
+                <Button mnemonicParsing="false" onAction="#goVueChoixCinema" text="Choix Cinéma" />
+                  <Button mnemonicParsing="false" onAction="#goVueChoixFilm" text="Choix Film" />
+                  <Button mnemonicParsing="false" onAction="#goVueChoixPosition" text="Choix Position" />
                   <Button mnemonicParsing="false" text="Choix Accompagnement" />
                   <Button mnemonicParsing="false" text="Detail Panier" />
                   <Button mnemonicParsing="false" text="Reglement" />
