@@ -7,7 +7,9 @@ import apiTheMovieDB.CineGoAPI;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 
 public class FilmDetailsController {
 
@@ -15,6 +17,14 @@ public class FilmDetailsController {
 	@FXML
     private ListView<String> listView;
 	
+	@FXML
+    private Label synopsis;
+	
+	@FXML
+    private Label nomFilm;
+	
+	@FXML
+    private AnchorPane image;
 	
 	public void initialize(){
 		

@@ -27,7 +27,7 @@
                                 <items>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="40.0" prefWidth="557.0">
                                        <children>
-                                          <Label layoutX="245.0" layoutY="25.0" text="Titre du Film" />
+                                          <Label fx:id="nomFilm" layoutX="245.0" layoutY="25.0" text="Titre du Film" />
                                        </children>
                                     </AnchorPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -36,7 +36,7 @@
                                             <items>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="554.0">
                                                    <children>
-                                                      <Label layoutX="29.0" layoutY="14.0" text="Synopsis" />
+                                                      <Label fx:id="synopsis" layoutX="29.0" layoutY="14.0" text="Synopsis" />
                                                    </children>
                                                 </AnchorPane>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -58,9 +58,9 @@
                               </SplitPane>
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="596.0" prefWidth="298.0">
+                      <AnchorPane fx:id="image" minHeight="0.0" minWidth="0.0" prefHeight="596.0" prefWidth="298.0">
                            <children>
-                              <Label layoutX="195.0" layoutY="63.0" text="Image" />
+                              <Label layoutX="197.0" layoutY="166.0" text="Image" />
                            </children>
                         </AnchorPane>
                     </items>
