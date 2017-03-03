@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
 
-import ihm.controller.MainController;
+import ihm.view.MainController;
 
 /**
  * Utility class for controlling navigation between vistas.
