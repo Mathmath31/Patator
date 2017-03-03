@@ -52,7 +52,7 @@
                 <Button mnemonicParsing="false" onAction="#goVueChoixCinema" text="Choix Cinéma" />
                   <Button mnemonicParsing="false" onAction="#goVueChoixFilm" text="Choix Film" />
                   <Button mnemonicParsing="false" onAction="#goVueChoixPosition" text="Choix Position" />
-                  <Button mnemonicParsing="false" text="Choix Accompagnement" />
+                  <Button mnemonicParsing="false" onAction="#goVueChoixAccompagnement" text="Choix Accompagnement" />
                   <Button mnemonicParsing="false" text="Detail Panier" />
                   <Button mnemonicParsing="false" text="Reglement" />
               </buttons>

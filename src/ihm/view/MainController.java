@@ -87,4 +87,14 @@ public class MainController {
         VistaNavigator.loadVista(VistaNavigator.SELECTIONFILM);
     }
     
+    /**
+     * Event handler fired when the user requests a new vista.
+     *
+     * @param event the event that triggered the handler.
+     */
+    @FXML
+    void goVueChoixAccompagnement(ActionEvent event) {
+        VistaNavigator.loadVista(VistaNavigator.ACCOMPAGNEMENT);
+    }
+    
 }
