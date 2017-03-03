@@ -23,6 +23,7 @@ public class VistaNavigator {
     public static final String NEWUSER = "view/NewUser.fxml";
     public static final String SELECTIONFILM = "view/FilmDetails.fxml";
     public static final String CHOIXPOSITION = "view/ChoixPosition.fxml";
+    public static final String ACCOMPAGNEMENT = "view/ChoixAccompagnement.fxml";
 
     /** The main application layout controller. */
     private static MainController mainController;

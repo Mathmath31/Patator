@@ -37,9 +37,6 @@ public class FilmDetailsController {
 	protected boolean APILoadOK = false;
 	protected List<CineGoFilm> cineGoFilms = new ArrayList<CineGoFilm>();
 	protected ObservableList<String> filmsList = FXCollections.observableArrayList();
-	//AJOUTER TAB IMAGE
-	//AJOUTER SYNOPSIS
-	//AJOUTER LES INFOS
 
 	public void initialize(){
 		if (APILoadOK == false){
@@ -72,6 +69,8 @@ public class FilmDetailsController {
 		for( int i = 0 ; i < API.getTabFilms().size() ; i++){
 			cineGoFilms.add(API.getTabFilms().get(i));
 		}
+		ObservableList<String> wordsList = FXCollections.observableArrayList("First word","Second word", "Third word", "Etc.");
+		listView.setItems(wordsList);
 		APILoadOK = true;
 	}
 
