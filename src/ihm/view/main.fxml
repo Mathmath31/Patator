@@ -52,7 +52,6 @@
                 <Button mnemonicParsing="false" text="Choix Cinéma" />
                   <Button mnemonicParsing="false" text="Choix Film" />
                   <Button mnemonicParsing="false" text="Choix Position" />
-                  <Button mnemonicParsing="false" text="Detail Film" />
                   <Button mnemonicParsing="false" text="Choix Accompagnement" />
                   <Button mnemonicParsing="false" text="Detail Panier" />
                   <Button mnemonicParsing="false" text="Reglement" />
