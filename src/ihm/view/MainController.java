@@ -1,4 +1,4 @@
-package ihm.controller;
+package ihm.view;
 
 import ihm.VistaNavigator;
 import javafx.event.ActionEvent;

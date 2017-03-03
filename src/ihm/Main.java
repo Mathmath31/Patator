@@ -3,37 +3,23 @@ package ihm;
 
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
-
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import apiTheMovieDB.CineGoAPI;
-import ihm.controller.MainController;
-import ihm.controller.FilmDetailsController;
+import ihm.model.InfoCine;
+import ihm.view.MainController;
 
 /**
  * Main application class.
  */
 public class Main extends Application {
-    
+	
     @Override
     public void start(Stage stage) throws Exception{
-
-    	List<String> listeIdFilms = new ArrayList<String>();			//Recuperer la liste de tout les films à l'affiche dans la base de donnee		
-		listeIdFilms.add("121856");listeIdFilms.add("274870");listeIdFilms.add("47971");
-		CineGoAPI API = new CineGoAPI(listeIdFilms);
-		System.out.println(API.getTabFilms().toString());
-
-		FilmDetailsController filmDetailsController = new FilmDetailsController();
-		
-		
 
         stage.setTitle("Cine GoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOo");
         stage.resizableProperty().setValue(Boolean.FALSE);
@@ -45,10 +31,11 @@ public class Main extends Application {
         stage.show();
     }
 
+    
     /**
      * Loads the main fxml layout.
-     * Sets up the vista switching VistaNavigator.
-     * Loads the first vista into the fxml layout.
+     * Sets up the view switching VistaNavigator.
+     * Loads the first view into the fxml layout.
      *
      * @return the loaded pane.
      * @throws IOException if the pane could not be loaded.
