@@ -11,7 +11,10 @@ import javafx.stage.Stage;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import apiTheMovieDB.CineGoAPI;
 import ihm.controller.MainController;
 
 /**
@@ -21,7 +24,14 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception{
-        stage.setTitle("Cin� GoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOo");
+
+    	List<String> listeIdFilms = new ArrayList<String>();			//Recuperer la liste de tout les films à l'affiche dans la base de donnee		
+		listeIdFilms.add("121856");listeIdFilms.add("274870");listeIdFilms.add("47971");
+		CineGoAPI API = new CineGoAPI(listeIdFilms);
+		System.out.println(API.getTabFilms().toString());
+
+		
+        stage.setTitle("Ciné GoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOo");
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setScene(
             createScene(
