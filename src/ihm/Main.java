@@ -31,7 +31,7 @@ public class Main extends Application {
 		System.out.println(API.getTabFilms().toString());
 
 		
-        stage.setTitle("CinÃ© GoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOo");
+        stage.setTitle("Ciné GoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOo");
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setScene(
             createScene(
