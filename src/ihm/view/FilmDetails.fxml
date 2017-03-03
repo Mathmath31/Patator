@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihm.view.FilmDetailsController">
@@ -36,7 +38,7 @@
                                             <items>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="554.0">
                                                    <children>
-                                                      <Label fx:id="synopsis" layoutX="29.0" layoutY="14.0" text="Synopsis" />
+                                                      <TextArea fx:id="synopsis" prefHeight="354.0" prefWidth="555.0" text="Synopsis" />
                                                    </children>
                                                 </AnchorPane>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -58,9 +60,9 @@
                               </SplitPane>
                            </children>
                         </AnchorPane>
-                      <AnchorPane fx:id="image" minHeight="0.0" minWidth="0.0" prefHeight="596.0" prefWidth="298.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="596.0" prefWidth="298.0">
                            <children>
-                              <Label layoutX="197.0" layoutY="166.0" text="Image" />
+                              <ImageView fx:id="viewImageFilm" fitHeight="598.0" fitWidth="426.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </AnchorPane>
                     </items>
