@@ -14,8 +14,8 @@ public class VistaNavigator {
     /**
      * Convenience constants for fxml layouts managed by the navigator.
      */
-    public static final String MAIN    = "ihm/main.fxml";
-    public static final String CHOIXCINEMA = "ihm/ChoixCinema.fxml";
+    public static final String MAIN    = "main.fxml";
+    public static final String CHOIXCINEMA = "ChoixCinema.fxml";
     
     public static final String FILMDETAILS = "FilmDetails.fxml";
     public static final String NEWUSER = "NewUser.fxml";
