@@ -1,6 +1,10 @@
+package ihm.controller;
 
 
 
+
+
+import ihm.VistaNavigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;

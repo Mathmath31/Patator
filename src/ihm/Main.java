@@ -1,3 +1,5 @@
+package ihm;
+
 
 
 import javafx.application.Application;
@@ -9,6 +11,8 @@ import javafx.stage.Stage;
 
 
 import java.io.IOException;
+
+import ihm.controller.MainController;
 
 /**
  * Main application class.
