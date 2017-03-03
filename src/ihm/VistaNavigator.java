@@ -19,12 +19,10 @@ public class VistaNavigator {
      * Convenience constants for fxml layouts managed by the navigator.
      */
     public static final String MAIN    = "view/main.fxml";
-    public static final String CHOIXCINEMA = "view/ChoixCinema.fxml";
-    
-    public static final String FILMDETAILS = "FilmDetails.fxml";
-    public static final String NEWUSER = "NewUser.fxml";
-    public static final String SELECTIONFILM = "SelectionFilm.fxml";
-    public static final String CHOIXPOSITION = "ChoixPosition.fxml";
+    public static final String CHOIXCINEMA = "view/ChoixCinema.fxml";  
+    public static final String NEWUSER = "view/NewUser.fxml";
+    public static final String SELECTIONFILM = "view/FilmDetails.fxml";
+    public static final String CHOIXPOSITION = "view/ChoixPosition.fxml";
 
     /** The main application layout controller. */
     private static MainController mainController;

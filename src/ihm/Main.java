@@ -16,6 +16,7 @@ import java.util.List;
 
 import apiTheMovieDB.CineGoAPI;
 import ihm.controller.MainController;
+import ihm.controller.FilmDetailsController;
 
 /**
  * Main application class.
@@ -30,7 +31,7 @@ public class Main extends Application {
 		CineGoAPI API = new CineGoAPI(listeIdFilms);
 		System.out.println(API.getTabFilms().toString());
 
-		
+		FilmDetailsController filmDetailsController = new FilmDetailsController();
 		
 		
 
