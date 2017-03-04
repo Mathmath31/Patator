@@ -18,6 +18,7 @@ import ihm.view.MainController;
  */
 public class Main extends Application {
 	
+	public static Panier panier;
     @Override
     public void start(Stage stage) throws Exception{
 

@@ -1,6 +1,11 @@
 package ihm.view;
 
-import java.awt.image.BufferedImage;
+
+/*
+ * A FAIRE +
+ * - recuperer date + heure de sceance + NB place + NB place handicape + implemnter boutton valider pour aller sur la page suivante
+ 
+ */
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +22,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 
 public class FilmDetailsController {
 
@@ -46,13 +50,19 @@ public class FilmDetailsController {
 			}
 		}
 		listView.setItems(filmsList);
-		listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		listView.getSelectionModel().selectFirst();
+		nomFilm.setText(cineGoFilms.get(0).getTitle());
+		synopsis.setText(cineGoFilms.get(0).getInfoFilm());
+		synopsis.setWrapText(true);
+		Image image = SwingFXUtils.toFXImage(cineGoFilms.get(0).getDataIMG(), null);
+		viewImageFilm.setImage(image);
 
+		listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
 				System.out.println("clicked on " + listView.getSelectionModel().getSelectedIndex());
 				nomFilm.setText(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getTitle());
-				synopsis.setText(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getOverview());
+				synopsis.setText(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getInfoFilm());
 				synopsis.setWrapText(true);
 				Image image = SwingFXUtils.toFXImage(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getDataIMG(), null);
 				viewImageFilm.setImage(image);
@@ -61,16 +71,14 @@ public class FilmDetailsController {
 	}
 
 	public void initAPI(){
-		List<String> listeIdFilms = new ArrayList<String>();		
+		List<String> listeIdFilms = new ArrayList<String>();
 		//SIMULATION DE RECUPERATION DE LA LISTE DES ID DE FILM DANS LA BASE
 		listeIdFilms.add("121856");listeIdFilms.add("274870");listeIdFilms.add("47971");listeIdFilms.add("47973");
 		CineGoAPI API = new CineGoAPI(listeIdFilms);
-		//System.out.println(API.getTabFilms().toString());
 		for( int i = 0 ; i < API.getTabFilms().size() ; i++){
 			cineGoFilms.add(API.getTabFilms().get(i));
 		}
 		APILoadOK = true;
 	}
-
 }
 

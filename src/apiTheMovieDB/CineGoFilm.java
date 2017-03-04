@@ -12,7 +12,7 @@ public class CineGoFilm {
 	private String backdrop_path;
 	private Belongs_to_collection belongs_to_collection;
 	private String budget;
-	private List<Genres> genres = new ArrayList();
+	private List<Genres> genres = new ArrayList<Genres>();
 	private String homepage;
 	private String imdb_id;
 	private String original_language;
@@ -20,8 +20,8 @@ public class CineGoFilm {
 	private String overview;
 	private String popularity;
 	private String poster_path;
-	private List<Production_companies> production_companies = new ArrayList();
-	private List<Production_countries> production_countries = new ArrayList();
+	private List<Production_companies> production_companies = new ArrayList<Production_companies>();
+	private List<Production_countries> production_countries = new ArrayList<Production_countries>();
 	private String release_date;
 	private String revenue;
 	private String runtime;
@@ -264,6 +264,18 @@ public class CineGoFilm {
 		this.dataIMG = dataIMG;
 	}
 
+	public String getInfoFilm(){
+		String infoFilm = "";
+		infoFilm = this.getOverview() + "\n"
+				+ "Genre : " + this.getGenres().get(0).getName() + "\n"
+				+ "Date de sortie : " + this.getRelease_date() + "\n"
+				+ "Note moyenne : " + this.getVote_average() + "\n"
+				+ "Nombre de vote : " + this.getVote_count() + "\n"
+				+ "Lien Youtube : https://www.youtube.com/watch?v=" + this.getVideos().getResults().get(0).getKey()+ "\n"
+				;
+
+		return infoFilm;
+	}
 	@Override
 	public String toString() {
 		return "CineGoFilm [id=" + id + ", adult=" + adult + ", backdrop_path=" + backdrop_path
