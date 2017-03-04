@@ -62,7 +62,7 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="596.0" prefWidth="298.0">
                            <children>
-                              <ImageView fx:id="viewImageFilm" fitHeight="598.0" fitWidth="426.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="viewImageFilm" fitHeight="598.0" fitWidth="426.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                     </items>

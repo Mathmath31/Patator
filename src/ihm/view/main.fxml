@@ -32,14 +32,11 @@
             <TextField layoutX="858.0" layoutY="11.0" prefHeight="25.0" prefWidth="129.0" />
             <TextField layoutX="657.0" layoutY="11.0" prefHeight="25.0" prefWidth="126.0" />
             <Button layoutX="1099.0" layoutY="11.0" mnemonicParsing="false" text="S'enregistrer" />
-            <MenuButton layoutX="137.0" layoutY="13.0" mnemonicParsing="false" text="Administration" visible="false">
+            <MenuButton layoutX="137.0" layoutY="13.0" mnemonicParsing="false" text="Administration">
               <items>
-                <MenuItem mnemonicParsing="false" text="Ajout Cinema" />
-                <MenuItem mnemonicParsing="false" text="Ajout Salle" />
-                  <MenuItem mnemonicParsing="false" text="Ajout Film" />
-                  <MenuItem mnemonicParsing="false" text="Modifier Cinema" />
-                  <MenuItem mnemonicParsing="false" text="Modifier Salle" />
-                  <MenuItem mnemonicParsing="false" text="Modifier Film" />
+                <MenuItem mnemonicParsing="false" onAction="#goCreationSalle" text="Administrer Cinema" />
+                <MenuItem mnemonicParsing="false" text="Administrer Salle" />
+                  <MenuItem mnemonicParsing="false" text="Administrer Film" />
               </items>
             </MenuButton>
          </children></AnchorPane>

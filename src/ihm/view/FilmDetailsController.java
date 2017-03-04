@@ -63,14 +63,12 @@ public class FilmDetailsController {
 	public void initAPI(){
 		List<String> listeIdFilms = new ArrayList<String>();		
 		//SIMULATION DE RECUPERATION DE LA LISTE DES ID DE FILM DANS LA BASE
-		listeIdFilms.add("121856");listeIdFilms.add("274870");listeIdFilms.add("47971");
+		listeIdFilms.add("121856");listeIdFilms.add("274870");listeIdFilms.add("47971");listeIdFilms.add("47973");
 		CineGoAPI API = new CineGoAPI(listeIdFilms);
 		//System.out.println(API.getTabFilms().toString());
 		for( int i = 0 ; i < API.getTabFilms().size() ; i++){
 			cineGoFilms.add(API.getTabFilms().get(i));
 		}
-		ObservableList<String> wordsList = FXCollections.observableArrayList("First word","Second word", "Third word", "Etc.");
-		listView.setItems(wordsList);
 		APILoadOK = true;
 	}
 
