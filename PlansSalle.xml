@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<CineGo>
+    <Cinema idCinema="1">
+        <Salle numSalle="1" nomSalle="1">
+            <Sieges>
+                <Siege nomTypeSiege="Normal" x="1" y="3"></Siege>
+                <Siege nomTypeSiege="Handicape" x="1" y="5"></Siege>
+                <Siege nomTypeSiege="Sortie" x="1" y="12"></Siege>
+            </Sieges>
+        </Salle>
+    </Cinema>
+</CineGo>
