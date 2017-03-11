@@ -88,7 +88,7 @@ public class ComplementDAO {
 		return idTypeCase;
 	}
 
-	public static int findbynumPlanSalle(String numPlanSalle) {
+	public static int findbynumPlanSalle(String numPlanSalle, int idCinema) {
 		
 		int idPlanSalle = 0;
 		
@@ -96,7 +96,8 @@ public class ComplementDAO {
 		try {
 			ResultSet result = Connection.selectFrom("SELECT idPlanSalle "
 					 + "FROM PlanSalle "
-					 + "WHERE numPlanSalle ='" + numPlanSalle +"';");
+					 + "WHERE numPlanSalle ='" + numPlanSalle 
+					 + "' AND idCinema=" + idCinema +";");
 
 			
 			while(result.next())

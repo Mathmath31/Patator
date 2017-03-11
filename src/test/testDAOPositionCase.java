@@ -25,14 +25,14 @@ public class testDAOPositionCase {
 //		}
 		
 		
-		PositionCase posCasse = new PositionCase();
-		for (int j=1; j<51; j++){
-			for (int k=1; k<50; k++){
+		/*PositionCase posCasse = new PositionCase();
+		for (int j=0; j<50; j++){
+			for (int k=0; k<50; k++){
 				posCasse.setPosX(j);
 				posCasse.setPosY(k);
 				PositionCaseDAO.create(posCasse);
 			}
-		}
+		}*/
 //		PositionCase ad = new PositionCase();
 	
 //		ad.setPosX(35);
