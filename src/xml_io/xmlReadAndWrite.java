@@ -1,13 +1,13 @@
 package xml_io;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Calendar;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.stream.events.Comment;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
@@ -25,7 +25,6 @@ import org.xml.sax.SAXException;
 import classes.CaseSalle;
 import classes.Cinema;
 import classes.PlanSalle;
-import classes.PositionCase;
 import dao.DAO;
 import dao.DAOFactory;
 import dao.bddsql.ComplementDAO;
@@ -40,38 +39,37 @@ public class xmlReadAndWrite {
     	
         try {
             /*
-             * Etape 2 : création d'un parseur
+             * Création d'un parseur
              */
             final DocumentBuilder builder = factory.newDocumentBuilder();
 			
 		    /*
-		     * Etape 3 : création d'un Document
+		     * Création d'un Document
 		     */
-		    final Document document= builder.parse(new File("PlansSalle.xml"));
+		    final Document document= builder.parse(new File("ImportCinego.xml"));
 		    
 		    
 		    final Element racine = document.getDocumentElement();
 		    
-		    System.out.println("\n*************RACINE************");
-		    System.out.println(racine.getNodeName());
+		    /*System.out.println("\n*************RACINE************");
+		    System.out.println(racine.getNodeName());*/
 		    
 	            
             final NodeList cinemaNoeuds = racine.getChildNodes();
             final int nbCinemaNoeuds = cinemaNoeuds.getLength();
             
             int[] Cine = new int[10];
-            ArrayList<Cinema> ListCine=new ArrayList<Cinema>();
             DAO<PlanSalle> PlanSalleDAO = DAOFactory.getPlanSalleDAO();
 		    DAO<CaseSalle> CaseSalleDAO = DAOFactory.getCaseSalleDAO();
             
             
-            for (int i = 0; i<nbCinemaNoeuds; i++) {
+            for (int i = 0; i<nbCinemaNoeuds; i++) {		//Récupération des cinémas
     	        if(cinemaNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) {
     	            final Element Cinema = (Element) cinemaNoeuds.item(i);
     	            
     	            Cine[i]=Integer.parseInt(Cinema.getAttribute("idCinema"));
-    	           // System.out.println("idCinema: " + Cinema.getAttribute("idCinema"));
-    	            System.out.println(Cine[i]);
+    	            /*System.out.println("idCinema: " + Cinema.getAttribute("idCinema"));
+    	            System.out.println(Cine[i]);*/
 
     	            final NodeList Salles = Cinema.getElementsByTagName("Salle");
         		    final int nbSalleElements = Salles.getLength();
@@ -81,7 +79,7 @@ public class xmlReadAndWrite {
                     
                     ListSalle=ComplementDAO.listofPlanSalle(Cine[i]);
                     
-    	            for(int j = 0; j<nbSalleElements; j++) {
+    	            for(int j = 0; j<nbSalleElements; j++) {	//Récupération des salles du cinéma
     	            	
         		        final Element Salle = (Element) Salles.item(j);
         		        
@@ -102,14 +100,13 @@ public class xmlReadAndWrite {
     		        	salletemp.setNomPlanSalle(Salle.getAttribute("nomSalle"));
     		        	PlanSalleDAO.create(salletemp);
         		       
-        		       // System.out.println("numSalle: " + Salle.getAttribute(""));
-        		       //  System.out.println("nomSalle: " + Salle.getAttribute("nomSalle"));
+        		        /*System.out.println("numSalle: " + Salle.getAttribute(""));
+        		        System.out.println("nomSalle: " + Salle.getAttribute("nomSalle"));*/
         
-        		       
         		        final NodeList Sieges= Salle.getElementsByTagName("Siege");
         		        final int nbSiegesElements = Sieges.getLength();
         		        
-        	            for(int k = 0; k<nbSiegesElements; k++) {
+        	            for(int k = 0; k<nbSiegesElements; k++) {		//Récupération des sieges
         	            	final Element Siege = (Element) Sieges.item(k);
         	            	CaseSalle casetemp= new CaseSalle();        	           
         	            		
@@ -117,16 +114,14 @@ public class xmlReadAndWrite {
     	            		casetemp.setIdPositionCase(ComplementDAO.findbypos(Integer.parseInt(Siege.getAttribute("x")),Integer.parseInt(Siege.getAttribute("y"))));
     	            		casetemp.setIdTypeCase(ComplementDAO.findbyname(Siege.getAttribute("nomTypeSiege")));
     	            		CaseSalleDAO.create(casetemp);
-        	            		
-             		           	   
-        	            	System.out.println("nomTypeSiege: " + Siege.getAttribute("nomTypeSiege"));
+        	            		   
+        	            	/*System.out.println("nomTypeSiege: " + Siege.getAttribute("nomTypeSiege"));
         	            	System.out.println("x: " + Siege.getAttribute("x"));
-        	            	System.out.println("y: " + Siege.getAttribute("y"));
+        	            	System.out.println("y: " + Siege.getAttribute("y"));*/
         	            	
         	            }
      
         		    }
-    	            
     	            
             return true;
     	    }
@@ -145,70 +140,69 @@ public class xmlReadAndWrite {
     }
 	
 	
-	public void saveToXML(String xml) {
+	public void saveToXML(ArrayList<Cinema> listCinema) {
 		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		
+		String timeStamp = new SimpleDateFormat("ddMMyyyy").format(Calendar.getInstance().getTime());
+		String cineExport = "";
+		String salleExport ="( ";
 		try {
 		    /*
-		     * Etape 2 : création d'un parseur
+		     * Création d'un parseur
 		     */
 		    final DocumentBuilder builder = factory.newDocumentBuilder();
 		    		
 		    /*
-		     * Etape 3 : création d'un Document
+		     * Création d'un Document
 		     */
 		    final Document document= builder.newDocument();
 						
 		    /*
-		     * Etape 4 : création de l'Element racine
+		     * Création de l'Element racine
 		     */
-		    final Element racine = document.createElement("repertoire");
+		        
+		    final Element racine = document.createElement("CineGo");
 		    document.appendChild(racine);			
 				
 		    /*
-		     * Etape 5 : création d'une personne
+		     * Création du ou des Cinemas
 		     */
-				
-		    final Element personne = document.createElement("personne");
-		    personne.setAttribute("sexe", "masculin");
-		    racine.appendChild(personne);
-				
+			
+		    for (Cinema c: listCinema){
+		    	final Element cine = document.createElement("Cinema");
+		    	cine.setAttribute("idCinema",String.valueOf(c.getId()));
+			    racine.appendChild(cine);
+		    	
+			    
+			    for(PlanSalle p:c.getListPlanSalle()){   // Création des salles
+			    	final Element salle = document.createElement("Salle");
+			    	salle.setAttribute("numSalle", String.valueOf(p.getNumPlanSalle()));
+			    	salle.setAttribute("nomSalle", String.valueOf(p.getNomPlanSalle()));
+			    	
+			    	final Element sieges = document.createElement("Sieges");
+			    	
+			    	for(CaseSalle cs:p.getListCaseSalle()){ // Création des sièges
+			    		final Element siege = document.createElement("Siege");
+			    		siege.setAttribute("nomTypeSiege", cs.getType().getNomTypeCase());
+			    		siege.setAttribute("x",  String.valueOf(cs.getPosition().getPosX()));
+			    		siege.setAttribute("y",  String.valueOf(cs.getPosition().getPosY()));
+			    		
+			    		sieges.appendChild(siege);
+			    		salle.appendChild(sieges);
+			    	}
+			    	cine.appendChild(salle);
+			    	salleExport += p.getNomPlanSalle() +" " ;
+			    }	
+			    salleExport += ")";
+			    cineExport += " " + c.getNomCine() + salleExport;
+		    }
+		  
 		    /*
-		     * Etape 6 : création du nom et du prénom
-		     */
-		    final Element nom = document.createElement("nom");
-		    nom.appendChild(document.createTextNode("DOE"));
-				
-		    final Element prenom = document.createElement("prenom");
-		    prenom.appendChild(document.createTextNode("John"));
-				
-		    personne.appendChild(nom);
-		    personne.appendChild(prenom);			
-								
-		    /*
-		     * Etape 7 : récupération des numéros de téléphone
-		     */
-		    final Element telephones = document.createElement("telephones");
-		    
-		    final Element fixe = document.createElement("telephone");
-		    fixe.appendChild(document.createTextNode("01 02 03 04 05"));
-		    fixe.setAttribute("type", "fixe");
-				
-		    final Element portable = document.createElement("telephone");
-		    portable.appendChild(document.createTextNode("06 07 08 09 10"));
-		    portable.setAttribute("type", "portable");
-				
-		    telephones.appendChild(fixe);
-		    telephones.appendChild(portable);
-		    personne.appendChild(telephones);
-				
-		    /*
-		     * Etape 8 : affichage
+		     * Création du fichier de sortie
 		     */
 		    final TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		    final Transformer transformer = transformerFactory.newTransformer();
 		    final DOMSource source = new DOMSource(document);
-		    final StreamResult sortie = new StreamResult(new File("F:\\file.xml"));
+		    final StreamResult sortie = new StreamResult(new File("ExportCinego_" + cineExport + "_" +  timeStamp + ".xml"));
 		    //final StreamResult result = new StreamResult(System.out);
 				
 		    //prologue
@@ -233,9 +227,6 @@ public class xmlReadAndWrite {
 		    e.printStackTrace();
 		}			
 	    }
-	
-
-
 	}
     
 

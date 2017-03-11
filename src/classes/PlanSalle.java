@@ -15,7 +15,7 @@ public class PlanSalle {
 	private String nomPlanSalle;
 	private String numPlanSalle;
 	private int idCinema;
-	private ArrayList<CaseSalle> listPlanSalle = new ArrayList<CaseSalle>();
+	private ArrayList<CaseSalle> listCaseSalle = new ArrayList<CaseSalle>();
 	
 	public PlanSalle() {};
 	
@@ -24,7 +24,7 @@ public class PlanSalle {
 		this.nomPlanSalle=nomPlanSalle;
 		this.numPlanSalle=numPlanSalle;
 		this.idCinema=idCinema;
-		this.setListPlanSalle(listPlanSalle);
+		this.setListCaseSalle(listPlanSalle);
 	}
 
 	public int getId() {
@@ -60,18 +60,18 @@ public class PlanSalle {
 	}
 	
 	
-	public ArrayList<CaseSalle> getListPlanSalle() {
-		return listPlanSalle;
+	public ArrayList<CaseSalle> getListCaseSalle() {
+		return listCaseSalle;
 	}
 
-	public void setListPlanSalle(ArrayList<CaseSalle> listPlanSalle) {
-		this.listPlanSalle = listPlanSalle;
+	public void setListCaseSalle(ArrayList<CaseSalle> listPlanSalle) {
+		this.listCaseSalle = listPlanSalle;
 	}
 
 	@Override
 	public String toString() {
 		return "PlanSalle [id=" + id + ", numPlanSalle=" + numPlanSalle + ", nomPlanSalle=" + nomPlanSalle
-				+ ", idCinema=" + idCinema + ", listPlanSalle=" + listPlanSalle + "]";
+				+ ", idCinema=" + idCinema + ", listPlanSalle=" + listCaseSalle + "]";
 	}
 
 	

@@ -56,7 +56,7 @@ public class VilleDAO extends DAO<Ville>{
 			while(result.next())
 			{
 				nomVille = result.getString("nomVille");
-				cpVille=result.getString("imgVille");
+				cpVille=result.getString("cpVille");
 				
 			}
 			
