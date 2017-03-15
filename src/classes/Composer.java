@@ -9,91 +9,45 @@ package classes;
  */
 public class Composer {
 	
-	private int id;
-	private String nomSiegeCase;
-	private int idPlanSalle;
-	private int idPositionCase;
-	private int idTypeCase;
-	
-	private PositionCase position;
-	private TypeCase type;
+	private int idPlace;
+	private int idCaseSalle;
+	private int idSeance;
 
 	public Composer() {};
 	
-	public Composer(int id, String nomSiegeCase,int idPlanSalle, int idPositionCase, int idTypeCase, PositionCase position, TypeCase type) {
-		this.id=id;
-		this.nomSiegeCase=nomSiegeCase;
-		this.idPlanSalle=idPlanSalle;
-		this.idPositionCase=idPositionCase;
-		this.idTypeCase=idTypeCase;
-		this.setPosition(position);
-		this.setType(type);
+	public Composer(int idPlace, int idCaseSalle, int idSeance) {
+		this.idPlace=idPlace;
+		this.idCaseSalle=idCaseSalle;
+		this.idSeance=idSeance;
 	}
 
-	public int getId() {
-		return id;
+	public int getIdPlace() {
+		return idPlace;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdPlace(int idPlace) {
+		this.idPlace = idPlace;
 	}
 
-	public String getNomSiegeCase() {
-		return nomSiegeCase;
+	public int getIdCaseSalle() {
+		return idCaseSalle;
 	}
 
-	public void setNomSiegeCase(String nomSiegeCase) {
-		this.nomSiegeCase = nomSiegeCase;
+	public void setIdCaseSalle(int idCaseSalle) {
+		this.idCaseSalle = idCaseSalle;
 	}
 
-	public int getIdPlanSalle() {
-		return idPlanSalle;
+	public int getIdSeance() {
+		return idSeance;
 	}
 
-	public void setIdPlanSalle(int idPlanSalle) {
-		this.idPlanSalle = idPlanSalle;
-	}
-
-	public int getIdPositionCase() {
-		return idPositionCase;
-	}
-
-	public void setIdPositionCase(int idPositionCase) {
-		this.idPositionCase = idPositionCase;
-	}
-
-	public int getIdTypeCase() {
-		return idTypeCase;
-	}
-
-	public void setIdTypeCase(int idTypeCase) {
-		this.idTypeCase = idTypeCase;
-	}
-
-
-	public PositionCase getPosition() {
-		return position;
-	}
-
-	public void setPosition(PositionCase position) {
-		this.position = position;
-	}
-
-	public TypeCase getType() {
-		return type;
-	}
-
-	public void setType(TypeCase type) {
-		this.type = type;
+	public void setIdSeance(int idSeance) {
+		this.idSeance = idSeance;
 	}
 
 	@Override
 	public String toString() {
-		return "CaseSalle [id=" + id + ", nomSiegeCase=" + nomSiegeCase + ", idPlanSalle=" + idPlanSalle
-				+ ", idPositionCase=" + idPositionCase + ", idTypeCase=" + idTypeCase + ", position=" + position
-				+ ", type=" + type + "]";
+		return "Composer [idPlace=" + idPlace + ", idCaseSalle=" + idCaseSalle + ", idSeance=" + idSeance + "]";
 	}
-	
-	
 	
 }
