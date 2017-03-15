@@ -7,14 +7,14 @@ package classes;
  * @author Thomas
  *
  */
-public class Ajouter {
+public class AjouterProduit {
 	
 	private int idPlace;
 	private int idProduit;
 	
-	public Ajouter() {};
+	public AjouterProduit() {};
 	
-	public Ajouter(int idPlace, int idProduit){
+	public AjouterProduit(int idPlace, int idProduit){
 		this.idPlace=idPlace;
 		this.idProduit=idProduit;
 	}
