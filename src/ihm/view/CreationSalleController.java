@@ -1,8 +1,11 @@
 package ihm.view;
 
 import javafx.beans.property.ReadOnlyDoubleProperty;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -26,6 +29,17 @@ public class CreationSalleController {
 	@FXML
 	private TextField nblig;
 	
+	@FXML
+	private Button normal;
+	
+	@FXML
+	private Button handi;
+	
+	@FXML
+	private Button couloir;
+	
+	@FXML 
+	private Button porte;
 	
 	public void initialize(){
 		pane.getChildren().clear();
@@ -39,11 +53,11 @@ public class CreationSalleController {
 		//int nombrelig = getRowCount(gridPane);
 		
 		for (int i = 0; i < nombreCol ; i++) {
-			gridPane.getColumnConstraints().add(new ColumnConstraints(tailleCol / (nombreCol) - 1));
+			gridPane.getColumnConstraints().add(new ColumnConstraints(tailleCol / nombreCol));
 		}
 		
 		for (int j = 0 ; j < nombreLig; j++) {
-        	gridPane.getRowConstraints().add(new RowConstraints(tailleLig / (nombreLig) - 1));
+        	gridPane.getRowConstraints().add(new RowConstraints(tailleLig / nombreLig));
         }
         pane.getChildren().add(0,gridPane);
         
@@ -53,6 +67,14 @@ public class CreationSalleController {
 				Rectangle rectangle = new Rectangle(tailleCol / (nombreCol) - 1, tailleLig / (nombreLig) - 1);
 	            rectangle.setFill(Color.GREEN);
 	            rectangle.setStroke(Color.WHITE);
+	         // evenement au click sur un rectangle
+	            rectangle.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+	            	@Override
+	            	public void handle(MouseEvent e) {
+	            	click((GridPane.getRowIndex( rectangle)+1),(GridPane.getColumnIndex( rectangle)+1), rectangle );
+	            	
+	            	}
+	            });
 	            gridPane.add(rectangle, i, j);
 	        }
 		}
@@ -78,7 +100,60 @@ public class CreationSalleController {
 		
 		initialize();
 	        	
-	        	
+	}
+	
+	@FXML
+	private void selNormal(){
+		normal.setTextFill(Color.RED);
+		handi.setTextFill(Color.BLACK);
+		porte.setTextFill(Color.BLACK);
+		couloir.setTextFill(Color.BLACK);
+	}
+	
+	@FXML
+	private void selHandi(){
+		normal.setTextFill(Color.BLACK);
+		handi.setTextFill(Color.RED);
+		porte.setTextFill(Color.BLACK);
+		couloir.setTextFill(Color.BLACK);
+	}
+	
+	@FXML
+	private void selPorte(){
+		normal.setTextFill(Color.BLACK);
+		handi.setTextFill(Color.BLACK);
+		porte.setTextFill(Color.RED);
+		couloir.setTextFill(Color.BLACK);
+	}
+	
+	@FXML
+	private void selCouloir(){
+		normal.setTextFill(Color.BLACK);
+		handi.setTextFill(Color.BLACK);
+		porte.setTextFill(Color.BLACK);
+		couloir.setTextFill(Color.RED);
+	}
+	
+	public void click(int i, int j, Rectangle rect){
+		System.out.println(i + "/" + j);
+		if (normal.getTextFill() == Color.RED)
+		{
+			rect.setFill(Color.GREEN);
+		}
+		if (handi.getTextFill() == Color.RED)
+		{
+			rect.setFill(Color.BLUE);
+		}
+		if (porte.getTextFill() == Color.RED)
+		{
+			rect.setFill(Color.BROWN);
+		}
+		if (couloir.getTextFill() == Color.RED)
+		{
+			rect.setFill(Color.BLACK);
+		}
+		
+	}
 	        	
 	            
 //
@@ -98,7 +173,7 @@ public class CreationSalleController {
 //	            gridPane.add(rectangle, i, j);
 
 		
-	}
+
 	
 //	private int getRowCount(GridPane pane) {
 //        int numRows = pane.getRowConstraints().size();

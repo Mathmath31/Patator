@@ -58,10 +58,10 @@
                            <children>
                               <Button layoutX="27.0" layoutY="538.0" mnemonicParsing="false" text="Ajouter la salle" />
                               <Button layoutX="24.0" layoutY="409.0" mnemonicParsing="false" text="Modifier la salle" />
-                              <Button layoutX="24.0" layoutY="14.0" mnemonicParsing="false" text="Siege Normal" />
-                              <Button layoutX="20.0" layoutY="54.0" mnemonicParsing="false" text="Siege Handicapé" />
-                              <Button layoutX="40.0" layoutY="91.0" mnemonicParsing="false" text="Couloir" />
-                              <Button layoutX="46.0" layoutY="129.0" mnemonicParsing="false" text="Porte" />
+                              <Button fx:id="normal" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" onAction="#selNormal" text="Siege Normal" />
+                              <Button fx:id="handi" layoutX="20.0" layoutY="54.0" mnemonicParsing="false" onAction="#selHandi" text="Siege Handicapé" />
+                              <Button fx:id="couloir" layoutX="40.0" layoutY="91.0" mnemonicParsing="false" onAction="#selCouloir" text="Couloir" />
+                              <Button fx:id="porte" layoutX="46.0" layoutY="129.0" mnemonicParsing="false" onAction="#selPorte" text="Porte" />
                               <Label layoutX="31.0" layoutY="471.0" text="Nom de la Salle" />
                               <TextField layoutX="21.0" layoutY="498.0" prefHeight="25.0" prefWidth="105.0" />
                            </children>
