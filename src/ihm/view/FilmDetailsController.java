@@ -1,6 +1,7 @@
 package ihm.view;
 
 
+import java.sql.Time;
 /*
  * A FAIRE +
  * - recuperer date + heure de sceance + NB place + NB place handicape + implemnter boutton valider pour aller sur la page suivante
@@ -97,7 +98,8 @@ public class FilmDetailsController {
 			@Override
 			public void handle(MouseEvent event) {
 				panier.setFilm(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()));
-//				panier.setDateHeureSeance(dateSeance.getValue().);
+				panier.setDateSeance(dateSeance.getValue());
+				panier.setHeureSeance((Time)heureSeance.getValue());
 				MainController.setCurentPanier(panier);
 				MainController.setOldPanier(panier);
 		        VistaNavigator.loadVista(VistaNavigator.CHOIXPOSITION);

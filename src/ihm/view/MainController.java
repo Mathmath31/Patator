@@ -1,5 +1,6 @@
 package ihm.view;
 
+import ihm.Panier;
 import ihm.VistaNavigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

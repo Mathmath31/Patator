@@ -1,5 +1,7 @@
 package ihm;
 
+import java.sql.Time;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,7 +12,8 @@ public class Panier {
 
 	private String cinema;
 	private String salle;
-	private Date dateHeureSeance;
+	private LocalDate dateSeance;
+	private Time heureSeance;
 	private List<Place> place = new ArrayList<Place>();
 	private List<Accompagnement> accompagnement = new ArrayList<Accompagnement>();
 	private CineGoFilm film;
@@ -35,12 +38,20 @@ public class Panier {
 		this.salle = salle;
 	}
 
-	public Date getDateHeureSeance() {
-		return dateHeureSeance;
+	public LocalDate getDateSeance() {
+		return dateSeance;
 	}
 
-	public void setDateHeureSeance(Date dateHeureSeance) {
-		this.dateHeureSeance = dateHeureSeance;
+	public void setDateSeance(LocalDate dateSeance) {
+		this.dateSeance = dateSeance;
+	}
+	
+	public Time getHeureSeance() {
+		return heureSeance;
+	}
+
+	public void setHeureSeance(Time heureSeance) {
+		this.heureSeance = heureSeance;
 	}
 
 	public List<Place> getPlace() {
