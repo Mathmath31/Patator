@@ -25,7 +25,14 @@ public class MainController {
     private TextField idUser;
     @FXML
     private TextField password;
-    
+    @FXML
+    private Button btnEnregistrer;
+    @FXML
+    private Button btnAutentifier;
+    @FXML
+    private Label label1;
+    @FXML
+    private Label label2;
 
 	private static Panier curentPanier = new Panier();
 	private static Panier oldPanier = new Panier();
@@ -38,9 +45,20 @@ public class MainController {
      */
     public void autentification(){
     	//if iduser et password est ok
-    	// si admin?
     	menubutton.setVisible(true);
+    	btnEnregistrer.setDisable(true);
+    	btnAutentifier.setDisable(true);
+    	label1.setVisible(false);
+    	label2.setVisible(false);
+    	idUser.setVisible(false);
+    	password.setVisible(false);
+    	// si admin?
     	menuAdmin.setVisible(true);
+    	
+    	
+    	
+    	VistaNavigator.loadVista(VistaNavigator.CHOIXCINEMA);
+    	//menuAdmin.setDisable(true);
     }
     
     /**
@@ -52,6 +70,13 @@ public class MainController {
     	//si on se deco supp les droits de l'user
     	menubutton.setVisible(false);
     	menuAdmin.setVisible(false);
+    	btnEnregistrer.setDisable(false);
+    	btnAutentifier.setDisable(false);
+    	label1.setVisible(true);
+    	label2.setVisible(true);
+    	idUser.setVisible(true);
+    	password.setVisible(true);
+    	VistaNavigator.loadVista(VistaNavigator.HOME);
     }
     
     /**
