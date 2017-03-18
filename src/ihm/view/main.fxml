@@ -45,12 +45,12 @@
          <children>
             <ButtonBar prefHeight="40.0" prefWidth="1177.0">
               <buttons>
-                <Button mnemonicParsing="false" onAction="#goVueChoixCinema" text="Choix Cinéma" />
-                  <Button mnemonicParsing="false" onAction="#goVueChoixFilm" text="Choix Film" />
-                  <Button mnemonicParsing="false" onAction="#goVueChoixPosition" text="Choix Position" />
-                  <Button mnemonicParsing="false" onAction="#goVueChoixAccompagnement" text="Choix Accompagnement" />
-                  <Button mnemonicParsing="false" onAction="#goVuePanier" text="Detail Panier" />
-                  <Button mnemonicParsing="false" onAction="#goVueReglement" text="Reglement" />
+                <Button fx:id="btCinema" mnemonicParsing="false" onAction="#goVueChoixCinema" text="Choix Cinéma" />
+                  <Button fx:id="btFilm" mnemonicParsing="false" onAction="#goVueChoixFilm" text="Choix Film" />
+                  <Button fx:id="btPosition" mnemonicParsing="false" onAction="#goVueChoixPosition" text="Choix Position" />
+                  <Button fx:id="btAccompagnement" mnemonicParsing="false" onAction="#goVueChoixAccompagnement" text="Choix Accompagnement" />
+                  <Button fx:id="btPanier" mnemonicParsing="false" onAction="#goVuePanier" text="Detail Panier" />
+                  <Button fx:id="btReglement" mnemonicParsing="false" onAction="#goVueReglement" text="Reglement" />
               </buttons>
             </ButtonBar>
          </children>
