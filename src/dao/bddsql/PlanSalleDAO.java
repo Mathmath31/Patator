@@ -115,7 +115,7 @@ public class PlanSalleDAO extends DAO<PlanSalle> {
 	@Override
 	public PlanSalle update(PlanSalle obj) {
 
-		// TODO Auto-generated method stub
+	
 		Connection.update("UPDATE PlanSalle SET "
 				          + "nomPlanSalle ='" + obj.getNomPlanSalle()
 						  +"',numPlanSalle='" + obj.getNumPlanSalle()
@@ -126,7 +126,7 @@ public class PlanSalleDAO extends DAO<PlanSalle> {
 
 	@Override
 	public void delete(PlanSalle obj) {
-		// TODO Auto-generated method stub
+
 		Connection.update("DELETE  FROM PlanSalle WHERE idPlanSalle ="
 						  +obj.getId()
 						  +";");

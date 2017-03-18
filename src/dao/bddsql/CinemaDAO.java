@@ -125,7 +125,7 @@ public class CinemaDAO extends DAO<Cinema> {
 	@Override
 	public Cinema update(Cinema obj) {
 
-		// TODO Auto-generated method stub
+	
 		Connection.update("UPDATE Cinema SET "
 				          + "nomCine ='" + obj.getNomCine()
 						  +"',nVoieCine='" + obj.getnVoieCine()
@@ -136,7 +136,7 @@ public class CinemaDAO extends DAO<Cinema> {
 
 	@Override
 	public void delete(Cinema obj) {
-		// TODO Auto-generated method stub
+	
 		Connection.update("DELETE * FROM Cinema WHERE idCinema ="
 						  +obj.getId()
 						  +";");

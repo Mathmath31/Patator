@@ -8,13 +8,34 @@ import connection.Connection;
 
 public class ComplementDAO {
 	
+	public static int[] listofCinema() {
+
+		int[] listCinema= new int[30];
+		int i=0;
+
+		ResultSet rs = Connection.selectFrom("SELECT DISTINCT idCinema "
+											 + "FROM Cinema ");
+
+		try {
+			while(rs.next())
+			{
+				listCinema[i]=rs.getInt("idCinema");
+				i++;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listCinema;
+	}
+	
+	
 	public static int[] listofPlanSalle(int idCinema) {
 
 		int[] listPlanSalle= new int[30];
 		int i=0;
 
-
-		ResultSet rs = Connection.selectFrom("SELECT idPlanSalle "
+		ResultSet rs = Connection.selectFrom("SELECT DISTINCT idPlanSalle "
 											 + "FROM PlanSalle "
 											 + "WHERE idCinema = " + idCinema +";");
 
@@ -113,4 +134,31 @@ public class ComplementDAO {
 		return idPlanSalle;
 		
 	}
+	
+	public static int verifierMdp(String login, String mdp) {
+		
+		int idClient=0;
+		
+		
+		try {
+			ResultSet result = Connection.selectFrom("SELECT idClient "
+					 + "FROM Client "
+					 + "WHERE loginClient ='" + login 
+					 + "' AND mdpClient='" + mdp +"';");
+
+			
+			while(result.next())
+			{
+				idClient = result.getInt("idClient");
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return idClient;
+
+	}
+	
 }
