@@ -7,37 +7,58 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihm.view.NewUserController">
    <children>
-      <GridPane layoutX="200.0" layoutY="60.0" prefHeight="287.0" prefWidth="1190.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <GridPane layoutX="200.0" layoutY="60.0" prefHeight="287.0" prefWidth="1190.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="100.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="445.0" minWidth="10.0" prefWidth="210.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="690.0" minWidth="10.0" prefWidth="690.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Nom" />
-            <Label text="Prenom" GridPane.rowIndex="1" />
-            <Label text="Adresse" GridPane.rowIndex="2" />
-            <Label text="N° de téléphone" GridPane.rowIndex="3" />
-            <Label text="Adresse mail" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label text="Mot de passe" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Nom" GridPane.rowIndex="1" />
+            <Label text="Prenom" GridPane.rowIndex="2" />
+            <Label text="Adresse" GridPane.rowIndex="6" />
+            <Label text="N° de téléphone" GridPane.rowIndex="8" />
+            <Label text="Adresse mail" GridPane.rowIndex="9" />
+            <TextField fx:id="nom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="prenom" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="adresse" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="numTel" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <TextField fx:id="mdp" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Label text="Mot de passe" GridPane.rowIndex="10" />
+            <TextField fx:id="adresseMail" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label text="Login" />
+            <TextField fx:id="login" GridPane.columnIndex="1" />
+            <TextField fx:id="age" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Age" GridPane.rowIndex="3" />
+            <Label text="Sexe" GridPane.rowIndex="4" />
+            <Label text="Numero de carte de fidélité" GridPane.rowIndex="5" />
+            <Label text="Ville" GridPane.rowIndex="7" />
+            <TextField fx:id="sexe" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="carteFidel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="ville" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
-      <Button layoutX="574.0" layoutY="387.0" mnemonicParsing="false" text="Valider" />
+      <Button layoutX="574.0" layoutY="519.0" mnemonicParsing="false" onAction="#validerUser" text="Valider" />
+      <Label layoutX="463.0" layoutY="37.0" text="Création d'un compte utilisateur">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
