@@ -1,15 +1,9 @@
 package ihm.view;
-
-
-import java.sql.Time;
-/*
- * A FAIRE +
- * - recuperer date + heure de sceance + NB place + NB place handicape + implemnter boutton valider pour aller sur la page suivante
- 
- */
+//TODO 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-
 import apiTheMovieDB.CineGoAPI;
 import apiTheMovieDB.CineGoFilm;
 import ihm.Panier;
@@ -30,41 +24,33 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class FilmDetailsController {
-
-
 	@FXML
 	private ListView<String> listView;
-
 	@FXML
 	private TextArea synopsis;
-
 	@FXML
 	private Label nomFilm;
-
 	@FXML
 	private ImageView viewImageFilm;
-	
 	@FXML
 	private Button buttonValidFilm;
-	
 	@FXML
 	private DatePicker dateSeance;
-	
 	@FXML
-	private ComboBox heureSeance;
-	
+	private ComboBox<LocalTime> heureSeance;
 	@FXML
-	private ComboBox nbPlace;
-	
+	private ComboBox<String>  nbPlace;
 	@FXML
-	private ComboBox nbPlaceHandicape;
-	
+	private ComboBox<String>  nbPlaceHandicape;
+	@FXML
+	private ObservableList<String> filmsList = FXCollections.observableArrayList();
 
 	private boolean APILoadOK = false;
 	private List<CineGoFilm> cineGoFilms = new ArrayList<CineGoFilm>();
-	private ObservableList<String> filmsList = FXCollections.observableArrayList();
 	private Panier panier;
 
+	/**This function initialize parameters of this view  
+	 */
 	public void initialize(){
 		if (APILoadOK == false){
 			this.initAPI();
@@ -75,39 +61,78 @@ public class FilmDetailsController {
 		panier=MainController.getCurentPanier();
 		listView.setItems(filmsList);
 		listView.getSelectionModel().selectFirst();
-		nomFilm.setText(cineGoFilms.get(0).getTitle());
-		synopsis.setText(cineGoFilms.get(0).getInfoFilm());
-		synopsis.setWrapText(true);
-		Image image = SwingFXUtils.toFXImage(cineGoFilms.get(0).getDataIMG(), null);
-		viewImageFilm.setImage(image);
-
+		refreshInfosFilm();
+		/**Action when one film is clicked
+		 */
 		listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
 				System.out.println("clicked on " + listView.getSelectionModel().getSelectedIndex());
-				nomFilm.setText(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getTitle());
-				synopsis.setText(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getInfoFilm());
-				synopsis.setWrapText(true);
-				Image image = SwingFXUtils.toFXImage(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getDataIMG(), null);
-				viewImageFilm.setImage(image);
+				refreshInfosFilm();
 				System.out.println(panier.getCinema());
 			}
 		});
-		
+		/** Action when a date are selected
+		 */
+		dateSeance.setOnAction(event -> {
+		    LocalDate date = dateSeance.getValue();
+		    //TODO Replace their infos with databases infos 
+		    //heureSeance place libre
+			heureSeance.getItems().clear();
+			heureSeance.getItems().addAll(LocalTime.parse("08:00"), LocalTime.parse("12:00"), LocalTime.parse("16:00"), LocalTime.parse("20:00"));
+			heureSeance.getSelectionModel().selectFirst();
+			heureSeance.setDisable(false);
+		});
+		/** Action when an hour of cinema session are selected
+		 */
+		heureSeance.setOnAction(event -> {
+		    LocalTime heure = heureSeance.getSelectionModel().getSelectedItem();
+		    //TODO Replace their infos with databases infos 
+			//nbPlace dispo
+			nbPlace.getItems().clear();
+			nbPlace.getItems().addAll("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+			nbPlace.getSelectionModel().selectFirst();
+			nbPlace.setDisable(false);
+			//nbPlaceHandicape dispo
+			nbPlaceHandicape.getItems().clear();
+			nbPlaceHandicape.getItems().addAll("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+			nbPlaceHandicape.getSelectionModel().selectFirst();
+			nbPlaceHandicape.setDisable(false);
+		    System.out.println("Selected date: " + heure);
+		});
+		/**Action when a date is clicked
+		 */
+		dateSeance.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				heureSeance.getSelectionModel().clearSelection();
+				nbPlace.getSelectionModel().clearSelection();
+				nbPlaceHandicape.getSelectionModel().clearSelection();
+			}
+		});
+		/**Action when user click on 'valide' button
+		 */
 		buttonValidFilm.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-				panier.setFilm(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()));
-				panier.setDateSeance(dateSeance.getValue());
-				panier.setHeureSeance((Time)heureSeance.getValue());
-				MainController.setCurentPanier(panier);
-				MainController.setOldPanier(panier);
-				//MainController.setDisableBtBandeau(true, true, true, true, true, true);
-		        VistaNavigator.loadVista(VistaNavigator.CHOIXPOSITION);
+				if(listView.getSelectionModel().isEmpty() == false && dateSeance.getValue() != null && heureSeance.getValue() != null && (Integer.parseInt(nbPlace.getValue()) + Integer.parseInt(nbPlaceHandicape.getValue())) != 0 ){
+					panier.setFilm(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()));
+					panier.setDateSeance(dateSeance.getValue());
+					panier.setHeureSeance(LocalTime.parse(heureSeance.getValue().toString()));
+					MainController.setCurentPanier(panier);
+					MainController.setOldPanier(panier);
+			        VistaNavigator.loadVista(VistaNavigator.CHOIXPOSITION);
+			        System.out.println(panier.getDateSeance());
+			        System.out.println(panier.getHeureSeance());
+				}
+				else{
+					//TODO Send message for user
+				}
 			}
 		});
 	}
-
+	/**This function create the movie's list
+	 */
 	public void initAPI(){
 		List<String> listeIdFilms = new ArrayList<String>();
 		//SIMULATION DE RECUPERATION DE LA LISTE DES ID DE FILM DANS LA BASE
@@ -118,5 +143,17 @@ public class FilmDetailsController {
 		}
 		APILoadOK = true;
 	}
+	/**This function refresh fields when one movie is selected
+	 */
+	private void refreshInfosFilm() {
+		nomFilm.setText(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getTitle());
+		synopsis.setText(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getInfoFilm());
+		synopsis.setWrapText(true);
+		Image image = SwingFXUtils.toFXImage(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getDataIMG(), null);
+		viewImageFilm.setImage(image);
+		dateSeance.setValue(null);
+		heureSeance.setDisable(true);
+		nbPlace.setDisable(true);
+		nbPlaceHandicape.setDisable(true);
+	}
 }
-

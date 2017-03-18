@@ -1,9 +1,8 @@
 package ihm;
 
-import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import apiTheMovieDB.CineGoFilm;
@@ -13,7 +12,7 @@ public class Panier {
 	private String cinema;
 	private String salle;
 	private LocalDate dateSeance;
-	private Time heureSeance;
+	private LocalTime heureSeance;
 	private List<Place> place = new ArrayList<Place>();
 	private List<Accompagnement> accompagnement = new ArrayList<Accompagnement>();
 	private CineGoFilm film;
@@ -46,12 +45,12 @@ public class Panier {
 		this.dateSeance = dateSeance;
 	}
 	
-	public Time getHeureSeance() {
+	public LocalTime getHeureSeance() {
 		return heureSeance;
 	}
 
-	public void setHeureSeance(Time heureSeance) {
-		this.heureSeance = heureSeance;
+	public void setHeureSeance(LocalTime localTime) {
+		this.heureSeance = localTime;
 	}
 
 	public List<Place> getPlace() {
