@@ -61,9 +61,12 @@
                               <Button fx:id="normal" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" onAction="#selNormal" text="Siege Normal" />
                               <Button fx:id="handi" layoutX="20.0" layoutY="54.0" mnemonicParsing="false" onAction="#selHandi" text="Siege Handicapé" />
                               <Button fx:id="couloir" layoutX="40.0" layoutY="91.0" mnemonicParsing="false" onAction="#selCouloir" text="Couloir" />
-                              <Button fx:id="porte" layoutX="46.0" layoutY="129.0" mnemonicParsing="false" onAction="#selPorte" text="Porte" />
-                              <Label layoutX="31.0" layoutY="471.0" text="Nom de la Salle" />
+                              <Button fx:id="entree" layoutX="46.0" layoutY="129.0" mnemonicParsing="false" onAction="#selEntree" text="Entrée" />
+                              <Button fx:id="sortie" layoutX="46.0" layoutY="169.0" mnemonicParsing="false" onAction="#selSortie" text="Sortie" />
+                              <Button fx:id="extincteur" layoutX="40.0" layoutY="207.0" mnemonicParsing="false" onAction="#selExtincteur" text="Extincteur" />
                               <TextField layoutX="21.0" layoutY="498.0" prefHeight="25.0" prefWidth="105.0" />
+                              <Label layoutX="31.0" layoutY="471.0" text="Nom de la Salle" />
+                              <Button fx:id="ecran" layoutX="49.0" layoutY="247.0" mnemonicParsing="false" onAction="#selEcran" text="Ecran" />
                            </children>
                         </AnchorPane>
                     </items>

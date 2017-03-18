@@ -39,7 +39,18 @@ public class CreationSalleController {
 	private Button couloir;
 	
 	@FXML 
-	private Button porte;
+	private Button entree;
+	
+	@FXML
+	private Button extincteur;
+	
+	@FXML
+	private Button sortie;
+	
+	@FXML
+	private Button ecran;
+	
+	
 	
 	public void initialize(){
 		pane.getChildren().clear();
@@ -106,32 +117,77 @@ public class CreationSalleController {
 	private void selNormal(){
 		normal.setTextFill(Color.RED);
 		handi.setTextFill(Color.BLACK);
-		porte.setTextFill(Color.BLACK);
+		entree.setTextFill(Color.BLACK);
 		couloir.setTextFill(Color.BLACK);
+		sortie.setTextFill(Color.BLACK);
+		extincteur.setTextFill(Color.BLACK);
+		ecran.setTextFill(Color.BLACK);
 	}
 	
 	@FXML
 	private void selHandi(){
 		normal.setTextFill(Color.BLACK);
 		handi.setTextFill(Color.RED);
-		porte.setTextFill(Color.BLACK);
+		entree.setTextFill(Color.BLACK);
 		couloir.setTextFill(Color.BLACK);
+		sortie.setTextFill(Color.BLACK);
+		extincteur.setTextFill(Color.BLACK);
+		ecran.setTextFill(Color.BLACK);
 	}
 	
 	@FXML
-	private void selPorte(){
+	private void selEntree(){
 		normal.setTextFill(Color.BLACK);
 		handi.setTextFill(Color.BLACK);
-		porte.setTextFill(Color.RED);
+		entree.setTextFill(Color.RED);
 		couloir.setTextFill(Color.BLACK);
+		sortie.setTextFill(Color.BLACK);
+		extincteur.setTextFill(Color.BLACK);
+		ecran.setTextFill(Color.BLACK);
 	}
 	
 	@FXML
 	private void selCouloir(){
 		normal.setTextFill(Color.BLACK);
 		handi.setTextFill(Color.BLACK);
-		porte.setTextFill(Color.BLACK);
+		entree.setTextFill(Color.BLACK);
 		couloir.setTextFill(Color.RED);
+		sortie.setTextFill(Color.BLACK);
+		extincteur.setTextFill(Color.BLACK);
+		ecran.setTextFill(Color.BLACK);
+	}
+	
+	@FXML
+	private void selSortie(){
+		normal.setTextFill(Color.BLACK);
+		handi.setTextFill(Color.BLACK);
+		entree.setTextFill(Color.BLACK);
+		couloir.setTextFill(Color.BLACK);
+		sortie.setTextFill(Color.RED);
+		extincteur.setTextFill(Color.BLACK);
+		ecran.setTextFill(Color.BLACK);
+	}
+	
+	@FXML
+	private void selExtincteur(){
+		normal.setTextFill(Color.BLACK);
+		handi.setTextFill(Color.BLACK);
+		entree.setTextFill(Color.BLACK);
+		couloir.setTextFill(Color.BLACK);
+		sortie.setTextFill(Color.BLACK);
+		extincteur.setTextFill(Color.RED);
+		ecran.setTextFill(Color.BLACK);
+	}
+	
+	@FXML
+	private void selEcran(){
+		normal.setTextFill(Color.BLACK);
+		handi.setTextFill(Color.BLACK);
+		entree.setTextFill(Color.BLACK);
+		couloir.setTextFill(Color.BLACK);
+		sortie.setTextFill(Color.BLACK);
+		extincteur.setTextFill(Color.BLACK);
+		ecran.setTextFill(Color.RED);
 	}
 	
 	public void click(int i, int j, Rectangle rect){
@@ -144,13 +200,25 @@ public class CreationSalleController {
 		{
 			rect.setFill(Color.BLUE);
 		}
-		if (porte.getTextFill() == Color.RED)
+		if (entree.getTextFill() == Color.RED)
 		{
 			rect.setFill(Color.BROWN);
 		}
 		if (couloir.getTextFill() == Color.RED)
 		{
 			rect.setFill(Color.BLACK);
+		}
+		if (sortie.getTextFill() == Color.RED)
+		{
+			rect.setFill(Color.GREY);
+		}
+		if (extincteur.getTextFill() == Color.RED)
+		{
+			rect.setFill(Color.RED);
+		}
+		if (ecran.getTextFill() == Color.RED)
+		{
+			rect.setFill(Color.WHITE);
 		}
 		
 	}
