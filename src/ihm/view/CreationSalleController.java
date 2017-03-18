@@ -1,9 +1,9 @@
 package ihm.view;
 
-import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
@@ -17,8 +17,6 @@ public class CreationSalleController {
 	
 	private int nombreCol = 8;
 	private int nombreLig = 12;
-	private ReadOnlyDoubleProperty heightProperty;
-    private ReadOnlyDoubleProperty widthProperty;
 	
 	@FXML
 	private Pane pane;
@@ -50,9 +48,20 @@ public class CreationSalleController {
 	@FXML
 	private Button ecran;
 	
+	@FXML
+	private TextField nomSalle;
 	
+	@FXML
+	private ListView listCine;
+	
+	@FXML
+	private ListView listSalle;
 	
 	public void initialize(){
+		
+		
+		
+		
 		pane.getChildren().clear();
 		double tailleLig = pane.getPrefHeight();
 		double tailleCol = pane.getPrefWidth();
@@ -219,48 +228,27 @@ public class CreationSalleController {
 		if (ecran.getTextFill() == Color.RED)
 		{
 			rect.setFill(Color.WHITE);
-		}
+		}	
+	}
+	
+	
+	//TODO ajouter la salle a la BDD (XML)
+	public void ajouterSalle(){
+		
 		
 	}
-	        	
-	            
-//
-//	            Label label = new Label();
-//	            label.setText("HAAAAAAAAAAAAAAAAAAAAA");
-//	            label.setWrapText(true);
-//	            
-//	            rectangle.setFill(Color.TRANSPARENT);
-//
-//	            rectangle.setStroke(Color.BLACK);
-//	            
-//	            //Binding the fraction of the grid size to the width
-//	            //and heightProperty of the child
-//	            //rectangle.widthProperty().bind(widthProperty.divide(3));
-//	            //rectangle.heightProperty().bind(heightProperty.divide(3));
-//	            gridPane.add(label, i, j);
-//	            gridPane.add(rectangle, i, j);
-
-		
-
 	
-//	private int getRowCount(GridPane pane) {
-//        int numRows = pane.getRowConstraints().size();
-//        for (int i = 0; i < pane.getChildren().size(); i++) {
-//            Node child = pane.getChildren().get(i);
-//            if (child.isManaged()) {
-//                Integer rowIndex = GridPane.getRowIndex(child);
-//                if(rowIndex != null){
-//                    numRows = Math.max(numRows,rowIndex+1);
-//                }
-//            }
-//        }
-//        return numRows;
-//    }
-	
-	
-	
+	//TODO charger la salle du cinéma et salle présent
+	public void modifierSalle(){
 		
 		
+		
+	}
 	
-
+	// TODO si cinema selctionner charger ses salles
+	public void selCinema(){
+		
+		
+		
+	}
 }
