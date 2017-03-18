@@ -47,6 +47,8 @@ public class ChoixCinemaController {
 				panier.setCinema(tableView.getSelectionModel().getSelectedItem().getCinemaName());
 				MainController.setCurentPanier(panier);
 				MainController.setOldPanier(panier);
+				//MainController.setDisableBtBandeau(false,true,true,true,true,true);
+				//reste panier
 		        VistaNavigator.loadVista(VistaNavigator.SELECTIONFILM);
 				System.out.println("clicked on valide cine" + tableView.getSelectionModel().getSelectedIndex());
 				
