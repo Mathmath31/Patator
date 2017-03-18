@@ -11,12 +11,14 @@ public class AjouterProduit {
 	
 	private int idPlace;
 	private int idProduit;
+	private int quantité;
 	
 	public AjouterProduit() {};
 	
-	public AjouterProduit(int idPlace, int idProduit){
+	public AjouterProduit(int idPlace, int idProduit, int quantité){
 		this.idPlace=idPlace;
 		this.idProduit=idProduit;
+		this.quantité=quantité;
 	}
 
 	public int getIdPlace() {
@@ -34,11 +36,18 @@ public class AjouterProduit {
 	public void setIdProduit(int idProduit) {
 		this.idProduit = idProduit;
 	}
+	
+	public int getQuantité() {
+		return quantité;
+	}
+
+	public void setQuantité(int quantité) {
+		this.quantité = quantité;
+	}
 
 	@Override
 	public String toString() {
-		return "Ajouter [idPlace=" + idPlace + ", idProduit=" + idProduit + "]";
+		return "AjouterProduit [idPlace=" + idPlace + ", idProduit=" + idProduit + ", quantité=" + quantité + "]";
 	}
-	
 
 }

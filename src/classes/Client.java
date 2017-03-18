@@ -3,7 +3,7 @@
  */
 package classes;
 
-
+import java.util.ArrayList;
 
 /**
  * @author Thomas
@@ -25,12 +25,13 @@ public class Client {
 	private boolean adminClient;
 	private int idVille;
 	private Ville VilleCine;
+	private ArrayList<Place> listPlace = new ArrayList<Place>();
 
 	
 	public Client() {};
 	
 	public Client(int id, String loginClient, String mdpClient, String mailClient, String telephoneClient, String nomClient, String prenomClient, String ageClient,
-			String nVoieClient, String sexeClient, String codeFideliteClient, boolean adminClient, int idVille ,Ville VilleCine){
+			String nVoieClient, String sexeClient, String codeFideliteClient, boolean adminClient, int idVille ,Ville VilleCine, ArrayList<Place> listPlace){
 		
 		this.id=id;
 		this.loginClient=loginClient;
@@ -46,7 +47,7 @@ public class Client {
 		this.adminClient=adminClient;
 		this.idVille=idVille;
 		this.setVilleCine(VilleCine);
-		
+		this.setListPlace(listPlace);
 	}
 
 	public int getId() {
@@ -162,14 +163,24 @@ public class Client {
 		VilleCine = villeCine;
 	}
 
+	public ArrayList<Place> getListPlace() {
+		return listPlace;
+	}
+
+	public void setListPlace(ArrayList<Place> listPlace) {
+		this.listPlace = listPlace;
+	}
+
 	@Override
 	public String toString() {
 		return "Client [id=" + id + ", loginClient=" + loginClient + ", mdpClient=" + mdpClient + ", mailClient="
 				+ mailClient + ", telephoneClient=" + telephoneClient + ", nomClient=" + nomClient + ", prenomClient="
 				+ prenomClient + ", ageClient=" + ageClient + ", nVoieClient=" + nVoieClient + ", sexeClient="
 				+ sexeClient + ", codeFideliteClient=" + codeFideliteClient + ", adminClient=" + adminClient
-				+ ", idVille=" + idVille + ", VilleCine=" + VilleCine + "]";
+				+ ", idVille=" + idVille + ", VilleCine=" + VilleCine + ", listPlace=" + listPlace + "]";
 	}
+
+	
 	
 	
 	

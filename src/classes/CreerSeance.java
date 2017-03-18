@@ -13,14 +13,19 @@ public class CreerSeance {
 	private int idCreneau;
 	private int idDate;
 	private int idSeance;
+	private Creneau creneauT;
+	private Dates datesT;
 	
+
 	public CreerSeance() {};
 	
-	public CreerSeance(int idPlanSalle, int idCreneau,int idDate, int idSeance){
+	public CreerSeance(int idPlanSalle, int idCreneau,int idDate, int idSeance, Creneau creneauT, Dates datesT){
 		this.idPlanSalle=idPlanSalle;
 		this.idCreneau=idCreneau;
 		this.idDate=idDate;
 		this.idSeance=idSeance;
+		this.setCreneauT(creneauT);
+		this.setDatesT(datesT);	
 	}
 
 	public int getIdPlanSalle() {
@@ -55,10 +60,22 @@ public class CreerSeance {
 		this.idSeance = idSeance;
 	}
 
-	@Override
-	public String toString() {
-		return "CreerSeance [idPlanSalle=" + idPlanSalle + ", idCreneau=" + idCreneau + ", idDate=" + idDate
-				+ ", idSeance=" + idSeance + "]";
+	public Creneau getCreneauT() {
+		return creneauT;
 	}
+
+	public void setCreneauT(Creneau creneauT) {
+		this.creneauT = creneauT;
+	}
+
+	public Dates getDatesT() {
+		return datesT;
+	}
+
+	public void setDatesT(Dates datesT) {
+		this.datesT = datesT;
+	}
+
+	
 	
 }

@@ -12,13 +12,15 @@ public class Composer {
 	private int idPlace;
 	private int idCaseSalle;
 	private int idSeance;
+	private Seance seanceT;
 
 	public Composer() {};
 	
-	public Composer(int idPlace, int idCaseSalle, int idSeance) {
+	public Composer(int idPlace, int idCaseSalle, int idSeance, Seance seanceT) {
 		this.idPlace=idPlace;
 		this.idCaseSalle=idCaseSalle;
 		this.idSeance=idSeance;
+		this.setSeanceT(seanceT);
 	}
 
 	public int getIdPlace() {
@@ -45,9 +47,14 @@ public class Composer {
 		this.idSeance = idSeance;
 	}
 
-	@Override
-	public String toString() {
-		return "Composer [idPlace=" + idPlace + ", idCaseSalle=" + idCaseSalle + ", idSeance=" + idSeance + "]";
+	public Seance getSeanceT() {
+		return seanceT;
 	}
+
+	public void setSeanceT(Seance seanceT) {
+		this.seanceT = seanceT;
+	}
+
+	
 	
 }
