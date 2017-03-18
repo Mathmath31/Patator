@@ -70,7 +70,36 @@ public class VistaNavigator {
                         fxml
                     )
                 )
-            );
+            );         
+            switch (fxml) {
+            case MAIN:
+                mainController.setDisableBtBandeau(true, true, true, true, true, true);
+                break;
+            case CHOIXCINEMA:
+                mainController.setDisableBtBandeau(false, true, true, true, true, true);
+                break;
+            case SELECTIONFILM:
+                mainController.setDisableBtBandeau(false, false, true, true, true, true);
+                break;
+            case CHOIXPOSITION:
+                mainController.setDisableBtBandeau(false, false, false, true, true, true);
+                break;
+            case ACCOMPAGNEMENT:
+                mainController.setDisableBtBandeau(false, false, false, false, true, true);
+                break;
+            case PANIER:
+                mainController.setDisableBtBandeau(false, false, false, false, false, true);
+                break;
+            case REGLEMENT:
+                mainController.setDisableBtBandeau(false, false, false, false, false, false);
+                break;
+            default:
+                mainController.setDisableBtBandeau(true, true, true, true, true, true);
+                break;
+        }
+            
+            
+            
         } catch (IOException e) {
             e.printStackTrace();
         }

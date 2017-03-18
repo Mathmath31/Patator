@@ -52,14 +52,13 @@ public class MainController {
 	@FXML
 	protected Button btReglement;
 
-
 	private static Panier curentPanier = new Panier();
 	private static Panier oldPanier = new Panier();
 
 
 	@FXML
-	public void initialize(){	
-		this.setDisableBtBandeau(true, true, true, true, true, true);
+	public void initialize(){
+		
 	}
 
 	/**
@@ -78,9 +77,7 @@ public class MainController {
 		password.setVisible(false);
 		// si admin?
 		menuAdmin.setVisible(true);
-		this.setDisableBtBandeau(false, true, true, true, true, true);
 		VistaNavigator.loadVista(VistaNavigator.CHOIXCINEMA);
-		//menuAdmin.setDisable(true);
 	}
 
 	/**
@@ -98,18 +95,17 @@ public class MainController {
 		label2.setVisible(true);
 		idUser.setVisible(true);
 		password.setVisible(true);
-		this.setDisableBtBandeau(true, true, true, true, true, true);
 		VistaNavigator.loadVista(VistaNavigator.HOME);
 	}
 
 	
 	public void setDisableBtBandeau(boolean boolBtCinema, boolean boolBtFilm,boolean boolBtPosition,boolean boolBtAccompagnement,boolean boolBtPanier,boolean boolBtReglement) {
-		btCinema.setDisable(boolBtCinema);
-		btFilm.setDisable(boolBtFilm);
-		btPosition.setDisable(boolBtPosition);
-		btAccompagnement.setDisable(boolBtAccompagnement);
-		btPanier.setDisable(boolBtPanier);
-		btReglement.setDisable(boolBtReglement);
+		this.btCinema.setDisable(boolBtCinema);
+		this.btFilm.setDisable(boolBtFilm);
+		this.btPosition.setDisable(boolBtPosition);
+		this.btAccompagnement.setDisable(boolBtAccompagnement);
+		this.btPanier.setDisable(boolBtPanier);
+		this.btReglement.setDisable(boolBtReglement);
 		}
 	
 	/**
@@ -129,8 +125,6 @@ public class MainController {
 	 */
 	@FXML
 	void goVueChoixCinema(ActionEvent event) {
-		this.setDisableBtBandeau(false, true, true, true, true, true);
-		//reste panier
 		VistaNavigator.loadVista(VistaNavigator.CHOIXCINEMA);
 	}
 
@@ -141,8 +135,6 @@ public class MainController {
 	 */
 	@FXML
 	void goVueChoixPosition(ActionEvent event) {
-		this.setDisableBtBandeau(false, false, false, true, true, true);
-		//reste panier
 		VistaNavigator.loadVista(VistaNavigator.CHOIXPOSITION);
 	}
 
@@ -153,8 +145,6 @@ public class MainController {
 	 */
 	@FXML
 	void goVueChoixFilm(ActionEvent event) {
-		this.setDisableBtBandeau(false, false, true, true, true, true);
-		//reste panier
 		VistaNavigator.loadVista(VistaNavigator.SELECTIONFILM);
 
 	}
@@ -166,8 +156,6 @@ public class MainController {
 	 */
 	@FXML
 	void goVueChoixAccompagnement(ActionEvent event) {
-		this.setDisableBtBandeau(false, false, false, false, true, true);
-		//reste panier
 		VistaNavigator.loadVista(VistaNavigator.ACCOMPAGNEMENT);
 	}
 
@@ -196,9 +184,6 @@ public class MainController {
 	public static void setOldPanier(Panier Panier) {
 		oldPanier = Panier;
 	}
-
-
-
 
 	/**
 	 * Event handler fired when the user requests a new vista.
@@ -269,4 +254,5 @@ public class MainController {
 	void goVueAdminCinema(ActionEvent event) {
 		VistaNavigator.loadVista(VistaNavigator.ADMINCINEMA);
 	}
+
 }

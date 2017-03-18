@@ -102,6 +102,7 @@ public class FilmDetailsController {
 				panier.setHeureSeance((Time)heureSeance.getValue());
 				MainController.setCurentPanier(panier);
 				MainController.setOldPanier(panier);
+				//MainController.setDisableBtBandeau(true, true, true, true, true, true);
 		        VistaNavigator.loadVista(VistaNavigator.CHOIXPOSITION);
 			}
 		});
