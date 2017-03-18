@@ -53,7 +53,7 @@ public class Main extends Application {
         MainController mainController = loader.getController();
 
         VistaNavigator.setMainController(mainController);
-        VistaNavigator.loadVista(VistaNavigator.CHOIXCINEMA);
+        VistaNavigator.loadVista(VistaNavigator.HOME);
 
         return mainPane;
     }

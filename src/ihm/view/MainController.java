@@ -34,6 +34,7 @@ public class MainController {
     	// si admin?
     	menubutton.setVisible(true);
     	menuAdmin.setVisible(true);
+    	VistaNavigator.loadVista(VistaNavigator.CHOIXCINEMA);
     }
     
     /**
@@ -45,6 +46,7 @@ public class MainController {
     	//si on se deco supp les droits de l'user
     	menubutton.setVisible(false);
     	menuAdmin.setVisible(false);
+    	VistaNavigator.loadVista(VistaNavigator.HOME);
     }
     
     /**
@@ -105,5 +107,15 @@ public class MainController {
     @FXML
     void goCreationSalle(ActionEvent event) {
         VistaNavigator.loadVista(VistaNavigator.CREATIONSALLE);
+    }
+    
+    /**
+     * Event handler fired when the user requests a new vista.
+     *
+     * @param event the event that triggered the handler.
+     */
+    @FXML
+    void goNewUser(ActionEvent event) {
+        VistaNavigator.loadVista(VistaNavigator.NEWUSER);
     }
 }
