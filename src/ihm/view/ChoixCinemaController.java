@@ -44,7 +44,7 @@ public class ChoixCinemaController {
         buttonValidCine.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-				System.out.println("clicked on  valide cine" + tableView.getSelectionModel().getSelectedIndex());
+				System.out.println("clicked on valide cine" + tableView.getSelectionModel().getSelectedIndex());
 				
 			}
 		});
