@@ -36,6 +36,8 @@ public class CineGoFilm {
 	private Images images;
 	private BufferedImage dataIMG;
 
+	public CineGoFilm(){
+	}
 	public CineGoFilm( String id ){
 		this.id = id;
 	}

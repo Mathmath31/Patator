@@ -18,10 +18,9 @@ import ihm.view.MainController;
  */
 public class Main extends Application {
 	
-	public static Panier panier;
     @Override
     public void start(Stage stage) throws Exception{
-
+    	
         stage.setTitle("Cine GoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOo");
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setScene(
@@ -51,7 +50,6 @@ public class Main extends Application {
         );
 
         MainController mainController = loader.getController();
-
         VistaNavigator.setMainController(mainController);
         VistaNavigator.loadVista(VistaNavigator.CHOIXCINEMA);
 

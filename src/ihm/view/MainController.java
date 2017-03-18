@@ -1,10 +1,12 @@
 package ihm.view;
 
+import ihm.Panier;
 import ihm.VistaNavigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 /**
@@ -24,6 +26,11 @@ public class MainController {
     @FXML
     private TextField password;
     
+
+	private static Panier curentPanier = new Panier();
+	private static Panier oldPanier = new Panier();
+	
+
     /**
      * 
      *
@@ -85,6 +92,7 @@ public class MainController {
     @FXML
     void goVueChoixFilm(ActionEvent event) {
         VistaNavigator.loadVista(VistaNavigator.SELECTIONFILM);
+        
     }
     
     /**
@@ -106,4 +114,23 @@ public class MainController {
     void goCreationSalle(ActionEvent event) {
         VistaNavigator.loadVista(VistaNavigator.CREATIONSALLE);
     }
+    
+	public static Panier getCurentPanier() {
+		return curentPanier;
+	}
+
+	public static void setCurentPanier(Panier Panier) {
+		curentPanier = Panier;
+	}
+
+	public static Panier getOldPanier() {
+		return oldPanier;
+	}
+
+	public static void setOldPanier(Panier Panier) {
+		oldPanier = Panier;
+	}
+
+	
+	
 }
