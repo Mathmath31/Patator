@@ -32,7 +32,7 @@ public class ChoixCinemaController {
 	public void initialize(){	
 
 		cineData.add(new InfoCine("Gaumont", "Labege"));
-		cineData.add(new InfoCine("Pathï¿½", "Montaudran"));
+		cineData.add(new InfoCine("Pathé", "Montaudran"));
 		cineData.add(new InfoCine("Mega CGR", "Moncul"));
 
 		cinemaName.setCellValueFactory(cellData -> cellData.getValue().cinemaNameProperty());

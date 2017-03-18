@@ -24,7 +24,7 @@ public class VistaNavigator {
     public static final String SELECTIONFILM = "view/FilmDetails.fxml";
     public static final String CHOIXPOSITION = "view/ChoixPosition.fxml";
     public static final String ACCOMPAGNEMENT = "view/ChoixAccompagnement.fxml";
-    public static final String CREATIONSALLE = "view/Crï¿½ationSalle.fxml";
+    public static final String CREATIONSALLE = "view/CréationSalle.fxml";
     public static final String HOME = "view/home.fxml";
     public static final String PANIER = "view/VuePanier.fxml";
     public static final String REGLEMENT = "view/VueReglement.fxml";
