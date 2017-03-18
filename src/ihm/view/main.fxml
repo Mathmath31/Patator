@@ -17,26 +17,25 @@
    <top>
       <AnchorPane prefHeight="50.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
-            <MenuButton layoutX="14.0" layoutY="13.0" mnemonicParsing="false" text="Mon Compte" visible="false">
+            <MenuButton fx:id="menubutton" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" text="Mon Compte" visible="false">
               <items>
-                <MenuItem mnemonicParsing="false" text="Mes Infos" />
-                <MenuItem mnemonicParsing="false" text="Mon Historique" />
-                  <MenuItem mnemonicParsing="false" text="Mes Reservations" />
+                <MenuItem mnemonicParsing="false" onAction="#goVueInfoUser" text="Mes Infos" />
+                  <MenuItem mnemonicParsing="false" onAction="#goVueReservation" text="Mes Reservations" />
                   <MenuItem mnemonicParsing="false" onAction="#deconnection" text="Me Deconnecter" />
               </items>
             </MenuButton>
-            <Button layoutX="1002.0" layoutY="11.0" mnemonicParsing="false" onAction="#autentification" text="S'identifier" />
+            <Button fx:id="btnAutentifier" layoutX="1002.0" layoutY="11.0" mnemonicParsing="false" onAction="#autentification" text="S'identifier" />
             <Label layoutX="266.0" layoutY="17.0" text="Bonjour + nom" />
-            <Label layoutX="586.0" layoutY="15.0" text="Identifiant :" />
-            <Label layoutX="793.0" layoutY="15.0" text="Password :" />
-            <TextField layoutX="858.0" layoutY="11.0" prefHeight="25.0" prefWidth="129.0" />
-            <TextField layoutX="657.0" layoutY="11.0" prefHeight="25.0" prefWidth="126.0" />
-            <Button layoutX="1099.0" layoutY="11.0" mnemonicParsing="false" text="S'enregistrer" />
-            <MenuButton layoutX="137.0" layoutY="13.0" mnemonicParsing="false" text="Administration">
+            <Label fx:id="label1" layoutX="586.0" layoutY="15.0" text="Identifiant :" />
+            <Label fx:id="label2" layoutX="793.0" layoutY="15.0" text="Password :" />
+            <TextField fx:id="password" layoutX="858.0" layoutY="11.0" prefHeight="25.0" prefWidth="129.0" />
+            <TextField fx:id="idUser" layoutX="657.0" layoutY="11.0" prefHeight="25.0" prefWidth="126.0" />
+            <Button fx:id="btnEnregistrer" layoutX="1099.0" layoutY="11.0" mnemonicParsing="false" onAction="#goNewUser" text="S'enregistrer" />
+            <MenuButton fx:id="menuAdmin" layoutX="137.0" layoutY="13.0" mnemonicParsing="false" text="Administration" visible="false">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#goCreationSalle" text="Administrer Cinema" />
-                <MenuItem mnemonicParsing="false" text="Administrer Salle" />
-                  <MenuItem mnemonicParsing="false" text="Administrer Film" />
+                <MenuItem mnemonicParsing="false" onAction="#goVueAdminCinema" text="Administrer Cinema" />
+                <MenuItem mnemonicParsing="false" onAction="#goCreationSalle" text="Administrer Salle" />
+                  <MenuItem mnemonicParsing="false" onAction="#goVueAdminFilm" text="Administrer Film" />
               </items>
             </MenuButton>
          </children></AnchorPane>
@@ -50,8 +49,8 @@
                   <Button mnemonicParsing="false" onAction="#goVueChoixFilm" text="Choix Film" />
                   <Button mnemonicParsing="false" onAction="#goVueChoixPosition" text="Choix Position" />
                   <Button mnemonicParsing="false" onAction="#goVueChoixAccompagnement" text="Choix Accompagnement" />
-                  <Button mnemonicParsing="false" text="Detail Panier" />
-                  <Button mnemonicParsing="false" text="Reglement" />
+                  <Button mnemonicParsing="false" onAction="#goVuePanier" text="Detail Panier" />
+                  <Button mnemonicParsing="false" onAction="#goVueReglement" text="Reglement" />
               </buttons>
             </ButtonBar>
          </children>

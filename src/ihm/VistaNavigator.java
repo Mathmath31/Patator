@@ -25,6 +25,13 @@ public class VistaNavigator {
     public static final String CHOIXPOSITION = "view/ChoixPosition.fxml";
     public static final String ACCOMPAGNEMENT = "view/ChoixAccompagnement.fxml";
     public static final String CREATIONSALLE = "view/Cr�ationSalle.fxml";
+    public static final String HOME = "view/home.fxml";
+    public static final String PANIER = "view/VuePanier.fxml";
+    public static final String REGLEMENT = "view/VueReglement.fxml";
+    public static final String INFOUSER = "view/VueInfoUser.fxml";
+    public static final String RESERVATION = "view/VueReservation.fxml";
+    public static final String ADMINFILM = "view/AdminFilm.fxml";
+    public static final String ADMINCINEMA = "view/AdminCinema.fxml";
 
     /** The main application layout controller. */
     private static MainController mainController;

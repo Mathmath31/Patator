@@ -1,6 +1,5 @@
 package ihm.view;
 
-import ihm.Panier;
 import ihm.VistaNavigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -133,4 +132,74 @@ public class MainController {
 
 	
 	
+    
+    /**
+     * Event handler fired when the user requests a new vista.
+     *
+     * @param event the event that triggered the handler.
+     */
+    @FXML
+    void goNewUser(ActionEvent event) {
+        VistaNavigator.loadVista(VistaNavigator.NEWUSER);
+    }
+    
+    /**
+     * Event handler fired when the user requests a new vista.
+     *
+     * @param event the event that triggered the handler.
+     */
+    @FXML
+    void goVuePanier(ActionEvent event) {
+        VistaNavigator.loadVista(VistaNavigator.PANIER);
+    }
+    
+    /**
+     * Event handler fired when the user requests a new vista.
+     *
+     * @param event the event that triggered the handler.
+     */
+    @FXML
+    void goVueReglement(ActionEvent event) {
+        VistaNavigator.loadVista(VistaNavigator.REGLEMENT);
+    }
+    
+    /**
+     * Event handler fired when the user requests a new vista.
+     *
+     * @param event the event that triggered the handler.
+     */
+    @FXML
+    void goVueInfoUser(ActionEvent event) {
+        VistaNavigator.loadVista(VistaNavigator.INFOUSER);
+    }
+    
+    /**
+     * Event handler fired when the user requests a new vista.
+     *
+     * @param event the event that triggered the handler.
+     */
+    @FXML
+    void goVueReservation(ActionEvent event) {
+        VistaNavigator.loadVista(VistaNavigator.RESERVATION);
+    }
+    
+    /**
+     * Event handler fired when the user requests a new vista.
+     *
+     * @param event the event that triggered the handler.
+     */
+    @FXML
+    void goVueAdminFilm(ActionEvent event) {
+        VistaNavigator.loadVista(VistaNavigator.ADMINFILM);
+    }
+    
+    /**
+     * Event handler fired when the user requests a new vista.
+     *
+     * @param event the event that triggered the handler.
+     */
+    @FXML
+    void goVueAdminCinema(ActionEvent event) {
+        VistaNavigator.loadVista(VistaNavigator.ADMINCINEMA);
+    }
 }

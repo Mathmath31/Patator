@@ -48,6 +48,8 @@ public class ChoixCinemaController {
 				MainController.setCurentPanier(panier);
 				MainController.setOldPanier(panier);
 		        VistaNavigator.loadVista(VistaNavigator.SELECTIONFILM);
+				System.out.println("clicked on valide cine" + tableView.getSelectionModel().getSelectedIndex());
+				
 			}
 		});
 	}
