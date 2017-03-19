@@ -6,7 +6,7 @@ import dao.DAO;
 import dao.DAOFactory;
 import xml_io.xmlReadAndWrite;;
 
-public class TestXml {
+public class testxml {
 
 	public static void main(String[] args) {
 		/*
