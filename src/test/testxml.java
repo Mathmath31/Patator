@@ -9,16 +9,7 @@ import xml_io.xmlReadAndWrite;;
 public class TestXml {
 
 	public static void main(String[] args) {
-		/*
-		int bob=ComplementDAO.findbynumPlanSalle("1");
-		
-		System.out.println(bob);
-		
 
-		
-		*/
-    	
-		
 		xmlReadAndWrite xmltest = new xmlReadAndWrite();
 		DAO<Cinema> CinemaDAO = DAOFactory.getCinemaDAO();
 		ArrayList<Cinema> cine=new ArrayList<Cinema>();
