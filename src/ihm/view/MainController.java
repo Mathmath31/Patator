@@ -1,12 +1,12 @@
 package ihm.view;
 
+import classes.Donnees;
 import ihm.Panier;
 import ihm.VistaNavigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 /**
@@ -68,16 +68,32 @@ public class MainController {
 	 */
 	public void autentification(){
 		//if iduser et password est ok
-		menubutton.setVisible(true);
-		btnEnregistrer.setDisable(true);
-		btnAutentifier.setDisable(true);
-		label1.setVisible(false);
-		label2.setVisible(false);
-		idUser.setVisible(false);
-		password.setVisible(false);
-		// si admin?
-		menuAdmin.setVisible(true);
-		VistaNavigator.loadVista(VistaNavigator.CHOIXCINEMA);
+		
+		String login = null;
+		String mdp = null;
+		
+		login = idUser.getText();
+		mdp = password.getText();
+		
+		Donnees donnees= new Donnees();
+		donnees.connection(login, mdp);
+		
+		if (donnees.isConnecté() == true){
+			System.out.println("Connecté");
+			menubutton.setVisible(true);
+			btnEnregistrer.setDisable(true);
+			btnAutentifier.setDisable(true);
+			label1.setVisible(false);
+			label2.setVisible(false);
+			idUser.setVisible(false);
+			password.setVisible(false);
+			
+			// si admin?
+			menuAdmin.setVisible(true);
+			VistaNavigator.loadVista(VistaNavigator.CHOIXCINEMA);
+			
+			
+		}
 	}
 
 	/**
