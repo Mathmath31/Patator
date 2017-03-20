@@ -30,21 +30,20 @@ public class Donnees {
 	
 	public void connection(String login, String mdp){
 		
-		
 		int i=0;
 		int idClient =ComplementDAO.verifierMdp(login, Crypter.cryptWithMD5(mdp));
-		int[] nbcines = new int[20];
 		
+		int[] nbcines = new int[20];
 		this.setConnecté(false);
 		
-		
+		DAO<Client> ClientDAO= DAOFactory.getClientDAO();
 		ArrayList<Cinema> cines=new ArrayList<Cinema>();
 		DAO<Cinema> CinemaDAO= DAOFactory.getCinemaDAO();
 		nbcines = ComplementDAO.listofCinema();
 	
-		
 		if (idClient != 0){ // Le client est trouvé et le mot de passe est valide
-			//TODO DAO client et assignation Client Historique
+			
+			this.setClientHistorique(ClientDAO.find(idClient));
 			
 			while (nbcines[i] != 0){ //Ajout des cinémas
 				cines.add(CinemaDAO.find(nbcines[i]));
@@ -54,9 +53,8 @@ public class Donnees {
 			this.setConnecté(true);
 		}
 		else{ //connexion non valide
-			//this.clientHistorique.setId(0);
+			//TODO Evenement Login ou mot de passe Incorrect
 		}
-				
 	}
 
 	public Client getClientCommande() {
@@ -99,8 +97,4 @@ public class Donnees {
 	public void setCinemas(ArrayList<Cinema> cinemas) {
 		this.cinemas = cinemas;
 	}
-	
-	
-	
-
 }

@@ -12,18 +12,19 @@ import dao.DAO;
 import dao.DAOFactory;
 
 /**
- * @author thomas
- *
- */
+ * Data Access Object SQL for the class ComposerPlace, able to find, create, update, delete the class
+ * @author Thomas
+ */ 
 public class ComposerPlaceDAO extends DAO<ComposerPlace> {
 	
-	@Override 
 	/**
-	 * Search the Data in the Database 
+	 * Retrieve the Data in the Database of the class ComposerPlace
 	 * @author Thomas
-	 * @params id = idPlace
-	 * @return class ComposerPlace
-	 */
+	 * @param id = idPlace
+	 * @return composerPlace : class ComposerPlace
+	 * @exception  SQLException : When the query doesn't work
+	 */ 
+	@Override 
 	public ComposerPlace find(int id) {
 		
 		ComposerPlace composerPlace=new ComposerPlace();
@@ -57,6 +58,13 @@ public class ComposerPlaceDAO extends DAO<ComposerPlace> {
 	}
 
 	
+	
+	/**
+	 * Create the Data in the Database of the class ComposerPlace
+	 * @author Thomas
+	 * @param obj : class ComposerPlace
+	 * @return obj : class ComposerPlace
+	 */ 
 	@Override
 	public ComposerPlace create(ComposerPlace obj) {
 		
@@ -68,6 +76,13 @@ public class ComposerPlaceDAO extends DAO<ComposerPlace> {
 	}
 
 
+	
+	/**
+	 * Update the Data in the Database of the class ComposerPlace
+	 * @author Thomas
+	 * @param obj : class ComposerPlace
+	 * @return obj : class ComposerPlace
+	 */
 	@Override
 	public ComposerPlace update(ComposerPlace obj) {
 		
@@ -78,13 +93,16 @@ public class ComposerPlaceDAO extends DAO<ComposerPlace> {
 	}
 
 	
+	
+	/**
+	 * Delete the Data in the Database of the class ComposerPlace
+	 * @author Thomas
+	 * @param obj : class ComposerPlace
+	 */
 	@Override
 	public void delete(ComposerPlace obj) {
 		
 		Connection.update("DELETE  FROM ComposerPlace WHERE idPlace ="
 							+obj.getIdPlace()+";");	
 	}
-
-	
-
 }

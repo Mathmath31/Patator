@@ -13,18 +13,19 @@ import dao.DAO;
 import dao.DAOFactory;
 
 /**
- * @author thomas
- *
- */
+ * Data Access Object SQL for the class CreerSeance, able to find, create, update, delete the class
+ * @author Thomas
+ */ 
 public class CreerSeanceDAO extends DAO<CreerSeance> {
 	
-	@Override 
 	/**
-	 * Search the Data in the Database 
+	 * Retrieve the Data in the Database of the class CreerSeance
 	 * @author Thomas
-	 * @params id = idSeance
-	 * @return class CreeSeance
+	 * @param id = idCreerSeance
+	 * @return creer : class CreerSeance
+	 * @exception  SQLException : When the query doesn't work
 	 */
+	@Override 
 	public CreerSeance find(int id) {
 		
 		CreerSeance creer=new CreerSeance();
@@ -63,7 +64,12 @@ public class CreerSeanceDAO extends DAO<CreerSeance> {
 		return creer;
 	}
 
-	
+	/**
+	 * Create the Data in the Database of the class CreerSeance
+	 * @author Thomas
+	 * @param obj : class CreerSeance
+	 * @return obj : class CreerSeance
+	 */
 	@Override
 	public CreerSeance create(CreerSeance obj) {
 		
@@ -75,7 +81,12 @@ public class CreerSeanceDAO extends DAO<CreerSeance> {
 		return obj;
 	}
 
-
+	/**
+	 * Update the Data in the Database of the class CreerSeance
+	 * @author Thomas
+	 * @param obj : class CreerSeance
+	 * @return obj : class CreerSeance
+	 */
 	@Override
 	public CreerSeance update(CreerSeance obj) {
 		
@@ -86,7 +97,11 @@ public class CreerSeanceDAO extends DAO<CreerSeance> {
 		return obj;
 	}
 
-	
+	/**
+	 * Delete the Data in the Database of the class CreerSeance
+	 * @author Thomas
+	 * @param obj : class CreerSeance
+	 */
 	@Override
 	public void delete(CreerSeance obj) {
 		

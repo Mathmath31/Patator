@@ -10,12 +10,18 @@ import dao.DAO;
 import dao.DAOFactory;
 
 /**
+ * Data Access Object SQL for the class PlanSalle, able to find, create, update, delete the class
  * @author Thomas
- *
- */
-
+ */ 
 public class PlanSalleDAO extends DAO<PlanSalle> {
-
+	
+	/**
+	 * Create the Data in the Database of the class PlanSalle
+	 * @author Thomas
+	 * @param id : idPlanSalle
+	 * @return Salle : class PlanSalle
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	@Override
 	public PlanSalle find(int id) {
 
@@ -82,7 +88,14 @@ public class PlanSalleDAO extends DAO<PlanSalle> {
 
 		return Salle;
 	}
-
+	
+	/**
+	 * Create the Data in the Database of the class PlanSalle
+	 * @author Thomas
+	 * @param obj : class PlanSalle
+	 * @return obj : class PlanSalle
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	@Override
 	public PlanSalle create(PlanSalle obj) {
 
@@ -108,7 +121,13 @@ public class PlanSalleDAO extends DAO<PlanSalle> {
 
 		return obj;
 	}
-
+	
+	/**
+	 * Update the Data in the Database of the class PlanSalle
+	 * @author Thomas
+	 * @param obj : class PlanSalle
+	 * @return obj : class PlanSalle
+	 */
 	@Override
 	public PlanSalle update(PlanSalle obj) {
 
@@ -120,7 +139,12 @@ public class PlanSalleDAO extends DAO<PlanSalle> {
 						  +" WHERE idPlanSalle=" + obj.getId() + ";");        
 		return obj;
 	}
-
+	
+	/**
+	 * Delete the Data in the Database of the class PlanSalle
+	 * @author Thomas
+	 * @param obj : class PlanSalle
+	 */
 	@Override
 	public void delete(PlanSalle obj) {
 

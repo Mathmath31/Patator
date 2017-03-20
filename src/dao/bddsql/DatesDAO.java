@@ -4,20 +4,24 @@
 package dao.bddsql;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.util.Date;
-
-import classes.Creneau;
 import classes.Dates;
 import connection.Connection;
 import dao.DAO;
 /**
- * @author thomas
- *
- */
+ * Data Access Object SQL for the class Dates, able to find, create, update, delete the class
+ * @author Thomas
+ */ 
 public class DatesDAO extends DAO<Dates>{
-
-public Dates create(Dates obj) {
+	
+	/**
+	 * Create the Data in the Database of the class Dates
+	 * @author Thomas
+	 * @param obj : class Dates
+	 * @return obj : class Dates
+	 * @exception  SQLException : When the query doesn't work
+	 */
+	public Dates create(Dates obj) {
 		
 		Connection.update("INSERT INTO dates (seanceDate) VALUES("
 						  +obj.getSeanceDate()+")");
@@ -41,7 +45,13 @@ public Dates create(Dates obj) {
 		return obj;
 	}
 	
-	
+	/**
+	 * Retrieve the Data in the Database of the class Dates
+	 * @author Thomas
+	 * @param id : idDate
+	 * @return dates : class Dates
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public Dates find(int id) {
 		
 		Date seanceDate = null;
@@ -70,7 +80,12 @@ public Dates create(Dates obj) {
 		return dates;
 	}
 
-	
+	/**
+	 * Update the Data in the Database of the class Dates
+	 * @author Thomas
+	 * @param obj : class Dates
+	 * @return obj : class Dates
+	 */
 	public Dates update(Dates obj) {
 		
 		Connection.update("UPDATE dates SET seanceDate ="+obj.getSeanceDate()																				
@@ -80,7 +95,11 @@ public Dates create(Dates obj) {
 		return obj;
 	}
 
-	
+	/**
+	 * Create the Data in the Database of the class Dates
+	 * @author Thomas
+	 * @param obj : class Dates
+	 */
 	public void delete(Dates obj) {
 		
 		Connection.update("DELETE  FROM dates WHERE idDate="

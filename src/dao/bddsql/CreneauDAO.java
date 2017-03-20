@@ -9,12 +9,19 @@ import classes.Creneau;
 import connection.Connection;
 import dao.DAO;
 /**
- * @author thomas
- *
- */
+ * Data Access Object SQL for the class Creneau, able to find, create, update, delete the class
+ * @author Thomas
+ */ 
 public class CreneauDAO extends DAO<Creneau>{
-
-public Creneau create(Creneau obj) {
+	
+	/**
+	 * Create the Data in the Database of the class Creneau
+	 * @author Thomas
+	 * @param obj : class Creneau
+	 * @return obj : class Creneau
+	 * @exception  SQLException : When the query doesn't work
+	 */
+	public Creneau create(Creneau obj) {
 		
 		Connection.update("INSERT INTO creneau (heureDebutCreneau, heureFinCreneau) VALUES("
 						  +obj.getHeureDebutCreneau()+","
@@ -39,7 +46,13 @@ public Creneau create(Creneau obj) {
 		return obj;
 	}
 	
-	
+	/**
+	 * Retrieve the Data in the Database of the class Creneau
+	 * @author Thomas
+	 * @param id = idCreneau
+	 * @return creneau : class Creneau
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public Creneau find(int id) {
 		
 		Time heureDebutCreneau = null;
@@ -71,7 +84,12 @@ public Creneau create(Creneau obj) {
 		return creneau;
 	}
 
-	
+	/**
+	 * Update the Data in the Database of the class Creneau
+	 * @author Thomas
+	 * @param obj : class Creneau
+	 * @return obj : class Creneau
+	 */
 	public Creneau update(Creneau obj) {
 		
 		Connection.update("UPDATE creneau SET heureDebutCreneau ="+obj.getHeureDebutCreneau()
@@ -82,7 +100,11 @@ public Creneau create(Creneau obj) {
 		return obj;
 	}
 
-	
+	/**
+	 * Delete the Data in the Database of the class Creneau
+	 * @author Thomas
+	 * @param obj : class Creneau
+	 */
 	public void delete(Creneau obj) {
 		
 		Connection.update("DELETE  FROM creneau WHERE idCreneau="

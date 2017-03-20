@@ -1,11 +1,9 @@
-/**
- * 
- */
 package dao;
 
 
 import classes.CaseSalle;
 import classes.Cinema;
+import classes.Client;
 import classes.ComposerPlace;
 import classes.CreerSeance;
 import classes.Creneau;
@@ -20,6 +18,7 @@ import classes.TypeCase;
 import classes.Ville;
 import dao.bddsql.CaseSalleDAO;
 import dao.bddsql.CinemaDAO;
+import dao.bddsql.ClientDAO;
 import dao.bddsql.ComposerPlaceDAO;
 import dao.bddsql.CreerSeanceDAO;
 import dao.bddsql.CreneauDAO;
@@ -34,9 +33,9 @@ import dao.bddsql.TypeCaseDAO;
 import dao.bddsql.VilleDAO;
 
 /**
+ * Data Access Object Factory -> encapsulating the instantiation of our objects into one class
  * @author Thomas
- *
- */
+ */ 
 public class DAOFactory {
 	
 	public static DAO<CaseSalle> getCaseSalleDAO(){
@@ -45,6 +44,10 @@ public class DAOFactory {
 	
 	public static DAO<Cinema> getCinemaDAO(){
 		return new CinemaDAO();
+	}
+	
+	public static DAO<Client> getClientDAO(){
+		return new ClientDAO();
 	}
 	
 	public static DAO<ComposerPlace> getComposerPlaceDAO(){

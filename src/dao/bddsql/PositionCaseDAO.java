@@ -8,13 +8,21 @@ import java.sql.SQLException;
 import classes.PositionCase;
 import connection.Connection;
 import dao.DAO;
-/**
- * @author thomas
- *
- */
-public class PositionCaseDAO extends DAO<PositionCase>{
 
-public PositionCase create(PositionCase obj) {
+/**
+ * Data Access Object SQL for the class PositionCase, able to find, create, update, delete the class
+ * @author Thomas
+ */ 
+public class PositionCaseDAO extends DAO<PositionCase>{
+	
+	/**
+	 * Create the Data in the Database of the class PositionCase
+	 * @author Thomas
+	 * @param obj : class PositionCase
+	 * @return obj : class PositionCase
+	 * @exception  SQLException : When the query doesn't work
+	 */
+	public PositionCase create(PositionCase obj) {
 		
 		Connection.update("INSERT INTO positioncase (posXPositionCase, posYPositionCase) VALUES("
 						  +obj.getPosX()+","
@@ -39,7 +47,13 @@ public PositionCase create(PositionCase obj) {
 		return obj;
 	}
 	
-	
+	/**
+	 * Retrieve the Data in the Database of the class PositionCase
+	 * @author Thomas
+	 * @param id : idPositionCase
+	 * @return posCase : class PositionCase
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public PositionCase find(int id) {
 		
 		int posX = 0;
@@ -71,7 +85,12 @@ public PositionCase create(PositionCase obj) {
 		return posCase;
 	}
 
-	
+	/**
+	 * Update the Data in the Database of the class PositionCase
+	 * @author Thomas
+	 * @param obj : class PositionCase
+	 * @return obj : class PositionCase
+	 */
 	public PositionCase update(PositionCase obj) {
 		
 		Connection.update("UPDATE positioncase SET posXPositionCase ="+obj.getPosX()
@@ -82,15 +101,15 @@ public PositionCase create(PositionCase obj) {
 		return obj;
 	}
 
-	
+	/**
+	 * Delete the Data in the Database of the class PositionCase
+	 * @author Thomas
+	 * @param obj : class PositionCase
+	 */
 	public void delete(PositionCase obj) {
 		
 		Connection.update("DELETE  FROM positioncase WHERE idPositionCase="
 						  +obj.getId()
 						  +";");
 	}
-	
-	
-	
-
 }

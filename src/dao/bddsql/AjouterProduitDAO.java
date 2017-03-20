@@ -1,24 +1,20 @@
 package dao.bddsql;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 import classes.AjouterProduit;
-import classes.CaseSalle;
-import classes.PlanSalle;
-import classes.Produit;
 import connection.Connection;
 import dao.DAO;
-import dao.DAOFactory;
 
 /**
+ * Data Access Object SQL for the class AjouterProduit, able to find, create, update, delete the class
  * @author Thomas
- *
- */
-
+ */ 
 public class AjouterProduitDAO extends DAO<AjouterProduit> {
 
+	/**
+	 * Can't use this function, idAjouterProduit is made of 2 foreign keys, extends forbid
+	 * @author Thomas
+	 * @see ComplementDAO
+	 */ 
 	@Override
 	public AjouterProduit find(int id) {
 
@@ -26,6 +22,12 @@ public class AjouterProduitDAO extends DAO<AjouterProduit> {
 		return ajouterProduit;
 	}
 
+	/**
+	 * Create the Data in the Database of the class AjouterProduit, and return this same class
+	 * @author Thomas
+	 * @param obj : class AjouterProduit
+	 * @return obj : class AjouterProduit
+	 */ 
 	@Override
 	public AjouterProduit create(AjouterProduit obj) {
 
@@ -37,6 +39,12 @@ public class AjouterProduitDAO extends DAO<AjouterProduit> {
 		return obj;
 	}
 
+	/**
+	 * Update the Data in the Database of the class AjouterProduit, and return this same class
+	 * @author Thomas
+	 * @param obj : class AjouterProduit
+	 * @return obj : class AjouterProduit
+	 */ 
 	@Override
 	public AjouterProduit update(AjouterProduit obj) {
 
@@ -48,6 +56,11 @@ public class AjouterProduitDAO extends DAO<AjouterProduit> {
 		return obj;
 	}
 
+	/**
+	 * Delete the Data in the Database of the class AjouterProduit
+	 * @author Thomas
+	 * @param obj : class AjouterProduit
+	 */ 
 	@Override
 	public void delete(AjouterProduit obj) {
 

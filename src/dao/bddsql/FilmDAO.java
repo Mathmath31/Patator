@@ -8,12 +8,19 @@ import classes.Film;
 import connection.Connection;
 import dao.DAO;
 /**
+ * Data Access Object SQL for the class Film, able to find, create, update, delete the class
  * @author Thomas
- *
- */
+ */ 
 public class FilmDAO extends DAO<Film>{
-
-public Film create(Film obj) {
+	
+	/**
+	 * Create the Data in the Database of the class Film
+	 * @author Thomas
+	 * @param obj : class Film
+	 * @return obj : class Film
+	 * @exception  SQLException : When the query doesn't work
+	 */
+	public Film create(Film obj) {
 		
 		Connection.update("INSERT INTO film (codeFilm) VALUES('"
 						  +obj.getCodeFilm()+"')");
@@ -37,7 +44,13 @@ public Film create(Film obj) {
 		return obj;
 	}
 	
-	
+	/**
+	 * Retrieve the Data in the Database of the class Film
+	 * @author Thomas
+	 * @param id : idFilm
+	 * @return film : class Film
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public Film find(int id) {
 		
 		String codeFilm = null;
@@ -66,7 +79,12 @@ public Film create(Film obj) {
 		return film;
 	}
 
-	
+	/**
+	 * Update the Data in the Database of the class Film
+	 * @author Thomas
+	 * @param obj : class Film
+	 * @return obj : class Film
+	 */
 	public Film update(Film obj) {
 		
 		Connection.update("UPDATE film SET posXPositionCase ='"+obj.getCodeFilm()							
@@ -76,7 +94,11 @@ public Film create(Film obj) {
 		return obj;
 	}
 
-	
+	/**
+	 * Delete the Data in the Database of the class Film
+	 * @author Thomas
+	 * @param obj : class Film
+	 */
 	public void delete(Film obj) {
 		
 		Connection.update("DELETE  FROM film WHERE idFilm="

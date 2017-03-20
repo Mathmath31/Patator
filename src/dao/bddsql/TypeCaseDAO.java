@@ -11,11 +11,18 @@ import connection.Connection;
 import dao.DAO;
 
 /**
- * @author thomas
- *
- */
+ * Data Access Object SQL for the class TypeCase, able to find, create, update, delete the class
+ * @author Thomas
+ */ 
 public class TypeCaseDAO extends DAO<TypeCase>{
 	
+	/**
+	 * Create the Data in the Database of the class TypeCase
+	 * @author Thomas
+	 * @param obj : class TypeCase
+	 * @return obj : class TypeCase
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public TypeCase create(TypeCase obj) {
 		
 		Connection.update("INSERT INTO TypeCase (nomTypeCase, imgTypeCase) VALUES('"
@@ -41,7 +48,13 @@ public class TypeCaseDAO extends DAO<TypeCase>{
 		return obj;
 	}
 	
-	
+	/**
+	 * Retrieve the Data in the Database of the class TypeCase
+	 * @author Thomas
+	 * @param id : idTypeCase
+	 * @return typCase : class TypeCase
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public TypeCase find(int id) {
 		
 		String nomTypCas = null;
@@ -72,7 +85,12 @@ public class TypeCaseDAO extends DAO<TypeCase>{
 		return typCase;
 	}
 
-	
+	/**
+	 * Update the Data in the Database of the class TypeCase
+	 * @author Thomas
+	 * @param obj : class TypeCase
+	 * @return obj : class TypeCase
+	 */
 	public TypeCase update(TypeCase obj) {
 		
 		Connection.update("UPDATE TypeCase SET nomTypeCase ='"+obj.getNomTypeCase()
@@ -83,7 +101,11 @@ public class TypeCaseDAO extends DAO<TypeCase>{
 		return obj;
 	}
 
-	
+	/**
+	 * Delete the Data in the Database of the class TypeCase
+	 * @author Thomas
+	 * @param obj : class TypeCase
+	 */
 	public void delete(TypeCase obj) {
 		
 		Connection.update("DELETE  FROM TypeCase WHERE idTypeCase="

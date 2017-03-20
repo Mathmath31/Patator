@@ -17,12 +17,18 @@ import dao.DAO;
 import dao.DAOFactory;
 
 /**
+ * Data Access Object SQL for the class Client, able to find, create, update, delete the class
  * @author Thomas
- *
- */
-
+ */ 
 public class ClientDAO extends DAO<Client> {
-
+	
+	/**
+	 * Retrieve the Data in the Database of the class Client
+	 * @author Thomas
+	 * @param id = idClient
+	 * @return client : class Client
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	@Override
 	public Client find(int id) {
 
@@ -89,6 +95,13 @@ public class ClientDAO extends DAO<Client> {
 		return client;
 	}
 
+	/**
+	 * Create the Data in the Database of the class Client
+	 * @author Thomas
+	 * @param obj : class Client
+	 * @return obj : class Client
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	@Override
 	public Client create(Client obj) {
 
@@ -124,7 +137,13 @@ public class ClientDAO extends DAO<Client> {
 
 		return obj;
 	}
-
+	
+	/**
+	 * Update the Data in the Database of the class Client
+	 * @author Thomas
+	 * @param obj : class Client
+	 * @return obj : class Client
+	 */
 	@Override
 	public Client update(Client obj) {
 
@@ -144,7 +163,12 @@ public class ClientDAO extends DAO<Client> {
 						  +" WHERE idPlace=" + obj.getId() + ";");        
 		return obj;
 	}
-
+	
+	/**
+	 * Delete the Data in the Database of the class Client
+	 * @author Thomas
+	 *  obj : class Client
+	 */
 	@Override
 	public void delete(Client obj) {
 

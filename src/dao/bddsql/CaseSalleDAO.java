@@ -2,7 +2,6 @@
  * 
  */
 package dao.bddsql;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import classes.CaseSalle;
@@ -13,11 +12,18 @@ import dao.DAO;
 import dao.DAOFactory;
 
 /**
- * @author thomas
- *
- */
+ * Data Access Object SQL for the class CaseSalle, able to find, create, update, delete the class
+ * @author Thomas
+ */ 
 public class CaseSalleDAO extends DAO<CaseSalle> {
 	
+	/**
+	 * Retrieve the Data in the Database of the class CaseSalle
+	 * @author Thomas
+	 * @param id = idCaseSalle
+	 * @return case_find : class CaseSalle
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	@Override
 	public CaseSalle find(int id) {
 		
@@ -65,7 +71,13 @@ public class CaseSalleDAO extends DAO<CaseSalle> {
 		return case_find;
 	}
 
-	
+	/**
+	 * Create the Data in the Database of the class CaseSalle
+	 * @author Thomas
+	 * @param obj : class CaseSalle
+	 * @return obj : class CaseSalle
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	@Override
 	public CaseSalle create(CaseSalle obj) {
 		
@@ -95,7 +107,12 @@ public class CaseSalleDAO extends DAO<CaseSalle> {
 		return obj;
 	}
 
-	
+	/**
+	 * Update the Data in the Database of the class CaseSalle
+	 * @author Thomas
+	 * @param obj : class CaseSalle
+	 * @return obj : class CaseSalle
+	 */
 	@Override
 	public CaseSalle update(CaseSalle obj) {
 		
@@ -109,16 +126,17 @@ public class CaseSalleDAO extends DAO<CaseSalle> {
 						
 		return obj;
 	}
-
+	
+	/**
+	 * Delete the Data in the Database of the class CaseSalle
+	 * @author Thomas
+	 * @param obj : class CaseSalle
+	 */
 	@Override
 	public void delete(CaseSalle obj) {
 		
 		Connection.update("DELETE  FROM CaseSalle WHERE idCaseSalle="
 						  +obj.getId()
 						  +";");
-		
 	}
-
-	
-
 }

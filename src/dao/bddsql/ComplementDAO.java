@@ -2,16 +2,24 @@ package dao.bddsql;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-
 import classes.AjouterProduit;
 import classes.Produit;
 import connection.Connection;
 import dao.DAO;
 import dao.DAOFactory;
 
+/**
+ * Data Access Object SQL for all the class that i can't implement because of the extends keyword
+ * @author Thomas
+ */ 
 public class ComplementDAO {
 	
+	/**
+	 * Retrieve all the idCinema of the DB and return them on an array
+	 * @author Thomas
+	 * @return listCinema : Array idCinema
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public static int[] listofCinema() {
 
 		int[] listCinema= new int[30];
@@ -33,7 +41,12 @@ public class ComplementDAO {
 		return listCinema;
 	}
 	
-	
+	/**
+	 * Retrieve all the idPlanSalle of the DB from one Cinema and return them on an array
+	 * @author Thomas
+	 * @return listPlanSalle : Array idPlansalle
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public static int[] listofPlanSalle(int idCinema) {
 
 		int[] listPlanSalle= new int[30];
@@ -56,6 +69,11 @@ public class ComplementDAO {
 		return listPlanSalle;
 	}
 	
+	/**
+	 * Delete one to many CaseSalle by send idPlanSalle
+	 * @author Thomas
+	 * @param idPlanSalle
+	 */
 	public static void deleteCaseSalle(int idPlanSalle) {
 		
 		Connection.update("DELETE FROM CaseSalle WHERE idPlanSalle="
@@ -63,6 +81,14 @@ public class ComplementDAO {
 						  +";");
 	}
 	
+	/**
+	 * Retrieve the idPositionCase with posX and posY
+	 * @author Thomas
+	 * @param posX : x positifon of the case 
+	 * @param posY : x positifon of the case 
+	 * @return intidPositionCase
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public static int findbypos(int posX, int posY) {
 		
 		int idPositionCase = 0;
@@ -90,6 +116,13 @@ public class ComplementDAO {
 		
 	}
 	
+	/**
+	 * Retrieve the idTypeCase with posX and posY
+	 * @author Thomas
+	 * @param nameTypeCase : name of the case 
+	 * @return idTypeCase, int
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public static int findbyname(String nameTypeCase) {
 		
 		int idTypeCase = 0;
@@ -100,7 +133,6 @@ public class ComplementDAO {
 													+ "WHERE nomTypeCase='"
 													+nameTypeCase
 													+"';");
-			
 			while(result.next())
 			{
 				idTypeCase = result.getInt("idTypeCase");
@@ -112,7 +144,15 @@ public class ComplementDAO {
 		
 		return idTypeCase;
 	}
-
+	
+	/**
+	 * Retrieve the idPlanSalle from the DB by numPlanSalle and idCinema
+	 * @author Thomas
+	 * @param numPlanSalle : string, identification of the PlanSalle 
+	 * @param idCinema : int, id of the movie theater
+	 * @return idTypeCase, int
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public static int findbynumPlanSalle(String numPlanSalle, int idCinema) {
 		
 		int idPlanSalle = 0;
@@ -139,6 +179,14 @@ public class ComplementDAO {
 		
 	}
 	
+	/**
+	 * Retrieve the idTypeCase with posX and posY
+	 * @author Thomas
+	 * @param numPlanSalle : string, identification of the PlanSalle 
+	 * @param idCinema : int, id of the movie theater
+	 * @return idTypeCase, int
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public static int verifierMdp(String login, String mdp) {
 		
 		int idClient=0;
@@ -165,7 +213,13 @@ public class ComplementDAO {
 
 	}
 	
-
+	/**
+	 * Retrieve all the idProduit of the DB from one Place with idPlace and return them on an array
+	 * @author Thomas
+	 * @param idPlace, identifier of the place
+	 * @return listProduit : Array of idProduit
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public static int[] listProduitPlace(int idPlace) {
 
 		int[] listProduit= new int[30];
@@ -188,7 +242,15 @@ public class ComplementDAO {
 		return listProduit;
 	}
 	
-	
+	/**
+	 * Retrieve quantite and livrer from the DB using idPlace and idProduit
+	 * @author Thomas
+	 * @param idPlace : string, identification of the PlanSalle 
+	 * @param idProduit : int, id of the movie theater
+	 * @return ajouterProduit : class AjouterProduit
+	 * @exception  SQLException : When the query doesn't work
+	 * @see AjouterProduitDAO
+	 */
 	public static AjouterProduit  findAjouterProduit(int idPlace, int idProduit) {
 		
 		AjouterProduit ajouterProduit=new AjouterProduit();
@@ -220,6 +282,13 @@ public class ComplementDAO {
 		return ajouterProduit;
 	}
 	
+	/**
+	 * Retrieve all the idPlace of the DB for one Client and return them on an array
+	 * @author Thomas
+	 * @param idClient, identifier of the CLient
+	 * @return listPlaces : Array of idPlace
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public static int[] listPlace(int idClient) {
 
 		int[] listPlaces= new int[30];

@@ -15,11 +15,18 @@ import dao.DAO;
 import dao.DAOFactory;
 
 /**
+ * Data Access Object SQL for the class Cinema, able to find, create, update, delete the class
  * @author Thomas
- *
- */
+ */ 
 public class CinemaDAO extends DAO<Cinema> {
-
+	
+	/**
+	 * Retrieve the Data in the Database of the class Cinema
+	 * @author Thomas
+	 * @param id = idCinema
+	 * @return Cine : class Cinema
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	@Override
 	public Cinema find(int id) {
 
@@ -66,7 +73,6 @@ public class CinemaDAO extends DAO<Cinema> {
 												  + "idCinema="
 												  +id
 												  +";");
-
 		//Recuperation des id des salles
 		try {
 			while(result2.next())
@@ -78,24 +84,23 @@ public class CinemaDAO extends DAO<Cinema> {
 			e.printStackTrace();
 		}
 
-		
-
 		for(j=0;j<i;j++)
 		{
 			salles.add(PlanSalleDAO.find(idSalles[j]));
-		}
+		}		
 
-	
-		
-		
-		//if(nome != null && numt != null && mel != null)
-		//{
 		Cine = new Cinema(id,nomCine,nVoieCine,idVille,villeCine,salles); 
-		//}
 
 		return Cine;
 	}
 
+	/**
+	 * Create the Data in the Database of the class Cinema
+	 * @author Thomas
+	 * @param obj : class Cinema
+	 * @return obj : class Cinema
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	@Override
 	public Cinema create(Cinema obj) {
 
@@ -122,6 +127,12 @@ public class CinemaDAO extends DAO<Cinema> {
 		return obj;
 	}
 
+	/**
+	 * Update the Data in the Database of the class Cinema
+	 * @author Thomas
+	 * @param obj : class Cinema
+	 * @return obj : class Cinema
+	 */
 	@Override
 	public Cinema update(Cinema obj) {
 
@@ -133,7 +144,12 @@ public class CinemaDAO extends DAO<Cinema> {
 						  +" WHERE idCinema=" + obj.getId() + ";");        
 		return obj;
 	}
-
+	
+	/**
+	 * Delete the Data in the Database of the class Cinema
+	 * @author Thomas
+	 * @param obj : class Cinema
+	 */
 	@Override
 	public void delete(Cinema obj) {
 	

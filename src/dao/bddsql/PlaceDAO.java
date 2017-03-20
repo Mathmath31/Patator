@@ -3,24 +3,26 @@ package dao.bddsql;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import classes.AjouterProduit;
-import classes.CaseSalle;
 import classes.ComposerPlace;
 import classes.Place;
-import classes.PlanSalle;
-import classes.Seance;
 import connection.Connection;
 import dao.DAO;
 import dao.DAOFactory;
 
 /**
+ * Data Access Object SQL for the class Place, able to find, create, update, delete the class
  * @author Thomas
- *
- */
-
+ */ 
 public class PlaceDAO extends DAO<Place> {
-
+	
+	/**
+	 * Retrieve the Data in the Database of the class Place
+	 * @author Thomas
+	 * @param id : idPlace
+	 * @return place : class Place
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	@Override
 	public Place find(int id) {
 
@@ -64,7 +66,14 @@ public class PlaceDAO extends DAO<Place> {
 
 		return place;
 	}
-
+	
+	/**
+	 * Create the Data in the Database of the class Place
+	 * @author Thomas
+	 * @param obj : class Place
+	 * @return obj : class Place
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	@Override
 	public Place create(Place obj) {
 
@@ -89,7 +98,13 @@ public class PlaceDAO extends DAO<Place> {
 
 		return obj;
 	}
-
+	
+	/**
+	 * Update the Data in the Database of the class Place
+	 * @author Thomas
+	 * @param obj : class Place
+	 * @return obj : class Place
+	 */
 	@Override
 	public Place update(Place obj) {
 
@@ -99,7 +114,12 @@ public class PlaceDAO extends DAO<Place> {
 						  +" WHERE idPlace=" + obj.getId() + ";");        
 		return obj;
 	}
-
+	
+	/**
+	 * Delete the Data in the Database of the class Place
+	 * @author Thomas
+	 * @param obj : class Place
+	 */
 	@Override
 	public void delete(Place obj) {
 

@@ -10,11 +10,18 @@ import connection.Connection;
 import dao.DAO;
 
 /**
- * @author thomas
- *
- */
+ * Data Access Object SQL for the class Ville, able to find, create, update, delete the class
+ * @author Thomas
+ */ 
 public class VilleDAO extends DAO<Ville>{
 	
+	/**
+	 * Create the Data in the Database of the class Ville
+	 * @author Thomas
+	 * @param obj : class Ville
+	 * @return obj : class Ville
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public Ville create(Ville obj) {
 		
 		Connection.update("INSERT INTO Ville (nomVille, cpVille) VALUES('"
@@ -40,6 +47,13 @@ public class VilleDAO extends DAO<Ville>{
 		return obj;
 	}
 	
+	/**
+	 * Retrieve the Data in the Database of the class Ville
+	 * @author Thomas
+	 * @param id : idVille
+	 * @return ville_find : class Ville
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public Ville find(int id) {
 		
 		String nomVille = null;
@@ -70,7 +84,12 @@ public class VilleDAO extends DAO<Ville>{
 		return Vill_find;
 	}
 
-	
+	/**
+	 * Update the Data in the Database of the class Ville
+	 * @author Thomas
+	 * @param obj : class Ville
+	 * @return obj : class Ville
+	 */
 	public Ville update(Ville obj) {
 		
 		Connection.update("UPDATE Ville SET nomVille ='"+obj.getNomVille()
@@ -81,7 +100,11 @@ public class VilleDAO extends DAO<Ville>{
 		return obj;
 	}
 
-	
+	/**
+	 * Delete the Data in the Database of the class Ville
+	 * @author Thomas
+	 * @param obj : class Ville
+	 */
 	public void delete(Ville obj) {
 		
 		Connection.update("DELETE  FROM Ville WHERE idVille="

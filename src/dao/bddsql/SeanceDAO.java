@@ -13,18 +13,19 @@ import dao.DAO;
 import dao.DAOFactory;
 
 /**
+ * Data Access Object SQL for the class Seance, able to find, create, update, delete the class
  * @author Thomas
- *
- */
+ */ 
 public class SeanceDAO extends DAO<Seance> {
 	
-	@Override 
 	/**
-	 * Search the Data in the Database 
+	 * Retrieve the Data in the Database of the class Seance
 	 * @author Thomas
-	 * @params id = idSeance
-	 * @return class Seance
+	 * @param id : idSeance
+	 * @return seance : class Seance
+	 * @exception  SQLException : When the query doesn't work
 	 */
+	@Override 
 	public Seance find(int id) {
 		
 		Seance seance=new Seance();
@@ -58,7 +59,13 @@ public class SeanceDAO extends DAO<Seance> {
 		return seance;
 	}
 
-	
+	/**
+	 * Create the Data in the Database of the class Seance
+	 * @author Thomas
+	 * @param obj : class Seance
+	 * @return obj : class Seance
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	@Override
 	public Seance create(Seance obj) {
 		
@@ -80,7 +87,12 @@ public class SeanceDAO extends DAO<Seance> {
 		return obj;
 	}
 
-
+	/**
+	 * Update the Data in the Database of the class Seance
+	 * @author Thomas
+	 * @param obj : class Seance
+	 * @return obj : class Seance
+	 */
 	@Override
 	public Seance update(Seance obj) {
 		
@@ -89,7 +101,11 @@ public class SeanceDAO extends DAO<Seance> {
 		return obj;
 	}
 
-	
+	/**
+	 * Delete the Data in the Database of the class Seance
+	 * @author Thomas
+	 * @param obj : class Seance
+	 */
 	@Override
 	public void delete(Seance obj) {
 		

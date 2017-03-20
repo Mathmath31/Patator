@@ -1,5 +1,6 @@
 /**
- * 
+ * Implementation of the interface for the Data Access Object
+ * @author Thomas
  */
 package dao;
 
