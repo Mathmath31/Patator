@@ -70,7 +70,7 @@ public class CaseSalleDAO extends DAO<CaseSalle> {
 	public CaseSalle create(CaseSalle obj) {
 		
 		Connection.update("INSERT INTO CaseSalle (nomSiegeCase,idPlanSalle,idPositionCase,idTypeCase) VALUES('"
-						  +obj.getNomSiegeCase()+"\',"
+						  +obj.getNomSiegeCase()+"',"
 						  +obj.getIdPlanSalle()+","
 						  +obj.getIdPositionCase()+","
 						  +obj.getIdTypeCase()+")");
@@ -102,7 +102,7 @@ public class CaseSalleDAO extends DAO<CaseSalle> {
 		Connection.update("UPDATE CaseSalle SET nomSiegeCase ='"+obj.getNomSiegeCase()
 						  +"',idPlanSalle="+obj.getIdPlanSalle()
 						  +",idPositionCase="+obj.getIdPositionCase()
-						  +",idTypeCase='"+obj.getIdTypeCase()
+						  +",idTypeCase="+obj.getIdTypeCase()
 						  +" WHERE idCaseSalle="
 						  +obj.getId()
 						  +";");	

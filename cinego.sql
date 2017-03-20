@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 11 Mars 2017 à 19:17
+-- Généré le :  Lun 20 Mars 2017 à 02:59
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -23,10 +23,12 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ajouter`
+-- Structure de la table `ajouterproduit`
 --
 
-CREATE TABLE `ajouter` (
+CREATE TABLE `ajouterproduit` (
+  `quantite` int(11) DEFAULT NULL,
+  `livrer` tinyint(1) DEFAULT NULL,
   `IdPlace` int(11) NOT NULL,
   `idProduit` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -205,10 +207,10 @@ CREATE TABLE `client` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `composer`
+-- Structure de la table `composerplace`
 --
 
-CREATE TABLE `composer` (
+CREATE TABLE `composerplace` (
   `IdPlace` int(11) NOT NULL,
   `idCaseSalle` int(11) NOT NULL,
   `idSeance` int(11) NOT NULL
@@ -217,10 +219,10 @@ CREATE TABLE `composer` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `creer`
+-- Structure de la table `creerseance`
 --
 
-CREATE TABLE `creer` (
+CREATE TABLE `creerseance` (
   `idCreneau` int(11) NOT NULL,
   `idPlanSalle` int(11) NOT NULL,
   `idDate` int(11) NOT NULL,
@@ -258,7 +260,7 @@ CREATE TABLE `date` (
 
 CREATE TABLE `film` (
   `idFilm` int(11) NOT NULL,
-  `nomFilm` varchar(25) DEFAULT NULL
+  `codeFilm` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -2889,20 +2891,20 @@ INSERT INTO `ville` (`idVille`, `nomVille`, `cpVille`) VALUES
 --
 
 --
--- Index pour la table `ajouter`
+-- Index pour la table `ajouterproduit`
 --
-ALTER TABLE `ajouter`
+ALTER TABLE `ajouterproduit`
   ADD PRIMARY KEY (`IdPlace`,`idProduit`),
-  ADD KEY `FK_Ajouter_idProduit` (`idProduit`);
+  ADD KEY `FK_AjouterProduit_idProduit` (`idProduit`);
 
 --
 -- Index pour la table `casesalle`
 --
 ALTER TABLE `casesalle`
   ADD PRIMARY KEY (`idCaseSalle`),
-  ADD KEY `FK_CaseSalle_idPlanSalle` (`idPlanSalle`),
   ADD KEY `FK_CaseSalle_idPositionCase` (`idPositionCase`),
-  ADD KEY `FK_CaseSalle_idTypeCase` (`idTypeCase`);
+  ADD KEY `FK_CaseSalle_idTypeCase` (`idTypeCase`),
+  ADD KEY `FK_CaseSalle_idPlanSalle` (`idPlanSalle`);
 
 --
 -- Index pour la table `cinema`
@@ -2919,21 +2921,21 @@ ALTER TABLE `client`
   ADD KEY `FK_Client_idVille` (`idVille`);
 
 --
--- Index pour la table `composer`
+-- Index pour la table `composerplace`
 --
-ALTER TABLE `composer`
+ALTER TABLE `composerplace`
   ADD PRIMARY KEY (`IdPlace`,`idCaseSalle`,`idSeance`),
-  ADD KEY `FK_Composer_idCaseSalle` (`idCaseSalle`),
-  ADD KEY `FK_Composer_idSeance` (`idSeance`);
+  ADD KEY `FK_ComposerPlace_idCaseSalle` (`idCaseSalle`),
+  ADD KEY `FK_ComposerPlace_idSeance` (`idSeance`);
 
 --
--- Index pour la table `creer`
+-- Index pour la table `creerseance`
 --
-ALTER TABLE `creer`
+ALTER TABLE `creerseance`
   ADD PRIMARY KEY (`idCreneau`,`idPlanSalle`,`idDate`,`idSeance`),
-  ADD KEY `FK_Creer_idPlanSalle` (`idPlanSalle`),
-  ADD KEY `FK_Creer_idDate` (`idDate`),
-  ADD KEY `FK_Creer_idSeance` (`idSeance`);
+  ADD KEY `FK_CreerSeance_idDate` (`idDate`),
+  ADD KEY `FK_CreerSeance_idPlanSalle` (`idPlanSalle`),
+  ADD KEY `FK_CreerSeance_idSeance` (`idSeance`);
 
 --
 -- Index pour la table `creneau`
@@ -3013,6 +3015,11 @@ ALTER TABLE `casesalle`
 ALTER TABLE `cinema`
   MODIFY `idCinema` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT pour la table `client`
+--
+ALTER TABLE `client`
+  MODIFY `idClient` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT pour la table `creneau`
 --
 ALTER TABLE `creneau`
@@ -3067,17 +3074,17 @@ ALTER TABLE `ville`
 --
 
 --
--- Contraintes pour la table `ajouter`
+-- Contraintes pour la table `ajouterproduit`
 --
-ALTER TABLE `ajouter`
-  ADD CONSTRAINT `FK_Ajouter_IdPlace` FOREIGN KEY (`IdPlace`) REFERENCES `place` (`IdPlace`),
-  ADD CONSTRAINT `FK_Ajouter_idProduit` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`idProduit`);
+ALTER TABLE `ajouterproduit`
+  ADD CONSTRAINT `FK_AjouterProduit_IdPlace` FOREIGN KEY (`IdPlace`) REFERENCES `place` (`IdPlace`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_AjouterProduit_idProduit` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`idProduit`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `casesalle`
 --
 ALTER TABLE `casesalle`
-  ADD CONSTRAINT `FK_CaseSalle_idPlanSalle` FOREIGN KEY (`idPlanSalle`) REFERENCES `plansalle` (`idPlanSalle`),
+  ADD CONSTRAINT `FK_CaseSalle_idPlanSalle` FOREIGN KEY (`idPlanSalle`) REFERENCES `plansalle` (`idPlanSalle`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CaseSalle_idPositionCase` FOREIGN KEY (`idPositionCase`) REFERENCES `positioncase` (`idPositionCase`),
   ADD CONSTRAINT `FK_CaseSalle_idTypeCase` FOREIGN KEY (`idTypeCase`) REFERENCES `typecase` (`idTypeCase`);
 
@@ -3094,33 +3101,33 @@ ALTER TABLE `client`
   ADD CONSTRAINT `FK_Client_idVille` FOREIGN KEY (`idVille`) REFERENCES `ville` (`idVille`);
 
 --
--- Contraintes pour la table `composer`
+-- Contraintes pour la table `composerplace`
 --
-ALTER TABLE `composer`
-  ADD CONSTRAINT `FK_Composer_IdPlace` FOREIGN KEY (`IdPlace`) REFERENCES `place` (`IdPlace`),
-  ADD CONSTRAINT `FK_Composer_idCaseSalle` FOREIGN KEY (`idCaseSalle`) REFERENCES `casesalle` (`idCaseSalle`),
-  ADD CONSTRAINT `FK_Composer_idSeance` FOREIGN KEY (`idSeance`) REFERENCES `seance` (`idSeance`);
+ALTER TABLE `composerplace`
+  ADD CONSTRAINT `FK_ComposerPlace_IdPlace` FOREIGN KEY (`IdPlace`) REFERENCES `place` (`IdPlace`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_ComposerPlace_idCaseSalle` FOREIGN KEY (`idCaseSalle`) REFERENCES `casesalle` (`idCaseSalle`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_ComposerPlace_idSeance` FOREIGN KEY (`idSeance`) REFERENCES `seance` (`idSeance`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `creer`
+-- Contraintes pour la table `creerseance`
 --
-ALTER TABLE `creer`
-  ADD CONSTRAINT `FK_Creer_idCreneau` FOREIGN KEY (`idCreneau`) REFERENCES `creneau` (`idCreneau`),
-  ADD CONSTRAINT `FK_Creer_idDate` FOREIGN KEY (`idDate`) REFERENCES `date` (`idDate`),
-  ADD CONSTRAINT `FK_Creer_idPlanSalle` FOREIGN KEY (`idPlanSalle`) REFERENCES `plansalle` (`idPlanSalle`),
-  ADD CONSTRAINT `FK_Creer_idSeance` FOREIGN KEY (`idSeance`) REFERENCES `seance` (`idSeance`);
+ALTER TABLE `creerseance`
+  ADD CONSTRAINT `FK_CreerSeance_idCreneau` FOREIGN KEY (`idCreneau`) REFERENCES `creneau` (`idCreneau`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_CreerSeance_idDate` FOREIGN KEY (`idDate`) REFERENCES `date` (`idDate`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_CreerSeance_idPlanSalle` FOREIGN KEY (`idPlanSalle`) REFERENCES `plansalle` (`idPlanSalle`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_CreerSeance_idSeance` FOREIGN KEY (`idSeance`) REFERENCES `seance` (`idSeance`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `place`
 --
 ALTER TABLE `place`
-  ADD CONSTRAINT `FK_Place_idClient` FOREIGN KEY (`idClient`) REFERENCES `client` (`idClient`);
+  ADD CONSTRAINT `FK_Place_idClient` FOREIGN KEY (`idClient`) REFERENCES `client` (`idClient`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `plansalle`
 --
 ALTER TABLE `plansalle`
-  ADD CONSTRAINT `FK_PlanSalle_idCinema` FOREIGN KEY (`idCinema`) REFERENCES `cinema` (`idCinema`);
+  ADD CONSTRAINT `FK_PlanSalle_idCinema` FOREIGN KEY (`idCinema`) REFERENCES `cinema` (`idCinema`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `seance`

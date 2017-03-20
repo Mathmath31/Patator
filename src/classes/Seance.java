@@ -10,15 +10,15 @@ package classes;
 public class Seance {
 	
 	private int id;
-	private String nomFilm;
+	private int idFilm;
 	private Film filmT;
 	private CreerSeance creerSeanceT;
 
 	public Seance() {};
 	
-	public Seance(int id, String nomFilm, Film filmT, CreerSeance creerSeanceT){
+	public Seance(int id, int idFilm, Film filmT, CreerSeance creerSeanceT){
 		this.id=id;
-		this.nomFilm=nomFilm;
+		this.idFilm=idFilm;
 		this.setFilmT(filmT);
 		this.setCreerSeanceT(creerSeanceT);
 	}
@@ -31,13 +31,6 @@ public class Seance {
 		this.id = id;
 	}
 
-	public String getNomFilm() {
-		return nomFilm;
-	}
-
-	public void setNomFilm(String nomFilm) {
-		this.nomFilm = nomFilm;
-	}
 
 	public Film getFilmT() {
 		return filmT;
@@ -55,9 +48,17 @@ public class Seance {
 		this.creerSeanceT = creerSeanceT;
 	}
 
+
+	public int getIdFilm() {
+		return idFilm;
+	}
+
+	public void setIdFilm(int idFilm) {
+		this.idFilm = idFilm;
+	}
+
 	@Override
 	public String toString() {
-		return "Seance [id=" + id + ", nomFilm=" + nomFilm + ", filmT=" + filmT + ", creerSeanceT=" + creerSeanceT
-				+ "]";
+		return "Seance [id=" + id + ", idFilm=" + idFilm + ", filmT=" + filmT + ", creerSeanceT=" + creerSeanceT + "]";
 	}
 }

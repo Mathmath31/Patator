@@ -15,7 +15,7 @@ import dao.DAO;
 import dao.DAOFactory;
 
 /**
- * @author thomas
+ * @author Thomas
  *
  */
 public class CinemaDAO extends DAO<Cinema> {
@@ -137,7 +137,7 @@ public class CinemaDAO extends DAO<Cinema> {
 	@Override
 	public void delete(Cinema obj) {
 	
-		Connection.update("DELETE * FROM Cinema WHERE idCinema ="
+		Connection.update("DELETE FROM Cinema WHERE idCinema ="
 						  +obj.getId()
 						  +";");
 	}

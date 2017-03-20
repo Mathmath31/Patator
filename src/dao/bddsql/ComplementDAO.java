@@ -2,9 +2,13 @@ package dao.bddsql;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-
+import classes.AjouterProduit;
+import classes.Produit;
 import connection.Connection;
+import dao.DAO;
+import dao.DAOFactory;
 
 public class ComplementDAO {
 	
@@ -159,6 +163,83 @@ public class ComplementDAO {
 		
 		return idClient;
 
+	}
+	
+
+	public static int[] listProduitPlace(int idPlace) {
+
+		int[] listProduit= new int[30];
+		int i=0;
+
+		ResultSet rs = Connection.selectFrom("SELECT DISTINCT idProduit "
+											 + "FROM ajouterproduit "
+											 + "WHERE idPlace =" + idPlace +";");
+
+		try {
+			while(rs.next())
+			{
+				listProduit[i]=rs.getInt("idProduit");
+				i++;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listProduit;
+	}
+	
+	
+	public static AjouterProduit  findAjouterProduit(int idPlace, int idProduit) {
+		
+		AjouterProduit ajouterProduit=new AjouterProduit();
+		
+		DAO <Produit> ProduitDAO = DAOFactory.getProduitDAO();
+		
+		int quantite=0;
+		boolean livrer=false;
+		Produit produit = new Produit();
+		
+		ResultSet rs = Connection.selectFrom("SELECT quantite,livrer "
+											 + "FROM ajouterProduit "
+											 + "WHERE idProduit = " + idProduit 
+											 +" AND idPlace="+ idPlace +";");
+		try {
+			while(rs.next())
+			{
+				quantite=rs.getInt("quantite");
+				livrer=rs.getBoolean("livrer");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		produit=ProduitDAO.find(idProduit); 
+
+		ajouterProduit = new AjouterProduit(idProduit,idPlace,quantite,livrer,produit); 
+	
+		return ajouterProduit;
+	}
+	
+	public static int[] listPlace(int idClient) {
+
+		int[] listPlaces= new int[30];
+		int i=0;
+
+		ResultSet rs = Connection.selectFrom("SELECT DISTINCT idPlace "
+											 + "FROM place "
+											 + "WHERE idClient=" + idClient +";");
+
+		try {
+			while(rs.next())
+			{
+				listPlaces[i]=rs.getInt("idPlanSalle");
+				i++;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listPlaces;
 	}
 	
 }

@@ -19,7 +19,7 @@ public class CreerSeance {
 
 	public CreerSeance() {};
 	
-	public CreerSeance(int idPlanSalle, int idCreneau,int idDate, int idSeance, Creneau creneauT, Dates datesT){
+	public CreerSeance(int idSeance, int idPlanSalle, int idCreneau,int idDate, Creneau creneauT, Dates datesT){
 		this.idPlanSalle=idPlanSalle;
 		this.idCreneau=idCreneau;
 		this.idDate=idDate;

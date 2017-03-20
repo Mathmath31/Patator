@@ -10,7 +10,7 @@ import dao.DAO;
 import dao.DAOFactory;
 
 /**
- * @author Vincent
+ * @author Thomas
  *
  */
 
@@ -31,13 +31,10 @@ public class PlanSalleDAO extends DAO<PlanSalle> {
 		int[] idcases = new int[200];
 		int i=0;
 		int j=0;
-		
-	
 
 		ResultSet rs = Connection.selectFrom("SELECT nomPlanSalle,numPlanSalle,idCinema "
 											 + "FROM PlanSalle "
 											 + "WHERE idPlanSalle = " + id +";");
-
 		try {
 			while(rs.next())
 			{

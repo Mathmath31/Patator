@@ -10,13 +10,13 @@ package classes;
 public class Film {
 	
 	private int id;
-	private String nomFilm;
+	private String codeFilm;
 
 	public Film() {};
 	
 	public Film(int id, String nomFilm){
 		this.id=id;
-		this.nomFilm=nomFilm;
+		this.codeFilm=nomFilm;
 	}
 
 	public int getId() {
@@ -27,16 +27,16 @@ public class Film {
 		this.id = id;
 	}
 
-	public String getNomFilm() {
-		return nomFilm;
+	public String getCodeFilm() {
+		return codeFilm;
 	}
 
-	public void setNomFilm(String nomFilm) {
-		this.nomFilm = nomFilm;
+	public void setCodeFilm(String nomFilm) {
+		this.codeFilm = nomFilm;
 	}
 
 	@Override
 	public String toString() {
-		return "Film [id=" + id + ", nomFilm=" + nomFilm + "]";
+		return "Film [id=" + id + ", nomFilm=" + codeFilm + "]";
 	}
 }
