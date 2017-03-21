@@ -8,7 +8,6 @@ import apiTheMovieDB.CineGoAPI;
 import apiTheMovieDB.CineGoFilm;
 import classes.Cinema;
 import classes.Client;
-import ihm.Panier;
 import ihm.VistaNavigator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -65,6 +64,8 @@ public class FilmDetailsController {
 		}
 		client=MainController.donnees.getClientCommande();
 		cinema=MainController.donnees.getCinemaCommande();
+		System.out.println("clicked on valide cine " + MainController.donnees.getCinemaCommande().getId() + " " + MainController.donnees.getCinemaCommande().getNomCine());
+
 		listView.setItems(filmsList);
 		listView.getSelectionModel().selectFirst();
 		refreshInfosFilm();
@@ -122,12 +123,11 @@ public class FilmDetailsController {
 			@Override
 			public void handle(MouseEvent event) {
 				if(listView.getSelectionModel().isEmpty() == false && dateSeance.getValue() != null && heureSeance.getValue() != null && (Integer.parseInt(nbPlace.getValue()) + Integer.parseInt(nbPlaceHandicape.getValue())) != 0 ){
+					
 //					client.getListPlace().get(0).getComposerPlace().getSeanceT().getFilmT().setCodeFilm(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getId());
 //					
 //					panier.setDateSeance(dateSeance.getValue());
 //					panier.setHeureSeance(LocalTime.parse(heureSeance.getValue().toString()));
-//					MainController.setCurentPanier(panier);
-//					MainController.setOldPanier(panier);
 					MainController.donnees.setClientCommande(client);
 			        VistaNavigator.loadVista(VistaNavigator.CHOIXPOSITION);
 				}

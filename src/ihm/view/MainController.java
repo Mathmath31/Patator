@@ -75,7 +75,6 @@ public class MainController {
 		mdp = password.getText();
 		
 		donnees.connection(login, mdp);
-
 		if (donnees.isConnecté() == true){
 			System.out.println("Connecté");
 			menubutton.setVisible(true);

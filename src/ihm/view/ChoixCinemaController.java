@@ -49,14 +49,12 @@ public class ChoixCinemaController {
 			@Override
 			public void handle(MouseEvent event) {
 				cinema.setNomCine(tableView.getSelectionModel().getSelectedItem().getCinemaName());
-				cinema.setId(tableView.getSelectionModel().getSelectedIndex());
+				cinema.setId(tableView.getSelectionModel().getSelectedIndex()+1);
 				MainController.donnees.setCinemaCommande(cinema);
 				MainController.donnees.setClientCommande(client);
 				
 				//reste panier
-		        VistaNavigator.loadVista(VistaNavigator.SELECTIONFILM);
-				System.out.println("clicked on valide cine" + tableView.getSelectionModel().getSelectedIndex());
-				
+		        VistaNavigator.loadVista(VistaNavigator.SELECTIONFILM);				
 			}
 		});
 	}
