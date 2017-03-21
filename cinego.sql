@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 21 Mars 2017 à 19:11
+-- Généré le :  Mar 21 Mars 2017 à 20:50
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -374,8 +374,18 @@ INSERT INTO `date` (`idDate`, `seanceDate`) VALUES
 
 CREATE TABLE `film` (
   `idFilm` int(11) NOT NULL,
-  `codeFilm` varchar(25) DEFAULT NULL
+  `codeFilm` varchar(25) DEFAULT NULL,
+  `nomFilm` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `film`
+--
+
+INSERT INTO `film` (`idFilm`, `codeFilm`, `nomFilm`) VALUES
+(1, '121856', 'Assassin\'s Creed'),
+(2, '274870', 'Passengers'),
+(3, '47971', 'xXx: Return of Xander Cage');
 
 -- --------------------------------------------------------
 
@@ -3157,7 +3167,7 @@ ALTER TABLE `date`
 -- AUTO_INCREMENT pour la table `film`
 --
 ALTER TABLE `film`
-  MODIFY `idFilm` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idFilm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `place`
 --

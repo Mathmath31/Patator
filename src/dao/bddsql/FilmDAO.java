@@ -22,8 +22,9 @@ public class FilmDAO extends DAO<Film>{
 	 */
 	public Film create(Film obj) {
 		
-		Connection.update("INSERT INTO film (codeFilm) VALUES('"
-						  +obj.getCodeFilm()+"')");
+		Connection.update("INSERT INTO film (codeFilm,nomFilm) VALUES('"
+						  +obj.getCodeFilm() +"','"
+						  +obj.getNomFilm() +"')");
 		
 		ResultSet result = 	Connection.selectFrom("SELECT idFilm "
 				+ "FROM film "
@@ -54,10 +55,11 @@ public class FilmDAO extends DAO<Film>{
 	public Film find(int id) {
 		
 		String codeFilm = null;
+		String nomFilm = null;
 		Film film = new Film();
 		
 		try {
-			ResultSet result = Connection.selectFrom("SELECT codeFilm "
+			ResultSet result = Connection.selectFrom("SELECT codeFilm, nomFilm "
 													+ "FROM film "
 													+ "WHERE idFilm="
 													+id
@@ -65,7 +67,8 @@ public class FilmDAO extends DAO<Film>{
 			
 			while(result.next())
 			{
-				codeFilm = result.getString("codeFilm");				
+				codeFilm = result.getString("codeFilm");
+				nomFilm = result.getString("nomFilm");
 			}
 			
 			
@@ -74,7 +77,7 @@ public class FilmDAO extends DAO<Film>{
 		}
 		
 		
-		film = new Film(id,codeFilm);
+		film = new Film(id,codeFilm,nomFilm);
 		Connection.close();
 		return film;
 	}
@@ -87,7 +90,8 @@ public class FilmDAO extends DAO<Film>{
 	 */
 	public Film update(Film obj) {
 		
-		Connection.update("UPDATE film SET posXPositionCase ='"+obj.getCodeFilm()							
+		Connection.update("UPDATE film SET codeFilm ='"+obj.getCodeFilm()+"','"
+													   +obj.getNomFilm()
 														+"' WHERE idFilm="
 														+obj.getId()
 														+";");
