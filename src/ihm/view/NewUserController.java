@@ -50,6 +50,9 @@ public class NewUserController {
      */
     @FXML
     void validerUser(ActionEvent event) {
-        
+    	//enregistrer l'utilisateur
+    	
+    	
+    	VistaNavigator.loadVista(VistaNavigator.HOME);
     }
 }
