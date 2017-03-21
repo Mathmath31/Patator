@@ -1,7 +1,8 @@
 package ihm.view;
 
+import classes.Cinema;
+import classes.Client;
 import classes.Donnees;
-import ihm.Panier;
 import ihm.VistaNavigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,9 +53,7 @@ public class MainController {
 	@FXML
 	protected Button btReglement;
 
-	private static Panier curentPanier = new Panier();
-	private static Panier oldPanier = new Panier();
-
+	protected static Donnees donnees= new Donnees();
 
 	@FXML
 	public void initialize(){
@@ -75,9 +74,8 @@ public class MainController {
 		login = idUser.getText();
 		mdp = password.getText();
 		
-		Donnees donnees= new Donnees();
 		donnees.connection(login, mdp);
-		
+		donnees.setConnecté(true);
 		if (donnees.isConnecté() == true){
 			System.out.println("Connecté");
 			menubutton.setVisible(true);
@@ -185,22 +183,14 @@ public class MainController {
 		VistaNavigator.loadVista(VistaNavigator.CREATIONSALLE);
 	}
 
-	public static Panier getCurentPanier() {
-		return curentPanier;
+	public static Donnees getDonnees() {
+		return donnees;
 	}
 
-	public static void setCurentPanier(Panier Panier) {
-		curentPanier = Panier;
+	public static void setDonnees(Donnees donnees) {
+		MainController.donnees = donnees;
 	}
-
-	public static Panier getOldPanier() {
-		return oldPanier;
-	}
-
-	public static void setOldPanier(Panier Panier) {
-		oldPanier = Panier;
-	}
-
+	
 	/**
 	 * Event handler fired when the user requests a new vista.
 	 *

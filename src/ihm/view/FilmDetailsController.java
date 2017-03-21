@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import apiTheMovieDB.CineGoAPI;
 import apiTheMovieDB.CineGoFilm;
+import classes.Cinema;
+import classes.Client;
 import ihm.Panier;
 import ihm.VistaNavigator;
 import javafx.collections.FXCollections;
@@ -47,7 +49,10 @@ public class FilmDetailsController {
 
 	private boolean APILoadOK = false;
 	private List<CineGoFilm> cineGoFilms = new ArrayList<CineGoFilm>();
-	private Panier panier;
+
+	private Client client = new Client();
+	private Cinema cinema = new Cinema();
+
 
 	/**This function initialize parameters of this view  
 	 */
@@ -58,7 +63,8 @@ public class FilmDetailsController {
 				filmsList.add(cineGoFilms.get(i).getTitle());
 			}
 		}
-		panier=MainController.getCurentPanier();
+		client=MainController.donnees.getClientCommande();
+		cinema=MainController.donnees.getCinemaCommande();
 		listView.setItems(filmsList);
 		listView.getSelectionModel().selectFirst();
 		refreshInfosFilm();
@@ -69,7 +75,7 @@ public class FilmDetailsController {
 			public void handle(MouseEvent event) {
 				System.out.println("clicked on " + listView.getSelectionModel().getSelectedIndex());
 				refreshInfosFilm();
-				System.out.println(panier.getCinema());
+				System.out.println(cinema.getNomCine());
 			}
 		});
 		/** Action when a date are selected
@@ -116,14 +122,14 @@ public class FilmDetailsController {
 			@Override
 			public void handle(MouseEvent event) {
 				if(listView.getSelectionModel().isEmpty() == false && dateSeance.getValue() != null && heureSeance.getValue() != null && (Integer.parseInt(nbPlace.getValue()) + Integer.parseInt(nbPlaceHandicape.getValue())) != 0 ){
-					panier.setFilm(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()));
-					panier.setDateSeance(dateSeance.getValue());
-					panier.setHeureSeance(LocalTime.parse(heureSeance.getValue().toString()));
-					MainController.setCurentPanier(panier);
-					MainController.setOldPanier(panier);
+//					client.getListPlace().get(0).getComposerPlace().getSeanceT().getFilmT().setCodeFilm(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getId());
+//					
+//					panier.setDateSeance(dateSeance.getValue());
+//					panier.setHeureSeance(LocalTime.parse(heureSeance.getValue().toString()));
+//					MainController.setCurentPanier(panier);
+//					MainController.setOldPanier(panier);
+					MainController.donnees.setClientCommande(client);
 			        VistaNavigator.loadVista(VistaNavigator.CHOIXPOSITION);
-			        System.out.println(panier.getDateSeance());
-			        System.out.println(panier.getHeureSeance());
 				}
 				else{
 					//TODO Send message for user

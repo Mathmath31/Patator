@@ -1,5 +1,7 @@
 package ihm.view;
 
+import classes.Cinema;
+import classes.Client;
 import ihm.Panier;
 import ihm.view.MainController;
 import ihm.VistaNavigator;
@@ -26,7 +28,9 @@ public class ChoixCinemaController {
 
 	private ObservableList<InfoCine> cineData = FXCollections.observableArrayList();
 
-	private Panier panier = new Panier();
+	private Client client = new Client();
+	private Cinema cinema = new Cinema();
+
     
 	
 	public void initialize(){	
@@ -40,13 +44,15 @@ public class ChoixCinemaController {
 
 		tableView.getItems().setAll(cineData);
 		tableView.getSelectionModel().selectFirst();
-
+		
 		buttonValidCine.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-				panier.setCinema(tableView.getSelectionModel().getSelectedItem().getCinemaName());
-				MainController.setCurentPanier(panier);
-				MainController.setOldPanier(panier);
+				cinema.setNomCine(tableView.getSelectionModel().getSelectedItem().getCinemaName());
+				cinema.setId(tableView.getSelectionModel().getSelectedIndex());
+				MainController.donnees.setCinemaCommande(cinema);
+				MainController.donnees.setClientCommande(client);
+				
 				//reste panier
 		        VistaNavigator.loadVista(VistaNavigator.SELECTIONFILM);
 				System.out.println("clicked on valide cine" + tableView.getSelectionModel().getSelectedIndex());
