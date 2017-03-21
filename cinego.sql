@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 21 Mars 2017 à 11:43
+-- Généré le :  Mar 21 Mars 2017 à 19:11
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -203,6 +203,15 @@ CREATE TABLE `client` (
   `adminClient` tinyint(1) DEFAULT NULL,
   `idVille` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `client`
+--
+
+INSERT INTO `client` (`idClient`, `loginClient`, `mdpClient`, `mailClient`, `telephoneClient`, `nomClient`, `prenomClient`, `ageClient`, `nVoieClient`, `sexeClient`, `codeFideliteClient`, `adminClient`, `idVille`) VALUES
+(1, 'tcazals', 'ab4f63f9ac65152575886860dde480a1', 'tcaz@cesi.fr', '0565258852', 'Cazals', 'Thomas', 29, '20 rue des pommiers', 'M', '56845848', 1, 2),
+(2, 'test', '098f6bcd4621d373cade4e832627b4f6', 'tcaz@cesi.fr', '0565258852', 'Cazals', 'Thomas', 29, '20 rue des pommiers', 'M', '56845848', 1, 2),
+(3, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'tcaz@cesi.fr', '0565258852', 'Cazals', 'Thomas', 29, '20 rue des pommiers', 'M', '56845848', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -3133,7 +3142,7 @@ ALTER TABLE `cinema`
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `idClient` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idClient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `creneau`
 --
