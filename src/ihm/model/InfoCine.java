@@ -16,12 +16,14 @@ public class InfoCine {
 
 	    private final StringProperty cinemaName;
 	    private final StringProperty cinemaAdresse;
+	    private final StringProperty cinemaVille;
+	    private final StringProperty cinemaCP;
 
 	    /**
 	     * Default constructor.
 	     */
 	    public InfoCine() {
-	        this(null, null);
+	        this(null, null,null,null);
 	    }
 
 	    /**
@@ -30,17 +32,19 @@ public class InfoCine {
 	     * @param cinemaName
 	     * @param cinemaAdresse
 	     */
-	    public InfoCine(String cinemaName, String cinemaAdresse) {
+	    public InfoCine(String cinemaName, String cinemaAdresse, String cinemaVille,String cinemaCP) {
 	        this.cinemaName = new SimpleStringProperty(cinemaName);
 	        this.cinemaAdresse = new SimpleStringProperty(cinemaAdresse);
+	        this.cinemaVille = new SimpleStringProperty(cinemaName);
+	        this.cinemaCP = new SimpleStringProperty(cinemaAdresse);
 	    }
 
 	    public String getCinemaName() {
 	        return cinemaName.get();
 	    }
 
-	    public void setCinemaName(String firstName) {
-	        this.cinemaName.set(firstName);
+	    public void setCinemaName(String name) {
+	        this.cinemaName.set(name);
 	    }
 
 	    public StringProperty cinemaNameProperty() {
@@ -51,12 +55,36 @@ public class InfoCine {
 	        return cinemaAdresse.get();
 	    }
 
-	    public void setCinemaAdresse(String lastName) {
-	        this.cinemaAdresse.set(lastName);
+	    public void setCinemaAdresse(String adresse) {
+	        this.cinemaAdresse.set(adresse);
 	    }
 
 	    public StringProperty cinemaAdresseProperty() {
 	        return cinemaAdresse;
+	    }
+	    
+	    public String getCinemaVille() {
+	        return cinemaVille.get();
+	    }
+
+	    public void setCinemaVille(String ville) {
+	        this.cinemaVille.set(ville);
+	    }
+
+	    public StringProperty cinemaVilleProperty() {
+	        return cinemaVille;
+	    }
+	    
+	    public String getCinemaCP() {
+	        return cinemaCP.get();
+	    }
+
+	    public void setCinemaCP(String cp) {
+	        this.cinemaCP.set(cp);
+	    }
+
+	    public StringProperty cinemaCPProperty() {
+	        return cinemaCP;
 	    }
 
 }

@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 public class AdminCinemaController {
 
@@ -36,12 +37,14 @@ public class AdminCinemaController {
 	
 	public void initialize(){
 //TODO charger les cinemas
-		cineData.add(new InfoCine("Gaumont", "Labege"));
-		cineData.add(new InfoCine("Pathé", "Montaudran"));
-		cineData.add(new InfoCine("Mega CGR", "Toulouse"));
+		cineData.add(new InfoCine("Gaumont","9 rue de chez pas quoi", "Labege","31256"));
+		cineData.add(new InfoCine("Pathe","12 impasse du lac", "Montaudran","31547"));
+		cineData.add(new InfoCine("Mega CGR","3 rue de la Pie", "Toulouse","32154"));
 		
 		cinemaName.setCellValueFactory(cellData -> cellData.getValue().cinemaNameProperty());
 		cinemaAdresse.setCellValueFactory(cellData -> cellData.getValue().cinemaAdresseProperty());
+		cinemaVille.setCellValueFactory(cellData -> cellData.getValue().cinemaVilleProperty());
+		cinemaCP.setCellValueFactory(cellData -> cellData.getValue().cinemaCPProperty());
 		
 		tableView.getItems().setAll(cineData);
 		tableView.getSelectionModel().selectFirst();
@@ -51,21 +54,28 @@ public class AdminCinemaController {
 	@FXML
     void ajoutCine(ActionEvent event) {
 //TODO ajouter le cine
+		System.out.println("clicked on ajoutCine" + tableView.getSelectionModel().getSelectedItem().getCinemaName() + tableView.getSelectionModel().getSelectedItem().getCinemaAdresse());
     }
 	
 	@FXML
     void suppCine(ActionEvent event) {
 //TODO supprimer le cine
+		System.out.println("clicked on suppCine" + tableView.getSelectionModel().getSelectedItem());
     }
 	
 	@FXML
     void modifCine(ActionEvent event) {
 //TODO modifier le cine
+		System.out.println("clicked on modifCine");
     }
 	
 	@FXML
-    void tableViewSelectionChanged(ActionEvent event) {
+    void tableViewSelectionChanged(MouseEvent event) {
 //TODO modifier les TextFields avec la sélection actuelle
+		adminNomCine.setText(tableView.getSelectionModel().getSelectedItem().getCinemaName());
+		adminNoVoie.setText(tableView.getSelectionModel().getSelectedItem().getCinemaAdresse());
+		adminNomVille.setText(tableView.getSelectionModel().getSelectedItem().getCinemaVille());
+		adminCP.setText(tableView.getSelectionModel().getSelectedItem().getCinemaCP());
     }
 	
 }
