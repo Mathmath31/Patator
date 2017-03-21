@@ -1,5 +1,6 @@
 package ihm.view;
 
+import classes.Client;
 import classes.Donnees;
 import ihm.Panier;
 import ihm.VistaNavigator;
@@ -24,7 +25,7 @@ public class MainController {
 	@FXML
 	private TextField idUser;
 	@FXML
-	private TextField password;
+	private PasswordField password;
 	@FXML
 	private Button btnEnregistrer;
 	@FXML
@@ -62,7 +63,7 @@ public class MainController {
 	}
 
 	/**
-	 * 
+	 * Autentification
 	 *
 	 *
 	 */
@@ -78,6 +79,8 @@ public class MainController {
 		Donnees donnees= new Donnees();
 		donnees.connection(login, mdp);
 		
+		Client client = new Client();
+		
 		if (donnees.isConnecté() == true){
 			System.out.println("Connecté");
 			menubutton.setVisible(true);
@@ -88,11 +91,11 @@ public class MainController {
 			idUser.setVisible(false);
 			password.setVisible(false);
 			
-			// si admin?
+			if (client.isAdminClient())
+			{
 			menuAdmin.setVisible(true);
+			}
 			VistaNavigator.loadVista(VistaNavigator.CHOIXCINEMA);
-			
-			
 		}
 	}
 

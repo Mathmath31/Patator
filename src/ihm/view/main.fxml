@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -28,7 +29,6 @@
             <Label layoutX="266.0" layoutY="17.0" text="Bonjour + nom" />
             <Label fx:id="label1" layoutX="586.0" layoutY="15.0" text="Identifiant :" />
             <Label fx:id="label2" layoutX="793.0" layoutY="15.0" text="Password :" />
-            <TextField fx:id="password" layoutX="858.0" layoutY="11.0" prefHeight="25.0" prefWidth="129.0" />
             <TextField fx:id="idUser" layoutX="657.0" layoutY="11.0" prefHeight="25.0" prefWidth="126.0" />
             <Button fx:id="btnEnregistrer" layoutX="1099.0" layoutY="11.0" mnemonicParsing="false" onAction="#goNewUser" text="S'enregistrer" />
             <MenuButton fx:id="menuAdmin" layoutX="137.0" layoutY="13.0" mnemonicParsing="false" text="Administration" visible="false">
@@ -38,6 +38,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#goVueAdminFilm" text="Administrer Film" />
               </items>
             </MenuButton>
+            <PasswordField fx:id="password" layoutX="866.0" layoutY="11.0" prefHeight="25.0" prefWidth="123.0" />
          </children></AnchorPane>
    </top>
    <bottom>
