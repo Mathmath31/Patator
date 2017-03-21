@@ -7,6 +7,7 @@ import classes.Client;
 import classes.Place;
 import classes.Ville;
 import connection.Connection;
+import crypter.Crypter;
 import dao.DAO;
 import dao.DAOFactory;
 
@@ -102,7 +103,7 @@ public class ClientDAO extends DAO<Client> {
 		Connection.update("INSERT INTO client (loginClient,mdpClient,mailClient,telephoneClient,nomClient,prenomClient,ageClient,"
 				          +"nVoieClient,sexeClient,codeFideliteClient,adminClient,idVille) VALUES('"
 					   	  +obj.getLoginClient() + "','"
-						  +obj.getMdpClient()+"','"
+						  +Crypter.cryptWithMD5(obj.getMdpClient())+"','"
 					   	  +obj.getMailClient() + "','"
 						  +obj.getTelephoneClient()+"','"
 					   	  +obj.getNomClient() + "','"
@@ -143,7 +144,7 @@ public class ClientDAO extends DAO<Client> {
 
 		Connection.update("UPDATE client SET "
 						  +"loginClient='"+obj.getLoginClient() + "',"
-						  +"mdpClient='"+obj.getMdpClient()+"',"
+						  +"mdpClient='"+Crypter.cryptWithMD5(obj.getMdpClient())+"',"
 						  +"mailClient='"+obj.getMailClient() + "',"
 						  +"telephoneClient='"+obj.getTelephoneClient()+"',"
 						  +"nomClient='"+obj.getNomClient() + "',"
@@ -154,7 +155,7 @@ public class ClientDAO extends DAO<Client> {
 						  +"codeFideliteClient='"+obj.getCodeFideliteClient()+"',"
 						  +"adminClient="+obj.isAdminClient()+","
 						  +"idVille="+obj.getIdVille()		
-						  +" WHERE idPlace=" + obj.getId() + ";");        
+						  +" WHERE idClient=" + obj.getId() + ";");        
 		return obj;
 	}
 	

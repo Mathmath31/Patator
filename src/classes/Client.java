@@ -24,14 +24,14 @@ public class Client {
 	private String codeFideliteClient;
 	private boolean adminClient;
 	private int idVille;
-	private Ville VilleCine;
+	private Ville villeClient;
 	private ArrayList<Place> listPlace = new ArrayList<Place>();
 
 	
 	public Client() {};
 	
 	public Client(int id, String loginClient, String mdpClient, String mailClient, String telephoneClient, String nomClient, String prenomClient, String ageClient,
-			String nVoieClient, String sexeClient, String codeFideliteClient, boolean adminClient, int idVille ,Ville VilleCine, ArrayList<Place> listPlace){
+			String nVoieClient, String sexeClient, String codeFideliteClient, boolean adminClient, int idVille ,Ville villeClient, ArrayList<Place> listPlace){
 		
 		this.id=id;
 		this.loginClient=loginClient;
@@ -46,7 +46,7 @@ public class Client {
 		this.codeFideliteClient=codeFideliteClient;
 		this.adminClient=adminClient;
 		this.idVille=idVille;
-		this.setVilleCine(VilleCine);
+		this.setVilleClient(villeClient);
 		this.setListPlace(listPlace);
 	}
 
@@ -155,12 +155,12 @@ public class Client {
 	}
 
 
-	public Ville getVilleCine() {
-		return VilleCine;
+	public Ville getVilleClient() {
+		return villeClient;
 	}
 
-	public void setVilleCine(Ville villeCine) {
-		VilleCine = villeCine;
+	public void setVilleClient(Ville villeCine) {
+		villeClient = villeCine;
 	}
 
 	public ArrayList<Place> getListPlace() {
@@ -177,7 +177,7 @@ public class Client {
 				+ mailClient + ", telephoneClient=" + telephoneClient + ", nomClient=" + nomClient + ", prenomClient="
 				+ prenomClient + ", ageClient=" + ageClient + ", nVoieClient=" + nVoieClient + ", sexeClient="
 				+ sexeClient + ", codeFideliteClient=" + codeFideliteClient + ", adminClient=" + adminClient
-				+ ", idVille=" + idVille + ", VilleCine=" + VilleCine + ", listPlace=" + listPlace + "]";
+				+ ", idVille=" + idVille + ", VilleCine=" + villeClient + ", listPlace=" + listPlace + "]";
 	}
 
 	
