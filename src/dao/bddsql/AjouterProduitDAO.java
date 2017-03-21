@@ -19,6 +19,7 @@ public class AjouterProduitDAO extends DAO<AjouterProduit> {
 	public AjouterProduit find(int id) {
 
 		AjouterProduit ajouterProduit=new AjouterProduit();	
+		Connection.close();
 		return ajouterProduit;
 	}
 
@@ -36,6 +37,7 @@ public class AjouterProduitDAO extends DAO<AjouterProduit> {
 						  +obj.getIdPlace()+","	
 						  +obj.getQuantite()+","
 						  +obj.isLivrer()+")");
+		Connection.close();
 		return obj;
 	}
 
@@ -52,7 +54,8 @@ public class AjouterProduitDAO extends DAO<AjouterProduit> {
 						  +",quantite=" + obj.getQuantite()
 						  +",livrer="  + obj.isLivrer() 
 						  +" WHERE idProduit=" + obj.getIdProduit()
-						  +" AND idPlace="+obj.getIdPlace()+";");        
+						  +" AND idPlace="+obj.getIdPlace()+";");
+		Connection.close();
 		return obj;
 	}
 
@@ -66,5 +69,6 @@ public class AjouterProduitDAO extends DAO<AjouterProduit> {
 
 		Connection.update("DELETE  FROM PlanSalle WHERE idProduit=" + obj.getIdProduit()
 						  +" AND idPlace="+obj.getIdPlace()+";"); 
+		Connection.close();
 	}
 }

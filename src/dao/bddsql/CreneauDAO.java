@@ -44,7 +44,7 @@ public class CreneauDAO extends DAO<Creneau>{
 		}
 
 		obj.setId(i);
-		
+		Connection.close();
 		return obj;
 	}
 	
@@ -82,7 +82,7 @@ public class CreneauDAO extends DAO<Creneau>{
 		
 		
 		creneau = new Creneau(id, heureDebutCreneau, heureFinCreneau);
-		
+		Connection.close();
 		return creneau;
 	}
 
@@ -98,7 +98,8 @@ public class CreneauDAO extends DAO<Creneau>{
 														+",heureFinCreneau="+obj.getHeureFinCreneau()								
 														+" WHERE idCreneau="
 														+obj.getId()
-														+";");	
+														+";");
+		Connection.close();
 		return obj;
 	}
 
@@ -112,6 +113,7 @@ public class CreneauDAO extends DAO<Creneau>{
 		Connection.update("DELETE  FROM creneau WHERE idCreneau="
 						  +obj.getId()
 						  +";");
+		Connection.close();
 	}
 	
 	

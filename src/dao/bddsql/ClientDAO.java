@@ -86,7 +86,7 @@ public class ClientDAO extends DAO<Client> {
 		
 		client = new Client(id,loginClient,mdpClient,mailClient,telephoneClient,nomClient,prenomClient,ageClient,
 				            nVoieClient,sexeClient,codeFideliteClient,adminClient,idVille,villeClient,listPlace); 
-
+		Connection.close();
 		return client;
 	}
 
@@ -129,7 +129,7 @@ public class ClientDAO extends DAO<Client> {
 		}
 
 		obj.setId(i);
-
+		Connection.close();
 		return obj;
 	}
 	
@@ -155,7 +155,8 @@ public class ClientDAO extends DAO<Client> {
 						  +"codeFideliteClient='"+obj.getCodeFideliteClient()+"',"
 						  +"adminClient="+obj.isAdminClient()+","
 						  +"idVille="+obj.getIdVille()		
-						  +" WHERE idClient=" + obj.getId() + ";");        
+						  +" WHERE idClient=" + obj.getId() + ";");      
+		Connection.close();
 		return obj;
 	}
 	
@@ -170,5 +171,6 @@ public class ClientDAO extends DAO<Client> {
 		Connection.update("DELETE  FROM client WHERE idClient="
 						  +obj.getId()
 						  +";");
+		Connection.close();
 	}
 }

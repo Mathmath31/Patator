@@ -67,7 +67,7 @@ public class CaseSalleDAO extends DAO<CaseSalle> {
 		{
 			case_find = new CaseSalle(id,nomSiegeCase,idPlanSalle,idPositionCase,idTypeCase,posCase,typCase); 
 		}
-		
+		Connection.close();
 		return case_find;
 	}
 
@@ -103,7 +103,7 @@ public class CaseSalleDAO extends DAO<CaseSalle> {
 		}
 	
 		obj.setId(i);
-		
+		Connection.close();
 		return obj;
 	}
 
@@ -123,7 +123,7 @@ public class CaseSalleDAO extends DAO<CaseSalle> {
 						  +" WHERE idCaseSalle="
 						  +obj.getId()
 						  +";");	
-						
+		Connection.close();				
 		return obj;
 	}
 	
@@ -138,5 +138,6 @@ public class CaseSalleDAO extends DAO<CaseSalle> {
 		Connection.update("DELETE  FROM CaseSalle WHERE idCaseSalle="
 						  +obj.getId()
 						  +";");
+		Connection.close();
 	}
 }

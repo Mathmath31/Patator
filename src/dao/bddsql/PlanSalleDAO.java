@@ -78,14 +78,10 @@ public class PlanSalleDAO extends DAO<PlanSalle> {
 			cases.add(CaseSalleDAO.find(idcases[j]));
 		}
 
-	
-		
-		
-		//if(nome != null && numt != null && mel != null)
-		//{
-		Salle = new PlanSalle(id,nomPlanSalle,numPlanSalle,idCinema,cases); 
-		//}
 
+		Salle = new PlanSalle(id,nomPlanSalle,numPlanSalle,idCinema,cases); 
+
+		Connection.close();
 		return Salle;
 	}
 	
@@ -118,7 +114,7 @@ public class PlanSalleDAO extends DAO<PlanSalle> {
 		}
 
 		obj.setId(i);
-
+		Connection.close();
 		return obj;
 	}
 	
@@ -136,7 +132,8 @@ public class PlanSalleDAO extends DAO<PlanSalle> {
 				          + "nomPlanSalle ='" + obj.getNomPlanSalle()
 						  +"',numPlanSalle='" + obj.getNumPlanSalle()
 						  +"',idCinema="  + obj.getIdCinema()
-						  +" WHERE idPlanSalle=" + obj.getId() + ";");        
+						  +" WHERE idPlanSalle=" + obj.getId() + ";");  
+		Connection.close();
 		return obj;
 	}
 	
@@ -151,6 +148,7 @@ public class PlanSalleDAO extends DAO<PlanSalle> {
 		Connection.update("DELETE  FROM PlanSalle WHERE idPlanSalle ="
 						  +obj.getId()
 						  +";");
+		Connection.close();
 	}
 	
 	

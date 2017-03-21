@@ -55,7 +55,7 @@ public class SeanceDAO extends DAO<Seance> {
 		creerSeanceT=CreerSeanceDAO.find(id); 
 
 		seance = new Seance(id,idFilm,filmT,creerSeanceT); 
-				
+		Connection.close();		
 		return seance;
 	}
 
@@ -84,6 +84,7 @@ public class SeanceDAO extends DAO<Seance> {
 		}
 
 		obj.setId(i);
+		Connection.close();
 		return obj;
 	}
 
@@ -97,7 +98,8 @@ public class SeanceDAO extends DAO<Seance> {
 	public Seance update(Seance obj) {
 		
 		Connection.update("UPDATE Seance SET idFilm ="+obj.getIdFilm()
-						  +" WHERE idSeance="+obj.getId()+";");							
+						  +" WHERE idSeance="+obj.getId()+";");	
+		Connection.close();
 		return obj;
 	}
 
@@ -110,6 +112,7 @@ public class SeanceDAO extends DAO<Seance> {
 	public void delete(Seance obj) {
 		
 		Connection.update("DELETE  FROM Seance WHERE idSeance="+obj.getId()+";");	
+		Connection.close();
 	}
 
 	

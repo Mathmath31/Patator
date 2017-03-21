@@ -43,7 +43,7 @@ public class VilleDAO extends DAO<Ville>{
 		}
 		//System.out.println("idVille = "+i+"\n\n");
 		obj.setId(i);
-		
+		Connection.close();
 		return obj;
 	}
 	
@@ -80,7 +80,7 @@ public class VilleDAO extends DAO<Ville>{
 		}
 		
 		Vill_find = new Ville(id, nomVille, cpVille);
-		
+		Connection.close();
 		return Vill_find;
 	}
 
@@ -97,6 +97,7 @@ public class VilleDAO extends DAO<Ville>{
 														+"' WHERE idVille="
 														+obj.getId()
 														+";");	
+		Connection.close();
 		return obj;
 	}
 
@@ -110,6 +111,7 @@ public class VilleDAO extends DAO<Ville>{
 		Connection.update("DELETE  FROM Ville WHERE idVille="
 						  +obj.getId()
 						  +";");
+		Connection.close();
 	}
 
 

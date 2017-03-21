@@ -37,7 +37,7 @@ public class ComplementDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		Connection.close();
 		return listCinema;
 	}
 	
@@ -65,7 +65,7 @@ public class ComplementDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		Connection.close();
 		return listPlanSalle;
 	}
 	
@@ -79,6 +79,7 @@ public class ComplementDAO {
 		Connection.update("DELETE FROM CaseSalle WHERE idPlanSalle="
 						  +idPlanSalle
 						  +";");
+		Connection.close();
 	}
 	
 	/**
@@ -111,7 +112,7 @@ public class ComplementDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		Connection.close();
 		return idPositionCase;
 		
 	}
@@ -141,7 +142,7 @@ public class ComplementDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		Connection.close();
 		return idTypeCase;
 	}
 	
@@ -174,7 +175,7 @@ public class ComplementDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		Connection.close();
 		return idPlanSalle;
 		
 	}
@@ -208,7 +209,7 @@ public class ComplementDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		Connection.close();
 		return idClient;
 
 	}
@@ -238,7 +239,7 @@ public class ComplementDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		Connection.close();
 		return listProduit;
 	}
 	
@@ -278,7 +279,7 @@ public class ComplementDAO {
 		produit=ProduitDAO.find(idProduit); 
 
 		ajouterProduit = new AjouterProduit(idProduit,idPlace,quantite,livrer,produit); 
-	
+		Connection.close();
 		return ajouterProduit;
 	}
 	
@@ -307,7 +308,7 @@ public class ComplementDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		Connection.close();
 		return listPlaces;
 	}
 	

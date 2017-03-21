@@ -53,7 +53,7 @@ public class ComposerPlaceDAO extends DAO<ComposerPlace> {
 		seance=SeanceDAO.find(idSeance);
 
 		composerPlace = new ComposerPlace(id,idCaseSalle,idSeance,seance); 
-				
+		Connection.close();		
 		return composerPlace;
 	}
 
@@ -72,6 +72,7 @@ public class ComposerPlaceDAO extends DAO<ComposerPlace> {
 						  +obj.getIdPlace()+","
 						  +obj.getIdCaseSalle()+","
 						  +obj.getIdSeance()+")");
+		Connection.close();
 		return obj;
 	}
 
@@ -88,7 +89,8 @@ public class ComposerPlaceDAO extends DAO<ComposerPlace> {
 		
 		Connection.update("UPDATE ComposerPlace SET idCaseSalle ="+obj.getIdCaseSalle()
 						  +",idSeance="+obj.getIdSeance()
-						  +" WHERE idPlace="+obj.getIdPlace()+";");							
+						  +" WHERE idPlace="+obj.getIdPlace()+";");		
+		Connection.close();
 		return obj;
 	}
 
@@ -104,5 +106,6 @@ public class ComposerPlaceDAO extends DAO<ComposerPlace> {
 		
 		Connection.update("DELETE  FROM ComposerPlace WHERE idPlace ="
 							+obj.getIdPlace()+";");	
+		Connection.close();
 	}
 }
