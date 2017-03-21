@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 20 Mars 2017 à 02:59
+-- Généré le :  Mar 21 Mars 2017 à 11:43
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -237,9 +237,18 @@ CREATE TABLE `creerseance` (
 
 CREATE TABLE `creneau` (
   `idCreneau` int(11) NOT NULL,
-  `heureDebutCreneau` time DEFAULT NULL,
-  `heureFinCreneau` time DEFAULT NULL
+  `heureDebutCreneau` varchar(6) DEFAULT NULL,
+  `heureFinCreneau` varchar(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `creneau`
+--
+
+INSERT INTO `creneau` (`idCreneau`, `heureDebutCreneau`, `heureFinCreneau`) VALUES
+(1, '10:00', '12:00'),
+(2, '16:00', '18:00'),
+(3, '21:00', '23:00');
 
 -- --------------------------------------------------------
 
@@ -249,8 +258,104 @@ CREATE TABLE `creneau` (
 
 CREATE TABLE `date` (
   `idDate` int(11) NOT NULL,
-  `seanceDate` datetime DEFAULT NULL
+  `seanceDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `date`
+--
+
+INSERT INTO `date` (`idDate`, `seanceDate`) VALUES
+(1, '2017-03-22'),
+(2, '2017-03-23'),
+(3, '2017-03-24'),
+(4, '2017-03-25'),
+(5, '2017-03-26'),
+(6, '2017-03-27'),
+(7, '2017-03-28'),
+(8, '2017-03-29'),
+(9, '2017-03-30'),
+(10, '2017-03-31'),
+(11, '2017-04-01'),
+(12, '2017-04-02'),
+(13, '2017-04-03'),
+(14, '2017-04-04'),
+(15, '2017-04-05'),
+(16, '2017-04-06'),
+(17, '2017-04-07'),
+(18, '2017-04-08'),
+(19, '2017-04-09'),
+(20, '2017-04-10'),
+(21, '2017-04-11'),
+(22, '2017-04-12'),
+(23, '2017-04-13'),
+(24, '2017-04-14'),
+(25, '2017-04-15'),
+(26, '2017-04-16'),
+(27, '2017-04-17'),
+(28, '2017-04-18'),
+(29, '2017-04-19'),
+(30, '2017-04-20'),
+(31, '2017-04-21'),
+(32, '2017-04-22'),
+(33, '2017-04-23'),
+(34, '2017-04-24'),
+(35, '2017-04-25'),
+(36, '2017-04-26'),
+(37, '2017-04-27'),
+(38, '2017-04-28'),
+(39, '2017-04-29'),
+(40, '2017-04-30'),
+(41, '2017-05-01'),
+(42, '2017-05-02'),
+(43, '2017-05-03'),
+(44, '2017-05-04'),
+(45, '2017-05-05'),
+(46, '2017-05-06'),
+(47, '2017-05-07'),
+(48, '2017-05-08'),
+(49, '2017-05-09'),
+(50, '2017-05-10'),
+(51, '2017-05-11'),
+(52, '2017-05-12'),
+(53, '2017-05-13'),
+(54, '2017-05-14'),
+(55, '2017-05-15'),
+(56, '2017-05-16'),
+(57, '2017-05-17'),
+(58, '2017-05-18'),
+(59, '2017-05-19'),
+(60, '2017-05-20'),
+(61, '2017-05-21'),
+(62, '2017-05-22'),
+(63, '2017-05-23'),
+(64, '2017-05-24'),
+(65, '2017-05-25'),
+(66, '2017-05-26'),
+(67, '2017-05-27'),
+(68, '2017-05-28'),
+(69, '2017-05-29'),
+(70, '2017-05-30'),
+(71, '2017-05-31'),
+(72, '2017-06-01'),
+(73, '2017-06-02'),
+(74, '2017-06-03'),
+(75, '2017-06-04'),
+(76, '2017-06-05'),
+(77, '2017-06-06'),
+(78, '2017-06-07'),
+(79, '2017-06-08'),
+(80, '2017-06-09'),
+(81, '2017-06-10'),
+(82, '2017-06-11'),
+(83, '2017-06-12'),
+(84, '2017-06-13'),
+(85, '2017-06-14'),
+(86, '2017-06-15'),
+(87, '2017-06-16'),
+(88, '2017-06-17'),
+(89, '2017-06-18'),
+(90, '2017-06-19');
 
 -- --------------------------------------------------------
 
@@ -2824,9 +2929,19 @@ INSERT INTO `positioncase` (`idPositionCase`, `posXPositionCase`, `posYPositionC
 CREATE TABLE `produit` (
   `idProduit` int(11) NOT NULL,
   `nomProduit` varchar(25) DEFAULT NULL,
-  `descriptionProduit` varchar(25) DEFAULT NULL,
+  `descriptionProduit` varchar(100) DEFAULT NULL,
   `prixProduit` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `produit`
+--
+
+INSERT INTO `produit` (`idProduit`, `nomProduit`, `descriptionProduit`, `prixProduit`) VALUES
+(1, 'Soda Cola 50 cl', 'Au bon goût de cola, plein de bulles', 3.5),
+(2, 'Eau plate 50 cl', 'En direct des vallées des volcans', 1.5),
+(3, 'Bonbons 200 gr', 'Hum du sucre !', 4.5),
+(4, 'Popcorn 600 gr', 'Le classique à ne jamais oublier', 6);
 
 -- --------------------------------------------------------
 
@@ -3023,12 +3138,12 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT pour la table `creneau`
 --
 ALTER TABLE `creneau`
-  MODIFY `idCreneau` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCreneau` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `date`
 --
 ALTER TABLE `date`
-  MODIFY `idDate` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idDate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 --
 -- AUTO_INCREMENT pour la table `film`
 --
@@ -3053,7 +3168,7 @@ ALTER TABLE `positioncase`
 -- AUTO_INCREMENT pour la table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `idProduit` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProduit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `seance`
 --
