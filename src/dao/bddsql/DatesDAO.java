@@ -4,6 +4,11 @@
 package dao.bddsql;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import classes.Dates;
 import connection.Connection;
@@ -23,8 +28,12 @@ public class DatesDAO extends DAO<Dates>{
 	 */
 	public Dates create(Dates obj) {
 		
-		Connection.update("INSERT INTO dates (seanceDate) VALUES("
-						  +obj.getSeanceDate()+")");
+		
+		java.sql.Date sqlDate = new java.sql.Date(obj.getSeanceDate().getTime());
+
+
+		Connection.update("INSERT INTO date (seanceDate) VALUES('"
+						  + sqlDate +"')");
 		
 		ResultSet result = 	Connection.selectFrom("SELECT idDate "
 				+ "FROM date "
@@ -58,11 +67,10 @@ public class DatesDAO extends DAO<Dates>{
 		Dates dates = new Dates();
 		
 		try {
-			ResultSet result = Connection.selectFrom("SELECT seanceDate"
-													+ "FROM dates "
-													+ "WHERE idDate="
-													+id
-													+";");
+			ResultSet result = Connection.selectFrom("SELECT seanceDate "
+													+ " FROM date "
+													+ " WHERE idDate="
+													+ id + ";");
 			
 			while(result.next())
 			{
@@ -88,7 +96,9 @@ public class DatesDAO extends DAO<Dates>{
 	 */
 	public Dates update(Dates obj) {
 		
-		Connection.update("UPDATE dates SET seanceDate ="+obj.getSeanceDate()																				
+		java.sql.Date sqlDate = new java.sql.Date(obj.getSeanceDate().getTime());
+		
+		Connection.update("UPDATE date SET seanceDate ="+sqlDate																				
 														+" WHERE idDate="
 														+obj.getId()
 														+";");	
@@ -96,13 +106,13 @@ public class DatesDAO extends DAO<Dates>{
 	}
 
 	/**
-	 * Create the Data in the Database of the class Dates
+	 * Delete the Data in the Database of the class Dates
 	 * @author Thomas
 	 * @param obj : class Dates
 	 */
 	public void delete(Dates obj) {
 		
-		Connection.update("DELETE  FROM dates WHERE idDate="
+		Connection.update("DELETE  FROM date WHERE idDate="
 						  +obj.getId()
 						  +";");
 	}

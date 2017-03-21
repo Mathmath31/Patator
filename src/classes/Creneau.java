@@ -3,7 +3,7 @@
  */
 package classes;
 
-import java.sql.Time;
+
 
 /**
  * @author Thomas
@@ -12,12 +12,12 @@ import java.sql.Time;
 public class Creneau {
 	
 	private int id;
-	private Time heureDebutCreneau;
-	private Time heureFinCreneau;
+	private String heureDebutCreneau;
+	private String heureFinCreneau;
 
 	public Creneau() {};
 	
-	public Creneau(int id,Time heureDebutCreneau, Time heureFinCreneau){
+	public Creneau(int id,String heureDebutCreneau, String heureFinCreneau){
 		this.id=id;
 		this.heureDebutCreneau=heureDebutCreneau;
 		this.heureFinCreneau=heureFinCreneau;
@@ -32,19 +32,19 @@ public class Creneau {
 		this.id = id;
 	}
 
-	public Time getHeureDebutCreneau() {
+	public String getHeureDebutCreneau() {
 		return heureDebutCreneau;
 	}
 
-	public void setHeureDebutCreneau(Time heureDebutCreneau) {
+	public void setHeureDebutCreneau(String heureDebutCreneau) {
 		this.heureDebutCreneau = heureDebutCreneau;
 	}
 
-	public Time getHeureFinCreneau() {
+	public String getHeureFinCreneau() {
 		return heureFinCreneau;
 	}
 
-	public void setHeureFinCreneau(Time heureFinCreneau) {
+	public void setHeureFinCreneau(String heureFinCreneau) {
 		this.heureFinCreneau = heureFinCreneau;
 	}
 

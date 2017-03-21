@@ -6,7 +6,7 @@ import classes.PositionCase;
 import dao.DAO;
 import dao.DAOFactory;
 
-public class TestDAO {
+public class TestPositionCase {
 	
 	public static void main(String[] args) {
 		

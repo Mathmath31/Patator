@@ -5,6 +5,8 @@ package dao.bddsql;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.Date;
+
 import classes.Creneau;
 import connection.Connection;
 import dao.DAO;
@@ -23,9 +25,11 @@ public class CreneauDAO extends DAO<Creneau>{
 	 */
 	public Creneau create(Creneau obj) {
 		
-		Connection.update("INSERT INTO creneau (heureDebutCreneau, heureFinCreneau) VALUES("
-						  +obj.getHeureDebutCreneau()+","
-						  +obj.getHeureFinCreneau()+")");
+
+		
+		Connection.update("INSERT INTO creneau (heureDebutCreneau, heureFinCreneau) VALUES('"
+						  +obj.getHeureDebutCreneau()+"','"
+						  +obj.getHeureFinCreneau()+"')");
 		
 		ResultSet result = 	Connection.selectFrom("SELECT idCreneau "
 				+ "FROM creneau "
@@ -55,8 +59,8 @@ public class CreneauDAO extends DAO<Creneau>{
 	 */
 	public Creneau find(int id) {
 		
-		Time heureDebutCreneau = null;
-		Time heureFinCreneau = null;
+		String heureDebutCreneau = null;
+		String heureFinCreneau = null;
 		Creneau creneau = new Creneau();
 		
 		try {
@@ -68,8 +72,8 @@ public class CreneauDAO extends DAO<Creneau>{
 			
 			while(result.next())
 			{
-				heureDebutCreneau = result.getTime("heureDebutCreneau");
-				heureFinCreneau=result.getTime("posYPositionCase");
+				heureDebutCreneau = result.getString("heureDebutCreneau");
+				heureFinCreneau=result.getString("heureFinCreneau");
 				
 			}
 			
@@ -91,9 +95,9 @@ public class CreneauDAO extends DAO<Creneau>{
 	 * @return obj : class Creneau
 	 */
 	public Creneau update(Creneau obj) {
-		
+
 		Connection.update("UPDATE creneau SET heureDebutCreneau ="+obj.getHeureDebutCreneau()
-														+",heureFinCreneau="+obj.getHeureFinCreneau()									
+														+",heureFinCreneau="+obj.getHeureFinCreneau()								
 														+" WHERE idCreneau="
 														+obj.getId()
 														+";");	
