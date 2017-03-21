@@ -4,12 +4,8 @@
 package dao.bddsql;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
+
 import classes.Dates;
 import connection.Connection;
 import dao.DAO;

@@ -4,8 +4,6 @@
 package dao.bddsql;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.util.Date;
 
 import classes.Creneau;
 import connection.Connection;

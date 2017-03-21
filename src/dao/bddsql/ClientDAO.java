@@ -3,14 +3,8 @@ package dao.bddsql;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import classes.AjouterProduit;
-import classes.CaseSalle;
 import classes.Client;
-import classes.ComposerPlace;
 import classes.Place;
-import classes.PlanSalle;
-import classes.Seance;
 import classes.Ville;
 import connection.Connection;
 import dao.DAO;
