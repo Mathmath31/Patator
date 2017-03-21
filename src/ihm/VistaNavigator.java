@@ -32,6 +32,7 @@ public class VistaNavigator {
     public static final String RESERVATION = "view/VueReservation.fxml";
     public static final String ADMINFILM = "view/AdminFilm.fxml";
     public static final String ADMINCINEMA = "view/AdminCinema.fxml";
+    public static final String ADMINSEANCE = "view/AdminSeanceFilm.fxml";
 
     /** The main application layout controller. */
     private static MainController mainController;

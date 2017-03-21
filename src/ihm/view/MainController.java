@@ -259,5 +259,15 @@ public class MainController {
 	void goVueAdminCinema(ActionEvent event) {
 		VistaNavigator.loadVista(VistaNavigator.ADMINCINEMA);
 	}
+	
+	/**
+	 * Event handler fired when the user requests a new vista.
+	 *
+	 * @param event the event that triggered the handler.
+	 */
+	@FXML
+	void goVueAdminSeanceFilm(ActionEvent event) {
+		VistaNavigator.loadVista(VistaNavigator.ADMINSEANCE);
+	}
 
 }
