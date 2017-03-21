@@ -60,7 +60,7 @@ public class CreerSeanceDAO extends DAO<CreerSeance> {
 		datesT=DatesDAO.find(idDate); 
 
 		creer = new CreerSeance(id,idPlanSalle,idCreneau,idDate,creneauT,datesT); 
-				
+		Connection.close();		
 		return creer;
 	}
 
@@ -78,6 +78,7 @@ public class CreerSeanceDAO extends DAO<CreerSeance> {
 						  +obj.getIdPlanSalle()+","
 						  +obj.getIdDate()+","
 						  +obj.getIdSeance()+")");
+		Connection.close();
 		return obj;
 	}
 
@@ -93,7 +94,8 @@ public class CreerSeanceDAO extends DAO<CreerSeance> {
 		Connection.update("UPDATE creer SET idCreneau ="+obj.getIdCreneau()
 						  +",idPlanSalle="+obj.getIdPlanSalle()
 						  +",idDate="+obj.getIdDate()
-						  +" WHERE idSeance="+obj.getIdSeance()+";");							
+						  +" WHERE idSeance="+obj.getIdSeance()+";");	
+		Connection.close();
 		return obj;
 	}
 
@@ -109,6 +111,7 @@ public class CreerSeanceDAO extends DAO<CreerSeance> {
 						  +" AND idPlanSalle="+obj.getIdPlanSalle()
 						  +" AND idDate="+obj.getIdDate()
 						  +" AND idSeance="+obj.getIdSeance()+";");	
+		Connection.close();
 	}
 
 	

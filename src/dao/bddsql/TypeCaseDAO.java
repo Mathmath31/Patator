@@ -44,7 +44,7 @@ public class TypeCaseDAO extends DAO<TypeCase>{
 		}
 		//System.out.println("idTypeCase = "+i+"\n\n");
 		obj.setId(i);
-		
+		Connection.close();
 		return obj;
 	}
 	
@@ -81,7 +81,7 @@ public class TypeCaseDAO extends DAO<TypeCase>{
 		}
 		
 		typCase = new TypeCase(id, nomTypCas, imgTypCas);
-		
+		Connection.close();
 		return typCase;
 	}
 
@@ -98,6 +98,7 @@ public class TypeCaseDAO extends DAO<TypeCase>{
 														+"' WHERE idTypeCase="
 														+obj.getId()
 														+";");	
+		Connection.close();
 		return obj;
 	}
 
@@ -111,6 +112,7 @@ public class TypeCaseDAO extends DAO<TypeCase>{
 		Connection.update("DELETE  FROM TypeCase WHERE idTypeCase="
 						  +obj.getId()
 						  +";");
+		Connection.close();
 	}
 	
 

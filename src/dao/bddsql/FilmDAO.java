@@ -40,7 +40,7 @@ public class FilmDAO extends DAO<Film>{
 		}
 
 		obj.setId(i);
-		
+		Connection.close();
 		return obj;
 	}
 	
@@ -75,7 +75,7 @@ public class FilmDAO extends DAO<Film>{
 		
 		
 		film = new Film(id,codeFilm);
-		
+		Connection.close();
 		return film;
 	}
 
@@ -90,7 +90,8 @@ public class FilmDAO extends DAO<Film>{
 		Connection.update("UPDATE film SET posXPositionCase ='"+obj.getCodeFilm()							
 														+"' WHERE idFilm="
 														+obj.getId()
-														+";");	
+														+";");
+		Connection.close();
 		return obj;
 	}
 
@@ -104,5 +105,6 @@ public class FilmDAO extends DAO<Film>{
 		Connection.update("DELETE  FROM film WHERE idFilm="
 						  +obj.getId()
 						  +";");
+		Connection.close();
 	}
 }

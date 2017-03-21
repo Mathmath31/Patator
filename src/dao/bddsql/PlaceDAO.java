@@ -63,7 +63,7 @@ public class PlaceDAO extends DAO<Place> {
 		composerPlace=ComposerPlaceDAO.find(id);
 		
 		place = new Place(id,choixPlace,idClient,composerPlace,listAjouterProduit); 
-
+		Connection.close();
 		return place;
 	}
 	
@@ -95,7 +95,7 @@ public class PlaceDAO extends DAO<Place> {
 		}
 
 		obj.setId(i);
-
+		Connection.close();
 		return obj;
 	}
 	
@@ -111,7 +111,8 @@ public class PlaceDAO extends DAO<Place> {
 		Connection.update("UPDATE place SET "
 				          + "choixPlace =" + obj.isChoixPlace()
 						  +",idClient='" + obj.getIdClient()					
-						  +" WHERE idPlace=" + obj.getId() + ";");        
+						  +" WHERE idPlace=" + obj.getId() + ";");  
+		Connection.close();
 		return obj;
 	}
 	
@@ -126,6 +127,7 @@ public class PlaceDAO extends DAO<Place> {
 		Connection.update("DELETE  FROM place WHERE idPlace="
 						  +obj.getId()
 						  +";");
+		Connection.close();
 	}
 	
 	

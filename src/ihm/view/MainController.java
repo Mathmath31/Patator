@@ -25,7 +25,7 @@ public class MainController {
 	@FXML
 	private TextField idUser;
 	@FXML
-	private TextField password;
+	private PasswordField password;
 	@FXML
 	private Button btnEnregistrer;
 	@FXML
@@ -61,7 +61,7 @@ public class MainController {
 	}
 
 	/**
-	 * 
+	 * Autentification
 	 *
 	 *
 	 */
@@ -75,7 +75,7 @@ public class MainController {
 		mdp = password.getText();
 		
 		donnees.connection(login, mdp);
-		donnees.setConnecté(true);
+
 		if (donnees.isConnecté() == true){
 			System.out.println("Connecté");
 			menubutton.setVisible(true);
@@ -86,11 +86,11 @@ public class MainController {
 			idUser.setVisible(false);
 			password.setVisible(false);
 			
-			// si admin?
+			if (donnees.getClientHistorique().isAdminClient())
+			{
 			menuAdmin.setVisible(true);
+			}
 			VistaNavigator.loadVista(VistaNavigator.CHOIXCINEMA);
-			
-			
 		}
 	}
 

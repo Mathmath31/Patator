@@ -46,7 +46,7 @@ public class DatesDAO extends DAO<Dates>{
 		}
 
 		obj.setId(i);
-		
+		Connection.close();
 		return obj;
 	}
 	
@@ -80,7 +80,7 @@ public class DatesDAO extends DAO<Dates>{
 		
 		
 		dates = new Dates(id, seanceDate);
-		
+		Connection.close();
 		return dates;
 	}
 
@@ -97,7 +97,8 @@ public class DatesDAO extends DAO<Dates>{
 		Connection.update("UPDATE date SET seanceDate ="+sqlDate																				
 														+" WHERE idDate="
 														+obj.getId()
-														+";");	
+														+";");
+		Connection.close();
 		return obj;
 	}
 
@@ -111,6 +112,7 @@ public class DatesDAO extends DAO<Dates>{
 		Connection.update("DELETE  FROM date WHERE idDate="
 						  +obj.getId()
 						  +";");
+		Connection.close();
 	}
 	
 	

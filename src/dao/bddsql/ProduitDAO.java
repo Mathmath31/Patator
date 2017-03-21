@@ -44,6 +44,7 @@ public class ProduitDAO extends DAO<Produit>{
 		}
 		
 		obj.setId(i);
+		Connection.close();
 		return obj;
 	}
 	
@@ -80,7 +81,7 @@ public class ProduitDAO extends DAO<Produit>{
 		}
 		
 		produit = new Produit(id, nomProduit, descriptionProduit, prixProduit);
-		
+		Connection.close();
 		return produit;
 	}
 
@@ -98,6 +99,7 @@ public class ProduitDAO extends DAO<Produit>{
 														+" WHERE idProduit="
 														+obj.getId()
 														+";");	
+		Connection.close();
 		return obj;
 	}
 
@@ -111,5 +113,6 @@ public class ProduitDAO extends DAO<Produit>{
 		Connection.update("DELETE  FROM produit WHERE idProduit="
 						  +obj.getId()
 						  +";");
+		Connection.close();
 	}
 }

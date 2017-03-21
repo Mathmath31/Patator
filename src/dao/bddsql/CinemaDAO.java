@@ -90,7 +90,7 @@ public class CinemaDAO extends DAO<Cinema> {
 		}		
 
 		Cine = new Cinema(id,nomCine,nVoieCine,idVille,villeCine,salles); 
-
+		Connection.close();
 		return Cine;
 	}
 
@@ -123,7 +123,7 @@ public class CinemaDAO extends DAO<Cinema> {
 		}
 
 		obj.setId(i);
-
+		Connection.close();
 		return obj;
 	}
 
@@ -141,7 +141,8 @@ public class CinemaDAO extends DAO<Cinema> {
 				          + "nomCine ='" + obj.getNomCine()
 						  +"',nVoieCine='" + obj.getnVoieCine()
 						  +"',idVille="  + obj.getIdVille()
-						  +" WHERE idCinema=" + obj.getId() + ";");        
+						  +" WHERE idCinema=" + obj.getId() + ";");  
+		Connection.close();
 		return obj;
 	}
 	
@@ -156,6 +157,7 @@ public class CinemaDAO extends DAO<Cinema> {
 		Connection.update("DELETE FROM Cinema WHERE idCinema ="
 						  +obj.getId()
 						  +";");
+		Connection.close();
 	}
 	
 	

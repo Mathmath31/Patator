@@ -43,7 +43,7 @@ public class PositionCaseDAO extends DAO<PositionCase>{
 		}
 
 		obj.setId(i);
-		
+		Connection.close();
 		return obj;
 	}
 	
@@ -81,7 +81,7 @@ public class PositionCaseDAO extends DAO<PositionCase>{
 		
 		
 		posCase = new PositionCase(id, posX, posY);
-		
+		Connection.close();
 		return posCase;
 	}
 
@@ -98,6 +98,7 @@ public class PositionCaseDAO extends DAO<PositionCase>{
 														+" WHERE idPositionCase="
 														+obj.getId()
 														+";");	
+		Connection.close();
 		return obj;
 	}
 
@@ -111,5 +112,6 @@ public class PositionCaseDAO extends DAO<PositionCase>{
 		Connection.update("DELETE  FROM positioncase WHERE idPositionCase="
 						  +obj.getId()
 						  +";");
+		Connection.close();
 	}
 }
