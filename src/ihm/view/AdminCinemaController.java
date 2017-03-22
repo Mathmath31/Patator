@@ -1,7 +1,11 @@
 package ihm.view;
 
 import classes.Cinema;
+import classes.Client;
 import classes.Donnees;
+import classes.Ville;
+import dao.DAO;
+import dao.DAOFactory;
 import dao.bddsql.ComplementDAO;
 import ihm.model.InfoCine;
 import javafx.collections.FXCollections;
@@ -55,28 +59,109 @@ public class AdminCinemaController {
 		tableView.getSelectionModel().selectFirst();
 	}
 	
-	
+	/**
+	 * Add a cinema into the DB if everything is good
+	 * @author Thomas
+     * @param event the event that triggered the handler.
+     * @see ComplementDAO, CinemaDAO
+     */
 	@FXML
     void ajoutCine(ActionEvent event) {
+		String message;
+		Ville villeCinema=new Ville();
+		Cinema cine=new Cinema();
 		
-		ComplementDAO.ExistsCinema(tableView.getSelectionModel().getSelectedItem().getCinemaName());
+		DAO<Ville> VilleDAO = DAOFactory.getVilleDAO();
+		DAO<Cinema> CinemaDAO = DAOFactory.getCinemaDAO();
 		
-		
-		
-		System.out.println("clicked on ajoutCine" + tableView.getSelectionModel().getSelectedItem().getCinemaName() + tableView.getSelectionModel().getSelectedItem().getCinemaAdresse());
+		if (ComplementDAO.ExistsCinema(adminNomCine.getText()) != 0){
+			message="Le Cinéma existe déjà dans la base de données";
+		}
+		else if( !adminNomCine.getText().isEmpty() && !adminNoVoie.getText().isEmpty() && !adminNomVille.getText().isEmpty() && !adminCP.getText().isEmpty()){
+			
+			cine.setNomCine(adminNomCine.getText());
+			cine.setnVoieCine(adminNoVoie.getText());
+			
+			if(ComplementDAO.ExistsVille(adminNomVille.getText())==0){
+				villeCinema.setNomVille(adminNomVille.getText());
+				villeCinema.setCpVille(adminCP.getText());
+				villeCinema=VilleDAO.create(villeCinema);
+	    	}
+	    	else{
+	    		villeCinema=VilleDAO.find(ComplementDAO.ExistsVille(adminNomVille.getText()));
+	    	}
+			
+			cine.setIdVille(villeCinema.getId());
+			cine.setVilleCine(villeCinema);
+			cine=CinemaDAO.create(cine);
+		}
+		else{
+			message="Au moins un des champs est vide";
+		}
     }
 	
+	
+	/**
+	 * Delete a cinema from the DB if everything is good
+	 * @author Thomas
+     * @param event the event that triggered the handler.
+     * @see ComplementDAO, CinemaDAO
+     */
 	@FXML
     void suppCine(ActionEvent event) {
-//TODO supprimer le cine
-		System.out.println("clicked on suppCine" + tableView.getSelectionModel().getSelectedItem());
+		String message;
+		Cinema cine=new Cinema();
+
+		DAO<Cinema> CinemaDAO = DAOFactory.getCinemaDAO();
+		
+		if (ComplementDAO.ExistsCinema(adminNomCine.getText()) != 0){
+			cine=CinemaDAO.find(ComplementDAO.ExistsCinema(adminNomCine.getText()));
+			CinemaDAO.delete(cine);
+			message="Le Cinéma " + cine.getNomCine() + " a bien été supprimé";
+		}
+		else{
+			message="Le Cinéma " + cine.getNomCine() + " n'existe pas dans la base de données";
+		}	
     }
 	
+	/**
+	 * Update a cinema into the DB if everything is good
+	 * @author Thomas
+     * @param event the event that triggered the handler.
+     * @see ComplementDAO, CinemaDAO
+     */
 	@FXML
     void modifCine(ActionEvent event) {
-//TODO modifier le cine
-		System.out.println("clicked on modifCine");
+		String message;
+		Ville villeCinema=new Ville();
+		Cinema cine=new Cinema();
+		
+		DAO<Ville> VilleDAO = DAOFactory.getVilleDAO();
+		DAO<Cinema> CinemaDAO = DAOFactory.getCinemaDAO();
+		
+		if( !adminNomCine.getText().isEmpty() && !adminNoVoie.getText().isEmpty() && !adminNomVille.getText().isEmpty() && !adminCP.getText().isEmpty()){
+			
+			cine.setNomCine(adminNomCine.getText());
+			cine.setnVoieCine(adminNoVoie.getText());
+			
+			if(ComplementDAO.ExistsVille(adminNomVille.getText())==0){
+				villeCinema.setNomVille(adminNomVille.getText());
+				villeCinema.setCpVille(adminCP.getText());
+				villeCinema=VilleDAO.create(villeCinema);
+	    	}
+	    	else{
+	    		villeCinema=VilleDAO.find(ComplementDAO.ExistsVille(adminNomVille.getText()));
+	    	}
+			// TODO ajouter l'id et le prendre en compte dans le code
+			cine.setIdVille(villeCinema.getId());
+			cine.setVilleCine(villeCinema);
+			cine=CinemaDAO.update(cine);
+		}
+		else{
+			message="Au moins un des champs est vide";
+		}
     }
+	
 	
 	@FXML
     void tableViewSelectionChanged(MouseEvent event) {
