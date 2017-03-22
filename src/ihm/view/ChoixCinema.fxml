@@ -14,8 +14,10 @@
                <children>
                   <TableView fx:id="tableView" layoutX="9.0" layoutY="26.0" prefHeight="298.0" prefWidth="461.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columns>
-                        <TableColumn fx:id="cinemaName" prefWidth="248.0" text="Cinéma" />
-                        <TableColumn fx:id="cinemaAdresse" prefWidth="600.0" text="Adresse" />
+                        <TableColumn fx:id="cinemaName" prefWidth="170.0" text="Cinéma" />
+                        <TableColumn fx:id="cinemaAdresse" prefWidth="309.0" text="Adresse" />
+                        <TableColumn fx:id="cinemaCP" prefWidth="286.0" text="Code Postal" />
+                        <TableColumn fx:id="cinemaVille" prefWidth="138.0" text="Ville" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

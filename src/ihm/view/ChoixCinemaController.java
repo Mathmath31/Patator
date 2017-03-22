@@ -24,6 +24,10 @@ public class ChoixCinemaController {
 	@FXML
 	private TableColumn<InfoCine, String> cinemaAdresse;
 	@FXML
+	private TableColumn<InfoCine, String> cinemaCP;
+	@FXML
+	private TableColumn<InfoCine, String> cinemaVille;
+	@FXML
 	private Button buttonValidCine;
 
 	private ObservableList<InfoCine> cineData = FXCollections.observableArrayList();
