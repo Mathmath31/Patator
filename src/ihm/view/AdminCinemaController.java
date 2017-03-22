@@ -1,5 +1,7 @@
 package ihm.view;
 
+import classes.Cinema;
+import classes.Donnees;
 import ihm.model.InfoCine;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,9 +39,16 @@ public class AdminCinemaController {
 	
 	public void initialize(){
 //TODO charger les cinemas
-		cineData.add(new InfoCine("Gaumont","9 rue de chez pas quoi", "Labege","31256"));
+		
+
+		for(Cinema c:MainController.donnees.getCinemas()){
+			cineData.add(new InfoCine(c.getNomCine(),c.getnVoieCine(),c.getVilleCine().getCpVille(),c.getVilleCine().getNomVille()));	
+		}
+		
+		
+		/*cineData.add(new InfoCine("Gaumont","9 rue de chez pas quoi", "Labege","31256"));
 		cineData.add(new InfoCine("Pathe","12 impasse du lac", "Montaudran","31547"));
-		cineData.add(new InfoCine("Mega CGR","3 rue de la Pie", "Toulouse","32154"));
+		cineData.add(new InfoCine("Mega CGR","3 rue de la Pie", "Toulouse","32154"));*/
 		
 		cinemaName.setCellValueFactory(cellData -> cellData.getValue().cinemaNameProperty());
 		cinemaAdresse.setCellValueFactory(cellData -> cellData.getValue().cinemaAdresseProperty());
