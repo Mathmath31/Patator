@@ -62,6 +62,7 @@ public class FilmDetailsController {
 				filmsList.add(cineGoFilms.get(i).getTitle());
 			}
 		}
+		//TODO remove donnees of client & cinema;
 		client=MainController.donnees.getClientCommande();
 		cinema=MainController.donnees.getCinemaCommande();
 		System.out.println("clicked on valide cine " + MainController.donnees.getCinemaCommande().getId() + " " + MainController.donnees.getCinemaCommande().getNomCine());
@@ -124,9 +125,15 @@ public class FilmDetailsController {
 			public void handle(MouseEvent event) {
 				if(listView.getSelectionModel().isEmpty() == false && dateSeance.getValue() != null && heureSeance.getValue() != null && (Integer.parseInt(nbPlace.getValue()) + Integer.parseInt(nbPlaceHandicape.getValue())) != 0 ){
 					
+					for (int i = 0 ; i < Integer.parseInt(nbPlace.getValue()) + Integer.parseInt(nbPlaceHandicape.getValue()) ; i++){
+					
+					}
+					
+					//Film
 //					client.getListPlace().get(0).getComposerPlace().getSeanceT().getFilmT().setCodeFilm(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getId());
-//					
+//					//Date
 //					panier.setDateSeance(dateSeance.getValue());
+					//Heure
 //					panier.setHeureSeance(LocalTime.parse(heureSeance.getValue().toString()));
 					MainController.donnees.setClientCommande(client);
 			        VistaNavigator.loadVista(VistaNavigator.CHOIXPOSITION);
