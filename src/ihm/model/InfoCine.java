@@ -36,7 +36,7 @@ public class InfoCine {
 	        this.cinemaName = new SimpleStringProperty(cinemaName);
 	        this.cinemaAdresse = new SimpleStringProperty(cinemaAdresse);
 	        this.cinemaVille = new SimpleStringProperty(cinemaName);
-	        this.cinemaCP = new SimpleStringProperty(cinemaAdresse);
+	        this.cinemaCP = new SimpleStringProperty(cinemaCP);
 	    }
 
 	    public String getCinemaName() {
