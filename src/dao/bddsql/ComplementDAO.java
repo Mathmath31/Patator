@@ -312,4 +312,41 @@ public class ComplementDAO {
 		return listPlaces;
 	}
 	
+	
+	/**
+	 * Retrieve the loginClient from the DB if it exists, return true or false depending on the result
+	 * @author Thomas
+	 * @param loginClient : name of the login choose
+	 * @return boolean : true or false
+	 * @exception  SQLException : When the query doesn't work
+	 */
+	public static boolean ExistsLoginClient(String loginClient) {
+		
+		int idClient = 0;
+		
+		
+		try {
+			ResultSet result = Connection.selectFrom("SELECT idClient "
+					 + "FROM client "
+					 + "WHERE loginClient ='" + loginClient + "';");
+
+			while(result.next())
+			{
+				idClient = result.getInt("idClient");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Connection.close();
+
+		if (idClient==0){
+			return true;
+		}
+		else{
+			return false;
+		}
+		
+	}
+	
 }
