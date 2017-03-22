@@ -91,9 +91,11 @@ public class NewUserController {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-
-			VistaNavigator.loadVista(VistaNavigator.HOME);
+			
+			
 			client=ClientDAO.create(client);
+			VistaNavigator.loadVista(VistaNavigator.HOME);
+			
 		}
 		else{
 			message ="Au moins un champ n'est pas renseigné";
