@@ -349,4 +349,64 @@ public class ComplementDAO {
 		
 	}
 	
+	/**
+	 * Retrieve the idVille from the DB if it exists, return the idVille
+	 * @author Thomas
+	 * @param nomVille : name of the city searched
+	 * @return idClient : int 0 if city not found
+	 * @exception  SQLException : When the query doesn't work
+	 */
+	public static int ExistsVille(String nomVille) {
+		
+		int idVille = 0;
+		
+		
+		try {
+			ResultSet result = Connection.selectFrom("SELECT idVille "
+					 + "FROM ville "
+					 + "WHERE nomVille ='" + nomVille + "';");
+
+			while(result.next())
+			{
+				idVille = result.getInt("idVille");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Connection.close();
+
+		return idVille;
+		
+	}
+	
+	/**
+	 * Retrieve the idCinema from the DB if it exists, return the idCinema
+	 * @author Thomas
+	 * @param nomCine : name of the cinema searched
+	 * @return idCinema : int 0 if cinema not found
+	 * @exception  SQLException : When the query doesn't work
+	 */
+	public static int ExistsCinema(String nomCine) {
+		
+		int idCinema = 0; 
+		
+		try {
+			ResultSet result = Connection.selectFrom("SELECT idCinema "
+					 + "FROM cinema "
+					 + "WHERE idCinema ='" + nomCine + "';");
+
+			while(result.next())
+			{
+				idCinema = result.getInt("idCinema");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Connection.close();
+
+		return idCinema;
+	}
+	
 }

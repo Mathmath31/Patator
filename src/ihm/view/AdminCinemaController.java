@@ -2,6 +2,7 @@ package ihm.view;
 
 import classes.Cinema;
 import classes.Donnees;
+import dao.bddsql.ComplementDAO;
 import ihm.model.InfoCine;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -45,11 +46,6 @@ public class AdminCinemaController {
 			cineData.add(new InfoCine(c.getNomCine(),c.getnVoieCine(),c.getVilleCine().getCpVille(),c.getVilleCine().getNomVille()));	
 		}
 		
-		
-		/*cineData.add(new InfoCine("Gaumont","9 rue de chez pas quoi", "Labege","31256"));
-		cineData.add(new InfoCine("Pathe","12 impasse du lac", "Montaudran","31547"));
-		cineData.add(new InfoCine("Mega CGR","3 rue de la Pie", "Toulouse","32154"));*/
-		
 		cinemaName.setCellValueFactory(cellData -> cellData.getValue().cinemaNameProperty());
 		cinemaAdresse.setCellValueFactory(cellData -> cellData.getValue().cinemaAdresseProperty());
 		cinemaVille.setCellValueFactory(cellData -> cellData.getValue().cinemaVilleProperty());
@@ -62,7 +58,11 @@ public class AdminCinemaController {
 	
 	@FXML
     void ajoutCine(ActionEvent event) {
-//TODO ajouter le cine
+		
+		ComplementDAO.ExistsCinema(tableView.getSelectionModel().getSelectedItem().getCinemaName());
+		
+		
+		
 		System.out.println("clicked on ajoutCine" + tableView.getSelectionModel().getSelectedItem().getCinemaName() + tableView.getSelectionModel().getSelectedItem().getCinemaAdresse());
     }
 	

@@ -6,8 +6,6 @@ import javafx.beans.property.StringProperty;
 
 public class InfoCine {
 
-	
-
 	/**
 	 * Model class for a Person.
 	 *
@@ -32,11 +30,11 @@ public class InfoCine {
 	     * @param cinemaName
 	     * @param cinemaAdresse
 	     */
-	    public InfoCine(String cinemaName, String cinemaAdresse, String cinemaVille,String cinemaCP) {
+	    public InfoCine(String cinemaName, String cinemaAdresse,String cinemaCP, String cinemaVille) {
 	        this.cinemaName = new SimpleStringProperty(cinemaName);
 	        this.cinemaAdresse = new SimpleStringProperty(cinemaAdresse);
-	        this.cinemaVille = new SimpleStringProperty(cinemaName);
 	        this.cinemaCP = new SimpleStringProperty(cinemaCP);
+	        this.cinemaVille = new SimpleStringProperty(cinemaName);
 	    }
 
 	    public String getCinemaName() {
