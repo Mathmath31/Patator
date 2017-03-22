@@ -341,10 +341,10 @@ public class ComplementDAO {
 		Connection.close();
 
 		if (idClient==0){
-			return true;
+			return false;
 		}
 		else{
-			return false;
+			return true;
 		}
 		
 	}

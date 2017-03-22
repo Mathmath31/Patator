@@ -159,8 +159,8 @@ public class Client {
 		return villeClient;
 	}
 
-	public void setVilleClient(Ville villeCine) {
-		villeClient = villeCine;
+	public void setVilleClient(Ville villeClient) {
+		this.villeClient = villeClient;
 	}
 
 	public ArrayList<Place> getListPlace() {
