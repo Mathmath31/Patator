@@ -2,7 +2,7 @@ package ihm.view;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.util.concurrent.TimeUnit;
@@ -11,7 +11,6 @@ import classes.Client;
 import dao.DAO;
 import dao.DAOFactory;
 import dao.bddsql.ComplementDAO;
-import ihm.Main;
 import ihm.VistaNavigator;
 
 
@@ -53,6 +52,9 @@ public class NewUserController {
 	@FXML
 	private TextField cp;
 	
+	@FXML
+	private Label message;
+	
 	/**
 	 * Check the informations provided by the client, save him in the DB if everything right
 	 * @author Thomas
@@ -64,7 +66,6 @@ public class NewUserController {
     void validerUser(ActionEvent event) {
     	
     	Client client= new Client();
-    	String message=null;
 		
 		client.setLoginClient(login.getText());
 		client.setMdpClient(mdp.getText());
@@ -84,11 +85,11 @@ public class NewUserController {
 		DAO<Client> ClientDAO = DAOFactory.getClientDAO();
 		
 		if(ComplementDAO.ExistsLoginClient(login.getText())){
-			message ="Le login existe déjà, veuillez en choisir un autre";
+			message.setText("Le login existe déjà, veuillez en choisir un autre");
 		}
 		else if (login.getText() + "" != "" &&   mdp.getText() + "" != "" && age.getText() + "" != "" && carteFidel.getText() + "" != "" &&  adresseMail.getText()  + "" != ""
 				&& prenom.getText() + "" != ""  && nom.getText()+ "" != ""  && numTel.getText() + "" != ""  && adresse.getText() + "" != ""  && sexe.getText()  + "" != ""   ){
-			message ="Votre profil à été créé, vous pouvez dés à présent vous connecter. Retour sur l'écran d'accueil dans 4 secondes.";
+			message.setText("Votre profil à été créé, vous pouvez dés à présent vous connecter. Retour sur l'écran d'accueil dans 4 secondes.");
 			try {
 				TimeUnit.SECONDS.sleep(4);
 			} catch (InterruptedException e) {
@@ -101,7 +102,7 @@ public class NewUserController {
 			
 		}
 		else{
-			message ="Au moins un champ n'est pas renseigné";
+			message.setText("Au moins un champ n'est pas renseigné");
 		}
     }
 }

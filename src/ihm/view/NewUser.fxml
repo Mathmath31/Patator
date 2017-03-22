@@ -57,11 +57,12 @@
             <TextField fx:id="cp" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
-      <Button layoutX="574.0" layoutY="519.0" mnemonicParsing="false" onAction="#validerUser" text="Valider" />
+      <Button layoutX="252.0" layoutY="530.0" mnemonicParsing="false" onAction="#validerUser" text="Valider" />
       <Label layoutX="463.0" layoutY="37.0" text="Création d'un compte utilisateur">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Label fx:id="message" layoutX="358.0" layoutY="534.0" />
    </children>
 </AnchorPane>
