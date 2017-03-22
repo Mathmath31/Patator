@@ -50,6 +50,9 @@ public class NewUserController {
 	@FXML
 	private TextField mdp;
 	
+	@FXML
+	private TextField cp;
+	
 	/**
 	 * Check the informations provided by the client, save him in the DB if everything right
 	 * @author Thomas

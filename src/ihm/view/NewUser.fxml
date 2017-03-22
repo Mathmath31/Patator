@@ -25,6 +25,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
@@ -32,26 +33,28 @@
          <children>
             <Label text="Nom" GridPane.rowIndex="1" />
             <Label text="Prenom" GridPane.rowIndex="2" />
-            <Label text="Adresse" GridPane.rowIndex="6" />
-            <Label text="N° de téléphone" GridPane.rowIndex="8" />
-            <Label text="Adresse mail" GridPane.rowIndex="9" />
+            <Label text="Numéro et nom de voie" GridPane.rowIndex="6" />
+            <Label text="N° de téléphone" GridPane.rowIndex="9" />
+            <Label text="Adresse mail" GridPane.rowIndex="10" />
             <TextField fx:id="nom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="prenom" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="adresse" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField fx:id="numTel" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <TextField fx:id="mdp" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <Label text="Mot de passe" GridPane.rowIndex="10" />
-            <TextField fx:id="adresseMail" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <TextField fx:id="numTel" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <TextField fx:id="mdp" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <Label text="Mot de passe" GridPane.rowIndex="11" />
+            <TextField fx:id="adresseMail" GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <Label text="Login" />
             <TextField fx:id="login" GridPane.columnIndex="1" />
             <TextField fx:id="age" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label text="Age" GridPane.rowIndex="3" />
             <Label text="Sexe" GridPane.rowIndex="4" />
             <Label text="Numero de carte de fidélité" GridPane.rowIndex="5" />
-            <Label text="Ville" GridPane.rowIndex="7" />
+            <Label text="Ville" GridPane.rowIndex="8" />
             <TextField fx:id="sexe" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="carteFidel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField fx:id="ville" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="ville" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label text="Code postal" GridPane.rowIndex="7" />
+            <TextField fx:id="cp" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
       <Button layoutX="574.0" layoutY="519.0" mnemonicParsing="false" onAction="#validerUser" text="Valider" />
