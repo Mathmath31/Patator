@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihm.view.VueInfoUserController">
    <children>
       <GridPane layoutX="200.0" layoutY="60.0" prefHeight="287.0" prefWidth="1190.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="100.0">
         <columnConstraints>
@@ -24,6 +24,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
@@ -32,28 +33,30 @@
             <Label text="Nom" GridPane.rowIndex="1" />
             <Label text="Prenom" GridPane.rowIndex="2" />
             <Label text="Adresse" GridPane.rowIndex="6" />
-            <Label text="N° de téléphone" GridPane.rowIndex="8" />
-            <Label text="Adresse mail" GridPane.rowIndex="9" />
-            <Label text="Mot de passe" GridPane.rowIndex="10" />
+            <Label text="N° de téléphone" GridPane.rowIndex="9" />
+            <Label text="Adresse mail" GridPane.rowIndex="10" />
+            <Label text="Mot de passe" GridPane.rowIndex="11" />
             <Label text="Login" />
             <Label text="Age" GridPane.rowIndex="3" />
             <Label text="Sexe" GridPane.rowIndex="4" />
             <Label text="Numero de carte de fidélité" GridPane.rowIndex="5" />
-            <Label text="Ville" GridPane.rowIndex="7" />
-            <Label text="Label" GridPane.columnIndex="1" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Label text="Ville" GridPane.rowIndex="8" />
+            <Label fx:id="login" text="Label" GridPane.columnIndex="1" />
+            <Label fx:id="nom" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="prenom" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="age" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="sexe" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="carteFidel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="adresse" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label fx:id="ville" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label fx:id="numTel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label fx:id="adresseMail" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Label fx:id="mdp" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <Label text="Code Postal" GridPane.rowIndex="7" />
+            <Label fx:id="cp" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
-      <Button layoutX="574.0" layoutY="519.0" mnemonicParsing="false" text="Valider" />
+      <Button layoutX="574.0" layoutY="519.0" mnemonicParsing="false" text="Valider" visible="false" />
       <Label layoutX="521.0" layoutY="36.0" text="Mes informations :">
          <font>
             <Font name="System Bold" size="18.0" />

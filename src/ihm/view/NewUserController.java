@@ -75,8 +75,9 @@ public class NewUserController {
 		if(ComplementDAO.ExistsLoginClient(login.getText())){
 			message.setText("Le login existe déjà, veuillez en choisir un autre");
 		}
-		else if (  !login.getText().isEmpty()  &&   !mdp.getText().isEmpty()  && !age.getText().isEmpty()  && !carteFidel.getText().isEmpty()  &&  !adresseMail.getText().isEmpty() 
-				&& !prenom.getText().isEmpty() && !nom.getText().isEmpty()  && !numTel.getText().isEmpty() && !adresse.getText().isEmpty()   && !sexe.getText().isEmpty()){
+		else if (  !login.getText().isEmpty()  &&   !mdp.getText().isEmpty()  && !age.getText().isEmpty()  && !carteFidel.getText().isEmpty()  
+				&&  !adresseMail.getText().isEmpty() && !prenom.getText().isEmpty() && !nom.getText().isEmpty()  && !numTel.getText().isEmpty() 
+				&& !adresse.getText().isEmpty() && !ville.getText().isEmpty() && !sexe.getText().isEmpty() && !cp.getText().isEmpty()){
 			
 			//XXX le message ne s'affiche pas
 			message.setText("Votre profil à été créé, vous pouvez dés à présent vous connecter. Retour sur l'écran d'accueil dans 4 secondes.");
