@@ -12,8 +12,8 @@ import javafx.scene.shape.Rectangle;
 
 public class ChoixPositionController {
 
-	private int nombreCol = 8;
-	private int nombreLig = 12;
+	private int nombreCol = 100;
+	private int nombreLig = 100;
     
 	@FXML
 	private Pane pane;
@@ -50,7 +50,7 @@ public class ChoixPositionController {
 				Rectangle rectangle = new Rectangle(tailleCol / (nombreCol) - 1, tailleLig / (nombreLig) - 1);
 				
 				// TODO remplacer le if par un select en fonction de la place
-				if(j == 2)
+				if(j == 1)
 				{
 					rectangle.setFill(Color.BLUE);
 				}

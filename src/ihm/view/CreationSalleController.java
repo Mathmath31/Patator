@@ -64,20 +64,22 @@ public class CreationSalleController {
 		
 		pane.getChildren().clear();
 		double tailleLig = pane.getPrefHeight();
+		System.out.println(tailleLig);
 		double tailleCol = pane.getPrefWidth();
-				
+		System.out.println(tailleCol);
 		GridPane gridPane = new GridPane();
 		
 		gridPane.setGridLinesVisible(true);
+		gridPane.setPrefWidth(pane.getPrefWidth());
 		
 		//int nombrelig = getRowCount(gridPane);
 		
 		for (int i = 0; i < nombreCol ; i++) {
-			gridPane.getColumnConstraints().add(new ColumnConstraints(tailleCol / nombreCol));
+			gridPane.getColumnConstraints().add(new ColumnConstraints((tailleCol / nombreCol)-1));
 		}
 		
 		for (int j = 0 ; j < nombreLig; j++) {
-        	gridPane.getRowConstraints().add(new RowConstraints(tailleLig / nombreLig));
+        	gridPane.getRowConstraints().add(new RowConstraints((tailleLig / nombreLig)-1));
         }
         pane.getChildren().add(0,gridPane);
         
@@ -98,13 +100,15 @@ public class CreationSalleController {
 	            gridPane.add(rectangle, i, j);
 	        }
 		}
+        System.out.println(gridPane.getHeight());
+		System.out.println(gridPane.getWidth());
         
 	}
 	
 	@FXML
 	private void creeSalles(){
 		try{
-			nombreCol = Integer.parseInt(nbcol.getText()) - 1;
+			nombreCol = Integer.parseInt(nbcol.getText());
 
 		} catch (NumberFormatException nfe) {
 			System.out.println("Please enter a valid number for colonne.");
@@ -112,7 +116,7 @@ public class CreationSalleController {
 		
 		
 		try{
-			nombreLig = Integer.parseInt(nblig.getText()) - 1;
+			nombreLig = Integer.parseInt(nblig.getText());
 
 		} catch (NumberFormatException nfe) {
 			System.out.println("Please enter a valid number for rows.");
