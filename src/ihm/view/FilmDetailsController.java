@@ -157,15 +157,15 @@ public class FilmDetailsController {
 			        VistaNavigator.loadVista(VistaNavigator.CHOIXPOSITION);
 				}
 				else{
-					if(dateSeance.getValue() != null)
+					if(dateSeance.getValue() == null)
 					{
 						message.setText("Veuillez sélectionner une date");
 					}
-					if(heureSeance.getValue() != null)
+					if(heureSeance.getValue() == null)
 					{
 						message.setText("Veuillez sélectionner une heure");
 					}
-					if((Integer.parseInt(nbPlace.getValue()) + Integer.parseInt(nbPlaceHandicape.getValue())) != 0)
+					if((Integer.parseInt(nbPlace.getValue()) + Integer.parseInt(nbPlaceHandicape.getValue())) == 0)
 					{
 						message.setText("Veuillez sélectionner au moins une place");
 					}
