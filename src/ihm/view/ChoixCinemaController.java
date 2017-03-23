@@ -1,8 +1,9 @@
 package ihm.view;
 
+import java.util.Iterator;
+
 import classes.Cinema;
 import classes.Client;
-import ihm.Panier;
 import ihm.view.MainController;
 import ihm.VistaNavigator;
 import ihm.model.InfoCine;
@@ -39,9 +40,15 @@ public class ChoixCinemaController {
 	
 	public void initialize(){	
 
-		cineData.add(new InfoCine("Gaumont","", "Labege",""));
-		cineData.add(new InfoCine("Pathé","", "Montaudran",""));
-		cineData.add(new InfoCine("Mega CGR","", "Moncul",""));
+		MainController.donnees.getCinemas().get(0).getNomCine();
+		for(Iterator<Cinema> i = MainController.donnees.getCinemas().iterator(); i.hasNext(); ) {
+		    Cinema item = i.next();
+		    System.out.println(item);
+			cineData.add(new InfoCine(item.getNomCine(),"",item.getVilleCine().toString(),"",item.getId()));
+		}
+//		cineData.add(new InfoCine("Gaumont","", "Labege","",1));
+//		cineData.add(new InfoCine("Pathé","", "Montaudran","",2));
+//		cineData.add(new InfoCine("Mega CGR","", "Moncul","",3));
 
 		cinemaName.setCellValueFactory(cellData -> cellData.getValue().cinemaNameProperty());
 		cinemaAdresse.setCellValueFactory(cellData -> cellData.getValue().cinemaVilleProperty());
@@ -53,7 +60,7 @@ public class ChoixCinemaController {
 			@Override
 			public void handle(MouseEvent event) {
 				cinema.setNomCine(tableView.getSelectionModel().getSelectedItem().getCinemaName());
-				cinema.setId(tableView.getSelectionModel().getSelectedIndex()+1);
+				cinema.setId(tableView.getSelectionModel().getSelectedItem().getCinemaID());
 				MainController.donnees.setCinemaCommande(cinema);
 				MainController.donnees.setClientCommande(client);
 				

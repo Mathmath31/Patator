@@ -1,7 +1,5 @@
 package ihm.view;
 
-import classes.Cinema;
-import classes.Client;
 import classes.Donnees;
 import ihm.VistaNavigator;
 import javafx.event.ActionEvent;

@@ -16,12 +16,13 @@ public class InfoCine {
 	    private final StringProperty cinemaAdresse;
 	    private final StringProperty cinemaVille;
 	    private final StringProperty cinemaCP;
+	    private Integer cinemaID;
 
-	    /**
+		/**
 	     * Default constructor.
 	     */
 	    public InfoCine() {
-	        this(null, null,null,null);
+	        this(null, null,null,null,null);
 	    }
 
 	    /**
@@ -30,11 +31,12 @@ public class InfoCine {
 	     * @param cinemaName
 	     * @param cinemaAdresse
 	     */
-	    public InfoCine(String cinemaName, String cinemaAdresse,String cinemaCP, String cinemaVille) {
+	    public InfoCine(String cinemaName, String cinemaAdresse,String cinemaCP, String cinemaVille, Integer cinemaID) {
 	        this.cinemaName = new SimpleStringProperty(cinemaName);
 	        this.cinemaAdresse = new SimpleStringProperty(cinemaAdresse);
 	        this.cinemaCP = new SimpleStringProperty(cinemaCP);
-	        this.cinemaVille = new SimpleStringProperty(cinemaName);
+	        this.cinemaVille = new SimpleStringProperty(cinemaVille);
+	        this.cinemaID = cinemaID;
 	    }
 
 	    public String getCinemaName() {
@@ -85,4 +87,10 @@ public class InfoCine {
 	        return cinemaCP;
 	    }
 
+	    public Integer getCinemaID() {
+			return cinemaID;
+		}
+	    public void setCinemaID(Integer id) {
+	        cinemaID = id;
+	    }
 }
