@@ -1,7 +1,5 @@
 package ihm.view;
 
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
-
 import classes.Donnees;
 import ihm.VistaNavigator;
 import javafx.event.ActionEvent;

@@ -32,6 +32,8 @@ public class FilmDetailsController {
 	@FXML
 	private Label nomFilm;
 	@FXML
+	private Label message;
+	@FXML
 	private ImageView viewImageFilm;
 	@FXML
 	private Button buttonValidFilm;
@@ -139,7 +141,18 @@ public class FilmDetailsController {
 			        VistaNavigator.loadVista(VistaNavigator.CHOIXPOSITION);
 				}
 				else{
-					//TODO Send message for user
+					if(dateSeance.getValue() != null)
+					{
+						message.setText("Veuillez sélectionner une date");
+					}
+					if(heureSeance.getValue() != null)
+					{
+						message.setText("Veuillez sélectionner une heure");
+					}
+					if((Integer.parseInt(nbPlace.getValue()) + Integer.parseInt(nbPlaceHandicape.getValue())) != 0)
+					{
+						message.setText("Veuillez sélectionner au moins une place");
+					}
 				}
 			}
 		});
