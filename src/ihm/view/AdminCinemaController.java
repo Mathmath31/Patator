@@ -52,9 +52,7 @@ public class AdminCinemaController {
 		
 		cinemaName.setCellValueFactory(cellData -> cellData.getValue().cinemaNameProperty());
 		cinemaAdresse.setCellValueFactory(cellData -> cellData.getValue().cinemaAdresseProperty());
-		cinemaVille.setCellValueFactory(cellData -> cellData.getValue().cinemaVilleProperty());
-		cinemaCP.setCellValueFactory(cellData -> cellData.getValue().cinemaCPProperty());
-		
+
 		tableView.getItems().setAll(cineData);
 		tableView.getSelectionModel().selectFirst();
 	}

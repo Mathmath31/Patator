@@ -44,15 +44,17 @@ public class ChoixCinemaController {
 		for(Iterator<Cinema> i = MainController.donnees.getCinemas().iterator(); i.hasNext(); ) {
 		    Cinema item = i.next();
 		    System.out.println(item);
-			cineData.add(new InfoCine(item.getNomCine(),"",item.getVilleCine().toString(),"",item.getId()));
+			cineData.add(new InfoCine(item.getNomCine(),item.getnVoieCine(),item.getVilleCine().getCpVille(),item.getVilleCine().getNomVille(),item.getId()));
 		}
 //		cineData.add(new InfoCine("Gaumont","", "Labege","",1));
 //		cineData.add(new InfoCine("Pathé","", "Montaudran","",2));
 //		cineData.add(new InfoCine("Mega CGR","", "Moncul","",3));
 
 		cinemaName.setCellValueFactory(cellData -> cellData.getValue().cinemaNameProperty());
-		cinemaAdresse.setCellValueFactory(cellData -> cellData.getValue().cinemaVilleProperty());
-
+		cinemaAdresse.setCellValueFactory(cellData -> cellData.getValue().cinemaAdresseProperty());
+		cinemaVille.setCellValueFactory(cellData -> cellData.getValue().cinemaVilleProperty());
+		cinemaCP.setCellValueFactory(cellData -> cellData.getValue().cinemaCPProperty());
+		
 		tableView.getItems().setAll(cineData);
 		tableView.getSelectionModel().selectFirst();
 		
