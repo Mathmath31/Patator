@@ -12,9 +12,15 @@ import javafx.scene.shape.Rectangle;
 
 public class ChoixPositionController {
 
-	private int nombreCol = 100;
-	private int nombreLig = 100;
-    
+	private int nombreCol = 20;
+	private int nombreLig = 20;
+	private int nombreDePlacePrise = 0;
+	private int nombreDePlacePriseHandi = 0;
+	//TODO Renseigner le nombre de place normal
+	private int nombreDePlace = 2;
+	//TODO Renseigner le nombre de place normal
+	private int nombreDePlaceHandi = 2;
+		
 	@FXML
 	private Pane pane;
 	
@@ -85,6 +91,44 @@ public class ChoixPositionController {
 	 */
 	public void click(int i, int j, Rectangle rect){
 		System.out.println(i + "/" + j);
-		rect.setFill(Color.BLACK);
+		//si il reste des places normales
+		if (rect.getFill() == Color.LIGHTGREEN || rect.getFill() == Color.GREEN)
+		{
+			if (rect.getFill() == Color.LIGHTGREEN)
+			{
+				rect.setFill(Color.GREEN);
+				rect.setStroke(Color.WHITE);
+				nombreDePlacePrise --;
+			}
+			else
+			{
+				if (nombreDePlacePrise < nombreDePlace)
+				{
+					rect.setFill(Color.LIGHTGREEN);
+					rect.setStroke(Color.RED);
+					nombreDePlacePrise ++;
+				}
+			}
+		}
+		if (rect.getFill() == Color.LIGHTBLUE|| rect.getFill() == Color.BLUE)
+		{
+			if (rect.getFill() == Color.LIGHTBLUE)
+			{
+				rect.setFill(Color.BLUE);
+				rect.setStroke(Color.WHITE);
+				nombreDePlacePriseHandi --;
+			}
+			else
+			{
+				if (nombreDePlacePrise < nombreDePlace)
+				{
+					rect.setFill(Color.LIGHTBLUE);
+					rect.setStroke(Color.RED);
+					nombreDePlacePriseHandi ++;
+				}
+			}
+		}
+		System.out.println(nombreDePlacePrise);
+
 	}
 }
