@@ -17,7 +17,9 @@ public class Place {
 	private ComposerPlace composerPlace;
 	private ArrayList<AjouterProduit> listAjouterProduit = new ArrayList<AjouterProduit>();
 
-	public Place() {};
+	public Place() {
+		composerPlace = new ComposerPlace();
+	};
 	
 	public Place(int id, boolean choixPlace, int idClient, ComposerPlace composerPlace, ArrayList<AjouterProduit> listAjouterProduit){
 		this.id=id;

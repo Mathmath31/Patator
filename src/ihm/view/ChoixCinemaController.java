@@ -40,7 +40,6 @@ public class ChoixCinemaController {
 	
 	public void initialize(){	
 
-		MainController.donnees.getCinemas().get(0).getNomCine();
 		for(Iterator<Cinema> i = MainController.donnees.getCinemas().iterator(); i.hasNext(); ) {
 		    Cinema item = i.next();
 		    System.out.println(item);

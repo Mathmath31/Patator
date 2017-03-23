@@ -13,9 +13,11 @@ public class AjouterProduit {
 	private int idPlace;
 	private int quantite;
 	private boolean livrer;
-	private Produit produit = new Produit();
+	private Produit produit;
 
-	public AjouterProduit() {};
+	public AjouterProduit() {
+		produit = new Produit();
+	};
 	
 	public AjouterProduit(int idProduit, int idPlace, int quantite, boolean livrer, Produit produit){
 		this.idPlace=idPlace;

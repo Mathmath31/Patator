@@ -14,7 +14,10 @@ public class Seance {
 	private Film filmT;
 	private CreerSeance creerSeanceT;
 
-	public Seance() {};
+	public Seance() {
+		creerSeanceT = new CreerSeance();
+		filmT = new Film();
+	};
 	
 	public Seance(int id, int idFilm, Film filmT, CreerSeance creerSeanceT){
 		this.id=id;

@@ -14,7 +14,9 @@ public class ComposerPlace {
 	private int idSeance;
 	private Seance seanceT;
 
-	public ComposerPlace() {};
+	public ComposerPlace() {
+		seanceT = new Seance();
+	};
 	
 	public ComposerPlace(int idPlace, int idCaseSalle, int idSeance, Seance seanceT) {
 		this.idPlace=idPlace;

@@ -18,7 +18,10 @@ public class CaseSalle {
 	private PositionCase position;
 	private TypeCase type;
 
-	public CaseSalle() {};
+	public CaseSalle() {
+		position = new PositionCase();
+		type = new TypeCase();
+	};
 	
 	public CaseSalle(int id, String nomSiegeCase,int idPlanSalle, int idPositionCase, int idTypeCase, PositionCase position, TypeCase type) {
 		this.id=id;

@@ -8,6 +8,10 @@ import apiTheMovieDB.CineGoAPI;
 import apiTheMovieDB.CineGoFilm;
 import classes.Cinema;
 import classes.Client;
+import classes.ComposerPlace;
+import classes.CreerSeance;
+import classes.Place;
+import classes.Seance;
 import ihm.VistaNavigator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -130,13 +134,25 @@ public class FilmDetailsController {
 					for (int i = 0 ; i < Integer.parseInt(nbPlace.getValue()) + Integer.parseInt(nbPlaceHandicape.getValue()) ; i++){
 					
 					}
+					Place place = new Place();
+					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(heureSeance.getValue().toString());
+
+//					Seance seance =new Seance();
+//					ComposerPlace composer = new ComposerPlace();
+//					CreerSeance creer = new CreerSeance();
+//					
+//					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(heureSeance.getValue().toString());
+					client.getListPlace().add(0, place);
+//					client.setListPlace(new Place().getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(heureSeance.getValue().toString()));
+
 					
+					// Place().getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(heureSeance.getValue().toString()));
 					//Film
 //					client.getListPlace().get(0).getComposerPlace().getSeanceT().getFilmT().setCodeFilm(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getId());
 //					//Date
-//					panier.setDateSeance(dateSeance.getValue());
+//					dateSeance.getValue();
 					//Heure
-//					panier.setHeureSeance(LocalTime.parse(heureSeance.getValue().toString()));
+//					LocalTime.parse(heureSeance.getValue().toString())
 					MainController.donnees.setClientCommande(client);
 			        VistaNavigator.loadVista(VistaNavigator.CHOIXPOSITION);
 				}

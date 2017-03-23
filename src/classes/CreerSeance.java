@@ -17,7 +17,10 @@ public class CreerSeance {
 	private Dates datesT;
 	
 
-	public CreerSeance() {};
+	public CreerSeance() {
+		creneauT = new Creneau();
+		datesT = new Dates();
+	};
 	
 	public CreerSeance(int idSeance, int idPlanSalle, int idCreneau,int idDate, Creneau creneauT, Dates datesT){
 		this.idPlanSalle=idPlanSalle;

@@ -46,7 +46,7 @@
                                                    <children>
                                                       <DatePicker fx:id="dateSeance" layoutX="34.0" layoutY="23.0" />
                                                       <ComboBox fx:id="heureSeance" layoutX="333.0" layoutY="23.0" prefHeight="25.0" prefWidth="174.0" promptText="Scéances" />
-                                                      <Label layoutX="183.0" layoutY="79.0" text="Nombre de places total" />
+                                                      <Label layoutX="183.0" layoutY="79.0" text="Nombre de places normal" />
                                                       <Label layoutX="153.0" layoutY="112.0" text="Nombre de places handicapé" />
                                                       <ComboBox fx:id="nbPlace" layoutX="333.0" layoutY="75.0" prefHeight="25.0" prefWidth="33.0" />
                                                       <ComboBox fx:id="nbPlaceHandicape" layoutX="334.0" layoutY="108.0" prefHeight="25.0" prefWidth="6.0" />

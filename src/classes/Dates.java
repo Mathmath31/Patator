@@ -11,7 +11,9 @@ public class Dates {
 	private int id;
 	private Date seanceDate;
 
-	public Dates() {};
+	public Dates() {
+		seanceDate = new Date();
+	};
 	
 	public Dates(int id, Date seanceDate){
 		this.id=id;
