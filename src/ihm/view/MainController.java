@@ -1,5 +1,7 @@
 package ihm.view;
 
+import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
+
 import classes.Donnees;
 import ihm.VistaNavigator;
 import javafx.event.ActionEvent;
@@ -32,6 +34,8 @@ public class MainController {
 	private Label label1;
 	@FXML
 	private Label label2;
+	@FXML
+	private Label labelMessage;
 
 	@FXML
 	protected Button btCinema;
@@ -88,6 +92,12 @@ public class MainController {
 			menuAdmin.setVisible(true);
 			}
 			VistaNavigator.loadVista(VistaNavigator.CHOIXCINEMA);
+			String message = "Bonjour "+ MainController.donnees.getClientHistorique().getNomClient();
+			message = message + ", " + MainController.donnees.getClientHistorique().getPrenomClient();
+			
+			labelMessage.setText(message);
+			password.setText("");
+			idUser.setText("");
 		}
 	}
 
@@ -107,6 +117,8 @@ public class MainController {
 		idUser.setVisible(true);
 		password.setVisible(true);
 		VistaNavigator.loadVista(VistaNavigator.HOME);
+		
+		labelMessage.setText("Veuillez vous identifier ==>");
 	}
 
 	

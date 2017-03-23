@@ -25,7 +25,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#deconnection" text="Me Deconnecter" />
               </items>
             </MenuButton>
-            <Label layoutX="266.0" layoutY="17.0" text="Bonjour + nom" />
+            <Label fx:id="labelMessage" layoutX="266.0" layoutY="17.0" text="Veuillez vous identifier ==&gt;" />
             <Label fx:id="label1" layoutX="586.0" layoutY="15.0" text="Identifiant :" />
             <Label fx:id="label2" layoutX="793.0" layoutY="15.0" text="Password :" />
             <TextField fx:id="idUser" layoutX="657.0" layoutY="11.0" prefHeight="25.0" prefWidth="126.0" />
