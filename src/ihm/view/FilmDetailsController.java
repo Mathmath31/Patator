@@ -2,15 +2,19 @@ package ihm.view;
 //TODO 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import apiTheMovieDB.CineGoAPI;
 import apiTheMovieDB.CineGoFilm;
+import classes.CaseSalle;
 import classes.Cinema;
 import classes.Client;
 import classes.ComposerPlace;
 import classes.CreerSeance;
 import classes.Place;
+import classes.PlanSalle;
 import classes.Seance;
 import ihm.VistaNavigator;
 import javafx.collections.FXCollections;
@@ -130,30 +134,31 @@ public class FilmDetailsController {
 			@Override
 			public void handle(MouseEvent event) {
 				if(listView.getSelectionModel().isEmpty() == false && dateSeance.getValue() != null && heureSeance.getValue() != null && (Integer.parseInt(nbPlace.getValue()) + Integer.parseInt(nbPlaceHandicape.getValue())) != 0 ){
-					
-					for (int i = 0 ; i < Integer.parseInt(nbPlace.getValue()) + Integer.parseInt(nbPlaceHandicape.getValue()) ; i++){
-					
-					}
 					Place place = new Place();
+					CaseSalle casesalle = new CaseSalle();
+					cinema.getListPlanSalle().add(new PlanSalle());
+					place.getComposerPlace().getSeanceT().getCreerSeanceT().getDatesT().setSeanceDate(Date.from(dateSeance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
 					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(heureSeance.getValue().toString());
+					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureFinCreneau(heureSeance.getValue().toString());
+					place.getComposerPlace().getSeanceT().getFilmT().setNomFilm("");
+					place.getComposerPlace().getSeanceT().getFilmT().setCodeFilm("");
+					place.getComposerPlace().getSeanceT().getFilmT().setId(0);
+					for (int i = 0 ; i < Integer.parseInt(nbPlace.getValue()) ; i++){
+						client.getListPlace().add(place);
+						casesalle.getType().setId(6);
+						casesalle.getType().setNomTypeCase("Normal");
+						cinema.getListPlanSalle().get(0).getListCaseSalle().add(casesalle);
 
-//					Seance seance =new Seance();
-//					ComposerPlace composer = new ComposerPlace();
-//					CreerSeance creer = new CreerSeance();
-//					
-//					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(heureSeance.getValue().toString());
-					client.getListPlace().add(0, place);
-//					client.setListPlace(new Place().getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(heureSeance.getValue().toString()));
+					}
+					for (int i = 0 ; i < Integer.parseInt(nbPlaceHandicape.getValue()) ; i++){
+						client.getListPlace().add(place);
+						casesalle.getType().setId(8);
+						casesalle.getType().setNomTypeCase("Handicapé");
+						cinema.getListPlanSalle().get(0).getListCaseSalle().add(casesalle);
+					}
 
-					
-					// Place().getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(heureSeance.getValue().toString()));
-					//Film
-//					client.getListPlace().get(0).getComposerPlace().getSeanceT().getFilmT().setCodeFilm(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getId());
-//					//Date
-//					dateSeance.getValue();
-					//Heure
-//					LocalTime.parse(heureSeance.getValue().toString())
 					MainController.donnees.setClientCommande(client);
+					MainController.donnees.setCinemaCommande(cinema);
 			        VistaNavigator.loadVista(VistaNavigator.CHOIXPOSITION);
 				}
 				else{
