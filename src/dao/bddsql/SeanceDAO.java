@@ -77,7 +77,7 @@ public class SeanceDAO extends DAO<Seance> {
 		try
 		{
 			result.last();
-			i = result.getInt("idPositionCase");
+			i = result.getInt("idSeance");
 		} catch (SQLException e)
 		{
 			e.printStackTrace();

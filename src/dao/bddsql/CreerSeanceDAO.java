@@ -41,7 +41,7 @@ public class CreerSeanceDAO extends DAO<CreerSeance> {
 		Dates datesT=new Dates();
 		
 		ResultSet result = Connection.selectFrom("SELECT idCreneau,idPlanSalle,idDate "
-												+ "FROM Creneau "
+												+ "FROM creerseance "
 												+ "WHERE idSeance="
 												+id
 												+";");
@@ -73,7 +73,7 @@ public class CreerSeanceDAO extends DAO<CreerSeance> {
 	@Override
 	public CreerSeance create(CreerSeance obj) {
 		
-		Connection.update("INSERT INTO creer (idCreneau,idPlanSalle,idDate,idSeance) VALUES("
+		Connection.update("INSERT INTO creerseance (idCreneau,idPlanSalle,idDate,idSeance) VALUES("
 						  +obj.getIdCreneau()+","
 						  +obj.getIdPlanSalle()+","
 						  +obj.getIdDate()+","
@@ -91,7 +91,7 @@ public class CreerSeanceDAO extends DAO<CreerSeance> {
 	@Override
 	public CreerSeance update(CreerSeance obj) {
 		
-		Connection.update("UPDATE creer SET idCreneau ="+obj.getIdCreneau()
+		Connection.update("UPDATE creerseance SET idCreneau ="+obj.getIdCreneau()
 						  +",idPlanSalle="+obj.getIdPlanSalle()
 						  +",idDate="+obj.getIdDate()
 						  +" WHERE idSeance="+obj.getIdSeance()+";");	
@@ -107,7 +107,7 @@ public class CreerSeanceDAO extends DAO<CreerSeance> {
 	@Override
 	public void delete(CreerSeance obj) {
 		
-		Connection.update("DELETE  FROM creer WHERE idCreneau ="+obj.getIdCreneau()
+		Connection.update("DELETE  FROM creerseance WHERE idCreneau ="+obj.getIdCreneau()
 						  +" AND idPlanSalle="+obj.getIdPlanSalle()
 						  +" AND idDate="+obj.getIdDate()
 						  +" AND idSeance="+obj.getIdSeance()+";");	

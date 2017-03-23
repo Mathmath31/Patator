@@ -2,8 +2,13 @@ package dao.bddsql;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+
 import classes.AjouterProduit;
+import classes.Place;
 import classes.Produit;
+import classes.Seance;
 import connection.Connection;
 import dao.DAO;
 import dao.DAOFactory;
@@ -408,5 +413,34 @@ public class ComplementDAO {
 
 		return idCinema;
 	}
+	
+	public static ArrayList<Seance> listofSeances(int idCinema, String codeFilm, Date seanceDate) {
+
+		ArrayList<Seance> seances= new ArrayList<Seance>();
+		DAO<Seance> SeanceDAO = DAOFactory.getSeanceDAO();
+	
+		ResultSet rs = Connection.selectFrom("SELECT s.idSeance FROM seance s INNER JOIN creerseance c ON s.idSeance=c.idSeance "
+											+" INNER JOIN plansalle p ON c.idPlanSalle=p.idPlanSalle "									
+											+" INNER JOIN film f ON s.idFilm=f.idFilm "
+											+" INNER JOIN date d ON c.idDate=d.idDate "
+											+" WHERE f.codeFilm='" + codeFilm
+											+"' AND d.seanceDate='" + seanceDate
+											+"' AND p.idCinema=" + idCinema + ";");
+		int k=0;
+		try {
+			while(rs.next())
+			{
+				System.out.println(k);
+				Seance seance=new Seance();
+				seance=SeanceDAO.find(rs.getInt("idSeance"));
+				seances.add(seance);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Connection.close();
+		return seances;
+	}
+	
 	
 }
