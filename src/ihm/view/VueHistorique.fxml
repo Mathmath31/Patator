@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
+   <children>
+      <TableView layoutX="90.0" layoutY="23.0" prefHeight="600.0" prefWidth="1012.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="188.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Quantite" />
+          <TableColumn prefWidth="455.0" text="Designation" />
+            <TableColumn prefWidth="481.0" text="Info" />
+        </columns>
+      </TableView>
+      <Button layoutX="1024.0" layoutY="275.0" mnemonicParsing="false" text="supprimmer ma reservation" />
+   </children>
+</AnchorPane>

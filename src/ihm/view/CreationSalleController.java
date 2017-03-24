@@ -1,6 +1,7 @@
 package ihm.view;
 
 import classes.Cinema;
+import classes.PlanSalle;
 import ihm.model.InfoCine;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -157,7 +158,7 @@ public class CreationSalleController {
 	
 	@FXML
 	private void selectionSalles(){
-		//for(Salle s:MainController.donnees.getCinemas().get){
+		//for(PlanSalle p:MainController.donnees.get){
 				
 		//}
 		
