@@ -73,6 +73,11 @@ public class TestSeance {
 		for(Seance se: seances){
 			System.out.println(se.toString());
 		}
+		
+		//nb places restantes normal seance 1
+		System.out.println(ComplementDAO.nbNormalPlacesSeance(1));
+		//nb places restantes handicape seance 1
+		System.out.println(ComplementDAO.nbHandicapePlacesSeance(1));
 	}
 
 }

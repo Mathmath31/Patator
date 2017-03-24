@@ -443,5 +443,106 @@ public class ComplementDAO {
 		return seances;
 	}
 	
+	/**
+	 * Retrieve the number of normal place left for a seance from the DB 
+	 * @author Thomas
+	 * @param idSeance : id of the seance searched
+	 * @return nbPlaces : int number of place left for the seance
+	 * @exception  SQLException : When the query doesn't work
+	 */
+	public static int nbNormalPlacesSeance(int idSeance) {
+		
+		int nbPlacesTotal=0;
+		int nbPlacesOccupe=0;
+		int nbPlaces = 0;
+		
+		
+		try {
+			ResultSet result = Connection.selectFrom("SELECT COUNT(cs.idCaseSalle) FROM  casesalle cs"
+					 								+ " INNER JOIN composerplace cp ON cs.idCaseSalle=cp.idCaseSalle "
+					 								+ " INNER JOIN typecase tc ON cs.idTypeCase=tc.idTypeCase "
+					 								+ " WHERE cp.idSeance =" + idSeance 
+					 								+ " AND tc.nomTypeCase='Normal' ;");
+			while(result.next())
+			{
+				nbPlacesOccupe = result.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//System.out.println(nbPlacesOccupe);
+		try {
+			ResultSet result = Connection.selectFrom("SELECT COUNT(cs.idCaseSalle) FROM  casesalle cs"
+													+ " INNER JOIN typecase tc ON cs.idTypeCase=tc.idTypeCase"
+					 								+ " INNER JOIN plansalle p ON cs.idPlanSalle=p.idPlanSalle "
+					 								+ " INNER JOIN creerseance c ON p.idPlanSalle=c.idPlanSalle "
+					 								+ " WHERE c.idSeance =" + idSeance 
+					 								+ " AND tc.nomTypeCase='Normal' ;");
+			while(result.next())
+			{
+				nbPlacesTotal = result.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//System.out.println(nbPlacesTotal);
+		
+		nbPlaces=nbPlacesTotal-nbPlacesOccupe;
+		
+		Connection.close();
+		return nbPlaces;
+		
+	}
+	
+public static int nbHandicapePlacesSeance(int idSeance) {
+		
+		int nbPlacesTotal=0;
+		int nbPlacesOccupe=0;
+		int nbPlaces = 0;
+		
+		
+		try {
+			ResultSet result = Connection.selectFrom("SELECT COUNT(cs.idCaseSalle) FROM  casesalle cs"
+					 								+ " INNER JOIN composerplace cp ON cs.idCaseSalle=cp.idCaseSalle "
+					 								+ " INNER JOIN typecase tc ON cs.idTypeCase=tc.idTypeCase "
+					 								+ " WHERE cp.idSeance =" + idSeance 
+					 								+ " AND tc.nomTypeCase='Handicapé' ;");
+			while(result.next())
+			{
+				nbPlacesOccupe = result.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//System.out.println(nbPlacesOccupe);
+		try {
+			ResultSet result = Connection.selectFrom("SELECT COUNT(cs.idCaseSalle) FROM  casesalle cs"
+													+ " INNER JOIN typecase tc ON cs.idTypeCase=tc.idTypeCase"
+					 								+ " INNER JOIN plansalle p ON cs.idPlanSalle=p.idPlanSalle "
+					 								+ " INNER JOIN creerseance c ON p.idPlanSalle=c.idPlanSalle "
+					 								+ " WHERE c.idSeance =" + idSeance 
+					 								+ " AND tc.nomTypeCase='Handicapé' ;");
+			while(result.next())
+			{
+				nbPlacesTotal = result.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//System.out.println(nbPlacesTotal);
+		
+		nbPlaces=nbPlacesTotal-nbPlacesOccupe;
+		
+		Connection.close();
+		return nbPlaces;
+		
+	}
+	
 	
 }
