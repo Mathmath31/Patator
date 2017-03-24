@@ -25,10 +25,9 @@ public class TestSeance {
 		
 		
 		
-		/*for(int i=1;i<=90;i++){ // dates
-			for(int j=1;j<=3;j++){// Creneaux
-				for(int k=1;k<=3;k++){// Salles
-					
+		/*for(int i=1;i<=2;i++){ // cinema
+			for(int j=1;j<=90;j++){// dates
+				for(int k=1;k<=3;k++){// creneaux
 					for(int l=1;l<=3;l++){// Films
 						seance.setIdFilm(l);
 						seance=SeanceDAO.create(seance);
@@ -37,23 +36,25 @@ public class TestSeance {
 				}
 			}
 		}*/
-		/*int s=1;
-		for(int i=1;i<=2430;i+=3){ //salle
-			for(int j=1;j<=3;j++){ //creneau
-				for(int k=1;k<=3;k++){ //film
-					for(int l=1;l<=90;l++){//dates
-						creerSeance.setIdDate(l);
-						creerSeance.setIdCreneau(j);
-						creerSeance.setIdPlanSalle(i);
+		
+		
+		
+	/*	int s=813;
+		while( s<=1620){
+			
+			for(int j=1;j<=90;j++){ //dates
+					for(int l=1;l<=3;l++){//creneau
+						creerSeance.setIdDate(j);
+						creerSeance.setIdCreneau(l);
+						creerSeance.setIdPlanSalle(6);
 						creerSeance.setIdSeance(s);
 						
 						creerSeance=CreerSeanceDAO.create(creerSeance);
-						s++;
-					}
-					
-				}
+						s+=3;
+					}				
 			}
-		}*/
+		}
+		*/
 		
 		ArrayList<Seance> seances= new ArrayList<Seance>();
 		
@@ -70,7 +71,7 @@ public class TestSeance {
 		seances=ComplementDAO.listofSeances(1, "121856", dates.getSeanceDate());
 		
 		for(Seance se: seances){
-			System.out.println(se.getIdFilm());
+			System.out.println(se.toString());
 		}
 	}
 

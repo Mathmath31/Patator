@@ -418,13 +418,14 @@ public class ComplementDAO {
 
 		ArrayList<Seance> seances= new ArrayList<Seance>();
 		DAO<Seance> SeanceDAO = DAOFactory.getSeanceDAO();
+		java.sql.Date sqlDate = new java.sql.Date(seanceDate.getTime());
 	
 		ResultSet rs = Connection.selectFrom("SELECT s.idSeance FROM seance s INNER JOIN creerseance c ON s.idSeance=c.idSeance "
 											+" INNER JOIN plansalle p ON c.idPlanSalle=p.idPlanSalle "									
 											+" INNER JOIN film f ON s.idFilm=f.idFilm "
 											+" INNER JOIN date d ON c.idDate=d.idDate "
 											+" WHERE f.codeFilm='" + codeFilm
-											+"' AND d.seanceDate='" + seanceDate
+											+"' AND d.seanceDate='" + sqlDate
 											+"' AND p.idCinema=" + idCinema + ";");
 		int k=0;
 		try {
@@ -432,7 +433,7 @@ public class ComplementDAO {
 			{
 				System.out.println(k);
 				Seance seance=new Seance();
-				seance=SeanceDAO.find(rs.getInt("idSeance"));
+				seance=SeanceDAO.find(rs.getInt("s.idSeance"));
 				seances.add(seance);
 			}
 		} catch (SQLException e) {

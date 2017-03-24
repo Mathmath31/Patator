@@ -82,9 +82,129 @@
           <Siege nomTypeSiege="Normal" x="5" y="5"/>
         </Sieges>
       </Salle>
+      <Salle nomSalle="Neptune" numSalle="3">
+        <Sieges>
+          <Siege nomTypeSiege="Entrée" x="0" y="0"/>
+          <Siege nomTypeSiege="Sortie" x="5" y="0"/>
+          <Siege nomTypeSiege="Sortie" x="3" y="5"/>
+          <Siege nomTypeSiege="Extincteur" x="0" y="3"/>
+          <Siege nomTypeSiege="Extincteur" x="5" y="3"/>
+          <Siege nomTypeSiege="Ecran" x="1" y="0"/>
+          <Siege nomTypeSiege="Ecran" x="2" y="0"/>
+          <Siege nomTypeSiege="Ecran" x="3" y="0"/>
+          <Siege nomTypeSiege="Ecran" x="4" y="0"/>
+          <Siege nomTypeSiege="Couloir" x="3" y="1"/>
+          <Siege nomTypeSiege="Couloir" x="3" y="2"/>
+          <Siege nomTypeSiege="Couloir" x="3" y="3"/>
+          <Siege nomTypeSiege="Couloir" x="3" y="4"/>
+          <Siege nomTypeSiege="Handicapé" x="0" y="1"/>
+          <Siege nomTypeSiege="Handicapé" x="1" y="1"/>
+          <Siege nomTypeSiege="Handicapé" x="2" y="1"/>
+          <Siege nomTypeSiege="Handicapé" x="4" y="1"/>
+          <Siege nomTypeSiege="Handicapé" x="5" y="1"/>
+          <Siege nomTypeSiege="Normal" x="0" y="2"/>
+          <Siege nomTypeSiege="Normal" x="0" y="4"/>
+          <Siege nomTypeSiege="Normal" x="0" y="5"/>
+          <Siege nomTypeSiege="Normal" x="1" y="2"/>
+          <Siege nomTypeSiege="Normal" x="1" y="3"/>
+          <Siege nomTypeSiege="Normal" x="1" y="4"/>
+          <Siege nomTypeSiege="Normal" x="1" y="5"/>
+          <Siege nomTypeSiege="Normal" x="2" y="2"/>
+          <Siege nomTypeSiege="Normal" x="2" y="3"/>
+          <Siege nomTypeSiege="Normal" x="2" y="4"/>
+          <Siege nomTypeSiege="Normal" x="2" y="5"/>
+          <Siege nomTypeSiege="Normal" x="4" y="2"/>
+          <Siege nomTypeSiege="Normal" x="4" y="3"/>
+          <Siege nomTypeSiege="Normal" x="4" y="4"/>
+          <Siege nomTypeSiege="Normal" x="4" y="5"/>
+          <Siege nomTypeSiege="Normal" x="5" y="2"/>
+          <Siege nomTypeSiege="Normal" x="5" y="4"/>
+          <Siege nomTypeSiege="Normal" x="5" y="5"/>
+        </Sieges>
+      </Salle>
     </Cinema>
     <Cinema idCinema="2">
       <Salle nomSalle="Nogaro" numSalle="1">
+        <Sieges>
+          <Siege nomTypeSiege="Entrée" x="0" y="0"/>
+          <Siege nomTypeSiege="Sortie" x="5" y="0"/>
+          <Siege nomTypeSiege="Sortie" x="3" y="5"/>
+          <Siege nomTypeSiege="Extincteur" x="0" y="3"/>
+          <Siege nomTypeSiege="Extincteur" x="5" y="3"/>
+          <Siege nomTypeSiege="Ecran" x="1" y="0"/>
+          <Siege nomTypeSiege="Ecran" x="2" y="0"/>
+          <Siege nomTypeSiege="Ecran" x="3" y="0"/>
+          <Siege nomTypeSiege="Ecran" x="4" y="0"/>
+          <Siege nomTypeSiege="Couloir" x="3" y="1"/>
+          <Siege nomTypeSiege="Couloir" x="3" y="2"/>
+          <Siege nomTypeSiege="Couloir" x="3" y="3"/>
+          <Siege nomTypeSiege="Couloir" x="3" y="4"/>
+          <Siege nomTypeSiege="Handicapé" x="0" y="1"/>
+          <Siege nomTypeSiege="Handicapé" x="1" y="1"/>
+          <Siege nomTypeSiege="Handicapé" x="2" y="1"/>
+          <Siege nomTypeSiege="Handicapé" x="4" y="1"/>
+          <Siege nomTypeSiege="Handicapé" x="5" y="1"/>
+          <Siege nomTypeSiege="Normal" x="0" y="2"/>
+          <Siege nomTypeSiege="Normal" x="0" y="4"/>
+          <Siege nomTypeSiege="Normal" x="0" y="5"/>
+          <Siege nomTypeSiege="Normal" x="1" y="2"/>
+          <Siege nomTypeSiege="Normal" x="1" y="3"/>
+          <Siege nomTypeSiege="Normal" x="1" y="4"/>
+          <Siege nomTypeSiege="Normal" x="1" y="5"/>
+          <Siege nomTypeSiege="Normal" x="2" y="2"/>
+          <Siege nomTypeSiege="Normal" x="2" y="3"/>
+          <Siege nomTypeSiege="Normal" x="2" y="4"/>
+          <Siege nomTypeSiege="Normal" x="2" y="5"/>
+          <Siege nomTypeSiege="Normal" x="4" y="2"/>
+          <Siege nomTypeSiege="Normal" x="4" y="3"/>
+          <Siege nomTypeSiege="Normal" x="4" y="4"/>
+          <Siege nomTypeSiege="Normal" x="4" y="5"/>
+          <Siege nomTypeSiege="Normal" x="5" y="2"/>
+          <Siege nomTypeSiege="Normal" x="5" y="4"/>
+          <Siege nomTypeSiege="Normal" x="5" y="5"/>
+        </Sieges>
+      </Salle>
+      <Salle nomSalle="Brassens" numSalle="2">
+        <Sieges>
+          <Siege nomTypeSiege="Entrée" x="0" y="0"/>
+          <Siege nomTypeSiege="Sortie" x="5" y="0"/>
+          <Siege nomTypeSiege="Sortie" x="3" y="5"/>
+          <Siege nomTypeSiege="Extincteur" x="0" y="3"/>
+          <Siege nomTypeSiege="Extincteur" x="5" y="3"/>
+          <Siege nomTypeSiege="Ecran" x="1" y="0"/>
+          <Siege nomTypeSiege="Ecran" x="2" y="0"/>
+          <Siege nomTypeSiege="Ecran" x="3" y="0"/>
+          <Siege nomTypeSiege="Ecran" x="4" y="0"/>
+          <Siege nomTypeSiege="Couloir" x="3" y="1"/>
+          <Siege nomTypeSiege="Couloir" x="3" y="2"/>
+          <Siege nomTypeSiege="Couloir" x="3" y="3"/>
+          <Siege nomTypeSiege="Couloir" x="3" y="4"/>
+          <Siege nomTypeSiege="Handicapé" x="0" y="1"/>
+          <Siege nomTypeSiege="Handicapé" x="1" y="1"/>
+          <Siege nomTypeSiege="Handicapé" x="2" y="1"/>
+          <Siege nomTypeSiege="Handicapé" x="4" y="1"/>
+          <Siege nomTypeSiege="Handicapé" x="5" y="1"/>
+          <Siege nomTypeSiege="Normal" x="0" y="2"/>
+          <Siege nomTypeSiege="Normal" x="0" y="4"/>
+          <Siege nomTypeSiege="Normal" x="0" y="5"/>
+          <Siege nomTypeSiege="Normal" x="1" y="2"/>
+          <Siege nomTypeSiege="Normal" x="1" y="3"/>
+          <Siege nomTypeSiege="Normal" x="1" y="4"/>
+          <Siege nomTypeSiege="Normal" x="1" y="5"/>
+          <Siege nomTypeSiege="Normal" x="2" y="2"/>
+          <Siege nomTypeSiege="Normal" x="2" y="3"/>
+          <Siege nomTypeSiege="Normal" x="2" y="4"/>
+          <Siege nomTypeSiege="Normal" x="2" y="5"/>
+          <Siege nomTypeSiege="Normal" x="4" y="2"/>
+          <Siege nomTypeSiege="Normal" x="4" y="3"/>
+          <Siege nomTypeSiege="Normal" x="4" y="4"/>
+          <Siege nomTypeSiege="Normal" x="4" y="5"/>
+          <Siege nomTypeSiege="Normal" x="5" y="2"/>
+          <Siege nomTypeSiege="Normal" x="5" y="4"/>
+          <Siege nomTypeSiege="Normal" x="5" y="5"/>
+        </Sieges>
+      </Salle>
+      <Salle nomSalle="Gainsbourg" numSalle="3">
         <Sieges>
           <Siege nomTypeSiege="Entrée" x="0" y="0"/>
           <Siege nomTypeSiege="Sortie" x="5" y="0"/>
