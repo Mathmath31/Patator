@@ -43,7 +43,7 @@ public class ChoixCinemaController {
 		for(Iterator<Cinema> i = MainController.donnees.getCinemas().iterator(); i.hasNext(); ) {
 		    Cinema item = i.next();
 		    System.out.println(item);
-			cineData.add(new InfoCine(item.getNomCine(),item.getnVoieCine(),item.getVilleCine().getCpVille(),item.getVilleCine().getNomVille(),item.getId()));
+			cineData.add(new InfoCine(item.getNomCine(),item.getnVoieCine(),item.getVilleCine().getCpVille(),item.getVilleCine().getNomVille(),""+item.getId()));
 		}
 //		cineData.add(new InfoCine("Gaumont","", "Labege","",1));
 //		cineData.add(new InfoCine("Pathé","", "Montaudran","",2));
@@ -61,7 +61,7 @@ public class ChoixCinemaController {
 			@Override
 			public void handle(MouseEvent event) {
 				cinema.setNomCine(tableView.getSelectionModel().getSelectedItem().getCinemaName());
-				cinema.setId(tableView.getSelectionModel().getSelectedItem().getCinemaID());
+				cinema.setId(Integer.valueOf(tableView.getSelectionModel().getSelectedItem().getCinemaID()));
 				MainController.donnees.setCinemaCommande(cinema);
 				MainController.donnees.setClientCommande(client);
 				

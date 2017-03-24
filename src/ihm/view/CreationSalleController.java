@@ -1,9 +1,14 @@
 package ihm.view;
 
+import classes.Cinema;
+import ihm.model.InfoCine;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
@@ -52,16 +57,61 @@ public class CreationSalleController {
 	private TextField nomSalle;
 	
 	@FXML
-	private ListView listCine;
+	private TableView<InfoCine> listCine;
 	
 	@FXML
-	private ListView listSalle;
+	private TableView<InfoCine> listSalle;
+	
+	@FXML
+	private TableColumn<InfoCine, String> cinemaId;
+	@FXML
+	private TableColumn<InfoCine, String> cinemaName;
+	
+	@FXML
+	private TableColumn<InfoCine, String> salleId;
+	@FXML
+	private TableColumn<InfoCine, String> salleName;
+	
+	private ObservableList<InfoCine> cineData = FXCollections.observableArrayList();
 	
 	public void initialize(){
 		
+		for(Cinema c:MainController.donnees.getCinemas()){
+			cineData.add(new InfoCine(c.getNomCine(),c.getnVoieCine(),c.getVilleCine().getCpVille(),c.getVilleCine().getNomVille(),String.valueOf(c.getVilleCine().getId())));	
+		}
+		
+		cinemaId.setCellValueFactory(cellData -> cellData.getValue().cinemaIDProperty());
+		cinemaName.setCellValueFactory(cellData -> cellData.getValue().cinemaNameProperty());
+
+		listCine.getItems().setAll(cineData);
+		listCine.getSelectionModel().selectFirst();
+		
+		remplirTableau();
+        
+	}
+	
+	@FXML
+	private void creeSalles(){
+		try{
+			nombreCol = Integer.parseInt(nbcol.getText());
+
+		} catch (NumberFormatException nfe) {
+			System.out.println("Please enter a valid number for colonne.");
+		}
 		
 		
+		try{
+			nombreLig = Integer.parseInt(nblig.getText());
+
+		} catch (NumberFormatException nfe) {
+			System.out.println("Please enter a valid number for rows.");
+		}
 		
+		remplirTableau();
+	        	
+	}
+	
+	private void remplirTableau(){
 		pane.getChildren().clear();
 		double tailleLig = pane.getPrefHeight();
 		System.out.println(tailleLig);
@@ -102,28 +152,17 @@ public class CreationSalleController {
 		}
         System.out.println(gridPane.getHeight());
 		System.out.println(gridPane.getWidth());
-        
 	}
 	
+	
 	@FXML
-	private void creeSalles(){
-		try{
-			nombreCol = Integer.parseInt(nbcol.getText());
-
-		} catch (NumberFormatException nfe) {
-			System.out.println("Please enter a valid number for colonne.");
-		}
+	private void selectionSalles(){
+		//for(Salle s:MainController.donnees.getCinemas().get){
+				
+		//}
 		
 		
-		try{
-			nombreLig = Integer.parseInt(nblig.getText());
-
-		} catch (NumberFormatException nfe) {
-			System.out.println("Please enter a valid number for rows.");
-		}
-		
-		initialize();
-	        	
+		remplirTableau();
 	}
 	
 	@FXML

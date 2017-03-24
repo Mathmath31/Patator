@@ -1,5 +1,7 @@
 package ihm.model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -16,7 +18,7 @@ public class InfoCine {
 	    private final StringProperty cinemaAdresse;
 	    private final StringProperty cinemaVille;
 	    private final StringProperty cinemaCP;
-	    private Integer cinemaID;
+	    private final StringProperty cinemaID;
 
 		/**
 	     * Default constructor.
@@ -31,12 +33,12 @@ public class InfoCine {
 	     * @param cinemaName
 	     * @param cinemaAdresse
 	     */
-	    public InfoCine(String cinemaName, String cinemaAdresse,String cinemaCP, String cinemaVille, Integer cinemaID) {
+	    public InfoCine(String cinemaName, String cinemaAdresse,String cinemaCP, String cinemaVille, String cinemaID) {
 	        this.cinemaName = new SimpleStringProperty(cinemaName);
 	        this.cinemaAdresse = new SimpleStringProperty(cinemaAdresse);
 	        this.cinemaCP = new SimpleStringProperty(cinemaCP);
 	        this.cinemaVille = new SimpleStringProperty(cinemaVille);
-	        this.cinemaID = cinemaID;
+	        this.cinemaID = new SimpleStringProperty(cinemaID);
 	    }
 
 	    public String getCinemaName() {
@@ -87,10 +89,14 @@ public class InfoCine {
 	        return cinemaCP;
 	    }
 
-	    public Integer getCinemaID() {
-			return cinemaID;
+	    public String getCinemaID() {
+			return cinemaID.get();
 		}
-	    public void setCinemaID(Integer id) {
-	        cinemaID = id;
+	    public void setCinemaID(String id) {
+	        this.cinemaID.set(id);
+	    }
+	    
+	    public StringProperty cinemaIDProperty() {
+	        return cinemaID;
 	    }
 }

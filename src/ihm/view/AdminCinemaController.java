@@ -47,7 +47,7 @@ public class AdminCinemaController {
 		
 
 		for(Cinema c:MainController.donnees.getCinemas()){
-			cineData.add(new InfoCine(c.getNomCine(),c.getnVoieCine(),c.getVilleCine().getCpVille(),c.getVilleCine().getNomVille(),c.getId()));	
+			cineData.add(new InfoCine(c.getNomCine(),c.getnVoieCine(),c.getVilleCine().getCpVille(),c.getVilleCine().getNomVille(),c.getVilleCine().getCpVille()));	
 		}
 		
 		cinemaName.setCellValueFactory(cellData -> cellData.getValue().cinemaNameProperty());
