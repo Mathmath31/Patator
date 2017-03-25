@@ -16,10 +16,11 @@ public class ChoixPositionController {
 	private int nombreLig = 20;
 	private int nombreDePlacePrise = 0;
 	private int nombreDePlacePriseHandi = 0;
+	private int nombreDePlaceTotal = 0;
 	//TODO Renseigner le nombre de place normal
-	private int nombreDePlace = 2;
+	private int nombreDePlace = 0;
 	//TODO Renseigner le nombre de place normal
-	private int nombreDePlaceHandi = 2;
+	private int nombreDePlaceHandi = 0;
 		
 	@FXML
 	private Pane pane;
@@ -37,6 +38,25 @@ public class ChoixPositionController {
 		GridPane gridPane = new GridPane();
 		
 		gridPane.setGridLinesVisible(true);		
+		
+		nombreDePlaceTotal = MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().size();
+		for (int i = 0; i < nombreDePlaceTotal; i++)
+		{
+			if (MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(i).getType().getId() == 6)
+			{
+				nombreDePlace ++ ;
+			}
+			else if (MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(i).getType().getId() == 8)
+			{
+				nombreDePlaceHandi ++ ;
+			}	
+			System.out.println(MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(i).getType().getId());
+		}
+		System.out.println(nombreDePlaceTotal);
+		System.out.println(nombreDePlace);
+		System.out.println(nombreDePlaceHandi);
+		
+		
 		
 		// TODO Récupérer le nombre de ligne et colonne et les assigner a nombreCol et nombreLig
 		for (int i = 0; i < nombreCol ; i++) {
@@ -120,7 +140,7 @@ public class ChoixPositionController {
 			}
 			else
 			{
-				if (nombreDePlacePrise < nombreDePlace)
+				if (nombreDePlacePriseHandi < nombreDePlaceHandi)
 				{
 					rect.setFill(Color.LIGHTBLUE);
 					rect.setStroke(Color.RED);
@@ -129,6 +149,6 @@ public class ChoixPositionController {
 			}
 		}
 		System.out.println(nombreDePlacePrise);
-
+		System.out.println(nombreDePlacePriseHandi);
 	}
 }
