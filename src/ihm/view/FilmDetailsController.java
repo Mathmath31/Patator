@@ -11,11 +11,8 @@ import apiTheMovieDB.CineGoFilm;
 import classes.CaseSalle;
 import classes.Cinema;
 import classes.Client;
-import classes.ComposerPlace;
-import classes.CreerSeance;
 import classes.Place;
 import classes.PlanSalle;
-import classes.Seance;
 import ihm.VistaNavigator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -73,10 +70,7 @@ public class FilmDetailsController {
 			}
 		}
 		//TODO remove donnees of client & cinema;
-		client=MainController.donnees.getClientCommande();
-		cinema=MainController.donnees.getCinemaCommande();
 		System.out.println("clicked on valide cine " + MainController.donnees.getCinemaCommande().getId() + " " + MainController.donnees.getCinemaCommande().getNomCine());
-
 		listView.setItems(filmsList);
 		listView.getSelectionModel().selectFirst();
 		refreshInfosFilm();
@@ -87,25 +81,30 @@ public class FilmDetailsController {
 			public void handle(MouseEvent event) {
 				System.out.println("clicked on " + listView.getSelectionModel().getSelectedIndex());
 				refreshInfosFilm();
-				System.out.println(cinema.getNomCine());
+				System.out.println(MainController.donnees.getCinemaCommande().getId() + " " + MainController.donnees.getCinemaCommande().getNomCine());
 			}
 		});
 		/** Action when a date are selected
 		 */
 		dateSeance.setOnAction(event -> {
-		    LocalDate date = dateSeance.getValue();
-		    //TODO Replace their infos with databases infos 
-		    //heureSeance place libre
+			LocalDate date = dateSeance.getValue();
+			//TODO Replace their infos with databases infos 
+			//heureSeance place libre
 			heureSeance.getItems().clear();
 			heureSeance.getItems().addAll(LocalTime.parse("08:00"), LocalTime.parse("12:00"), LocalTime.parse("16:00"), LocalTime.parse("20:00"));
-			heureSeance.getSelectionModel().selectFirst();
+			//heureSeance.getSelectionModel().selectFirst();
+			heureSeance.getSelectionModel().clearSelection();
+			nbPlace.getSelectionModel().clearSelection();
+			nbPlaceHandicape.getSelectionModel().clearSelection();
 			heureSeance.setDisable(false);
+			nbPlace.setDisable(true);
+			nbPlaceHandicape.setDisable(true);
 		});
 		/** Action when an hour of cinema session are selected
 		 */
 		heureSeance.setOnAction(event -> {
-		    LocalTime heure = heureSeance.getSelectionModel().getSelectedItem();
-		    //TODO Replace their infos with databases infos 
+			LocalTime heure = heureSeance.getSelectionModel().getSelectedItem();
+			//TODO Replace their infos with databases infos 
 			//nbPlace dispo
 			nbPlace.getItems().clear();
 			nbPlace.getItems().addAll("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
@@ -116,7 +115,7 @@ public class FilmDetailsController {
 			nbPlaceHandicape.getItems().addAll("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
 			nbPlaceHandicape.getSelectionModel().selectFirst();
 			nbPlaceHandicape.setDisable(false);
-		    System.out.println("Selected date: " + heure);
+			System.out.println("Selected date: " + heure);
 		});
 		/**Action when a date is clicked
 		 */
@@ -125,7 +124,11 @@ public class FilmDetailsController {
 			public void handle(MouseEvent event) {
 				heureSeance.getSelectionModel().clearSelection();
 				nbPlace.getSelectionModel().clearSelection();
+				nbPlace.getItems().clear();
+				nbPlace.setDisable(true);
 				nbPlaceHandicape.getSelectionModel().clearSelection();
+				nbPlaceHandicape.getItems().clear();
+				nbPlaceHandicape.setDisable(true);
 			}
 		});
 		/**Action when user click on 'valide' button
@@ -133,10 +136,17 @@ public class FilmDetailsController {
 		buttonValidFilm.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-				if(listView.getSelectionModel().isEmpty() == false && dateSeance.getValue() != null && heureSeance.getValue() != null && (Integer.parseInt(nbPlace.getValue()) + Integer.parseInt(nbPlaceHandicape.getValue())) != 0 ){
+				Integer nbPlacesNormal = 0;
+				Integer nbPlacesHandi = 0;
+				if(nbPlace.getValue() != null){
+					nbPlacesNormal = Integer.parseInt(nbPlace.getValue());
+				}
+				if(nbPlaceHandicape.getValue() != null){
+					nbPlacesHandi = Integer.parseInt(nbPlaceHandicape.getValue());
+				}
+				if(listView.getSelectionModel().isEmpty() == false && dateSeance.getValue() != null && dateSeance.getValue().toString() != "" && heureSeance.getValue() != null && (nbPlacesNormal + nbPlacesHandi) != 0 ){
 					Place place = new Place();
 					CaseSalle casesalle = new CaseSalle();
-
 					cinema.getListPlanSalle().add(new PlanSalle());
 					place.getComposerPlace().getSeanceT().getCreerSeanceT().getDatesT().setSeanceDate(Date.from(dateSeance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
 					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(heureSeance.getValue().toString());
@@ -159,24 +169,25 @@ public class FilmDetailsController {
 						casesalle.getType().setNomTypeCase("Handicapé");
 						cinema.getListPlanSalle().get(0).getListCaseSalle().add(casesalle);
 					}
-
+					cinema.setId(MainController.donnees.getCinemaCommande().getId());
+					cinema.setNomCine(MainController.donnees.getCinemaCommande().getNomCine());
 					MainController.donnees.setClientCommande(client);
 					MainController.donnees.setCinemaCommande(cinema);
-			        VistaNavigator.loadVista(VistaNavigator.CHOIXPOSITION);
-//					for (int i = 0 ; i < MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().size() ; i++){
-//					System.out.println(MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(i).getType().getId());
-//				}
+					VistaNavigator.loadVista(VistaNavigator.CHOIXPOSITION);
+					//for (int i = 0 ; i < MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().size() ; i++){
+					//	System.out.println(MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(i).getType().getId());
+					//}
 				}
 				else{
-					if(dateSeance.getValue() == null)
+					if( dateSeance.getValue() == null || dateSeance.getValue().toString() == "" )
 					{
 						message.setText("Veuillez sélectionner une date");
 					}
-					if(heureSeance.getValue() == null)
+					else if(heureSeance.getValue() == null)
 					{
 						message.setText("Veuillez sélectionner une heure");
 					}
-					if((Integer.parseInt(nbPlace.getValue()) + Integer.parseInt(nbPlaceHandicape.getValue())) == 0)
+					else if((nbPlacesNormal + nbPlacesHandi) == 0)
 					{
 						message.setText("Veuillez sélectionner au moins une place");
 					}
@@ -199,6 +210,8 @@ public class FilmDetailsController {
 	/**This function refresh fields when one movie is selected
 	 */
 	private void refreshInfosFilm() {
+		client = new Client();
+		cinema = new Cinema();
 		nomFilm.setText(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getTitle());
 		synopsis.setText(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getInfoFilm());
 		synopsis.setWrapText(true);
@@ -208,5 +221,8 @@ public class FilmDetailsController {
 		heureSeance.setDisable(true);
 		nbPlace.setDisable(true);
 		nbPlaceHandicape.setDisable(true);
+		heureSeance.getSelectionModel().clearSelection();
+		nbPlace.getSelectionModel().clearSelection();
+		nbPlaceHandicape.getSelectionModel().clearSelection();
 	}
 }
