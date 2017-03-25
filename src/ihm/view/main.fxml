@@ -21,7 +21,7 @@
             <MenuButton fx:id="menubutton" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" text="Mon Compte" visible="false">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#goVueInfoUser" text="Mes Infos" />
-                  <MenuItem mnemonicParsing="false" onAction="#goVueReservation" text="Mes Reservations" />
+                  <MenuItem mnemonicParsing="false" onAction="#goHistorique" text="Mes Reservations" />
                   <MenuItem mnemonicParsing="false" onAction="#deconnection" text="Me Deconnecter" />
               </items>
             </MenuButton>

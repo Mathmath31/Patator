@@ -29,10 +29,10 @@ public class VistaNavigator {
     public static final String PANIER = "view/VuePanier.fxml";
     public static final String REGLEMENT = "view/VueReglement.fxml";
     public static final String INFOUSER = "view/VueInfoUser.fxml";
-    public static final String RESERVATION = "view/VueReservation.fxml";
     public static final String ADMINFILM = "view/AdminFilm.fxml";
     public static final String ADMINCINEMA = "view/AdminCinema.fxml";
     public static final String ADMINSEANCE = "view/AdminSeanceFilm.fxml";
+    public static final String HISTORIQUE = "view/VueHistorique.fxml";
 
     /** The main application layout controller. */
     private static MainController mainController;
@@ -94,8 +94,11 @@ public class VistaNavigator {
             case REGLEMENT:
                 mainController.setDisableBtBandeau(false, false, false, false, false, false);
                 break;
+            case HOME:
+            	mainController.setDisableBtBandeau(true, true, true, true, true, true);
+                break;
             default:
-                mainController.setDisableBtBandeau(true, true, true, true, true, true);
+                mainController.setDisableBtBandeau(false, true, true, true, true, true);
                 break;
         }
             

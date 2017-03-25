@@ -30,7 +30,7 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <Label layoutX="24.0" layoutY="14.0" text="Liste salle du ciné selectionner" />
+                              <Label layoutX="24.0" layoutY="14.0" text="Liste salle du ciné selectionné" />
                               <TableView fx:id="listSalle" layoutX="4.0" layoutY="63.0" onMouseClicked="#selectionSalles" prefHeight="254.0" prefWidth="208.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                 <columns>
                                   <TableColumn fx:id="salleId" prefWidth="75.0" text="ID" />

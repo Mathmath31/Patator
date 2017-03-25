@@ -34,6 +34,7 @@
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
                               <Button layoutX="59.0" layoutY="240.0" mnemonicParsing="false" onAction="#suppCine" text="Supprimer le cinema" />
+                              <Label fx:id="message" layoutX="31.0" layoutY="36.0" />
                            </children>
                         </AnchorPane>
                     </items>

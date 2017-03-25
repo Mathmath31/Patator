@@ -244,16 +244,6 @@ public class MainController {
 	 * @param event the event that triggered the handler.
 	 */
 	@FXML
-	void goVueReservation(ActionEvent event) {
-		VistaNavigator.loadVista(VistaNavigator.RESERVATION);
-	}
-
-	/**
-	 * Event handler fired when the user requests a new vista.
-	 *
-	 * @param event the event that triggered the handler.
-	 */
-	@FXML
 	void goVueAdminFilm(ActionEvent event) {
 		VistaNavigator.loadVista(VistaNavigator.ADMINFILM);
 	}
@@ -276,6 +266,16 @@ public class MainController {
 	@FXML
 	void goVueAdminSeanceFilm(ActionEvent event) {
 		VistaNavigator.loadVista(VistaNavigator.ADMINSEANCE);
+	}
+	
+	/**
+	 * Event handler fired when the user requests a new vista.
+	 *
+	 * @param event the event that triggered the handler.
+	 */
+	@FXML
+	void goHistorique(ActionEvent event) {
+		VistaNavigator.loadVista(VistaNavigator.HISTORIQUE);
 	}
 
 }
