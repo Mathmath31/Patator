@@ -20,7 +20,7 @@
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
                               <Label layoutX="61.0" layoutY="14.0" text="Liste des cinémas" />
-                              <TableView fx:id="listCine" layoutX="5.0" layoutY="35.0" prefHeight="254.0" prefWidth="208.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <TableView fx:id="listCine" layoutX="5.0" layoutY="35.0" onMouseClicked="#selCinema" prefHeight="254.0" prefWidth="208.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                 <columns>
                                   <TableColumn fx:id="cinemaId" text="ID" />
                                   <TableColumn fx:id="cinemaName" prefWidth="127.0" text="Nom" />

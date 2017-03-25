@@ -61,7 +61,6 @@ public class CreationSalleController {
 	private TableColumn<InfoSalle, String> salleName;
 	
 	private ObservableList<InfoCine> cineData = FXCollections.observableArrayList();
-	private ObservableList<InfoSalle> salleData = FXCollections.observableArrayList();
 	
 	public void initialize(){
 		
@@ -75,7 +74,7 @@ public class CreationSalleController {
 		listCine.getItems().setAll(cineData);
 		listCine.getSelectionModel().selectFirst();
 		
-		selectionSalles();
+		selCinema();
 		
 		remplirTableau();
         
@@ -148,18 +147,7 @@ public class CreationSalleController {
 	
 	@FXML
 	private void selectionSalles(){
-		for(PlanSalle p:MainController.donnees.getCinemas().get(listCine.getSelectionModel().getSelectedIndex()).getListPlanSalle()){
-			salleData.add(new InfoSalle(String.valueOf(p.getId()),p.getNomPlanSalle(),p.getNumPlanSalle()));	
-		}
-		
-		salleId.setCellValueFactory(cellData -> cellData.getValue().salleIDProperty());
-		salleName.setCellValueFactory(cellData -> cellData.getValue().salleNameProperty());
 
-		listSalle.getItems().setAll(salleData);
-		listSalle.getSelectionModel().selectFirst();
-		
-		
-		remplirTableau();
 	}
 	
 	@FXML
@@ -286,6 +274,17 @@ public class CreationSalleController {
 	}
 	
 	public void selCinema(){
-		selectionSalles();
+		ObservableList<InfoSalle> salleData = FXCollections.observableArrayList();
+		for(PlanSalle p:MainController.donnees.getCinemas().get(listCine.getSelectionModel().getSelectedIndex()).getListPlanSalle()){
+			salleData.add(new InfoSalle(String.valueOf(p.getId()),p.getNomPlanSalle(),p.getNumPlanSalle()));	
+		}
+		salleId.setCellValueFactory(cellData -> cellData.getValue().salleIDProperty());
+		salleName.setCellValueFactory(cellData -> cellData.getValue().salleNameProperty());
+
+		listSalle.getItems().setAll(salleData);
+		listSalle.getSelectionModel().selectFirst();
+		
+		System.out.println("selectionSalle");
+		remplirTableau();
 	}
 }
