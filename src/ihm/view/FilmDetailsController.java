@@ -60,8 +60,10 @@ public class FilmDetailsController {
 	private List<String> listeIdFilms = new ArrayList<String>();
 	private boolean APILoadOK = false;
 	private List<CineGoFilm> cineGoFilms = new ArrayList<CineGoFilm>();
-	private ArrayList<Seance> seances= new ArrayList<Seance>();
+	private List<Seance> seances= new ArrayList<Seance>();
 	ArrayList<Film> films= new ArrayList<Film>();
+	Dates dates = new Dates();
+
 
 
 	private Client client = new Client();
@@ -95,22 +97,14 @@ public class FilmDetailsController {
 		/** Action when a date are selected
 		 */
 		dateSeance.setOnAction(event -> {
-			LocalDate date = dateSeance.getValue();
-			//TODO Replace their infos with databases infos
 			seances= new ArrayList<Seance>();
-			Dates dates = new Dates();
 			dates.setSeanceDate(Date.from(dateSeance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
 			seances=ComplementDAO.listofSeances(MainController.donnees.getCinemaCommande().getId(), films.get(listView.getSelectionModel().getSelectedIndex()).getCodeFilm(), dates.getSeanceDate());
 			
 			heureSeance.getItems().clear();
 			for(Seance se: seances){
-				System.out.println(se.toString());
 				heureSeance.getItems().add(LocalTime.parse(se.getCreerSeanceT().getCreneauT().getHeureDebutCreneau()));
 			}
-			//heureSeance place libre
-			//heureSeance.getItems().addAll(LocalTime.parse("08:00"), LocalTime.parse("12:00"), LocalTime.parse("16:00"), LocalTime.parse("20:00"));
-			//heureSeance.getSelectionModel().selectFirst();
-			heureSeance.getSelectionModel().clearSelection();
 			nbPlace.getSelectionModel().clearSelection();
 			nbPlaceHandicape.getSelectionModel().clearSelection();
 			heureSeance.setDisable(false);
@@ -120,32 +114,29 @@ public class FilmDetailsController {
 		/** Action when an hour of cinema session are selected
 		 */
 		heureSeance.setOnAction(event -> {
-			LocalTime heure = heureSeance.getSelectionModel().getSelectedItem();
-			System.out.println(ComplementDAO.nbNormalPlacesSeance(heureSeance.getSelectionModel().getSelectedIndex() + 1));
-			System.out.println(ComplementDAO.nbHandicapePlacesSeance(heureSeance.getSelectionModel().getSelectedIndex() + 1));
-			//TODO Replace their infos with databases infos 
 			//nbPlace dispo
-			nbPlace.getItems().clear();
-			for( Integer i = 0 ; i < ComplementDAO.nbNormalPlacesSeance(heureSeance.getSelectionModel().getSelectedIndex() + 1) + 1 ; i++){
+			Integer index = heureSeance.getSelectionModel().getSelectedIndex();
+			Integer idSeance = seances.get(index).getId();
+			//nbPlace.getItems().clear();
+			for( Integer i = 0 ; i < ComplementDAO.nbNormalPlacesSeance(idSeance) + 1 ; i++){
 				nbPlace.getItems().add(i,i.toString());
 			}
 			nbPlace.getSelectionModel().selectFirst();
 			nbPlace.setDisable(false);
 			//nbPlaceHandicape dispo
 			nbPlaceHandicape.getItems().clear();
-			for( Integer i = 0 ; i < ComplementDAO.nbHandicapePlacesSeance(heureSeance.getSelectionModel().getSelectedIndex() + 1) + 1 ; i++){
+			for( Integer i = 0 ; i < ComplementDAO.nbHandicapePlacesSeance(idSeance) + 1 ; i++){
 				nbPlaceHandicape.getItems().add(i,i.toString());
 			}
 			nbPlaceHandicape.getSelectionModel().selectFirst();
 			nbPlaceHandicape.setDisable(false);
-			System.out.println("Selected date: " + heure);
+//			System.out.println("Selected date: " + seances.get(heureSeance.getSelectionModel().getSelectedIndex()).getId());
 		});
 		/**Action when a date is clicked
 		 */
 		dateSeance.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-				heureSeance.getSelectionModel().clearSelection();
 				nbPlace.getSelectionModel().clearSelection();
 				nbPlace.getItems().clear();
 				nbPlace.setDisable(true);
@@ -231,8 +222,6 @@ public class FilmDetailsController {
 		for( int i = 0 ; i < API.getTabFilms().size() ; i++){
 			cineGoFilms.add(API.getTabFilms().get(i));
 		}
-		
-
 		APILoadOK = true;
 	}
 	/**This function refresh fields when one movie is selected
