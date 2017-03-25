@@ -597,7 +597,7 @@ public static int nbHandicapePlacesSeance(int idSeance) {
 		ResultSet rs = Connection.selectFrom("SELECT MAX(posXPositionCase),MAX(posYPositionCase) "
 											 + " FROM positioncase pc INNER JOIN casesalle cs ON pc.idPositionCase "
 											 + " INNER JOIN plansalle p ON cs.idPlanSalle=p.idPlanSalle "
-											 + " WHERE idPlanSalle=" + idPlanSalle +";");
+											 + " WHERE p.idPlanSalle=" + idPlanSalle +";");
 		try {
 			while(rs.next())
 			{
