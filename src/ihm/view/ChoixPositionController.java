@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.control.Label;
 
 public class ChoixPositionController {
 
@@ -22,6 +23,8 @@ public class ChoixPositionController {
 	//TODO Renseigner le nombre de place normal
 	private int nombreDePlaceHandi = 0;
 		
+	@FXML
+	private Label nomSalle;
 	@FXML
 	private Pane pane;
 	
