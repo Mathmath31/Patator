@@ -11,8 +11,12 @@ import apiTheMovieDB.CineGoFilm;
 import classes.CaseSalle;
 import classes.Cinema;
 import classes.Client;
+import classes.Dates;
+import classes.Donnees;
 import classes.Place;
 import classes.PlanSalle;
+import classes.Seance;
+import dao.bddsql.ComplementDAO;
 import ihm.VistaNavigator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -52,9 +56,11 @@ public class FilmDetailsController {
 	private ComboBox<String>  nbPlaceHandicape;
 	@FXML
 	private ObservableList<String> filmsList = FXCollections.observableArrayList();
-
+	private List<String> listeIdFilms = new ArrayList<String>();
 	private boolean APILoadOK = false;
 	private List<CineGoFilm> cineGoFilms = new ArrayList<CineGoFilm>();
+	private ArrayList<Seance> seances= new ArrayList<Seance>();
+	private ArrayList<String> listeBDDIDFilms = new ArrayList<String>();
 
 	private Client client = new Client();
 	private Cinema cinema = new Cinema();
@@ -88,10 +94,20 @@ public class FilmDetailsController {
 		 */
 		dateSeance.setOnAction(event -> {
 			LocalDate date = dateSeance.getValue();
-			//TODO Replace their infos with databases infos 
-			//heureSeance place libre
+			
+			//TODO Replace their infos with databases infos
+			seances= new ArrayList<Seance>();
+			Dates dates = new Dates();
+			dates.setSeanceDate(Date.from(dateSeance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+			seances=ComplementDAO.listofSeances(MainController.donnees.getCinemaCommande().getId(), "121856", dates.getSeanceDate());
+			
 			heureSeance.getItems().clear();
-			heureSeance.getItems().addAll(LocalTime.parse("08:00"), LocalTime.parse("12:00"), LocalTime.parse("16:00"), LocalTime.parse("20:00"));
+			for(Seance se: seances){
+				System.out.println(se.toString());
+				heureSeance.getItems().add(LocalTime.parse(se.getCreerSeanceT().getCreneauT().getHeureDebutCreneau()));
+			}
+			//heureSeance place libre
+			//heureSeance.getItems().addAll(LocalTime.parse("08:00"), LocalTime.parse("12:00"), LocalTime.parse("16:00"), LocalTime.parse("20:00"));
 			//heureSeance.getSelectionModel().selectFirst();
 			heureSeance.getSelectionModel().clearSelection();
 			nbPlace.getSelectionModel().clearSelection();
@@ -104,15 +120,22 @@ public class FilmDetailsController {
 		 */
 		heureSeance.setOnAction(event -> {
 			LocalTime heure = heureSeance.getSelectionModel().getSelectedItem();
+			System.out.println(ComplementDAO.nbNormalPlacesSeance(heureSeance.getSelectionModel().getSelectedIndex()+1));
+			System.out.println(ComplementDAO.nbHandicapePlacesSeance(heureSeance.getSelectionModel().getSelectedIndex() + 1));
 			//TODO Replace their infos with databases infos 
 			//nbPlace dispo
 			nbPlace.getItems().clear();
-			nbPlace.getItems().addAll("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+			for( Integer i = 0 ; i < ComplementDAO.nbNormalPlacesSeance(heureSeance.getSelectionModel().getSelectedIndex() + 1) + 1 ; i++){
+				nbPlace.getItems().add(i,i.toString());
+
+			}
 			nbPlace.getSelectionModel().selectFirst();
 			nbPlace.setDisable(false);
 			//nbPlaceHandicape dispo
 			nbPlaceHandicape.getItems().clear();
-			nbPlaceHandicape.getItems().addAll("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+			for( Integer i = 0 ; i < ComplementDAO.nbHandicapePlacesSeance(heureSeance.getSelectionModel().getSelectedIndex() + 1) + 1 ; i++){
+				nbPlaceHandicape.getItems().add(i,i.toString());
+			}
 			nbPlaceHandicape.getSelectionModel().selectFirst();
 			nbPlaceHandicape.setDisable(false);
 			System.out.println("Selected date: " + heure);
@@ -149,8 +172,8 @@ public class FilmDetailsController {
 					CaseSalle casesalle = new CaseSalle();
 					cinema.getListPlanSalle().add(new PlanSalle());
 					place.getComposerPlace().getSeanceT().getCreerSeanceT().getDatesT().setSeanceDate(Date.from(dateSeance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(heureSeance.getValue().toString());
-					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureFinCreneau(heureSeance.getValue().toString());
+					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(seances.get(heureSeance.getSelectionModel().getSelectedIndex()).getCreerSeanceT().getCreneauT().getHeureDebutCreneau());
+					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureFinCreneau(seances.get(heureSeance.getSelectionModel().getSelectedIndex()).getCreerSeanceT().getCreneauT().getHeureFinCreneau());
 					place.getComposerPlace().getSeanceT().getFilmT().setNomFilm("");
 					place.getComposerPlace().getSeanceT().getFilmT().setCodeFilm("");
 					place.getComposerPlace().getSeanceT().getFilmT().setId(0);
@@ -198,7 +221,8 @@ public class FilmDetailsController {
 	/**This function create the movie's list
 	 */
 	public void initAPI(){
-		List<String> listeIdFilms = new ArrayList<String>();
+		listeIdFilms = new ArrayList<String>();
+		listeBDDIDFilms = new ArrayList<String>();
 		//SIMULATION DE RECUPERATION DE LA LISTE DES ID DE FILM DANS LA BASE
 		listeIdFilms.add("121856");listeIdFilms.add("274870");listeIdFilms.add("47971");
 		CineGoAPI API = new CineGoAPI(listeIdFilms);
@@ -217,7 +241,6 @@ public class FilmDetailsController {
 		synopsis.setWrapText(true);
 		Image image = SwingFXUtils.toFXImage(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getDataIMG(), null);
 		viewImageFilm.setImage(image);
-		dateSeance.setValue(null);
 		heureSeance.setDisable(true);
 		nbPlace.setDisable(true);
 		nbPlaceHandicape.setDisable(true);
