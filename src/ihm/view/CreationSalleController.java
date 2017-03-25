@@ -206,29 +206,29 @@ public class CreationSalleController {
 		}
         
         for(CaseSalle cs: planSalleEnCours.getListCaseSalle()){
-        	Rectangle rect;
+        	Rectangle rect=new Rectangle();
             //rect = (Rectangle) (gridPane.getChildren().get(3*nombreLig + 2));
             //rect.setFill(Color.BISQUE);
         	switch(cs.getType().getId()){
-        		case 1 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()));
+        		case 1 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()+1));
         				 rect.setFill(Color.BROWN);
         			break;        	
-        		case 2 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()));
+        		case 2 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()+1));
 				 		 rect.setFill(Color.GREY);
     				break;
-        		case 3 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()));
+        		case 3 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()+1));
 				 	 	 rect.setFill(Color.BLACK);
     				break;
-        		case 4 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()));
+        		case 4 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()+1));
 				 		 rect.setFill(Color.RED);
     				break;
-        		case 5 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()));
+        		case 5 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()+1));
 				 		 rect.setFill(Color.WHITE);
     				break;
-        		case 6 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()));
+        		case 6 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()+1));
 				 		 rect.setFill(Color.GREEN);
     				break;
-        		case 8 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()));
+        		case 8 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()+1));
 				 		 rect.setFill(Color.BLUE);
     				break;
         	}
