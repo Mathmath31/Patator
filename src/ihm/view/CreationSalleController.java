@@ -74,6 +74,7 @@ public class CreationSalleController {
 	private TableColumn<InfoCine, String> salleName;
 	
 	private ObservableList<InfoCine> cineData = FXCollections.observableArrayList();
+	private ObservableList<InfoCine> salleData = FXCollections.observableArrayList();
 	
 	public void initialize(){
 		
@@ -86,6 +87,8 @@ public class CreationSalleController {
 
 		listCine.getItems().setAll(cineData);
 		listCine.getSelectionModel().selectFirst();
+		
+		selectionSalles();
 		
 		remplirTableau();
         
@@ -158,9 +161,16 @@ public class CreationSalleController {
 	
 	@FXML
 	private void selectionSalles(){
-		//for(PlanSalle p:MainController.donnees.get){
-				
-		//}
+		for(PlanSalle p:MainController.donnees.getCinemas().get(listCine.getSelectionModel().getSelectedIndex()).getListPlanSalle()){
+			salleData.add(new InfoCine(String.valueOf(p.getId()),p.getNomPlanSalle(),p.getNumPlanSalle(), null, null));	
+		}
+		
+		//salleId.setCellValueFactory(cellData -> cellData.getValue().cinemaIDProperty());
+		//cinemaName.setCellValueFactory(cellData -> cellData.getValue().cinemaNameProperty());
+
+		listSalle.getItems().setAll(salleData);
+		listSalle.getSelectionModel().selectFirst();
+		
 		
 		
 		remplirTableau();
@@ -291,7 +301,7 @@ public class CreationSalleController {
 	
 	// TODO si cinema selctionner charger ses salles
 	public void selCinema(){
-		
+		selectionSalles();
 		
 		
 	}
