@@ -136,6 +136,7 @@ public class FilmDetailsController {
 				if(listView.getSelectionModel().isEmpty() == false && dateSeance.getValue() != null && heureSeance.getValue() != null && (Integer.parseInt(nbPlace.getValue()) + Integer.parseInt(nbPlaceHandicape.getValue())) != 0 ){
 					Place place = new Place();
 					CaseSalle casesalle = new CaseSalle();
+
 					cinema.getListPlanSalle().add(new PlanSalle());
 					place.getComposerPlace().getSeanceT().getCreerSeanceT().getDatesT().setSeanceDate(Date.from(dateSeance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
 					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(heureSeance.getValue().toString());
@@ -144,6 +145,7 @@ public class FilmDetailsController {
 					place.getComposerPlace().getSeanceT().getFilmT().setCodeFilm("");
 					place.getComposerPlace().getSeanceT().getFilmT().setId(0);
 					for (int i = 0 ; i < Integer.parseInt(nbPlace.getValue()) ; i++){
+						casesalle = new CaseSalle();
 						client.getListPlace().add(place);
 						casesalle.getType().setId(6);
 						casesalle.getType().setNomTypeCase("Normal");
@@ -151,6 +153,7 @@ public class FilmDetailsController {
 
 					}
 					for (int i = 0 ; i < Integer.parseInt(nbPlaceHandicape.getValue()) ; i++){
+						casesalle = new CaseSalle();
 						client.getListPlace().add(place);
 						casesalle.getType().setId(8);
 						casesalle.getType().setNomTypeCase("Handicapé");
@@ -160,6 +163,9 @@ public class FilmDetailsController {
 					MainController.donnees.setClientCommande(client);
 					MainController.donnees.setCinemaCommande(cinema);
 			        VistaNavigator.loadVista(VistaNavigator.CHOIXPOSITION);
+//					for (int i = 0 ; i < MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().size() ; i++){
+//					System.out.println(MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(i).getType().getId());
+//				}
 				}
 				else{
 					if(dateSeance.getValue() == null)
