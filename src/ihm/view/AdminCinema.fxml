@@ -24,6 +24,7 @@
                                   <TableColumn fx:id="cinemaAdresse" minWidth="0.0" prefWidth="340.0" resizable="false" text="Numero de voie" />
                                     <TableColumn fx:id="cinemaCP" prefWidth="185.0" resizable="false" text="Code postal" />
                                     <TableColumn fx:id="cinemaVille" prefWidth="200.0" resizable="false" text="Nom de la ville" />
+                                    <TableColumn fx:id="id" prefWidth="200.0" resizable="false" text="id" visible="false" />
                                 </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

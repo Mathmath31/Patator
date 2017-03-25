@@ -30,6 +30,8 @@ public class AdminCinemaController {
 	private TableColumn<InfoCine, String> cinemaVille;
 	@FXML
 	private TableColumn<InfoCine, String> cinemaCP;
+	@FXML
+	private TableColumn<InfoCine, String> id;
 
 	@FXML
 	private TextField adminNomCine;
@@ -51,14 +53,19 @@ public class AdminCinemaController {
 		
 
 		for(Cinema c:MainController.donnees.getCinemas()){
-			cineData.add(new InfoCine(c.getNomCine(),c.getnVoieCine(),c.getVilleCine().getCpVille(),c.getVilleCine().getNomVille(),c.getVilleCine().getCpVille()));	
+			cineData.add(new InfoCine(c.getNomCine(),c.getnVoieCine(),c.getVilleCine().getCpVille(),c.getVilleCine().getNomVille(),""+c.getId()));	
 		}
 		
 		cinemaName.setCellValueFactory(cellData -> cellData.getValue().cinemaNameProperty());
 		cinemaAdresse.setCellValueFactory(cellData -> cellData.getValue().cinemaAdresseProperty());
+		cinemaCP.setCellValueFactory(cellData -> cellData.getValue().cinemaCPProperty());
+		cinemaVille.setCellValueFactory(cellData -> cellData.getValue().cinemaVilleProperty());
+		id.setCellValueFactory(cellData -> cellData.getValue().cinemaIDProperty());
 
 		tableView.getItems().setAll(cineData);
 		tableView.getSelectionModel().selectFirst();
+		
+		chargerTextField();
 	}
 	
 	/**
@@ -69,7 +76,6 @@ public class AdminCinemaController {
      */
 	@FXML
     void ajoutCine(ActionEvent event) {
-		String message;
 		Ville villeCinema=new Ville();
 		Cinema cine=new Cinema();
 		
@@ -77,7 +83,7 @@ public class AdminCinemaController {
 		DAO<Cinema> CinemaDAO = DAOFactory.getCinemaDAO();
 		
 		if (ComplementDAO.ExistsCinema(adminNomCine.getText()) != 0){
-			message="Le Cinéma existe déjà dans la base de données";
+			message.setText("Le Cinéma existe déjà dans la base de données");
 		}
 		else if( !adminNomCine.getText().isEmpty() && !adminNoVoie.getText().isEmpty() && !adminNomVille.getText().isEmpty() && !adminCP.getText().isEmpty()){
 			
@@ -98,7 +104,7 @@ public class AdminCinemaController {
 			cine=CinemaDAO.create(cine);
 		}
 		else{
-			message="Au moins un des champs est vide";
+			message.setText("Au moins un des champs est vide");
 		}
     }
 	
@@ -111,7 +117,6 @@ public class AdminCinemaController {
      */
 	@FXML
     void suppCine(ActionEvent event) {
-		String message;
 		Cinema cine=new Cinema();
 
 		DAO<Cinema> CinemaDAO = DAOFactory.getCinemaDAO();
@@ -119,10 +124,10 @@ public class AdminCinemaController {
 		if (ComplementDAO.ExistsCinema(adminNomCine.getText()) != 0){
 			cine=CinemaDAO.find(ComplementDAO.ExistsCinema(adminNomCine.getText()));
 			CinemaDAO.delete(cine);
-			message="Le Cinéma " + cine.getNomCine() + " a bien été supprimé";
+			message.setText("Le Cinéma " + cine.getNomCine() + " a bien été supprimé");
 		}
 		else{
-			message="Le Cinéma " + cine.getNomCine() + " n'existe pas dans la base de données";
+			message.setText("Le Cinéma " + cine.getNomCine() + " n'existe pas dans la base de données");
 		}	
     }
 	
@@ -134,7 +139,6 @@ public class AdminCinemaController {
      */
 	@FXML
     void modifCine(ActionEvent event) {
-		String message;
 		Ville villeCinema=new Ville();
 		Cinema cine=new Cinema();
 		
@@ -160,18 +164,23 @@ public class AdminCinemaController {
 			cine=CinemaDAO.update(cine);
 		}
 		else{
-			message="Au moins un des champs est vide";
+			message.setText("Au moins un des champs est vide");
 		}
     }
 	
 	
 	@FXML
     void tableViewSelectionChanged(MouseEvent event) {
-//TODO modifier les TextFields avec la sélection actuelle
+		chargerTextField();
+    }
+	
+	void chargerTextField()
+	{
 		adminNomCine.setText(tableView.getSelectionModel().getSelectedItem().getCinemaName());
 		adminNoVoie.setText(tableView.getSelectionModel().getSelectedItem().getCinemaAdresse());
 		adminNomVille.setText(tableView.getSelectionModel().getSelectedItem().getCinemaVille());
 		adminCP.setText(tableView.getSelectionModel().getSelectedItem().getCinemaCP());
-    }
+		message.setText(tableView.getSelectionModel().getSelectedItem().getCinemaID());
+	}
 	
 }
