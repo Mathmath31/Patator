@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import classes.AjouterProduit;
+import classes.Film;
 import classes.Place;
 import classes.Produit;
 import classes.Seance;
@@ -414,6 +415,15 @@ public class ComplementDAO {
 		return idCinema;
 	}
 	
+	/**
+	 * Retrieve the seances from the DB on the cinema, with the film and the date parameters
+	 * @author Thomas
+	 * @param idCinema : int Id of the Cinema searched
+	 * @param codeFilm : String id of the film searched
+	 * @param seanceDate : Date, date searched
+	 * @return seances : arraylist of seance corresponding to the parameters
+	 * @exception  SQLException : When the query doesn't work
+	 */
 	public static ArrayList<Seance> listofSeances(int idCinema, String codeFilm, Date seanceDate) {
 
 		ArrayList<Seance> seances= new ArrayList<Seance>();
@@ -543,6 +553,35 @@ public static int nbHandicapePlacesSeance(int idSeance) {
 		return nbPlaces;
 		
 	}
+	/**
+	 * Retrieve the movies from the DB on the cinema wanted
+	 * @author Thomas
+	 * @param idCinema : int Id of the Cinema searched
+	 * @return films : arraylist of films corresponding to the cinema
+	 * @exception  SQLException : When the query doesn't work
+	 */
+	public static ArrayList<Film> listofFilms(int idCinema) {
 	
+		ArrayList<Film> films= new ArrayList<Film>();
+		DAO<Film> FilmDAO = DAOFactory.getFilmDAO();
+	
+		ResultSet rs = Connection.selectFrom("SELECT DISTINCT f.idFilm FROM film f INNER JOIN seance s ON f.idFilm=s.idFilm "
+											+" INNER JOIN creerseance cs ON s.idSeance=cs.idSeance "									
+											+" INNER JOIN plansalle p ON cs.idPlanSalle=p.idPlanSalle"
+											+" WHERE p.idCinema=" + idCinema + ";");
+		try {
+			while(rs.next())
+			{
+				Film film=new Film();
+				film=FilmDAO.find(rs.getInt("f.idFilm"));
+				films.add(film);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Connection.close();
+		return films;
+	}
+
 	
 }

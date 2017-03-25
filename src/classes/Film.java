@@ -37,10 +37,6 @@ public class Film {
 		this.codeFilm = nomFilm;
 	}
 
-	@Override
-	public String toString() {
-		return "Film [id=" + id + ", nomFilm=" + codeFilm + "]";
-	}
 
 	public String getNomFilm() {
 		return nomFilm;
@@ -49,4 +45,11 @@ public class Film {
 	public void setNomFilm(String nomFilm) {
 		this.nomFilm = nomFilm;
 	}
+
+	@Override
+	public String toString() {
+		return "Film [id=" + id + ", codeFilm=" + codeFilm + ", nomFilm=" + nomFilm + "]";
+	}
+	
+	
 }
