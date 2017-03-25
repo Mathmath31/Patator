@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 
 /**
@@ -276,6 +277,15 @@ public class MainController {
 	@FXML
 	void goHistorique(ActionEvent event) {
 		VistaNavigator.loadVista(VistaNavigator.HISTORIQUE);
+	}
+	
+	@FXML
+	public void buttonPressed(KeyEvent e)
+	{
+	    if(e.getCode().toString().equals("ENTER"))
+	    {
+	    	autentification();
+	    }
 	}
 
 }

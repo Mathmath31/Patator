@@ -29,8 +29,8 @@
             <Label fx:id="label1" layoutX="586.0" layoutY="15.0" text="Identifiant :" />
             <Label fx:id="label2" layoutX="793.0" layoutY="15.0" text="Password :" />
             <TextField fx:id="idUser" layoutX="657.0" layoutY="11.0" prefHeight="25.0" prefWidth="126.0" />
-            <PasswordField fx:id="password" layoutX="866.0" layoutY="11.0" prefHeight="25.0" prefWidth="123.0" />
-            <Button fx:id="btnAutentifier" layoutX="1002.0" layoutY="11.0" mnemonicParsing="false" onAction="#autentification" text="S'identifier" />
+            <PasswordField fx:id="password" layoutX="866.0" layoutY="11.0" onKeyPressed="#buttonPressed" prefHeight="25.0" prefWidth="123.0" />
+            <Button fx:id="btnAutentifier" layoutX="1002.0" layoutY="11.0" mnemonicParsing="false" onAction="#autentification" onKeyPressed="#buttonPressed" text="S'identifier" />
             <Button fx:id="btnEnregistrer" layoutX="1099.0" layoutY="11.0" mnemonicParsing="false" onAction="#goNewUser" text="S'enregistrer" />
             <MenuButton fx:id="menuAdmin" layoutX="137.0" layoutY="13.0" mnemonicParsing="false" text="Administration" visible="false">
               <items>
