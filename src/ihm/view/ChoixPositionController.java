@@ -130,6 +130,7 @@ public class ChoixPositionController {
 				}
 			}
 		}
+		//si il reste des places handicapés libre
 		if (rect.getFill() == Color.LIGHTBLUE|| rect.getFill() == Color.BLUE)
 		{
 			if (rect.getFill() == Color.LIGHTBLUE)

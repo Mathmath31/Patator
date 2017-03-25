@@ -3,6 +3,7 @@ package ihm.view;
 import classes.Cinema;
 import classes.PlanSalle;
 import ihm.model.InfoCine;
+import ihm.model.InfoSalle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -26,55 +27,41 @@ public class CreationSalleController {
 	
 	@FXML
 	private Pane pane;
-	
 	@FXML
 	private TextField nbcol;
-	
 	@FXML
 	private TextField nblig;
-	
 	@FXML
 	private Button normal;
-	
 	@FXML
 	private Button handi;
-	
 	@FXML
 	private Button couloir;
-	
 	@FXML 
 	private Button entree;
-	
 	@FXML
 	private Button extincteur;
-	
 	@FXML
 	private Button sortie;
-	
 	@FXML
 	private Button ecran;
-	
 	@FXML
 	private TextField nomSalle;
-	
 	@FXML
 	private TableView<InfoCine> listCine;
-	
 	@FXML
-	private TableView<InfoCine> listSalle;
-	
+	private TableView<InfoSalle> listSalle;
 	@FXML
 	private TableColumn<InfoCine, String> cinemaId;
 	@FXML
 	private TableColumn<InfoCine, String> cinemaName;
-	
 	@FXML
-	private TableColumn<InfoCine, String> salleId;
+	private TableColumn<InfoSalle, String> salleId;
 	@FXML
-	private TableColumn<InfoCine, String> salleName;
+	private TableColumn<InfoSalle, String> salleName;
 	
 	private ObservableList<InfoCine> cineData = FXCollections.observableArrayList();
-	private ObservableList<InfoCine> salleData = FXCollections.observableArrayList();
+	private ObservableList<InfoSalle> salleData = FXCollections.observableArrayList();
 	
 	public void initialize(){
 		
@@ -162,15 +149,14 @@ public class CreationSalleController {
 	@FXML
 	private void selectionSalles(){
 		for(PlanSalle p:MainController.donnees.getCinemas().get(listCine.getSelectionModel().getSelectedIndex()).getListPlanSalle()){
-			salleData.add(new InfoCine(String.valueOf(p.getId()),p.getNomPlanSalle(),p.getNumPlanSalle(), null, null));	
+			salleData.add(new InfoSalle(String.valueOf(p.getId()),p.getNomPlanSalle(),p.getNumPlanSalle()));	
 		}
 		
-		//salleId.setCellValueFactory(cellData -> cellData.getValue().cinemaIDProperty());
-		//cinemaName.setCellValueFactory(cellData -> cellData.getValue().cinemaNameProperty());
+		salleId.setCellValueFactory(cellData -> cellData.getValue().salleIDProperty());
+		salleName.setCellValueFactory(cellData -> cellData.getValue().salleNameProperty());
 
 		listSalle.getItems().setAll(salleData);
 		listSalle.getSelectionModel().selectFirst();
-		
 		
 		
 		remplirTableau();
@@ -299,10 +285,7 @@ public class CreationSalleController {
 		
 	}
 	
-	// TODO si cinema selctionner charger ses salles
 	public void selCinema(){
 		selectionSalles();
-		
-		
 	}
 }

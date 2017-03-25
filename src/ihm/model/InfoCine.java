@@ -1,7 +1,5 @@
 package ihm.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -9,7 +7,7 @@ import javafx.beans.property.StringProperty;
 public class InfoCine {
 
 	/**
-	 * Model class for a Person.
+	 * Model class for a Cine.
 	 *
 	 * @author MVM
 	 */
