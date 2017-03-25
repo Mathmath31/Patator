@@ -583,5 +583,32 @@ public static int nbHandicapePlacesSeance(int idSeance) {
 		return films;
 	}
 
+	/**
+	 * Retrieve the max posX and posY from a PlanSalle in the DB
+	 * @author Thomas
+	 * @param idPlanSalle, identifier of the the PlanSalle
+	 * @return maxXY : array with 2 values max on X and max on Y
+	 * @exception  SQLException : When the query doesn't work
+	 */
+	public static int[] maxXYPlanSalle(int idPlanSalle) {
+
+		int[] maxXY= new int[2];
+		
+		ResultSet rs = Connection.selectFrom("SELECT MAX(posXPositionCase),MAX(posYPositionCase) "
+											 + " FROM positioncase pc INNER JOIN casesalle cs ON pc.idPositionCase "
+											 + " INNER JOIN plansalle p ON cs.idPlanSalle=p.idPlanSalle "
+											 + " WHERE idPlanSalle=" + idPlanSalle +";");
+		try {
+			while(rs.next())
+			{
+				maxXY[0]=rs.getInt(1);
+				maxXY[1]=rs.getInt(2);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Connection.close();
+		return maxXY;
+	}
 	
 }

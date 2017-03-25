@@ -1,7 +1,12 @@
 package ihm.view;
 
+import classes.CaseSalle;
 import classes.Cinema;
+import classes.Client;
 import classes.PlanSalle;
+import dao.DAO;
+import dao.DAOFactory;
+import dao.bddsql.ComplementDAO;
 import ihm.model.InfoCine;
 import ihm.model.InfoSalle;
 import javafx.collections.FXCollections;
@@ -60,7 +65,10 @@ public class CreationSalleController {
 	@FXML
 	private TableColumn<InfoSalle, String> salleName;
 	
+	private PlanSalle planSalleEnCours=new PlanSalle();
+	
 	private ObservableList<InfoCine> cineData = FXCollections.observableArrayList();
+	private ObservableList<InfoSalle> salleData = FXCollections.observableArrayList();
 	
 	public void initialize(){
 		
@@ -147,7 +155,84 @@ public class CreationSalleController {
 	
 	@FXML
 	private void selectionSalles(){
-
+		DAO<PlanSalle> PlanSalleDAO = DAOFactory.getPlanSalleDAO();
+		planSalleEnCours=PlanSalleDAO.find(Integer.parseInt(listSalle.getSelectionModel().getSelectedItem().getSalleID()));
+		int[] maxXY= new int[2];
+		
+		maxXY=ComplementDAO.maxXYPlanSalle(planSalleEnCours.getId());
+		
+		nombreCol=maxXY[0];
+		nombreLig=maxXY[1];
+		
+		pane.getChildren().clear();
+		double tailleLig = pane.getPrefHeight();
+		System.out.println(tailleLig);
+		double tailleCol = pane.getPrefWidth();
+		System.out.println(tailleCol);
+		GridPane gridPane = new GridPane();
+		
+		gridPane.setGridLinesVisible(true);
+		gridPane.setPrefWidth(pane.getPrefWidth());
+		
+		//int nombrelig = getRowCount(gridPane);
+		
+		for (int i = 0; i < nombreCol ; i++) {
+			gridPane.getColumnConstraints().add(new ColumnConstraints((tailleCol / nombreCol)-1));
+		}
+		
+		for (int j = 0 ; j < nombreLig; j++) {
+        	gridPane.getRowConstraints().add(new RowConstraints((tailleLig / nombreLig)-1));
+        }
+        pane.getChildren().add(0,gridPane);
+        
+        for (int i = 0; i < nombreCol ; i++) {
+			for (int j = 0 ; j < nombreLig; j++) {
+				//ajout des rectangles
+				Rectangle rectangle = new Rectangle(tailleCol / (nombreCol) - 1, tailleLig / (nombreLig) - 1);
+				
+				
+	            rectangle.setFill(Color.GREEN);
+	            rectangle.setStroke(Color.WHITE);
+	         // evenement au click sur un rectangle
+	            rectangle.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+	            	@Override
+	            	public void handle(MouseEvent e) {
+	            	click((GridPane.getRowIndex( rectangle)+1),(GridPane.getColumnIndex( rectangle)+1), rectangle );
+	            	
+	            	}
+	            });
+	            gridPane.add(rectangle, i, j);
+	        }
+		}
+        
+        for(CaseSalle cs: planSalleEnCours.getListCaseSalle()){
+        	Rectangle rect;
+            //rect = (Rectangle) (gridPane.getChildren().get(3*nombreLig + 2));
+            //rect.setFill(Color.BISQUE);
+        	switch(cs.getType().getId()){
+        		case 1 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()));
+        				 rect.setFill(Color.BROWN);
+        			break;        	
+        		case 2 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()));
+				 		 rect.setFill(Color.GREY);
+    				break;
+        		case 3 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()));
+				 	 	 rect.setFill(Color.BLACK);
+    				break;
+        		case 4 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()));
+				 		 rect.setFill(Color.RED);
+    				break;
+        		case 5 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()));
+				 		 rect.setFill(Color.WHITE);
+    				break;
+        		case 6 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()));
+				 		 rect.setFill(Color.GREEN);
+    				break;
+        		case 8 : rect=(Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()));
+				 		 rect.setFill(Color.BLUE);
+    				break;
+        	}
+        }
 	}
 	
 	@FXML
@@ -274,7 +359,7 @@ public class CreationSalleController {
 	}
 	
 	public void selCinema(){
-		ObservableList<InfoSalle> salleData = FXCollections.observableArrayList();
+		
 		for(PlanSalle p:MainController.donnees.getCinemas().get(listCine.getSelectionModel().getSelectedIndex()).getListPlanSalle()){
 			salleData.add(new InfoSalle(String.valueOf(p.getId()),p.getNomPlanSalle(),p.getNumPlanSalle()));	
 		}
@@ -286,5 +371,13 @@ public class CreationSalleController {
 		
 		System.out.println("selectionSalle");
 		remplirTableau();
+	}
+
+	public PlanSalle getPlanSalleEnCours() {
+		return planSalleEnCours;
+	}
+
+	public void setPlanSalleEnCours(PlanSalle planSalleEnCours) {
+		this.planSalleEnCours = planSalleEnCours;
 	}
 }
