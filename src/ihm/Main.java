@@ -3,14 +3,11 @@ package ihm;
 
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.io.IOException;
-import ihm.model.InfoCine;
 import ihm.view.MainController;
 
 /**
@@ -30,7 +27,6 @@ public class Main extends Application {
         );
         stage.show();
     }
-
     
     /**
      * Loads the main fxml layout.

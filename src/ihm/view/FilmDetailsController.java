@@ -1,6 +1,5 @@
 package ihm.view;
 //TODO 
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import classes.CaseSalle;
 import classes.Cinema;
 import classes.Client;
 import classes.Dates;
-import classes.Donnees;
 import classes.Film;
 import classes.Place;
 import classes.PlanSalle;
@@ -98,12 +96,14 @@ public class FilmDetailsController {
 		 */
 		dateSeance.setOnAction(event -> {
 			seances= new ArrayList<Seance>();
-			dates.setSeanceDate(Date.from(dateSeance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-			seances=ComplementDAO.listofSeances(MainController.donnees.getCinemaCommande().getId(), films.get(listView.getSelectionModel().getSelectedIndex()).getCodeFilm(), dates.getSeanceDate());
-			
-			heureSeance.getItems().clear();
-			for(Seance se: seances){
-				heureSeance.getItems().add(LocalTime.parse(se.getCreerSeanceT().getCreneauT().getHeureDebutCreneau()));
+			if(dateSeance.getValue() != null){
+				dates.setSeanceDate(Date.from(dateSeance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+				seances = ComplementDAO.listofSeances(MainController.donnees.getCinemaCommande().getId(), films.get(listView.getSelectionModel().getSelectedIndex()).getCodeFilm(), dates.getSeanceDate());
+
+				heureSeance.getItems().clear();
+				for(Seance se: seances){
+					heureSeance.getItems().add(LocalTime.parse(se.getCreerSeanceT().getCreneauT().getHeureDebutCreneau()));
+				}
 			}
 			nbPlace.getSelectionModel().clearSelection();
 			nbPlaceHandicape.getSelectionModel().clearSelection();
@@ -115,22 +115,30 @@ public class FilmDetailsController {
 		 */
 		heureSeance.setOnAction(event -> {
 			//nbPlace dispo
-			Integer index = heureSeance.getSelectionModel().getSelectedIndex();
-			Integer idSeance = seances.get(index).getId();
-			//nbPlace.getItems().clear();
-			for( Integer i = 0 ; i < ComplementDAO.nbNormalPlacesSeance(idSeance) + 1 ; i++){
-				nbPlace.getItems().add(i,i.toString());
+			// Trick for manage OOB error on "seance.get(index)" when heureSeance's items are clear
+			Integer index = 0;
+			if(heureSeance.getSelectionModel().isEmpty() == false){
+				index = heureSeance.getSelectionModel().getSelectedIndex();
+			} 
+			Integer idSeance = 0;
+			if(seances.isEmpty() == false){
+				idSeance = seances.get(index).getId();
+				nbPlace.getItems().clear();
+				for( Integer i = 0 ; i < ComplementDAO.nbNormalPlacesSeance(idSeance) + 1 ; i++){
+					nbPlace.getItems().add(i,i.toString());
+				}
+				nbPlace.getSelectionModel().selectFirst();
+				nbPlace.setDisable(false);
+				//nbPlaceHandicape dispo
+				nbPlaceHandicape.getItems().clear();
+				for( Integer i = 0 ; i < ComplementDAO.nbHandicapePlacesSeance(idSeance) + 1 ; i++){
+					nbPlaceHandicape.getItems().add(i,i.toString());
+				}
+				nbPlaceHandicape.getSelectionModel().selectFirst();
+				nbPlaceHandicape.setDisable(false);
+				System.out.println("idseance " + idSeance + "Selected date: " + seances.get(index).getId());
 			}
-			nbPlace.getSelectionModel().selectFirst();
-			nbPlace.setDisable(false);
-			//nbPlaceHandicape dispo
-			nbPlaceHandicape.getItems().clear();
-			for( Integer i = 0 ; i < ComplementDAO.nbHandicapePlacesSeance(idSeance) + 1 ; i++){
-				nbPlaceHandicape.getItems().add(i,i.toString());
-			}
-			nbPlaceHandicape.getSelectionModel().selectFirst();
-			nbPlaceHandicape.setDisable(false);
-//			System.out.println("Selected date: " + seances.get(heureSeance.getSelectionModel().getSelectedIndex()).getId());
+
 		});
 		/**Action when a date is clicked
 		 */
@@ -229,6 +237,8 @@ public class FilmDetailsController {
 	private void refreshInfosFilm() {
 		client = new Client();
 		cinema = new Cinema();
+		dateSeance.setEditable(false);
+		dateSeance.setValue(null);
 		nomFilm.setText(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getTitle());
 		synopsis.setText(cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getInfoFilm());
 		synopsis.setWrapText(true);
