@@ -13,6 +13,7 @@ import classes.Cinema;
 import classes.Client;
 import classes.Dates;
 import classes.Donnees;
+import classes.Film;
 import classes.Place;
 import classes.PlanSalle;
 import classes.Seance;
@@ -60,7 +61,8 @@ public class FilmDetailsController {
 	private boolean APILoadOK = false;
 	private List<CineGoFilm> cineGoFilms = new ArrayList<CineGoFilm>();
 	private ArrayList<Seance> seances= new ArrayList<Seance>();
-	private ArrayList<String> listeBDDIDFilms = new ArrayList<String>();
+	ArrayList<Film> films= new ArrayList<Film>();
+
 
 	private Client client = new Client();
 	private Cinema cinema = new Cinema();
@@ -94,12 +96,11 @@ public class FilmDetailsController {
 		 */
 		dateSeance.setOnAction(event -> {
 			LocalDate date = dateSeance.getValue();
-			
 			//TODO Replace their infos with databases infos
 			seances= new ArrayList<Seance>();
 			Dates dates = new Dates();
 			dates.setSeanceDate(Date.from(dateSeance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-			seances=ComplementDAO.listofSeances(MainController.donnees.getCinemaCommande().getId(), "121856", dates.getSeanceDate());
+			seances=ComplementDAO.listofSeances(MainController.donnees.getCinemaCommande().getId(), films.get(listView.getSelectionModel().getSelectedIndex()).getCodeFilm(), dates.getSeanceDate());
 			
 			heureSeance.getItems().clear();
 			for(Seance se: seances){
@@ -120,14 +121,13 @@ public class FilmDetailsController {
 		 */
 		heureSeance.setOnAction(event -> {
 			LocalTime heure = heureSeance.getSelectionModel().getSelectedItem();
-			System.out.println(ComplementDAO.nbNormalPlacesSeance(heureSeance.getSelectionModel().getSelectedIndex()+1));
+			System.out.println(ComplementDAO.nbNormalPlacesSeance(heureSeance.getSelectionModel().getSelectedIndex() + 1));
 			System.out.println(ComplementDAO.nbHandicapePlacesSeance(heureSeance.getSelectionModel().getSelectedIndex() + 1));
 			//TODO Replace their infos with databases infos 
 			//nbPlace dispo
 			nbPlace.getItems().clear();
 			for( Integer i = 0 ; i < ComplementDAO.nbNormalPlacesSeance(heureSeance.getSelectionModel().getSelectedIndex() + 1) + 1 ; i++){
 				nbPlace.getItems().add(i,i.toString());
-
 			}
 			nbPlace.getSelectionModel().selectFirst();
 			nbPlace.setDisable(false);
@@ -174,9 +174,9 @@ public class FilmDetailsController {
 					place.getComposerPlace().getSeanceT().getCreerSeanceT().getDatesT().setSeanceDate(Date.from(dateSeance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
 					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(seances.get(heureSeance.getSelectionModel().getSelectedIndex()).getCreerSeanceT().getCreneauT().getHeureDebutCreneau());
 					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureFinCreneau(seances.get(heureSeance.getSelectionModel().getSelectedIndex()).getCreerSeanceT().getCreneauT().getHeureFinCreneau());
-					place.getComposerPlace().getSeanceT().getFilmT().setNomFilm("");
-					place.getComposerPlace().getSeanceT().getFilmT().setCodeFilm("");
-					place.getComposerPlace().getSeanceT().getFilmT().setId(0);
+					place.getComposerPlace().getSeanceT().getFilmT().setNomFilm(films.get(listView.getSelectionModel().getSelectedIndex()).getNomFilm());
+					place.getComposerPlace().getSeanceT().getFilmT().setCodeFilm(films.get(listView.getSelectionModel().getSelectedIndex()).getCodeFilm());
+					place.getComposerPlace().getSeanceT().getFilmT().setId(films.get(listView.getSelectionModel().getSelectedIndex()).getId());
 					for (int i = 0 ; i < Integer.parseInt(nbPlace.getValue()) ; i++){
 						casesalle = new CaseSalle();
 						client.getListPlace().add(place);
@@ -189,7 +189,7 @@ public class FilmDetailsController {
 						casesalle = new CaseSalle();
 						client.getListPlace().add(place);
 						casesalle.getType().setId(8);
-						casesalle.getType().setNomTypeCase("Handicapé");
+						casesalle.getType().setNomTypeCase("HandicapÃ©");
 						cinema.getListPlanSalle().get(0).getListCaseSalle().add(casesalle);
 					}
 					cinema.setId(MainController.donnees.getCinemaCommande().getId());
@@ -204,15 +204,15 @@ public class FilmDetailsController {
 				else{
 					if( dateSeance.getValue() == null || dateSeance.getValue().toString() == "" )
 					{
-						message.setText("Veuillez sélectionner une date");
+						message.setText("Veuillez sÃ©lectionner une date");
 					}
 					else if(heureSeance.getValue() == null)
 					{
-						message.setText("Veuillez sélectionner une heure");
+						message.setText("Veuillez sÃ©lectionner une heure");
 					}
 					else if((nbPlacesNormal + nbPlacesHandi) == 0)
 					{
-						message.setText("Veuillez sélectionner au moins une place");
+						message.setText("Veuillez sÃ©lectionner au moins une place");
 					}
 				}
 			}
@@ -222,13 +222,17 @@ public class FilmDetailsController {
 	 */
 	public void initAPI(){
 		listeIdFilms = new ArrayList<String>();
-		listeBDDIDFilms = new ArrayList<String>();
-		//SIMULATION DE RECUPERATION DE LA LISTE DES ID DE FILM DANS LA BASE
-		listeIdFilms.add("121856");listeIdFilms.add("274870");listeIdFilms.add("47971");
+		films= new ArrayList<Film>();
+		films=ComplementDAO.listofFilms(MainController.donnees.getCinemaCommande().getId());
+		for(Film f: films){
+			listeIdFilms.add(f.getCodeFilm());
+		}
 		CineGoAPI API = new CineGoAPI(listeIdFilms);
 		for( int i = 0 ; i < API.getTabFilms().size() ; i++){
 			cineGoFilms.add(API.getTabFilms().get(i));
 		}
+		
+
 		APILoadOK = true;
 	}
 	/**This function refresh fields when one movie is selected
