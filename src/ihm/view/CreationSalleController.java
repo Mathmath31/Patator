@@ -68,7 +68,6 @@ public class CreationSalleController {
 	private PlanSalle planSalleEnCours=new PlanSalle();
 	
 	private ObservableList<InfoCine> cineData = FXCollections.observableArrayList();
-	private ObservableList<InfoSalle> salleData = FXCollections.observableArrayList();
 	
 	public void initialize(){
 		
@@ -359,6 +358,7 @@ public class CreationSalleController {
 	}
 	
 	public void selCinema(){
+		ObservableList<InfoSalle> salleData = FXCollections.observableArrayList();
 		
 		for(PlanSalle p:MainController.donnees.getCinemas().get(listCine.getSelectionModel().getSelectedIndex()).getListPlanSalle()){
 			salleData.add(new InfoSalle(String.valueOf(p.getId()),p.getNomPlanSalle(),p.getNumPlanSalle()));	
