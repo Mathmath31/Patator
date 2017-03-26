@@ -25,9 +25,7 @@ public class ChoixPositionController {
 	private int nombreDePlacePrise = 0;
 	private int nombreDePlacePriseHandi = 0;
 	private int nombreDePlaceTotal = 0;
-	//TODO Renseigner le nombre de place normal
 	private int nombreDePlace = 0;
-	//TODO Renseigner le nombre de place normal
 	private int nombreDePlaceHandi = 0;
 		
 	@FXML
