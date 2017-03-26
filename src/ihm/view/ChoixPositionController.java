@@ -1,5 +1,10 @@
 package ihm.view;
 
+import classes.CaseSalle;
+import classes.PlanSalle;
+import dao.DAO;
+import dao.DAOFactory;
+import dao.bddsql.ComplementDAO;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
@@ -28,6 +33,9 @@ public class ChoixPositionController {
 	@FXML
 	private Pane pane;
 	
+	private PlanSalle planSalleEnCours=new PlanSalle();
+	private GridPane gridPane;
+	
 	@FXML
 	private void clicPlace(){
 		
@@ -35,15 +43,7 @@ public class ChoixPositionController {
 	
 	public void initialize(){
 		
-		//nomSalle.setText("");
-		
-		pane.getChildren().clear();
-		double tailleLig = pane.getPrefHeight();
-		double tailleCol = pane.getPrefWidth();
-				
-		GridPane gridPane = new GridPane();
-		
-		gridPane.setGridLinesVisible(true);		
+		int idPlanSalle = MainController.donnees.getClientCommande().getListPlace().get(0).getComposerPlace().getSeanceT().getCreerSeanceT().getIdPlanSalle();
 		
 		nombreDePlaceTotal = MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().size();
 		for (int i = 0; i < nombreDePlaceTotal; i++)
@@ -58,42 +58,47 @@ public class ChoixPositionController {
 			}	
 			System.out.println(MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(i).getType().getId());
 		}
-		System.out.println(nombreDePlaceTotal);
-		System.out.println(nombreDePlace);
-		System.out.println(nombreDePlaceHandi);
 		
+		DAO<PlanSalle> PlanSalleDAO = DAOFactory.getPlanSalleDAO();
+		planSalleEnCours=PlanSalleDAO.find(idPlanSalle);
+		int[] maxXY= new int[2];
+		//nomSalle.setText("");
 		
+		maxXY=ComplementDAO.maxXYPlanSalle(planSalleEnCours.getId());
 		
-		// TODO Récupérer le nombre de ligne et colonne et les assigner a nombreCol et nombreLig
+		nombreCol=maxXY[0];
+		nombreLig=maxXY[1];
+		
+		pane.getChildren().clear();
+		double tailleLig = pane.getPrefHeight();
+		System.out.println(tailleLig);
+		double tailleCol = pane.getPrefWidth();
+		System.out.println(tailleCol);
+		gridPane = new GridPane();
+		
+		gridPane.setGridLinesVisible(true);
+		gridPane.setPrefWidth(pane.getPrefWidth());
+		
+		//int nombrelig = getRowCount(gridPane);
+		
 		for (int i = 0; i < nombreCol ; i++) {
-			gridPane.getColumnConstraints().add(new ColumnConstraints(tailleCol / nombreCol));
+			gridPane.getColumnConstraints().add(new ColumnConstraints((tailleCol / nombreCol)-1));
 		}
 		
 		for (int j = 0 ; j < nombreLig; j++) {
-        	gridPane.getRowConstraints().add(new RowConstraints(tailleLig / nombreLig));
+        	gridPane.getRowConstraints().add(new RowConstraints((tailleLig / nombreLig)-1));
         }
         pane.getChildren().add(0,gridPane);
         
-        
-        // TODO lire la salle appeler 
         for (int i = 0; i < nombreCol ; i++) {
 			for (int j = 0 ; j < nombreLig; j++) {
 				//ajout des rectangles
 				Rectangle rectangle = new Rectangle(tailleCol / (nombreCol) - 1, tailleLig / (nombreLig) - 1);
 				
-				// TODO remplacer le if par un select en fonction de la place
-				if(j == 1)
-				{
-					rectangle.setFill(Color.BLUE);
-				}
-				else
-				{
-					rectangle.setFill(Color.GREEN);	
-				}
 				
-				
+	            rectangle.setFill(Color.GREEN);
 	            rectangle.setStroke(Color.WHITE);
-	            // evenement au click sur un rectangle
+	         // evenement au click sur un rectangle
 	            rectangle.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 	            	@Override
 	            	public void handle(MouseEvent e) {
@@ -103,7 +108,36 @@ public class ChoixPositionController {
 	            });
 	            gridPane.add(rectangle, i, j);
 	        }
-		}    
+		}
+        
+        for(CaseSalle cs: planSalleEnCours.getListCaseSalle()){
+        	Rectangle rect= new Rectangle();
+        	rect = (Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()+1));
+        	switch(cs.getType().getId()){
+        		case 1 : 
+        			rect.setFill(Color.BROWN);
+        			break;        	
+        		case 2 : 
+				 		 rect.setFill(Color.GREY);
+    				break;
+        		case 3 : 
+				 	 	 rect.setFill(Color.BLACK);
+    				break;
+        		case 4 : 
+				 		 rect.setFill(Color.RED);
+    				break;
+        		case 5 : 
+				 		 rect.setFill(Color.WHITE);
+    				break;
+        		case 6 : 
+				 		 rect.setFill(Color.GREEN);
+    				break;
+        		case 8 : 
+				 		 rect.setFill(Color.BLUE);
+    				break;
+        	}
+        }
+        //TODO liste des places déja prise prises
 	}
 	/**
 	 * Mise en forme au click
