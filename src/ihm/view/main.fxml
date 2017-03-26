@@ -38,6 +38,7 @@
                 <MenuItem mnemonicParsing="false" onAction="#goCreationSalle" text="Administrer Salle" />
                   <MenuItem mnemonicParsing="false" onAction="#goVueAdminFilm" text="Administrer Film" />
                   <MenuItem mnemonicParsing="false" onAction="#goVueAdminSeanceFilm" text="Administrer Seance Film" />
+                  <MenuItem mnemonicParsing="false" onAction="#goImportExport" text="Importer / Exporter Salle" />
               </items>
             </MenuButton>
          </children></AnchorPane>

@@ -143,8 +143,8 @@ public class ChoixAccompagnementController {
 				InfoAccompagnement selectedItem = tableViewChoix2.getSelectionModel().getSelectedItem();
 				tableViewChoix2.getItems().remove(selectedItem);
 			}
+			nombreProduit --;
 		}
-		nombreProduit --;
 	}
 	
 	@FXML

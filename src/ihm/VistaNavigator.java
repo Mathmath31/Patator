@@ -33,6 +33,7 @@ public class VistaNavigator {
     public static final String ADMINCINEMA = "view/AdminCinema.fxml";
     public static final String ADMINSEANCE = "view/AdminSeanceFilm.fxml";
     public static final String HISTORIQUE = "view/VueHistorique.fxml";
+    public static final String IMPORTEXPORT = "view/VueImportExport.fxml";
 
     /** The main application layout controller. */
     private static MainController mainController;

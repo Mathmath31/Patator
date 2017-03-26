@@ -279,6 +279,16 @@ public class MainController {
 		VistaNavigator.loadVista(VistaNavigator.HISTORIQUE);
 	}
 	
+	/**
+	 * Event handler fired when the user requests a new vista.
+	 *
+	 * @param event the event that triggered the handler.
+	 */
+	@FXML
+	void goImportExport(ActionEvent event) {
+		VistaNavigator.loadVista(VistaNavigator.IMPORTEXPORT);
+	}
+	
 	@FXML
 	public void buttonPressed(KeyEvent e)
 	{
