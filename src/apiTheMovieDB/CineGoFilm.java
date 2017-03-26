@@ -25,7 +25,7 @@ public class CineGoFilm {
 	private String release_date;
 	private String revenue;
 	private String runtime;
-	private List<Spoken_languages> spoken_languages = new ArrayList();
+	private List<Spoken_languages> spoken_languages = new ArrayList<Spoken_languages>();
 	private String status;
 	private String tagline;
 	private String title;

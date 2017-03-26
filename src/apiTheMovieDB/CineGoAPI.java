@@ -12,7 +12,6 @@ import java.util.List;
 import com.google.gson.*;
 import com.google.gson.stream.*;
 import javax.imageio.*;
-import java.io.File;
 
 public class CineGoAPI {
 
