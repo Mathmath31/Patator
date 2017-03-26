@@ -1,3 +1,8 @@
+/**
+ * Production_countries Class.
+ * Contain infos of Production_countries returned by TMDB's API.
+ * @author PAULY.M
+ */
 package apiTheMovieDB;
 
 public class Production_countries {

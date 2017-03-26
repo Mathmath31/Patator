@@ -1,3 +1,8 @@
+/**
+ * Images Class.
+ * Contain backdrops & posters objects returned by TMDB's API.
+ * @author PAULY.M
+ */
 package apiTheMovieDB;
 
 import java.util.ArrayList;
@@ -5,8 +10,8 @@ import java.util.List;
 
 public class Images {
 	
-	private  List<Backdrops> backdrops = new ArrayList();
-	private  List<Posters> posters = new ArrayList();
+	private  List<Backdrops> backdrops = new ArrayList<Backdrops>();
+	private  List<Posters> posters = new ArrayList<Posters>();
 	
 	
 	public List<Backdrops> getBackdrops() {

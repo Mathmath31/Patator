@@ -1,3 +1,7 @@
+/**
+ * Backdrop Class. Contain infos of Backdrop returned by TMDB's API.
+ * @author PAULY.M
+ */
 package apiTheMovieDB;
 
 public class Backdrops {
@@ -9,8 +13,8 @@ public class Backdrops {
 	private String vote_average;
 	private String vote_count;
 	private String width;
-	
-	
+
+
 	public String getAspect_ratio() {
 		return aspect_ratio;
 	}

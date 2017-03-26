@@ -1,3 +1,8 @@
+/**
+ * Posters Class.
+ * Contain infos of posters returned by TMDB's API.
+ * @author PAULY.M
+ */
 package apiTheMovieDB;
 
 public class Posters {

@@ -1,3 +1,8 @@
+/**
+ * Spoken_languages Class.
+ * Contain infos of Spoken_Language returned by TMDB's API.
+ * @author PAULY.M
+ */
 package apiTheMovieDB;
 
 public class Spoken_languages {

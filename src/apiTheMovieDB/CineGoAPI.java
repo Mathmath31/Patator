@@ -1,7 +1,13 @@
-//
-// A FAIRE :
-//- Classe Rdy
-
+/**
+ * CineGoAPI Class.
+ * This class creates an instance of CineGoFilm.
+ * It opens a connection with the TMDB API.
+ * It generates a query and sends it to the API.
+ * It deserializes the JSON object returned by the TMDB API and maps these informations with the cineGoFilms class
+ * @author PAULY.M
+ * @see https://github.com/google/gson 
+ * @see https://www.jmdoudoux.fr/java/dej/chap-gson.htm
+ */
 package apiTheMovieDB;
 
 import java.awt.image.BufferedImage;
@@ -15,13 +21,18 @@ import javax.imageio.*;
 
 public class CineGoAPI {
 
-	private String APIKey = "api_key=975c60bf70cb45fdc950f4d55f22cf3a";		//cle de l'API
-	private String URLImgVideo = "&append_to_response=videos,images";		//Option de l'API
-	private List<CineGoFilm> tabFilms = new ArrayList<CineGoFilm>();		//Declaration d'un tableau de films
+	private String APIKey = "api_key=975c60bf70cb45fdc950f4d55f22cf3a";		// Key of l'API
+	private String URLImgVideo = "&append_to_response=videos,images";		// Options of l'API
+	private List<CineGoFilm> tabFilms = new ArrayList<CineGoFilm>();		// Array of CineGoFilm
 
+	/**
+	 * Constructor of CineGoAPI
+	 * @param listeIdFilms => IDs form database. 
+	 * @exception If connection with the API are KO.
+	 */
 	public CineGoAPI(List<String> listeIdFilms){
-
-		//Get info for films from API
+		/** Get info for films from API
+		 */
 		for( int i = 0 ; i < listeIdFilms.size() ; i++)
 		{
 			try {
@@ -54,10 +65,13 @@ public class CineGoAPI {
 
 	}
 
+	/** Get infos of movies
+	 * @return tabFilms
+	 */
 	public List<CineGoFilm> getTabFilms() {
 		return tabFilms;
 	}
-	
+
 }
 
 

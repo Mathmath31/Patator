@@ -1,3 +1,8 @@
+/**
+ * Results Class.
+ * Contain infos of Video returned by TMDB's API.
+ * @author PAULY.M
+ */
 package apiTheMovieDB;
 
 public class Results {

@@ -1,3 +1,9 @@
+/**
+ * CineGoFilm Class.
+ * This is a mapping of JSON's object returned by TMDB's API 
+ * Contain infos of JSON's object returned by TMDB's API.
+ * @author PAULY.M
+ */
 package apiTheMovieDB;
 
 import java.util.ArrayList;

@@ -1,3 +1,8 @@
+/**
+ * Genres Class.
+ * Contain infos of Genres returned by TMDB's API.
+ * @author PAULY.M
+ */
 package apiTheMovieDB;
 
 public class Genres {

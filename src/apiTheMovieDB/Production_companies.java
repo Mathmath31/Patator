@@ -1,3 +1,8 @@
+/**
+ * Production_companies Class.
+ * Contain infos of Production_companies returned by TMDB's API.
+ * @author PAULY.M
+ */
 package apiTheMovieDB;
 
 public class Production_companies {

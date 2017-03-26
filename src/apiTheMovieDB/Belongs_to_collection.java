@@ -1,3 +1,7 @@
+/**
+ * Belongs_to_collection Class. Contain infos of Belongs_to_collection returned by TMDB's API.
+ * @author PAULY.M
+ */
 package apiTheMovieDB;
 
 public class Belongs_to_collection {
