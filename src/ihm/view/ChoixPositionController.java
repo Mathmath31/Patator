@@ -5,6 +5,7 @@ import classes.PlanSalle;
 import dao.DAO;
 import dao.DAOFactory;
 import dao.bddsql.ComplementDAO;
+import ihm.VistaNavigator;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
@@ -14,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class ChoixPositionController {
@@ -42,6 +44,8 @@ public class ChoixPositionController {
 	}
 	
 	public void initialize(){
+		//TODO mettre une phrase pour dire la salle
+		nomSalle.setText("");
 		
 		int idPlanSalle = MainController.donnees.getClientCommande().getListPlace().get(0).getComposerPlace().getSeanceT().getCreerSeanceT().getIdPlanSalle();
 		
@@ -191,5 +195,17 @@ public class ChoixPositionController {
 		}
 		System.out.println(nombreDePlacePrise);
 		System.out.println(nombreDePlacePriseHandi);
+	}
+	
+	@FXML
+	private void valider()
+	{
+		VistaNavigator.loadVista(VistaNavigator.ACCOMPAGNEMENT);
+	}
+	
+	@FXML
+	private void placementAuto()
+	{
+		VistaNavigator.loadVista(VistaNavigator.ACCOMPAGNEMENT);
 	}
 }
