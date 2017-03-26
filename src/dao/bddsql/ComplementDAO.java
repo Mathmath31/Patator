@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import classes.AjouterProduit;
+import classes.CaseSalle;
 import classes.Film;
 import classes.Place;
 import classes.Produit;
@@ -666,5 +667,33 @@ public static int nbHandicapePlacesSeance(int idSeance) {
 		Connection.close();
 		return idPlanSalle;
 		
+	}
+	
+	/**
+	 * Retrieve all the caseSalle from the seance already reserved
+	 * @author Thomas
+	 * @param idSeance : int Id of the seance searched
+	 * @return casesres : arraylist of CaseSalle corresponding to the parameters
+	 * @exception  SQLException : When the query doesn't work
+	 */
+	public static ArrayList<CaseSalle> listofCaseSalleRes(int idSeance) {
+
+		ArrayList<CaseSalle> casesres= new ArrayList<CaseSalle>();
+		DAO<CaseSalle> CaseSalleDAO = DAOFactory.getCaseSalleDAO();
+	
+		ResultSet rs = Connection.selectFrom("SELECT cp.idCaseSalle FROM composerplace cp "
+											+" WHERE cp.idSeance=" + idSeance + ";");
+		try {
+			while(rs.next())
+			{
+				CaseSalle casesalle=new CaseSalle();
+				casesalle=CaseSalleDAO.find(rs.getInt("cp.idCaseSalle"));
+				casesres.add(casesalle);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Connection.close();
+		return casesres;
 	}
 }

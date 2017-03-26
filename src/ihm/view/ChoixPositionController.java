@@ -1,5 +1,7 @@
 package ihm.view;
 
+import java.util.ArrayList;
+
 import classes.CaseSalle;
 import classes.PlanSalle;
 import dao.DAO;
@@ -138,7 +140,21 @@ public class ChoixPositionController {
     				break;
         	}
         }
-        //TODO liste des places déja prise prises
+        ArrayList<CaseSalle> casesres= new ArrayList<CaseSalle>();
+        System.out.println("idSeancechoixplace :" + MainController.donnees.getClientCommande().getListPlace().get(0).getComposerPlace().getSeanceT().getId());
+        casesres=ComplementDAO.listofCaseSalleRes(MainController.donnees.getClientCommande().getListPlace().get(0).getComposerPlace().getSeanceT().getId());
+        
+        for(CaseSalle csr: casesres){
+        	Rectangle rect= new Rectangle();
+        	rect = (Rectangle)(gridPane.getChildren().get(csr.getPosition().getPosX()*nombreLig+csr.getPosition().getPosY()+1));
+        	
+        	if(csr.getIdTypeCase()==6){
+        		rect.setFill(Color.GREENYELLOW);
+        	}
+        	else{
+        		rect.setFill(Color.BLUEVIOLET);
+        	}
+        }
 	}
 	/**
 	 * Mise en forme au click
