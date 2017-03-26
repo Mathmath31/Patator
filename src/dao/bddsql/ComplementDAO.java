@@ -610,4 +610,30 @@ public static int nbHandicapePlacesSeance(int idSeance) {
 		return maxXY;
 	}
 	
+	/**
+	 * Retrieve the list of products from the DB 
+	 * @author Thomas
+	 * @return produits : arraylist of all products 
+	 * @exception  SQLException : When the query doesn't work
+	 */
+	public static ArrayList<Produit> listofProduits() {
+	
+		ArrayList<Produit> produits= new ArrayList<Produit>();
+		DAO<Produit> ProduitDAO = DAOFactory.getProduitDAO();
+	
+		ResultSet rs = Connection.selectFrom("SELECT DISTINCT idProduit FROM produit;");
+		try {
+			while(rs.next())
+			{
+				Produit produit=new Produit();
+				produit=ProduitDAO.find(rs.getInt("idProduit"));
+				produits.add(produit);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Connection.close();
+		return produits;
+	}
+	
 }
