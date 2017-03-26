@@ -636,4 +636,35 @@ public static int nbHandicapePlacesSeance(int idSeance) {
 		return produits;
 	}
 	
+	
+	/**
+	 * Retrieve the idPlanSalle for a seance from the DB 
+	 * @author Thomas
+	 * @param idSeance : id of the seance searched
+	 * @return idPlanSalle (int)
+	 * @exception  SQLException : When the query doesn't work
+	 */
+	public static int planSalleFromSeance(int idSeance) {
+		
+		int idPlanSalle=0;
+
+		
+		
+		try {
+			ResultSet result = Connection.selectFrom("SELECT idPlanSalle FROM creerseance"
+					 								+ " WHERE idSeance =" + idSeance);
+			while(result.next())
+			{
+				idPlanSalle = result.getInt("idPlanSalle");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		Connection.close();
+		return idPlanSalle;
+		
+	}
 }
