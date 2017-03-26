@@ -360,8 +360,7 @@ public class CreationSalleController {
 		for (int i = 0; i < nombreCol ; i++) {
 			for (int j = 0 ; j < nombreLig; j++) {
 				Rectangle rect=new Rectangle();
-				rect=(Rectangle)(gridPane.getChildren().get(i*nombreLig+j));
-				
+				rect=(Rectangle)(gridPane.getChildren().get(i*nombreLig+j+1));
 				CaseSalle caseadd= new CaseSalle();
 				
 				if (rect.getFill()==Color.BROWN){
@@ -433,7 +432,7 @@ public class CreationSalleController {
 		for (int i = 0; i < nombreCol ; i++) {
 			for (int j = 0 ; j < nombreLig; j++) {
 				Rectangle rect=new Rectangle();
-				rect=(Rectangle)(gridPane.getChildren().get(i*nombreLig+j));
+				rect=(Rectangle)(gridPane.getChildren().get(i*nombreLig+j+1));
 				
 				CaseSalle caseadd= new CaseSalle();
 				
