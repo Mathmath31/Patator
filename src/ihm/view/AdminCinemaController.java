@@ -49,8 +49,6 @@ public class AdminCinemaController {
 	
 	
 	public void initialize(){
-//TODO charger les cinemas
-		
 
 		for(Cinema c:MainController.donnees.getCinemas()){
 			cineData.add(new InfoCine(c.getNomCine(),c.getnVoieCine(),c.getVilleCine().getCpVille(),c.getVilleCine().getNomVille(),""+c.getId()));	
