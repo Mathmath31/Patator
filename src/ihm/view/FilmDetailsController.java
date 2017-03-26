@@ -186,6 +186,7 @@ public class FilmDetailsController {
 //					place.getComposerPlace().getSeanceT().setId(idSeance);
 //					place.getComposerPlace().getSeanceT().setIdFilm(films.get(listView.getSelectionModel().getSelectedIndex()).getId());
 					
+					
 					for (int i = 0 ; i < Integer.parseInt(nbPlace.getValue()) ; i++){
 						casesalle = new CaseSalle();
 						client.getListPlace().add(place);
