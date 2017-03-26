@@ -266,7 +266,7 @@ public class MainController {
 	 */
 	@FXML
 	void goVueAdminSeanceFilm(ActionEvent event) {
-		VistaNavigator.loadVista(VistaNavigator.ADMINSEANCE);
+		VistaNavigator.loadVista(VistaNavigator.ACCOMPAGNEMENT);
 	}
 	
 	/**

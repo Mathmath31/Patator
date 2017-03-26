@@ -2,29 +2,51 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihm.view.ChoixAccompagnementController">
    <children>
-      <SplitPane dividerPositions="0.674457429048414" layoutX="428.0" layoutY="212.0" prefHeight="600.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.5868113522537562" layoutX="428.0" layoutY="212.0" prefHeight="600.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <SplitPane dividerPositions="0.50186799501868" layoutX="303.0" layoutY="198.0" prefHeight="598.0" prefWidth="805.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.5759312320916905" layoutX="303.0" layoutY="198.0" prefHeight="598.0" prefWidth="805.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <ListView fx:id="listView" layoutX="100.0" layoutY="188.0" prefHeight="596.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <TableView fx:id="tableViewChoix" layoutX="90.0" layoutY="198.0" prefHeight="596.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                  <TableColumn fx:id="accName" prefWidth="118.0" text="Nom" />
+                                  <TableColumn fx:id="accDesc" prefWidth="207.0" text="Designation" />
+                                    <TableColumn fx:id="accPrix" prefWidth="74.0" text="Prix" />
+                                    <TableColumn fx:id="accID" prefWidth="74.0" text="IDProduit" />
+                                </columns>
+                              </TableView>
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <ImageView fitHeight="596.0" fitWidth="397.0" layoutX="80.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <SplitPane dividerPositions="0.632996632996633" layoutX="118.0" layoutY="210.0" orientation="VERTICAL" prefHeight="596.0" prefWidth="396.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                       <children>
+                                          <ImageView fx:id="imgAccompagnement" fitHeight="357.0" fitWidth="275.0" layoutX="8.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                       <children>
+                                          <Button fx:id="btnValider" layoutX="119.0" layoutY="176.0" mnemonicParsing="false" onAction="#valider" text="Valider" />
+                                          <CheckBox fx:id="livraison" layoutX="69.0" layoutY="148.0" mnemonicParsing="false" text="Se faire livrer sur places ?" />
+                                          <Button fx:id="btnAjoute" layoutX="77.0" layoutY="21.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="25.0" prefWidth="138.0" text="Ajouter le produit ==&gt;" />
+                                          <Button fx:id="btnSupprimer" layoutX="69.0" layoutY="65.0" mnemonicParsing="false" onAction="#supprimer" text="&lt;== Supprimer le produit" />
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
                            </children></AnchorPane>
                     </items>
                   </SplitPane>
@@ -32,11 +54,15 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="485.0">
                <children>
-                  <ComboBox layoutX="117.0" layoutY="199.0" prefWidth="150.0" />
-                  <Button layoutX="116.0" layoutY="238.0" mnemonicParsing="false" text="Ajouter au panier" />
-                  <Button layoutX="117.0" layoutY="373.0" mnemonicParsing="false" text="Valider" />
-                  <Label layoutX="117.0" layoutY="169.0" text="Selectionner le nombre :" />
-                  <CheckBox layoutX="117.0" layoutY="338.0" mnemonicParsing="false" text="Se faire livrer sur places ?" />
+                  <TableView fx:id="tableViewChoix2" layoutX="171.0" layoutY="386.0" prefHeight="598.0" prefWidth="389.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="accName2" prefWidth="135.0" text="Nom" />
+                      <TableColumn fx:id="accDesc2" prefWidth="230.0" text="Designation" />
+                        <TableColumn fx:id="accPrix2" minWidth="0.0" prefWidth="67.0" text="Prix" />
+                        <TableColumn fx:id="accQty2" prefWidth="59.0" text="Qty" />
+                        <TableColumn fx:id="accID2" minWidth="0.0" prefWidth="0.0" text="IDProduit" />
+                    </columns>
+                  </TableView>
                </children>
             </AnchorPane>
         </items>

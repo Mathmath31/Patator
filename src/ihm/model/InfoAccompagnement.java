@@ -15,12 +15,13 @@ public class InfoAccompagnement {
 	    private final StringProperty accDescription;
 	    private final StringProperty accPrix;
 	    private final StringProperty accID;
+	    private final StringProperty accQty;
 	    
 		/**
 	     * Default constructor.
 	     */
 	    public InfoAccompagnement() {
-	        this(null, null,null,null);
+	        this(null, null,null,null,null);
 	    }
 	    
 	    /**
@@ -29,11 +30,12 @@ public class InfoAccompagnement {
 	     * @param cinemaName
 	     * @param cinemaAdresse
 	     */
-	    public InfoAccompagnement(String accName, String accDescription, String accPrix, String accID) {
+	    public InfoAccompagnement(String accName, String accDescription, String accPrix, String accID, String accQty) {
 	        this.accName = new SimpleStringProperty(accName);
 	        this.accDescription = new SimpleStringProperty(accDescription);
 	        this.accPrix = new SimpleStringProperty(accPrix);
 	        this.accID = new SimpleStringProperty(accID);
+	        this.accQty = new SimpleStringProperty(accQty);
 	    }
 	    
 	    public String getAccName() {
@@ -44,7 +46,7 @@ public class InfoAccompagnement {
 	        this.accName.set(name);
 	    }
 
-	    public StringProperty AccNameProperty() {
+	    public StringProperty accNameProperty() {
 	        return accName;
 	    }
 	    
@@ -83,5 +85,16 @@ public class InfoAccompagnement {
 	    public StringProperty accIDProperty() {
 	        return accID;
 	    }
-	    
+
+	    public String getAccQty() {
+	        return accQty.get();
+	    }
+
+	    public void setAccQty(String qty) {
+	        this.accQty.set(qty);
+	    }
+
+	    public StringProperty accQtyProperty() {
+	        return accQty;
+	    }
 }
