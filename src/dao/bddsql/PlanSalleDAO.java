@@ -60,7 +60,7 @@ public class PlanSalleDAO extends DAO<PlanSalle> {
 												  +id
 												  +";");
 
-		
+
 		//Recuperation des id des cases
 		try {
 			while(result2.next())
@@ -101,14 +101,17 @@ public class PlanSalleDAO extends DAO<PlanSalle> {
 						  +obj.getNumPlanSalle()+"',"	
 						  +obj.getIdCinema()+")");
 
-		ResultSet result = Connection.selectFrom("SELECT idPlanSalle "
-											   	 + "FROM PlanSalle "
+		ResultSet result = Connection.selectFrom("SELECT MAX(idPlanSalle) "
+											   	 + "FROM plansalle "
 												 +";");
 		int i = 0;
 		try
 		{
-			result.last();
-			i = result.getInt("idPlanSalle");
+			while(result.next())
+			{
+				i=result.getInt("MAX(idPlanSalle)");
+			}
+	
 		} catch (SQLException e)
 		{
 			e.printStackTrace();
