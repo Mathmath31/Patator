@@ -75,9 +75,9 @@ public class TestSeance {
 		}
 		
 		//nb places restantes normal seance 1
-		System.out.println(ComplementDAO.nbNormalPlacesSeance(1));
+		System.out.println(ComplementDAO.nbNormalPlacesSeance(82));
 		//nb places restantes handicape seance 1
-		System.out.println(ComplementDAO.nbHandicapePlacesSeance(1));
+		System.out.println(ComplementDAO.nbHandicapePlacesSeance(82));
 	}
 
 }

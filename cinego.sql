@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 24 Mars 2017 à 13:05
+-- Généré le :  Dim 26 Mars 2017 à 17:57
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -318,7 +318,7 @@ CREATE TABLE `client` (
 
 INSERT INTO `client` (`idClient`, `loginClient`, `mdpClient`, `mailClient`, `telephoneClient`, `nomClient`, `prenomClient`, `ageClient`, `nVoieClient`, `sexeClient`, `codeFideliteClient`, `adminClient`, `idVille`) VALUES
 (1, 'tcazals', 'ab4f63f9ac65152575886860dde480a1', 'tcaz@cesi.fr', '0565258852', 'Cazals', 'Thomas', 29, '20 rue des pommiers', 'M', '56845848', 1, 2),
-(2, 'test', '098f6bcd4621d373cade4e832627b4f6', 'tcaz@cesi.fr', '0565258852', 'Cazals', 'Thomas', 29, '20 rue des pommiers', 'M', '56845848', 1, 2),
+(2, 'test', '098f6bcd4621d373cade4e832627b4f6', 'tcaz@cesi.fr', '0565258852', 'test', 'tester', 29, '20 rue des pommiers', 'M', '56845848', 1, 2),
 (3, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'tcaz@cesi.fr', '0565258852', 'Cazals', 'Thomas', 29, '20 rue des pommiers', 'M', '56845848', 0, 2),
 (4, 'Mat', '81dc9bdb52d04dc20036dbd8313ed055', 'mattuning@gmail.com', '05065458485', 'Vilela Martins', 'Mathieu', 32, '25 route des bambous', 'M', '452454524242', 0, 4);
 
@@ -333,6 +333,15 @@ CREATE TABLE `composerplace` (
   `idCaseSalle` int(11) NOT NULL,
   `idSeance` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `composerplace`
+--
+
+INSERT INTO `composerplace` (`IdPlace`, `idCaseSalle`, `idSeance`) VALUES
+(1, 16, 82),
+(2, 20, 82),
+(3, 25, 82);
 
 -- --------------------------------------------------------
 
@@ -2133,6 +2142,15 @@ CREATE TABLE `place` (
   `choixPlace` tinyint(1) DEFAULT NULL,
   `idClient` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `place`
+--
+
+INSERT INTO `place` (`IdPlace`, `choixPlace`, `idClient`) VALUES
+(1, 1, 2),
+(2, 1, 2),
+(3, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -6383,7 +6401,6 @@ CREATE TABLE `ville` (
 INSERT INTO `ville` (`idVille`, `nomVille`, `cpVille`) VALUES
 (1, 'Labège', '31670'),
 (2, 'Toulouse', '31000'),
-(3, '', ''),
 (4, 'Paris', '95000');
 
 --
@@ -6538,7 +6555,7 @@ ALTER TABLE `film`
 -- AUTO_INCREMENT pour la table `place`
 --
 ALTER TABLE `place`
-  MODIFY `IdPlace` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdPlace` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `plansalle`
 --
