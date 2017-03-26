@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import classes.Produit;
 import dao.bddsql.ComplementDAO;
+import ihm.VistaNavigator;
 import ihm.model.InfoAccompagnement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -148,7 +149,7 @@ public class ChoixAccompagnementController {
 	
 	@FXML
 	public void valider(){
-
+		VistaNavigator.loadVista(VistaNavigator.PANIER);
 	}
 	
 	@FXML

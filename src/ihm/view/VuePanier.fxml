@@ -8,18 +8,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.7504173622704507" layoutX="491.0" layoutY="195.0" prefHeight="600.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <SplitPane dividerPositions="0.12248322147651007" layoutX="338.0" layoutY="173.0" orientation="VERTICAL" prefHeight="598.0" prefWidth="896.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.08053691275167785" layoutX="338.0" layoutY="173.0" orientation="VERTICAL" prefHeight="598.0" prefWidth="896.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="38.0" prefWidth="894.0">
                            <children>
-                              <Label layoutX="347.0" layoutY="22.0" text="Verifier votre commande:">
+                              <Label layoutX="347.0" layoutY="9.0" text="Verifier votre commande:">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -28,13 +27,33 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <TableView layoutX="113.0" layoutY="38.0" prefHeight="423.0" prefWidth="674.0">
+                              <TableView layoutX="14.0" layoutY="51.0" prefHeight="200.0" prefWidth="868.0">
                                 <columns>
-                                  <TableColumn prefWidth="100.0" text="Quantité" />
-                                  <TableColumn prefWidth="275.0" text="Produits" />
-                                    <TableColumn prefWidth="300.0" text="Description" />
+                                  <TableColumn prefWidth="75.0" text="Date" />
+                                  <TableColumn prefWidth="75.0" text="Film" />
+                                    <TableColumn prefWidth="75.0" text="Sceance" />
+                                    <TableColumn prefWidth="75.0" text="Salle" />
+                                    <TableColumn prefWidth="75.0" text="x siege" />
+                                    <TableColumn prefWidth="75.0" text="y siege" />
+                                    <TableColumn prefWidth="75.0" text="Prix" />
                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
                               </TableView>
+                              <TableView layoutX="14.0" layoutY="304.0" prefHeight="227.0" prefWidth="868.0">
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="Nom" />
+                                  <TableColumn prefWidth="75.0" text="Quantité" />
+                                    <TableColumn prefWidth="75.0" text="Prix" />
+                                    <TableColumn prefWidth="75.0" text="Id" visible="false" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                              <Label layoutX="420.0" layoutY="21.0" text="Vos places" />
+                              <Label layoutX="385.0" layoutY="273.0" text="Vos accompagnements" />
                            </children>
                         </AnchorPane>
                     </items>
