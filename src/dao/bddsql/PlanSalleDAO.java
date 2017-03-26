@@ -60,6 +60,7 @@ public class PlanSalleDAO extends DAO<PlanSalle> {
 												  +id
 												  +";");
 
+		
 		//Recuperation des id des cases
 		try {
 			while(result2.next())
@@ -71,11 +72,11 @@ public class PlanSalleDAO extends DAO<PlanSalle> {
 			e.printStackTrace();
 		}
 
-		
-
-		for(j=0;j<i;j++)
-		{
-			cases.add(CaseSalleDAO.find(idcases[j]));
+		if (i !=0 ){
+			for(j=0;j<i;j++)
+			{
+				cases.add(CaseSalleDAO.find(idcases[j]));
+			}
 		}
 
 

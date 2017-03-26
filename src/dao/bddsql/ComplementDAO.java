@@ -309,7 +309,7 @@ public class ComplementDAO {
 		try {
 			while(rs.next())
 			{
-				listPlaces[i]=rs.getInt("idPlanSalle");
+				listPlaces[i]=rs.getInt("idPlace");
 				i++;
 			}
 		} catch (SQLException e) {
