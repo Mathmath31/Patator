@@ -35,7 +35,7 @@ public class ChoixPositionController {
 	
 	public void initialize(){
 		
-		nomSalle.setText("");
+		//nomSalle.setText("");
 		
 		pane.getChildren().clear();
 		double tailleLig = pane.getPrefHeight();

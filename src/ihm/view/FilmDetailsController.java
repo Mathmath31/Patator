@@ -55,12 +55,18 @@ public class FilmDetailsController {
 	private ComboBox<String>  nbPlaceHandicape;
 	@FXML
 	private ObservableList<String> filmsList = FXCollections.observableArrayList();
+	
 	private List<String> listeIdFilms = new ArrayList<String>();
 	private boolean APILoadOK = false;
 	private List<CineGoFilm> cineGoFilms = new ArrayList<CineGoFilm>();
 	private List<Seance> seances= new ArrayList<Seance>();
-	ArrayList<Film> films= new ArrayList<Film>();
-	Dates dates = new Dates();
+	private ArrayList<Film> films= new ArrayList<Film>();
+	private Dates dates = new Dates();
+	private Integer index = 0;
+	private Integer idSeance = 0;
+	private Integer idPlanSalle = 0;
+	private Integer nbPlacesNormal = 0;
+	private Integer nbPlacesHandi = 0;
 
 
 
@@ -114,14 +120,12 @@ public class FilmDetailsController {
 		/** Action when an hour of cinema session are selected
 		 */
 		heureSeance.setOnAction(event -> {
-			//nbPlace dispo
 			// Trick for manage OOB error on "seance.get(index)" when heureSeance's items are clear
-			Integer index = 0;
 			if(heureSeance.getSelectionModel().isEmpty() == false){
 				index = heureSeance.getSelectionModel().getSelectedIndex();
 			} 
-			Integer idSeance = 0;
 			if(seances.isEmpty() == false){
+				//nbPlace dispo
 				idSeance = seances.get(index).getId();
 				nbPlace.getItems().clear();
 				for( Integer i = 0 ; i < ComplementDAO.nbNormalPlacesSeance(idSeance) + 1 ; i++){
@@ -136,7 +140,8 @@ public class FilmDetailsController {
 				}
 				nbPlaceHandicape.getSelectionModel().selectFirst();
 				nbPlaceHandicape.setDisable(false);
-				System.out.println("idseance " + idSeance + "Selected date: " + seances.get(index).getId());
+				idPlanSalle=ComplementDAO.planSalleFromSeance(idSeance);
+				System.out.println("idseance : " + idSeance + " Selected date: " + seances.get(index).getId() + " idPlanSalle : " + idPlanSalle);
 			}
 
 		});
@@ -158,8 +163,6 @@ public class FilmDetailsController {
 		buttonValidFilm.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-				Integer nbPlacesNormal = 0;
-				Integer nbPlacesHandi = 0;
 				if(nbPlace.getValue() != null){
 					nbPlacesNormal = Integer.parseInt(nbPlace.getValue());
 				}
@@ -176,6 +179,7 @@ public class FilmDetailsController {
 					place.getComposerPlace().getSeanceT().getFilmT().setNomFilm(films.get(listView.getSelectionModel().getSelectedIndex()).getNomFilm());
 					place.getComposerPlace().getSeanceT().getFilmT().setCodeFilm(films.get(listView.getSelectionModel().getSelectedIndex()).getCodeFilm());
 					place.getComposerPlace().getSeanceT().getFilmT().setId(films.get(listView.getSelectionModel().getSelectedIndex()).getId());
+					place.getComposerPlace().getSeanceT().getCreerSeanceT().setIdPlanSalle(idPlanSalle);
 					for (int i = 0 ; i < Integer.parseInt(nbPlace.getValue()) ; i++){
 						casesalle = new CaseSalle();
 						client.getListPlace().add(place);
@@ -188,7 +192,7 @@ public class FilmDetailsController {
 						casesalle = new CaseSalle();
 						client.getListPlace().add(place);
 						casesalle.getType().setId(8);
-						casesalle.getType().setNomTypeCase("HandicapÃ©");
+						casesalle.getType().setNomTypeCase("Handicapé");
 						cinema.getListPlanSalle().get(0).getListCaseSalle().add(casesalle);
 					}
 					cinema.setId(MainController.donnees.getCinemaCommande().getId());
@@ -203,15 +207,15 @@ public class FilmDetailsController {
 				else{
 					if( dateSeance.getValue() == null || dateSeance.getValue().toString() == "" )
 					{
-						message.setText("Veuillez sÃ©lectionner une date");
+						message.setText("Veuillez sélectionner une date");
 					}
 					else if(heureSeance.getValue() == null)
 					{
-						message.setText("Veuillez sÃ©lectionner une heure");
+						message.setText("Veuillez sélectionner une heure");
 					}
 					else if((nbPlacesNormal + nbPlacesHandi) == 0)
 					{
-						message.setText("Veuillez sÃ©lectionner au moins une place");
+						message.setText("Veuillez sélectionner au moins une place");
 					}
 				}
 			}
