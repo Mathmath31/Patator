@@ -96,7 +96,9 @@ public class ChoixAccompagnementController {
 				if(tableViewChoix2.getItems().get(nblig).getAccID() == id)
 					{
 						present = true;
-						tableViewChoix2.getItems().get(nblig).setAccQty("" + (Integer.parseInt(tableViewChoix2.getItems().get(nblig).getAccQty()) + 1));
+						int nbprod = (Integer.parseInt(tableViewChoix2.getItems().get(nblig).getAccQty()) + 1);
+						tableViewChoix2.getItems().get(nblig).setAccQty("" + nbprod);
+						tableViewChoix2.getItems().get(nblig).setAccPrix("" + (nbprod*Double.parseDouble(prix)));
 					};
 				nblig++;
 			}
@@ -113,9 +115,22 @@ public class ChoixAccompagnementController {
 	
 	@FXML
 	public void supprimer(){
+		int qty = Integer.valueOf(tableViewChoix2.getItems().get(tableViewChoix2.getSelectionModel().getSelectedIndex()).getAccQty());
+		double prix = Double.valueOf(tableViewChoix2.getItems().get(tableViewChoix2.getSelectionModel().getSelectedIndex()).getAccPrix());
+		if (nombreProduit != 0)
+		{
+			if (qty != 1)
+			{
+				tableViewChoix2.getItems().get(tableViewChoix2.getSelectionModel().getSelectedIndex()).setAccQty("" + (qty - 1));
+				tableViewChoix2.getItems().get(tableViewChoix2.getSelectionModel().getSelectedIndex()).setAccPrix("" + ((qty-1)*(prix/qty)));
+			}
+			else
+			{
+				InfoAccompagnement selectedItem = tableViewChoix2.getSelectionModel().getSelectedItem();
+				tableViewChoix2.getItems().remove(selectedItem);
+			}
+		}
 		nombreProduit --;
-		InfoAccompagnement selectedItem = tableViewChoix2.getSelectionModel().getSelectedItem();
-		tableViewChoix2.getItems().remove(selectedItem);
 	}
 	
 	@FXML
