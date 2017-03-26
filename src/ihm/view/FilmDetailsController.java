@@ -173,13 +173,19 @@ public class FilmDetailsController {
 					Place place = new Place();
 					CaseSalle casesalle = new CaseSalle();
 					cinema.getListPlanSalle().add(new PlanSalle());
-					place.getComposerPlace().getSeanceT().getCreerSeanceT().getDatesT().setSeanceDate(Date.from(dateSeance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(seances.get(heureSeance.getSelectionModel().getSelectedIndex()).getCreerSeanceT().getCreneauT().getHeureDebutCreneau());
-					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureFinCreneau(seances.get(heureSeance.getSelectionModel().getSelectedIndex()).getCreerSeanceT().getCreneauT().getHeureFinCreneau());
-					place.getComposerPlace().getSeanceT().getFilmT().setNomFilm(films.get(listView.getSelectionModel().getSelectedIndex()).getNomFilm());
-					place.getComposerPlace().getSeanceT().getFilmT().setCodeFilm(films.get(listView.getSelectionModel().getSelectedIndex()).getCodeFilm());
-					place.getComposerPlace().getSeanceT().getFilmT().setId(films.get(listView.getSelectionModel().getSelectedIndex()).getId());
-					place.getComposerPlace().getSeanceT().getCreerSeanceT().setIdPlanSalle(idPlanSalle);
+					place.getComposerPlace().setSeanceT(seances.get(heureSeance.getSelectionModel().getSelectedIndex()));
+//					place.getComposerPlace().getSeanceT().getCreerSeanceT().getDatesT().setSeanceDate(Date.from(dateSeance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+//					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(seances.get(heureSeance.getSelectionModel().getSelectedIndex()).getCreerSeanceT().getCreneauT().getHeureDebutCreneau());
+//					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureFinCreneau(seances.get(heureSeance.getSelectionModel().getSelectedIndex()).getCreerSeanceT().getCreneauT().getHeureFinCreneau());
+//					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setId(seances.get(heureSeance.getSelectionModel().getSelectedIndex()).getCreerSeanceT().getCreneauT().getId());
+//					place.getComposerPlace().getSeanceT().getFilmT().setNomFilm(films.get(listView.getSelectionModel().getSelectedIndex()).getNomFilm());
+//					place.getComposerPlace().getSeanceT().getFilmT().setCodeFilm(films.get(listView.getSelectionModel().getSelectedIndex()).getCodeFilm());
+//					place.getComposerPlace().getSeanceT().getFilmT().setId(films.get(listView.getSelectionModel().getSelectedIndex()).getId());
+//					place.getComposerPlace().getSeanceT().getCreerSeanceT().setIdPlanSalle(idPlanSalle);
+//					place.getComposerPlace().setIdSeance(idSeance);
+//					place.getComposerPlace().getSeanceT().setId(idSeance);
+//					place.getComposerPlace().getSeanceT().setIdFilm(films.get(listView.getSelectionModel().getSelectedIndex()).getId());
+					
 					for (int i = 0 ; i < Integer.parseInt(nbPlace.getValue()) ; i++){
 						casesalle = new CaseSalle();
 						client.getListPlace().add(place);
