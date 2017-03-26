@@ -1,7 +1,10 @@
 package ihm.view;
 
 import java.io.File;
+import java.util.ArrayList;
 
+import classes.Produit;
+import dao.bddsql.ComplementDAO;
 import ihm.model.InfoAccompagnement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -55,10 +58,17 @@ public class ChoixAccompagnementController {
 	private ObservableList<InfoAccompagnement> accData = FXCollections.observableArrayList();
 	private ObservableList<InfoAccompagnement> accData2 = FXCollections.observableArrayList();
 	
-	public void initialize(){		
-		accData.add(new InfoAccompagnement("Mars","et ca repart", "2","1",""));
-		accData.add(new InfoAccompagnement("Lion","pour rugir", "3.5","2",""));
-		accData.add(new InfoAccompagnement("eau","au bon gout de H2O", "4","3",""));
+	public void initialize(){	
+		
+		ArrayList<Produit> produits= new ArrayList<Produit>();
+		
+		// Liste des films du cinema avec l'id 1
+		produits=ComplementDAO.listofProduits();
+		
+		for(Produit p: produits){
+			System.out.println(p.toString());
+			accData.add(new InfoAccompagnement(p.getNomProduit(),p.getDescriptionProduit(),""+p.getPrixProduit(),""+p.getId(),""));
+		}
 		
 		accName.setCellValueFactory(cellData -> cellData.getValue().accNameProperty());
 		accDesc.setCellValueFactory(cellData -> cellData.getValue().accDescriptionProperty());
@@ -158,6 +168,8 @@ public class ChoixAccompagnementController {
 		  case 3:
 			  imageURI = "https://upload.wikimedia.org/wikipedia/fr/8/82/Logo_Evian.jpg"; 
 		    break;
+		  case 4:
+			break;
 		  default:
 		}
 		  Image image = new Image(imageURI);
