@@ -1,13 +1,17 @@
 package ihm.view;
 
+import java.io.File;
+
 import ihm.model.InfoAccompagnement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class ChoixAccompagnementController {
@@ -138,5 +142,29 @@ public class ChoixAccompagnementController {
 
 	}
 	
+	@FXML
+	public void selectionChanged(){
+			//TODO récuperer le lien de l'image et l'afficher dans imgAccompagnement
+		int index = Integer.valueOf(tableViewChoix2.getItems().get(nblig).getAccID());
+		switch (index)
+		{
+		  case 1:
+			  File file = new File("https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Mars.png/220px-Mars.png");
+			  Image image = new Image(file.toPath().toString());
+			  imgAccompagnement.setImage(image);
+		    break;
+		  case 2:
+			  File file2 = new File("https://upload.wikimedia.org/wikipedia/en/7/7b/Lion-Bar-Wrapper-Small.jpg");
+			  Image image2 = new Image(file2.toURI().toString());
+			  imgAccompagnement.setImage(image2);
+		    break;
+		  case 3:
+			  File file3 = new File("https://upload.wikimedia.org/wikipedia/fr/8/82/Logo_Evian.jpg");
+			  Image image3 = new Image(file3.toURI().toString());
+			  imgAccompagnement.setImage(image3);
+		    break;
+		  default:
+		}
+	}
 	
 }
