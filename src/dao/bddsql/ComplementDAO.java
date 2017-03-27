@@ -595,7 +595,7 @@ public static int nbHandicapePlacesSeance(int idSeance) {
 
 		int[] maxXY= new int[2];
 		
-		ResultSet rs = Connection.selectFrom("SELECT MAX(p.posXPositionCase)+1, MAX(p.posYPositionCase)+1"
+		ResultSet rs = Connection.selectFrom("SELECT MAX(CONVERT(SUBSTRING_INDEX(p.posXPositionCase,'-',-1),UNSIGNED INTEGER))+1, MAX(CONVERT(SUBSTRING_INDEX(p.posYPositionCase,'-',-1),UNSIGNED INTEGER))+1"
 											+" FROM casesalle cs INNER JOIN positioncase p ON cs.idPositionCase=p.idPositionCase " 
 											+ " WHERE cs.idPlanSalle=" + idPlanSalle +";");
 		try {

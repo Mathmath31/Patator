@@ -182,7 +182,9 @@ public class CreationSalleController {
 		maxXY=ComplementDAO.maxXYPlanSalle(planSalleEnCours.getId());
 		
 		nombreCol=maxXY[0];
+		System.out.println(nombreCol);
 		nombreLig=maxXY[1];
+		System.out.println(nombreLig);
 		
 		pane.getChildren().clear();
 		double tailleLig = pane.getPrefHeight();
@@ -365,74 +367,77 @@ public class CreationSalleController {
 	}
 	
 	
-	//TODO ajouter la salle a la BDD (XML)
 	public void ajouterSalle(){
-		planSalleEnCours= new PlanSalle();
 		
-		DAO<PlanSalle> PlanSalleDAO = DAOFactory.getPlanSalleDAO();
-		DAO<CaseSalle> CaseSalleDAO = DAOFactory.getCaseSalleDAO();
-		planSalleEnCours.setIdCinema(Integer.parseInt(listCine.getSelectionModel().getSelectedItem().getCinemaID()));
-		planSalleEnCours.setNomPlanSalle(nomSalle.getText());
-		planSalleEnCours=PlanSalleDAO.create(planSalleEnCours);
-		
-		
-		for (int i = 0; i < nombreCol ; i++) {
-			for (int j = 0 ; j < nombreLig; j++) {
-				Rectangle rect=new Rectangle();
-				rect=(Rectangle)(gridPane.getChildren().get(i*nombreLig+j+1));
-				CaseSalle caseadd= new CaseSalle();
-				
-				if (rect.getFill()==Color.BROWN){
-					//entree 1
-					caseadd.setIdPlanSalle(planSalleEnCours.getId());
-					caseadd.setIdPositionCase(ComplementDAO.findbypos(i, j));
-					caseadd.setIdTypeCase(1);
-					caseadd=CaseSalleDAO.create(caseadd);
-				}
-				else if(rect.getFill()==Color.GREY){
-					//sortie 2
-					caseadd.setIdPlanSalle(planSalleEnCours.getId());
-					caseadd.setIdPositionCase(ComplementDAO.findbypos(i, j));
-					caseadd.setIdTypeCase(2);
-					caseadd=CaseSalleDAO.create(caseadd);
-				}
-				else if(rect.getFill()==Color.BLACK){
-					//couloir 3
-					caseadd.setIdPlanSalle(planSalleEnCours.getId());
-					caseadd.setIdPositionCase(ComplementDAO.findbypos(i, j));
-					caseadd.setIdTypeCase(3);
-					caseadd=CaseSalleDAO.create(caseadd);
-				}
-				else if(rect.getFill()==Color.RED){
-					//extincteur 4
-					caseadd.setIdPlanSalle(planSalleEnCours.getId());
-					caseadd.setIdPositionCase(ComplementDAO.findbypos(i, j));
-					caseadd.setIdTypeCase(4);
-					caseadd=CaseSalleDAO.create(caseadd);
-				}
-				else if(rect.getFill()==Color.WHITE){
-					//ecran 5
-					caseadd.setIdPlanSalle(planSalleEnCours.getId());
-					caseadd.setIdPositionCase(ComplementDAO.findbypos(i, j));
-					caseadd.setIdTypeCase(5);
-					caseadd=CaseSalleDAO.create(caseadd);
-				}
-				else if(rect.getFill()==Color.GREEN){
-					//normal 6
-					caseadd.setIdPlanSalle(planSalleEnCours.getId());
-					caseadd.setIdPositionCase(ComplementDAO.findbypos(i, j));
-					caseadd.setIdTypeCase(6);
-					caseadd=CaseSalleDAO.create(caseadd);
-				}
-				else if(rect.getFill()==Color.BLUE){
-					//handicape 8
-					caseadd.setIdPlanSalle(planSalleEnCours.getId());
-					caseadd.setIdPositionCase(ComplementDAO.findbypos(i, j));
-					caseadd.setIdTypeCase(8);
-					caseadd=CaseSalleDAO.create(caseadd);
-				}			
-	        }
+		if(!nomSalle.getText().isEmpty()){
+			planSalleEnCours= new PlanSalle();
+			
+			DAO<PlanSalle> PlanSalleDAO = DAOFactory.getPlanSalleDAO();
+			DAO<CaseSalle> CaseSalleDAO = DAOFactory.getCaseSalleDAO();
+			planSalleEnCours.setIdCinema(Integer.parseInt(listCine.getSelectionModel().getSelectedItem().getCinemaID()));
+			planSalleEnCours.setNomPlanSalle(nomSalle.getText());
+			planSalleEnCours=PlanSalleDAO.create(planSalleEnCours);
+			
+			
+			for (int i = 0; i < nombreCol ; i++) {
+				for (int j = 0 ; j < nombreLig; j++) {
+					Rectangle rect=new Rectangle();
+					rect=(Rectangle)(gridPane.getChildren().get(i*nombreLig+j+1));
+					CaseSalle caseadd= new CaseSalle();
+					
+					if (rect.getFill()==Color.BROWN){
+						//entree 1
+						caseadd.setIdPlanSalle(planSalleEnCours.getId());
+						caseadd.setIdPositionCase(ComplementDAO.findbypos(i, j));
+						caseadd.setIdTypeCase(1);
+						caseadd=CaseSalleDAO.create(caseadd);
+					}
+					else if(rect.getFill()==Color.GREY){
+						//sortie 2
+						caseadd.setIdPlanSalle(planSalleEnCours.getId());
+						caseadd.setIdPositionCase(ComplementDAO.findbypos(i, j));
+						caseadd.setIdTypeCase(2);
+						caseadd=CaseSalleDAO.create(caseadd);
+					}
+					else if(rect.getFill()==Color.BLACK){
+						//couloir 3
+						caseadd.setIdPlanSalle(planSalleEnCours.getId());
+						caseadd.setIdPositionCase(ComplementDAO.findbypos(i, j));
+						caseadd.setIdTypeCase(3);
+						caseadd=CaseSalleDAO.create(caseadd);
+					}
+					else if(rect.getFill()==Color.RED){
+						//extincteur 4
+						caseadd.setIdPlanSalle(planSalleEnCours.getId());
+						caseadd.setIdPositionCase(ComplementDAO.findbypos(i, j));
+						caseadd.setIdTypeCase(4);
+						caseadd=CaseSalleDAO.create(caseadd);
+					}
+					else if(rect.getFill()==Color.WHITE){
+						//ecran 5
+						caseadd.setIdPlanSalle(planSalleEnCours.getId());
+						caseadd.setIdPositionCase(ComplementDAO.findbypos(i, j));
+						caseadd.setIdTypeCase(5);
+						caseadd=CaseSalleDAO.create(caseadd);
+					}
+					else if(rect.getFill()==Color.GREEN){
+						//normal 6
+						caseadd.setIdPlanSalle(planSalleEnCours.getId());
+						caseadd.setIdPositionCase(ComplementDAO.findbypos(i, j));
+						caseadd.setIdTypeCase(6);
+						caseadd=CaseSalleDAO.create(caseadd);
+					}
+					else if(rect.getFill()==Color.BLUE){
+						//handicape 8
+						caseadd.setIdPlanSalle(planSalleEnCours.getId());
+						caseadd.setIdPositionCase(ComplementDAO.findbypos(i, j));
+						caseadd.setIdTypeCase(8);
+						caseadd=CaseSalleDAO.create(caseadd);
+					}			
+		        }
+			}
 		}
+		
 	}
 	
 	//TODO charger la salle du cinéma et salle présent
