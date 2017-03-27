@@ -7,11 +7,12 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane prefHeight="700.0" prefWidth="1200.0" stylesheets="@../style/vista.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihm.view.MainController">
+<BorderPane prefHeight="700.0" prefWidth="1200.0" stylesheets="ihm/style/vista.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihm.view.MainController">
    <center>
       <StackPane fx:id="vistaHolder" prefHeight="425.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
    </center>
@@ -54,6 +55,7 @@
                   <Button fx:id="btAccompagnement" mnemonicParsing="false" onAction="#goVueChoixAccompagnement" text="Choix Accompagnement" />
                   <Button fx:id="btPanier" mnemonicParsing="false" onAction="#goVuePanier" text="Detail Panier" />
                   <Button fx:id="btReglement" mnemonicParsing="false" onAction="#goVueReglement" text="Reglement" />
+                  <ImageView fx:id="miniLogo" fitHeight="40.0" fitWidth="171.0" layoutX="30.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
               </buttons>
             </ButtonBar>
          </children>

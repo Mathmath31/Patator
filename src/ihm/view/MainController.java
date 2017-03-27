@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 
@@ -54,12 +56,22 @@ public class MainController {
 
 	@FXML
 	protected Button btReglement;
+	
+	@FXML
+	protected ImageView miniLogo;
 
 	protected static Donnees donnees= new Donnees();
 
+	/**
+	 * function called when the fxml view is called
+	 * add logo to Image view
+	 * @author MVM
+	 */
 	@FXML
 	public void initialize(){
-		
+		String imageURI = "MiniatureCinego.PNG";
+		Image image = new Image(imageURI);
+		miniLogo.setImage(image);
 	}
 
 	/**
@@ -303,5 +315,6 @@ public class MainController {
 	public static void setDonnees(Donnees donnees) {
 		MainController.donnees = donnees;
 	}
+	
 
 }
