@@ -3,6 +3,7 @@ package ihm.view;
 import java.util.ArrayList;
 
 import classes.CaseSalle;
+import classes.Place;
 import classes.PlanSalle;
 import dao.DAO;
 import dao.DAOFactory;
@@ -224,20 +225,27 @@ public class ChoixPositionController {
 				//Place Normale
 				if (rect.getFill()==Color.LIGHTGREEN){
 					// add function find idcasesalle
-//					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlacePrise).getComposerPlace().setIdCaseSalle(idCaseSalle);
+					idCaseSalle = ComplementDAO.idCaseSallebySalleXY(MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getId(), i, j);
+					System.out.println("idcasesalle : " + idCaseSalle);
+					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlacePrise).getComposerPlace().setIdCaseSalle(idCaseSalle);
 					nombreDePlacePrise ++;
 				}
 				//Place Handi
 				else if(rect.getFill()==Color.LIGHTBLUE){
 					// add function find idcasesalle
-//					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlace + nombreDePlacePriseHandi).getComposerPlace().setIdCaseSalle(idCaseSalle);
+					idCaseSalle = ComplementDAO.idCaseSallebySalleXY(MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getId(), i, j);
+					System.out.println("idcasesalle : " + idCaseSalle);
+					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlace + nombreDePlacePriseHandi).getComposerPlace().setIdCaseSalle(idCaseSalle);
 					nombreDePlacePriseHandi ++;
 				}
 			}
 		}
+		for (int i = 0; i < MainController.donnees.getClientCommande().getListPlace().size() ; i++) {
+
+			System.out.println(" casesalle finale : " + MainController.donnees.getClientCommande().getListPlace().get(i).getComposerPlace().getIdCaseSalle());
+		}
 		VistaNavigator.loadVista(VistaNavigator.ACCOMPAGNEMENT);
 	}
-	
 	@FXML
 	private void placementAuto()
 	{
