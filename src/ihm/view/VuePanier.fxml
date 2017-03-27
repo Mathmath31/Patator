@@ -31,7 +31,7 @@
                                 <columns>
                                   <TableColumn fx:id="placeDate" prefWidth="75.0" text="Date" />
                                   <TableColumn fx:id="placeFilm" prefWidth="75.0" text="Film" />
-                                    <TableColumn fx:id="placeSceance" prefWidth="75.0" text="Sceance" />
+                                    <TableColumn fx:id="placeSceance" prefWidth="75.0" text="Seance" />
                                     <TableColumn fx:id="placeSalle" prefWidth="75.0" text="Salle" />
                                     <TableColumn fx:id="placeSiegeX" prefWidth="75.0" text="x siege" />
                                     <TableColumn fx:id="placeSiegeY" prefWidth="75.0" text="y siege" />
