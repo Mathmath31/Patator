@@ -22,8 +22,7 @@ public class HomeController {
 	 * @author MVM
 	 */
 	public void initialize(){
-		String imageURI = "";
-		imageURI = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Mars.png/220px-Mars.png";
+		String imageURI = "LogoCinego.PNG";
 		Image image = new Image(imageURI);
 		logo.setImage(image);
 	}
