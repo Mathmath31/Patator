@@ -240,34 +240,24 @@ public class ChoixPositionController {
 	{	
 		nombreDePlacePrise = 0;
 		nombreDePlacePriseHandi = 0;
-		Integer idCaseSalle = 0;
 
 		for (int i = 0; i < nombreCol ; i++) {
 			for (int j = 0 ; j < nombreLig; j++) {
+				Integer idCaseSalle = 0;
 				Rectangle rect = new Rectangle();
 				rect=(Rectangle)(gridPane.getChildren().get(i*nombreLig+j+1));
 				//Place Normale
 				if (rect.getFill()==Color.LIGHTGREEN){
-					// add function find idcasesalle
-					Place place = new Place();
-					place = MainController.donnees.getClientCommande().getListPlace().get(nombreDePlacePrise);
 					idCaseSalle = ComplementDAO.idCaseSallebySalleXY(idPlanSalle, i, j);
-					place.getComposerPlace().setIdCaseSalle(idCaseSalle);
-					MainController.donnees.getClientCommande().getListPlace().set(nombreDePlacePrise,place);
 					System.out.println("idcasesalle : " + idCaseSalle + " nombreDePlacePrise : " + nombreDePlacePrise );
-					//MainController.donnees.getClientCommande().getListPlace().get(nombreDePlacePrise).getComposerPlace().setIdCaseSalle(idCaseSalle);
+					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlacePrise).getComposerPlace().setIdCaseSalle(idCaseSalle);
 					nombreDePlacePrise ++;
 				}
 				//Place Handi
 				if(rect.getFill()==Color.LIGHTBLUE){
-					// add function find idcasesalle
-					Place place = new Place();
 					idCaseSalle = ComplementDAO.idCaseSallebySalleXY(idPlanSalle, i, j);
-					place = MainController.donnees.getClientCommande().getListPlace().get(nombreDePlace + nombreDePlacePriseHandi);
-					place.getComposerPlace().setIdCaseSalle(idCaseSalle);
-					MainController.donnees.getClientCommande().getListPlace().set(nombreDePlace + nombreDePlacePriseHandi,place);
 					System.out.println("idcasesallehandi : " + idCaseSalle + " nombreDePlacePrise + nombreDePlacePriseHandi: " + (nombreDePlace + nombreDePlacePriseHandi));
-					//MainController.donnees.getClientCommande().getListPlace().get(nombreDePlace + nombreDePlacePriseHandi).getComposerPlace().setIdCaseSalle(idCaseSalle);
+					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlace + nombreDePlacePriseHandi).getComposerPlace().setIdCaseSalle(idCaseSalle);
 					nombreDePlacePriseHandi ++;
 				}
 			}
