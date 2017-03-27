@@ -52,7 +52,7 @@ public class CineGoAPI {
 		for( int i = 0 ; i < listeIdFilms.size() ; i++){
 
 			try{
-				URL URLIMG = new URL ("https://image.tmdb.org/t/p/w500"+this.tabFilms.get(i).getPoster_path());
+				URL URLIMG = new URL ("https://image.tmdb.org/t/p/w154"+this.tabFilms.get(i).getPoster_path());
 				BufferedImage image = ImageIO.read(URLIMG);
 				this.tabFilms.get(i).setDataIMG (image);
 				//ImageIO.write(this.tabFilms.get(i).getDataIMG(), "jpg", new File("./"+this.tabFilms.get(i).getPoster_path()));

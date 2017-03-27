@@ -31,6 +31,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.web.WebView;
 
 /**
  * FilmDetailController controller class for the entire layout.
@@ -60,7 +61,9 @@ public class FilmDetailsController {
 	private ComboBox<String>  nbPlaceHandicape;
 	@FXML
 	private ObservableList<String> filmsList = FXCollections.observableArrayList();
-	
+	@FXML
+	private WebView webView;
+
 	private List<String> listeIdFilms = new ArrayList<String>();
 	private boolean APILoadOK = false;
 	private List<CineGoFilm> cineGoFilms = new ArrayList<CineGoFilm>();
@@ -186,7 +189,7 @@ public class FilmDetailsController {
 						casesalle.getType().setId(6);
 						casesalle.getType().setNomTypeCase("Normal");
 						cinema.getListPlanSalle().get(0).getListCaseSalle().add(casesalle);
-						
+
 					}
 					for (int i = 0 ; i < Integer.parseInt(nbPlaceHandicape.getValue()) ; i++){
 						Place place = new Place();
@@ -241,6 +244,8 @@ public class FilmDetailsController {
 	/**This function refresh fields when one movie is selected
 	 */
 	private void refreshInfosFilm() {
+		webView.setVisible(false);
+		viewImageFilm.setVisible(true);
 		client = new Client();
 		cinema = new Cinema();
 		dateSeance.setEditable(false);
@@ -256,5 +261,13 @@ public class FilmDetailsController {
 		heureSeance.getSelectionModel().clearSelection();
 		nbPlace.getSelectionModel().clearSelection();
 		nbPlaceHandicape.getSelectionModel().clearSelection();
+	}
+	@FXML
+	private void startVideo(){
+		webView.setVisible(true);
+		viewImageFilm.setVisible(false);
+		webView.getEngine().load(
+				"http://www.youtube.com/embed/" + cineGoFilms.get(listView.getSelectionModel().getSelectedIndex()).getVideos().getResults().get(0).getKey() + "?autoplay=1"
+				);
 	}
 }

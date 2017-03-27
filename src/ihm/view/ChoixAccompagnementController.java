@@ -171,10 +171,11 @@ public class ChoixAccompagnementController {
 	/**
 	 * function to validate accompagnement and to load next view
 	 * 
-	 * @author MVM
+	 * @author MVM + Pauly Matthieu
 	 */
 	@FXML
 	public void valider(){
+		
 		VistaNavigator.loadVista(VistaNavigator.PANIER);
 	}
 	

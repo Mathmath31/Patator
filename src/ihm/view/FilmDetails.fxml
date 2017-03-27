@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" styleClass="background" stylesheets="@../style/vista.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihm.view.FilmDetailsController">
    <children>
@@ -63,7 +64,8 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="596.0" prefWidth="298.0" styleClass="background">
                            <children>
-                              <ImageView fx:id="viewImageFilm" fitHeight="598.0" fitWidth="426.0" pickOnBounds="true" preserveRatio="true" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <ImageView fx:id="viewImageFilm" fitHeight="598.0" fitWidth="426.0" onMouseClicked="#startVideo" pickOnBounds="true" preserveRatio="true" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <WebView fx:id="webView" prefHeight="598.0" prefWidth="426.0" />
                            </children>
                         </AnchorPane>
                     </items>
