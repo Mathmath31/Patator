@@ -1,6 +1,5 @@
 package ihm.view;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import classes.AjouterProduit;
@@ -64,6 +63,8 @@ public class ChoixAccompagnementController {
 
 	private ObservableList<InfoAccompagnement> accData = FXCollections.observableArrayList();
 	private ObservableList<InfoAccompagnement> accData2 = FXCollections.observableArrayList();
+	private ArrayList<Produit> produits= new ArrayList<Produit>();
+
 
 	/**
 	 * function called when the fxml view is called
@@ -71,8 +72,6 @@ public class ChoixAccompagnementController {
 	 * @author MVM
 	 */
 	public void initialize(){	
-
-		ArrayList<Produit> produits= new ArrayList<Produit>();
 
 		// Liste des films du cinema avec l'id 1
 		produits=ComplementDAO.listofProduits();
@@ -183,12 +182,18 @@ public class ChoixAccompagnementController {
 	private boolean livrer;
 		 */
 		for (int i = 0 ; i < tableViewChoix2.getItems().size() ; i++){
-			AjouterProduit produits = new AjouterProduit();			
-			produits.setIdPlace(MainController.donnees.getClientCommande().getListPlace().get(0).getId());
-			produits.setIdProduit(Integer.parseInt(tableViewChoix2.getItems().get(i).getAccID()));
-			produits.setLivrer(livraison.isSelected());
-			produits.setQuantite(Integer.parseInt(tableViewChoix2.getItems().get(i).getAccQty()));
-			MainController.donnees.getClientCommande().getListPlace().get(0).getListAjouterProduit().add(produits);
+			AjouterProduit ajouterProduit = new AjouterProduit();	
+
+			for(int j = 0 ; j < tableViewChoix2.getItems().size() ; j++){
+				if(produits.get(j).getNomProduit() == tableViewChoix2.getItems().get(j).getAccName()){
+					ajouterProduit.setProduit(produits.get(j));
+				}
+			}
+			ajouterProduit.setIdPlace(MainController.donnees.getClientCommande().getListPlace().get(0).getId());
+			ajouterProduit.setIdProduit(Integer.parseInt(tableViewChoix2.getItems().get(i).getAccID()));
+			ajouterProduit.setLivrer(livraison.isSelected());
+			ajouterProduit.setQuantite(Integer.parseInt(tableViewChoix2.getItems().get(i).getAccQty()));
+			MainController.donnees.getClientCommande().getListPlace().get(0).getListAjouterProduit().add(ajouterProduit);
 			System.out.println(MainController.donnees.getClientCommande().getListPlace().get(0).getListAjouterProduit().get(i));
 		}
 		VistaNavigator.loadVista(VistaNavigator.PANIER);
