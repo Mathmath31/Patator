@@ -3,6 +3,7 @@ package ihm.view;
 import java.io.File;
 import java.util.ArrayList;
 
+import classes.AjouterProduit;
 import classes.Produit;
 import dao.bddsql.ComplementDAO;
 import ihm.VistaNavigator;
@@ -54,44 +55,44 @@ public class ChoixAccompagnementController {
 	private TableColumn<InfoAccompagnement, String> accQty2;
 	@FXML
 	private CheckBox livraison;
-	
+
 	private int nombreProduit = 0;
 	private int nblig = 0;
-	
+
 	@FXML
 	private ImageView imgAccompagnement;
-	
+
 	private ObservableList<InfoAccompagnement> accData = FXCollections.observableArrayList();
 	private ObservableList<InfoAccompagnement> accData2 = FXCollections.observableArrayList();
-	
+
 	/**
 	 * function called when the fxml view is called
 	 * Populate the tableView with accompagnement information from the database
 	 * @author MVM
 	 */
 	public void initialize(){	
-		
+
 		ArrayList<Produit> produits= new ArrayList<Produit>();
-		
+
 		// Liste des films du cinema avec l'id 1
 		produits=ComplementDAO.listofProduits();
-		
+
 		for(Produit p: produits){
 			System.out.println(p.toString());
 			accData.add(new InfoAccompagnement(p.getNomProduit(),p.getDescriptionProduit(),""+p.getPrixProduit(),""+p.getId(),""));
 		}
-		
+
 		accName.setCellValueFactory(cellData -> cellData.getValue().accNameProperty());
 		accDesc.setCellValueFactory(cellData -> cellData.getValue().accDescriptionProperty());
 		accPrix.setCellValueFactory(cellData -> cellData.getValue().accPrixProperty());
 		accID.setCellValueFactory(cellData -> cellData.getValue().accIDProperty());
-		
+
 		tableViewChoix.getItems().setAll(accData);
 		tableViewChoix.getSelectionModel().selectFirst();
-		
+
 
 	}
-	
+
 	/**
 	 * function to add accompagnement
 	 * 
@@ -100,7 +101,7 @@ public class ChoixAccompagnementController {
 	@FXML
 	public void ajouter(){
 		boolean present = false;
-		
+
 		String nom = tableViewChoix.getItems().get(tableViewChoix.getSelectionModel().getSelectedIndex()).getAccName();
 		String desc = tableViewChoix.getItems().get(tableViewChoix.getSelectionModel().getSelectedIndex()).getAccDescription();
 		String prix = tableViewChoix.getItems().get(tableViewChoix.getSelectionModel().getSelectedIndex()).getAccPrix();
@@ -123,15 +124,15 @@ public class ChoixAccompagnementController {
 			//si produit déja dans la liste?
 			for (Object o : tableViewChoix2.getItems()) {
 				if(tableViewChoix2.getItems().get(nblig).getAccID() == id)
-					{
-						present = true;
-						int nbprod = (Integer.parseInt(tableViewChoix2.getItems().get(nblig).getAccQty()) + 1);
-						tableViewChoix2.getItems().get(nblig).setAccQty("" + nbprod);
-						tableViewChoix2.getItems().get(nblig).setAccPrix("" + (nbprod*Double.parseDouble(prix)));
-					};
+				{
+					present = true;
+					int nbprod = (Integer.parseInt(tableViewChoix2.getItems().get(nblig).getAccQty()) + 1);
+					tableViewChoix2.getItems().get(nblig).setAccQty("" + nbprod);
+					tableViewChoix2.getItems().get(nblig).setAccPrix("" + (nbprod*Double.parseDouble(prix)));
+				};
 				nblig++;
 			}
-			
+
 			//ajout de la ligne entiere si pas dans la liste
 			if (present != true)
 			{
@@ -139,10 +140,10 @@ public class ChoixAccompagnementController {
 			}
 			tableViewChoix2.getItems().setAll(accData2);
 		}
-			nombreProduit ++;
+		nombreProduit ++;
 	}
-	
-	
+
+
 	/**
 	 * function to remove accompagnement
 	 * 
@@ -167,7 +168,7 @@ public class ChoixAccompagnementController {
 			nombreProduit --;
 		}
 	}
-	
+
 	/**
 	 * function to validate accompagnement and to load next view
 	 * 
@@ -175,10 +176,24 @@ public class ChoixAccompagnementController {
 	 */
 	@FXML
 	public void valider(){
-		
+		/*
+	private int idProduit;
+	private int idPlace;
+	private int quantite;
+	private boolean livrer;
+		 */
+		for (int i = 0 ; i < tableViewChoix2.getItems().size() ; i++){
+			AjouterProduit produits = new AjouterProduit();			
+			produits.setIdPlace(MainController.donnees.getClientCommande().getListPlace().get(0).getId());
+			produits.setIdProduit(Integer.parseInt(tableViewChoix2.getItems().get(i).getAccID()));
+			produits.setLivrer(livraison.isSelected());
+			produits.setQuantite(Integer.parseInt(tableViewChoix2.getItems().get(i).getAccQty()));
+			MainController.donnees.getClientCommande().getListPlace().get(0).getListAjouterProduit().add(produits);
+			System.out.println(MainController.donnees.getClientCommande().getListPlace().get(0).getListAjouterProduit().get(i));
+		}
 		VistaNavigator.loadVista(VistaNavigator.PANIER);
 	}
-	
+
 	/**
 	 * function to update picture of accompagnement
 	 * 
@@ -186,27 +201,28 @@ public class ChoixAccompagnementController {
 	 */
 	@FXML
 	public void selectionChanged(){
-			//TODO récuperer le lien de l'image et l'afficher dans imgAccompagnement
+		//TODO récuperer le lien de l'image et l'afficher dans imgAccompagnement
 		int index = Integer.valueOf(tableViewChoix.getItems().get(tableViewChoix.getSelectionModel().getSelectedIndex()).getAccID());
 		System.out.println(index);
 		String imageURI = "";
 		switch (index)
 		{
-		  case 1:
-			  imageURI = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Mars.png/220px-Mars.png";
-		    break;
-		  case 2:
-			  imageURI = "https://upload.wikimedia.org/wikipedia/en/7/7b/Lion-Bar-Wrapper-Small.jpg";
-		    break;
-		  case 3:
-			  imageURI = "https://upload.wikimedia.org/wikipedia/fr/8/82/Logo_Evian.jpg"; 
-		    break;
-		  case 4:
+		case 1:
+			imageURI = "www.coca-cola-france.fr/content/dam/journey/us/en/private/2015/02/chronology10-1280-900-bfb7f27c.jpg";
 			break;
-		  default:
+		case 2:
+			imageURI = "https://upload.wikimedia.org/wikipedia/fr/8/82/Logo_Evian.jpg";
+			break;
+		case 3:
+			imageURI = "http://fr.ubergizmo.com/wp-content/uploads/2013/12/candy-cavity.jpg"; 
+			break;
+		case 4:
+			imageURI = "http://i.utdstc.com/icons/120/popcorn-time-android.png";
+			break;
+		default:
 		}
-		  Image image = new Image(imageURI);
-		  imgAccompagnement.setImage(image);
+		Image image = new Image(imageURI);
+		imgAccompagnement.setImage(image);
 	}
-	
+
 }

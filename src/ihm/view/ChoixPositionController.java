@@ -252,6 +252,8 @@ public class ChoixPositionController {
 					idCaseSalle = ComplementDAO.idCaseSallebySalleXY(idPlanSalle, i, j);
 					System.out.println("idcasesalle : " + idCaseSalle + " nombreDePlacePrise : " + nombreDePlacePrise );
 					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlacePrise).getComposerPlace().setIdCaseSalle(idCaseSalle);
+					MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(nombreDePlacePrise).getPosition().setPosX(j);
+					MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(nombreDePlacePrise).getPosition().setPosY(i);
 					nombreDePlacePrise ++;
 				}
 				//Place Handi
@@ -260,6 +262,8 @@ public class ChoixPositionController {
 					idCaseSalle = ComplementDAO.idCaseSallebySalleXY(idPlanSalle, i, j);
 					System.out.println("idcasesallehandi : " + idCaseSalle + " nombreDePlacePrise + nombreDePlacePriseHandi: " + (nombreDePlace + nombreDePlacePriseHandi));
 					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlace + nombreDePlacePriseHandi).getComposerPlace().setIdCaseSalle(idCaseSalle);
+					MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(nombreDePlace + nombreDePlacePriseHandi).getPosition().setPosX(j);
+					MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(nombreDePlace + nombreDePlacePriseHandi).getPosition().setPosY(i);
 					nombreDePlacePriseHandi ++;
 				}
 			}
