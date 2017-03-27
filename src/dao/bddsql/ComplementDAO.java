@@ -711,7 +711,7 @@ public static int idCaseSallebySalleXY(int idPlanSalle, int X, int Y) {
 					 								+ " AND pc.posYpositionCase=" + Y + ";");
 			while(result.next())
 			{
-				idCaseSalle = result.getInt(1);
+				idCaseSalle = result.getInt("cs.idCaseSalle");
 			}
 			
 		} catch (SQLException e) {

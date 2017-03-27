@@ -78,6 +78,8 @@ public class TestSeance {
 		System.out.println(ComplementDAO.nbNormalPlacesSeance(82));
 		//nb places restantes handicape seance 1
 		System.out.println(ComplementDAO.nbHandicapePlacesSeance(82));
+		
+		System.out.println(ComplementDAO.idCaseSallebySalleXY(1,1,1));
 	}
 
 }
