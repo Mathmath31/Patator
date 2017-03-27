@@ -11,18 +11,13 @@
 }
 
 #vistaHolder {
-    -fx-background-color: lightgrey;
-}
-
-#vista1 {
-    -fx-background-color: aliceblue;
-}
-
-#main {
-    -fx-background-color: coral;
+    -fx-background-color: #FEDE94;
 }
 
 .button {
     -fx-base: lightblue;
-    -fx-font-size: 20px;
+}
+
+.pane {
+	-fx-background-color: coral;
 }

@@ -25,6 +25,11 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+/**
+ * ChoixSalleController controller class for the entire layout.
+ * 
+ * @author MVM
+ */
 public class CreationSalleController {
 	
 	private int nombreCol = 8;
@@ -71,6 +76,13 @@ public class CreationSalleController {
 	
 	private ObservableList<InfoCine> cineData = FXCollections.observableArrayList();
 	
+	/**
+	 * function called when the fxml view is called
+	 * Load the cinema
+	 * Load the salle
+	 * Loading an empty room (default 8x12)
+	 * @author MVM
+	 */
 	public void initialize(){
 		
 		for(Cinema c:MainController.donnees.getCinemas()){
@@ -89,6 +101,13 @@ public class CreationSalleController {
         
 	}
 	
+	/**
+	 * function called when the fxml view is called
+	 * Load the cinema
+	 * Load the salle
+	 * Loading an empty room (default 8x12)
+	 * @author MVM
+	 */
 	@FXML
 	private void creeSalles(){
 		try{

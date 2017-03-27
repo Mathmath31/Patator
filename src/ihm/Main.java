@@ -24,7 +24,7 @@ public class Main extends Application {
             createScene(
                 loadMainPane()
             )
-        );
+    );
         stage.show();
     }
     
@@ -64,9 +64,9 @@ public class Main extends Application {
             mainPane
         );
 
-//        scene.getStylesheets().setAll(
-//            getClass().getResource("vista.css").toExternalForm()
-//        );
+        scene.getStylesheets().setAll(
+            getClass().getResource("style/vista.css").toExternalForm()
+        );
 
         return scene;
     }
