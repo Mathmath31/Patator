@@ -3,7 +3,10 @@ package ihm.view;
 import java.util.ArrayList;
 
 import classes.Cinema;
+import classes.Client;
 import classes.PlanSalle;
+import dao.DAO;
+import dao.DAOFactory;
 import ihm.model.ExportCine;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import xml_io.xmlReadAndWrite;
 
 public class VueImportExportController {
 
@@ -101,27 +105,65 @@ public class VueImportExportController {
 	@FXML
 	private void exporter()
 	{
-		ArrayList<Cinema> cine=new ArrayList<Cinema>();
-		int[] idCines= new int[20];
+		ArrayList<Cinema> cines=new ArrayList<Cinema>();
+		Cinema cine= new Cinema();
+		Cinema cinetemp= new Cinema();
+		PlanSalle plansalle= new PlanSalle();
+		DAO<PlanSalle> PlanSalleDAO = DAOFactory.getPlanSalleDAO();
+		DAO<Cinema> CinemaDAO = DAOFactory.getCinemaDAO();
+		xmlReadAndWrite xml = new xmlReadAndWrite();
 		
 		
+		Boolean doublon=false;
+		int k=0;
+		int idcine=0;
+		System.out.println("nblig"+nblig);
+		
+		nblig=0;
+		for (Object o : tableViewChoix2.getItems()) {
+			nblig++;
+		}
+
 		
 		for(int i=0;i<nblig;i++){
 			
-			tableViewChoix2.getItems().get(nblig).getIdSalle();
+			doublon=false;
+			k=0;
+			idcine=0;
+			for(Cinema c:cines){
+				if(c.getId() == Integer.parseInt(tableViewChoix2.getItems().get(i).getIdCinema())){
+					doublon=true;
+					idcine=k;
+				}
+				k++;
+			}
+			
+			plansalle=PlanSalleDAO.find(Integer.parseInt(tableViewChoix2.getItems().get(i).getIdSalle()));
+			
+			if(doublon){
+				cines.get(idcine).getListPlanSalle().add(plansalle);
+			}
+			else{
+				cinetemp=new Cinema();
+				cinetemp=CinemaDAO.find(Integer.parseInt(tableViewChoix2.getItems().get(i).getIdCinema()));
+				cine=new Cinema();
+				cine.setId(cinetemp.getId());
+				cine.setIdVille(cinetemp.getIdVille());
+				cine.setNomCine(cinetemp.getNomCine());
+				cine.setnVoieCine(cinetemp.getnVoieCine());
+				cines.add(cine);
+				cines.get(cines.size()-1).getListPlanSalle().add(plansalle);
+			}
+
 		}
-		
-		for(int i=0;i<nblig;i++){
-			tableViewChoix2.getItems().get(nblig).getIdSalle();
-		}
-		
+		xml.saveToXML(cines, nomFichier.getText());
 	}
 	
 	@FXML
 	private void importer()
 	{
-		
-		
+		xmlReadAndWrite xml = new xmlReadAndWrite();
+		xml.readXML();
 	}
 	
 
