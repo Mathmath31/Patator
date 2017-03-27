@@ -21,7 +21,7 @@
             </AnchorPane>
          </top>
          <center>
-            <ImageView fx:id="image" fitHeight="401.0" fitWidth="756.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="logo" fitHeight="401.0" fitWidth="756.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </children>
