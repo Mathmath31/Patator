@@ -193,7 +193,7 @@ public class ChoixPositionController {
 			if (rect.getFill() == Color.LIGHTBLUE)
 			{
 				rect.setFill(Color.BLUE);
-				rect.setStroke(Color.WHITE);
+				rect.setStroke(Color.WHITE);				
 				nombreDePlacePriseHandi --;
 			}
 			else
@@ -212,13 +212,36 @@ public class ChoixPositionController {
 	
 	@FXML
 	private void valider()
-	{
+	{	
+		nombreDePlacePrise = 0;
+		nombreDePlacePriseHandi = 0;
+		Integer idCaseSalle;
+		for (int i = 0; i < nombreCol ; i++) {
+			for (int j = 0 ; j < nombreLig; j++) {
+				Rectangle rect=new Rectangle();
+				rect=(Rectangle)(gridPane.getChildren().get(i*nombreLig+j+1));
+				CaseSalle caseadd= new CaseSalle();
+				//Place Normale
+				if (rect.getFill()==Color.LIGHTGREEN){
+					// add function find idcasesalle
+//					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlacePrise).getComposerPlace().setIdCaseSalle(idCaseSalle);
+					nombreDePlacePrise ++;
+				}
+				//Place Handi
+				else if(rect.getFill()==Color.LIGHTBLUE){
+					// add function find idcasesalle
+//					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlace + nombreDePlacePriseHandi).getComposerPlace().setIdCaseSalle(idCaseSalle);
+					nombreDePlacePriseHandi ++;
+				}
+			}
+		}
 		VistaNavigator.loadVista(VistaNavigator.ACCOMPAGNEMENT);
 	}
 	
 	@FXML
 	private void placementAuto()
 	{
+		//call function placement auto
 		VistaNavigator.loadVista(VistaNavigator.ACCOMPAGNEMENT);
 	}
 }
