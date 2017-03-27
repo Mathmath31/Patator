@@ -128,14 +128,11 @@ public class AdminCinemaController {
 
 		DAO<Cinema> CinemaDAO = DAOFactory.getCinemaDAO();
 		
-		if (ComplementDAO.ExistsCinema(adminNomCine.getText()) != 0){
-			cine=CinemaDAO.find(ComplementDAO.ExistsCinema(adminNomCine.getText()));
-			CinemaDAO.delete(cine);
-			message.setText("Le Cinéma " + cine.getNomCine() + " a bien été supprimé");
-		}
-		else{
-			message.setText("Le Cinéma " + cine.getNomCine() + " n'existe pas dans la base de données");
-		}	
+		cine.setId(Integer.parseInt(tableView.getSelectionModel().getSelectedItem().getCinemaID()));
+		cine.setNomCine(tableView.getSelectionModel().getSelectedItem().getCinemaName());
+		CinemaDAO.delete(cine);
+		message.setText("Le Cinéma " + cine.getNomCine() + " a bien été supprimé");
+			
     }
 	
 	/**
@@ -154,6 +151,7 @@ public class AdminCinemaController {
 		
 		if( !adminNomCine.getText().isEmpty() && !adminNoVoie.getText().isEmpty() && !adminNomVille.getText().isEmpty() && !adminCP.getText().isEmpty()){
 			
+			cine.setId(Integer.parseInt(tableView.getSelectionModel().getSelectedItem().getCinemaID()));
 			cine.setNomCine(adminNomCine.getText());
 			cine.setnVoieCine(adminNoVoie.getText());
 			

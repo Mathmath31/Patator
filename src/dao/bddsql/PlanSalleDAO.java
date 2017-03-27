@@ -34,7 +34,7 @@ public class PlanSalleDAO extends DAO<PlanSalle> {
 		String numPlanSalle=null;
 		
 		int idCinema=0;
-		int[] idcases = new int[200];
+		int[] idcases = new int[600];
 		int i=0;
 		int j=0;
 

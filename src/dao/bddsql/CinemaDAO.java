@@ -104,7 +104,7 @@ public class CinemaDAO extends DAO<Cinema> {
 	@Override
 	public Cinema create(Cinema obj) {
 
-		Connection.update("INSERT INTO Cinema (nomCine,nVoieCine,idVille) VALUES('', '"
+		Connection.update("INSERT INTO Cinema (nomCine,nVoieCine,idVille) VALUES('"
 					   	  +obj.getNomCine() + "','"
 						  +obj.getnVoieCine()+"',"	
 						  +obj.getIdVille()+")");
