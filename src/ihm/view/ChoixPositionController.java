@@ -18,6 +18,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 
 /**
@@ -238,6 +240,15 @@ public class ChoixPositionController {
 	@FXML
 	private void valider()
 	{	
+		if(nombreDePlacePrise != nombreDePlace || nombreDePlacePriseHandi != nombreDePlaceHandi){
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Erreur");
+			alert.setHeaderText("Selectionnez toutes les places");
+			alert.setContentText("Ooops, there was an error!");
+			alert.showAndWait();
+		}
+		else{
+			System.out.println(nombreDePlacePrise+" " + " " +nombreDePlace + " "+ " "+ nombreDePlacePriseHandi + " " + nombreDePlaceHandi);
 		nombreDePlacePrise = 0;
 		nombreDePlacePriseHandi = 0;
 
@@ -273,6 +284,7 @@ public class ChoixPositionController {
 			System.out.println(i + " casesalle finale : " + MainController.donnees.getClientCommande().getListPlace().get(i).getComposerPlace().getIdCaseSalle());
 		}
 		VistaNavigator.loadVista(VistaNavigator.ACCOMPAGNEMENT);
+		}
 	}
 
 	/**
