@@ -20,6 +20,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.control.Label;
 
+/**
+ * ChoixPosition controller class for the entire layout.
+ * 
+ * @author MVM
+ */
 public class ChoixPositionController {
 
 	private int nombreCol = 20;
@@ -43,6 +48,11 @@ public class ChoixPositionController {
 		
 	}
 	
+	/**
+	 * function called when the fxml view is called
+	 * Populate the GridView with seating plan information from the database
+	 * @author MVM
+	 */
 	public void initialize(){
 		//TODO mettre une phrase pour dire la salle
 		nomSalle.setText("");
@@ -96,13 +106,16 @@ public class ChoixPositionController {
         
         for (int i = 0; i < nombreCol ; i++) {
 			for (int j = 0 ; j < nombreLig; j++) {
-				//ajout des rectangles
+				//add rectangles
 				Rectangle rectangle = new Rectangle(tailleCol / (nombreCol) - 1, tailleLig / (nombreLig) - 1);
 				
 				
 	            rectangle.setFill(Color.GREEN);
 	            rectangle.setStroke(Color.WHITE);
-	         // evenement au click sur un rectangle
+	        	/**
+	        	 * Add action for the click on the rectangle in the gridView
+	        	 * @author MVM
+	        	 */
 	            rectangle.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 	            	@Override
 	            	public void handle(MouseEvent e) {
@@ -114,6 +127,10 @@ public class ChoixPositionController {
 	        }
 		}
         
+    	/**
+		 * Set the color for the rectangle
+    	 * @author MVM
+    	 */
         for(CaseSalle cs: planSalleEnCours.getListCaseSalle()){
         	Rectangle rect= new Rectangle();
         	rect = (Rectangle)(gridPane.getChildren().get(cs.getPosition().getPosX()*nombreLig+cs.getPosition().getPosY()+1));
@@ -145,6 +162,10 @@ public class ChoixPositionController {
         System.out.println("idSeancechoixplace :" + MainController.donnees.getClientCommande().getListPlace().get(0).getComposerPlace().getSeanceT().getId());
         casesres=ComplementDAO.listofCaseSalleRes(MainController.donnees.getClientCommande().getListPlace().get(0).getComposerPlace().getSeanceT().getId());
         
+    	/**
+    	 * Populate the tableView with cinema information from the database
+    	 * @author MVM
+    	 */
         for(CaseSalle csr: casesres){
         	Rectangle rect= new Rectangle();
         	rect = (Rectangle)(gridPane.getChildren().get(csr.getPosition().getPosX()*nombreLig+csr.getPosition().getPosY()+1));
@@ -158,13 +179,11 @@ public class ChoixPositionController {
         }
 	}
 	/**
-	 * Mise en forme au click
-	 * @author Math
+	 * Function called when we selected a place
+	 * @author MVM
 	 * @param i
 	 * @param j
 	 * @param rect
-	 * @return
-	 * @exception
 	 * @see
 	 */
 	public void click(int i, int j, Rectangle rect){
@@ -211,6 +230,10 @@ public class ChoixPositionController {
 		System.out.println(nombreDePlacePriseHandi);
 	}
 	
+	/**
+	 * function called on click "valider"
+	 * @author MVM +Pauly Matthieu
+	 */
 	@FXML
 	private void valider()
 	{	
@@ -246,6 +269,11 @@ public class ChoixPositionController {
 		}
 		VistaNavigator.loadVista(VistaNavigator.ACCOMPAGNEMENT);
 	}
+	
+	/**
+	 * function called on click "positionnement auto"
+	 * @author MVM
+	 */
 	@FXML
 	private void placementAuto()
 	{
