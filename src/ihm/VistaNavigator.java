@@ -8,7 +8,7 @@ import java.io.IOException;
 import ihm.view.MainController;
 
 /**
- * Utility class for controlling navigation between vistas.
+ * Utility class for controlling navigation between view.
  *
  * All methods on the navigator are static to facilitate
  * simple access from anywhere in the application.

@@ -3,14 +3,14 @@ package ihm.model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-
+/**
+ * Model class for a Cine.
+ *
+ * @author MVM
+ */
 public class InfoCine {
 
-	/**
-	 * Model class for a Cine.
-	 *
-	 * @author MVM
-	 */
+
 
 	    private final StringProperty cinemaName;
 	    private final StringProperty cinemaAdresse;
@@ -30,6 +30,9 @@ public class InfoCine {
 	     * 
 	     * @param cinemaName
 	     * @param cinemaAdresse
+	     * @param cinemaCP
+	     * @param cinemaVille
+	     * @param cinemaID
 	     */
 	    public InfoCine(String cinemaName, String cinemaAdresse,String cinemaCP, String cinemaVille, String cinemaID) {
 	        this.cinemaName = new SimpleStringProperty(cinemaName);

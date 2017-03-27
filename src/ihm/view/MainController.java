@@ -11,10 +11,11 @@ import javafx.scene.layout.StackPane;
 
 /**
  * Main controller class for the entire layout.
+ * 
+ * @author MVM
  */
 public class MainController {
 
-	/** Holder of a switchable vista. */
 	@FXML
 	private StackPane vistaHolder;
 	@FXML
@@ -63,7 +64,6 @@ public class MainController {
 
 	/**
 	 * Autentification
-	 *
 	 *
 	 */
 	public void autentification(){

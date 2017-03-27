@@ -3,12 +3,13 @@ package ihm.model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Model class for a Cine & Salle.
+ *
+ * @author MVM
+ */
 public class ExportCine {
-	/**
-	 * Model class for a Cine.
-	 *
-	 * @author MVM
-	 */
+
 
 	    private final StringProperty idCinema;
 	    private final StringProperty nomCinema;
@@ -26,8 +27,10 @@ public class ExportCine {
 	    /**
 	     * Constructor with some initial data.
 	     * 
-	     * @param cinemaName
-	     * @param cinemaAdresse
+	     * @param idCinema
+	     * @param nomCinema
+	     * @param idSalle
+	     * @param nomSalle
 	     */
 	    public ExportCine(String idCinema, String nomCinema, String idSalle, String nomSalle) {
 	        this.idCinema = new SimpleStringProperty(idCinema);
