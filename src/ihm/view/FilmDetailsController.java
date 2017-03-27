@@ -177,25 +177,11 @@ public class FilmDetailsController {
 					nbPlacesHandi = Integer.parseInt(nbPlaceHandicape.getValue());
 				}
 				if(listView.getSelectionModel().isEmpty() == false && dateSeance.getValue() != null && dateSeance.getValue().toString() != "" && heureSeance.getValue() != null && (nbPlacesNormal + nbPlacesHandi) != 0 ){
-					Place place = new Place();
-					CaseSalle casesalle = new CaseSalle();
 					cinema.getListPlanSalle().add(new PlanSalle());
-					place.getComposerPlace().setSeanceT(seances.get(heureSeance.getSelectionModel().getSelectedIndex()));
-//					place.getComposerPlace().getSeanceT().getCreerSeanceT().getDatesT().setSeanceDate(Date.from(dateSeance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-//					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureDebutCreneau(seances.get(heureSeance.getSelectionModel().getSelectedIndex()).getCreerSeanceT().getCreneauT().getHeureDebutCreneau());
-//					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setHeureFinCreneau(seances.get(heureSeance.getSelectionModel().getSelectedIndex()).getCreerSeanceT().getCreneauT().getHeureFinCreneau());
-//					place.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().setId(seances.get(heureSeance.getSelectionModel().getSelectedIndex()).getCreerSeanceT().getCreneauT().getId());
-//					place.getComposerPlace().getSeanceT().getFilmT().setNomFilm(films.get(listView.getSelectionModel().getSelectedIndex()).getNomFilm());
-//					place.getComposerPlace().getSeanceT().getFilmT().setCodeFilm(films.get(listView.getSelectionModel().getSelectedIndex()).getCodeFilm());
-//					place.getComposerPlace().getSeanceT().getFilmT().setId(films.get(listView.getSelectionModel().getSelectedIndex()).getId());
-//					place.getComposerPlace().getSeanceT().getCreerSeanceT().setIdPlanSalle(idPlanSalle);
-//					place.getComposerPlace().setIdSeance(idSeance);
-//					place.getComposerPlace().getSeanceT().setId(idSeance);
-//					place.getComposerPlace().getSeanceT().setIdFilm(films.get(listView.getSelectionModel().getSelectedIndex()).getId());
-					
-					
 					for (int i = 0 ; i < Integer.parseInt(nbPlace.getValue()) ; i++){
-						casesalle = new CaseSalle();
+						Place place = new Place();
+						CaseSalle casesalle = new CaseSalle();
+						place.getComposerPlace().setSeanceT(seances.get(heureSeance.getSelectionModel().getSelectedIndex()));
 						client.getListPlace().add(place);
 						casesalle.getType().setId(6);
 						casesalle.getType().setNomTypeCase("Normal");
@@ -203,7 +189,9 @@ public class FilmDetailsController {
 						
 					}
 					for (int i = 0 ; i < Integer.parseInt(nbPlaceHandicape.getValue()) ; i++){
-						casesalle = new CaseSalle();
+						Place place = new Place();
+						CaseSalle casesalle = new CaseSalle();
+						place.getComposerPlace().setSeanceT(seances.get(heureSeance.getSelectionModel().getSelectedIndex()));
 						client.getListPlace().add(place);
 						casesalle.getType().setId(8);
 						casesalle.getType().setNomTypeCase("Handicapé");

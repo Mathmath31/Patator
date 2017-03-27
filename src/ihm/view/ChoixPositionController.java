@@ -248,6 +248,7 @@ public class ChoixPositionController {
 				rect=(Rectangle)(gridPane.getChildren().get(i*nombreLig+j+1));
 				//Place Normale
 				if (rect.getFill()==Color.LIGHTGREEN){
+					// add function find idcasesalle
 					idCaseSalle = ComplementDAO.idCaseSallebySalleXY(idPlanSalle, i, j);
 					System.out.println("idcasesalle : " + idCaseSalle + " nombreDePlacePrise : " + nombreDePlacePrise );
 					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlacePrise).getComposerPlace().setIdCaseSalle(idCaseSalle);
@@ -255,6 +256,7 @@ public class ChoixPositionController {
 				}
 				//Place Handi
 				if(rect.getFill()==Color.LIGHTBLUE){
+					// add function find idcasesalle
 					idCaseSalle = ComplementDAO.idCaseSallebySalleXY(idPlanSalle, i, j);
 					System.out.println("idcasesallehandi : " + idCaseSalle + " nombreDePlacePrise + nombreDePlacePriseHandi: " + (nombreDePlace + nombreDePlacePriseHandi));
 					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlace + nombreDePlacePriseHandi).getComposerPlace().setIdCaseSalle(idCaseSalle);
