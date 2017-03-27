@@ -193,7 +193,7 @@ public class FilmDetailsController {
 						casesalle.getType().setId(6);
 						casesalle.getType().setNomTypeCase("Normal");
 						cinema.getListPlanSalle().get(0).getListCaseSalle().add(casesalle);
-
+						
 					}
 					for (int i = 0 ; i < Integer.parseInt(nbPlaceHandicape.getValue()) ; i++){
 						casesalle = new CaseSalle();
