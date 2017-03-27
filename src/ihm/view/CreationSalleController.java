@@ -129,6 +129,11 @@ public class CreationSalleController {
 	        	
 	}
 	
+	/**
+	 * populate the grid view with the good salle
+	 * @author MVM
+	 */
+	@FXML
 	private void remplirTableau(){
 		pane.getChildren().clear();
 		double tailleLig = pane.getPrefHeight();
@@ -158,6 +163,10 @@ public class CreationSalleController {
 	            rectangle.setFill(Color.GREEN);
 	            rectangle.setStroke(Color.WHITE);
 	         // evenement au click sur un rectangle
+	        	/**
+	        	 * function to add event on mouse click 
+	        	 * @author MVM
+	        	 */
 	            rectangle.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 	            	@Override
 	            	public void handle(MouseEvent e) {
@@ -172,7 +181,10 @@ public class CreationSalleController {
 		System.out.println(gridPane.getWidth());
 	}
 	
-	
+	/**
+	 * function to load the selected salle in the gridview
+	 * @author MVM
+	 */
 	@FXML
 	private void selectionSalles(){
 		DAO<PlanSalle> PlanSalleDAO = DAOFactory.getPlanSalleDAO();
@@ -214,6 +226,10 @@ public class CreationSalleController {
 	            rectangle.setFill(Color.GREEN);
 	            rectangle.setStroke(Color.WHITE);
 	         // evenement au click sur un rectangle
+	        	/**
+	        	 * function to add event on mouse click 
+	        	 * @author MVM
+	        	 */
 	            rectangle.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 	            	@Override
 	            	public void handle(MouseEvent e) {
@@ -225,6 +241,10 @@ public class CreationSalleController {
 	        }
 		}
         
+    	/**
+    	 * function to set the color of rectangle 
+    	 * @author MVM
+    	 */
         for(CaseSalle cs: planSalleEnCours.getListCaseSalle()){
         	Rectangle rect=new Rectangle();
             //rect = (Rectangle) (gridPane.getChildren().get(3*nombreLig + 2));
@@ -255,6 +275,10 @@ public class CreationSalleController {
         }
 	}
 	
+	/**
+	 * function to set color in text of button 
+	 * @author MVM
+	 */
 	@FXML
 	private void selNormal(){
 		normal.setTextFill(Color.RED);
@@ -266,6 +290,10 @@ public class CreationSalleController {
 		ecran.setTextFill(Color.BLACK);
 	}
 	
+	/**
+	 * function to set color in text of button 
+	 * @author MVM
+	 */
 	@FXML
 	private void selHandi(){
 		normal.setTextFill(Color.BLACK);
@@ -277,6 +305,10 @@ public class CreationSalleController {
 		ecran.setTextFill(Color.BLACK);
 	}
 	
+	/**
+	 * function to set color in text of button 
+	 * @author MVM
+	 */
 	@FXML
 	private void selEntree(){
 		normal.setTextFill(Color.BLACK);
@@ -288,6 +320,10 @@ public class CreationSalleController {
 		ecran.setTextFill(Color.BLACK);
 	}
 	
+	/**
+	 * function to set color in text of button 
+	 * @author MVM
+	 */
 	@FXML
 	private void selCouloir(){
 		normal.setTextFill(Color.BLACK);
@@ -299,6 +335,10 @@ public class CreationSalleController {
 		ecran.setTextFill(Color.BLACK);
 	}
 	
+	/**
+	 * function to set color in text of button 
+	 * @author MVM
+	 */
 	@FXML
 	private void selSortie(){
 		normal.setTextFill(Color.BLACK);
@@ -310,6 +350,10 @@ public class CreationSalleController {
 		ecran.setTextFill(Color.BLACK);
 	}
 	
+	/**
+	 * function to set color in text of button 
+	 * @author MVM
+	 */
 	@FXML
 	private void selExtincteur(){
 		normal.setTextFill(Color.BLACK);
@@ -321,6 +365,10 @@ public class CreationSalleController {
 		ecran.setTextFill(Color.BLACK);
 	}
 	
+	/**
+	 * function to set color in text of button 
+	 * @author MVM
+	 */
 	@FXML
 	private void selEcran(){
 		normal.setTextFill(Color.BLACK);
@@ -332,6 +380,10 @@ public class CreationSalleController {
 		ecran.setTextFill(Color.RED);
 	}
 	
+	/**
+	 * function to set color of rectangle
+	 * @author MVM
+	 */
 	public void click(int i, int j, Rectangle rect){
 		System.out.println(i + "/" + j);
 		if (normal.getTextFill() == Color.RED)
@@ -365,7 +417,10 @@ public class CreationSalleController {
 	}
 	
 	
-	//TODO ajouter la salle a la BDD (XML)
+	/**
+	 * function to add salle in the database 
+	 * @author MVM
+	 */
 	public void ajouterSalle(){
 		planSalleEnCours= new PlanSalle();
 		
@@ -435,7 +490,10 @@ public class CreationSalleController {
 		}
 	}
 	
-	//TODO charger la salle du cinéma et salle présent
+	/**
+	 * function modify salle in the database 
+	 * @author MVM
+	 */
 	public void modifierSalle(){
 		planSalleEnCours= new PlanSalle();
 		
@@ -510,6 +568,10 @@ public class CreationSalleController {
 		
 	}
 	
+	/**
+	 * function for load salle from cinema in the database
+	 * @author MVM
+	 */
 	public void selCinema(){
 		ObservableList<InfoSalle> salleData = FXCollections.observableArrayList();
 		

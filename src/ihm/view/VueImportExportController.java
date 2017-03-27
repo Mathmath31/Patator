@@ -16,6 +16,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import xml_io.xmlReadAndWrite;
 
+/**
+ * VueImportExportController controller class for the entire layout.
+ * 
+ * @author MVM
+ */
 public class VueImportExportController {
 
 	@FXML
@@ -47,6 +52,10 @@ public class VueImportExportController {
 	private int nombreSalle = 0;
 	private int nblig = 0;
 	
+	/**
+	 * function to add selected salle
+	 * @author MVM
+	 */
 	@FXML
 	private void ajouter()
 	{
@@ -91,6 +100,10 @@ public class VueImportExportController {
 		
 	}
 	
+	/**
+	 * function for remove selected salle
+	 * @author MVM
+	 */
 	@FXML
 	private void supprimer()
 	{
@@ -102,6 +115,10 @@ public class VueImportExportController {
 		}
 	}
 	
+	/**
+	 * function to export salle to xml
+	 * @author MVM
+	 */
 	@FXML
 	private void exporter()
 	{
@@ -159,6 +176,10 @@ public class VueImportExportController {
 		xml.saveToXML(cines, nomFichier.getText());
 	}
 	
+	/**
+	 * function to import xml
+	 * @author MVM
+	 */
 	@FXML
 	private void importer()
 	{
@@ -167,7 +188,11 @@ public class VueImportExportController {
 	}
 	
 
-	
+	/**
+	 * function called when the fxml view is called
+	 * add cinema and salle from the database
+	 * @author MVM
+	 */
 	public void initialize()
 	{
 		int i=0;

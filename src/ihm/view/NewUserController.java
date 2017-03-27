@@ -14,7 +14,11 @@ import dao.DAOFactory;
 import dao.bddsql.ComplementDAO;
 import ihm.VistaNavigator;
 
-
+/**
+ * Home controller class for the entire layout.
+ * 
+ * @author MVM
+ */
 public class NewUserController {
 	
 	@FXML

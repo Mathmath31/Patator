@@ -63,8 +63,8 @@ public class MainController {
 	}
 
 	/**
-	 * Autentification
-	 *
+	 * function for Identification
+	 * @author MVM
 	 */
 	public void autentification(){
 		//if iduser et password est ok
@@ -101,9 +101,8 @@ public class MainController {
 	}
 
 	/**
-	 * 
-	 *
-	 *
+	 * function for logout
+	 * @author MVM
 	 */
 	public void deconnection() {
 		//si on se deco supp les droits de l'user
@@ -120,7 +119,10 @@ public class MainController {
 		labelMessage.setText("Veuillez vous identifier ==>");
 	}
 
-	
+	/**
+	 * function disable / enable button in the below bar button 
+	 * @author MVM
+	 */
 	public void setDisableBtBandeau(boolean boolBtCinema, boolean boolBtFilm,boolean boolBtPosition,boolean boolBtAccompagnement,boolean boolBtPanier,boolean boolBtReglement) {
 		this.btCinema.setDisable(boolBtCinema);
 		this.btFilm.setDisable(boolBtFilm);
@@ -132,7 +134,7 @@ public class MainController {
 	
 	/**
 	 * Replaces the vista displayed in the vista holder with a new vista.
-	 *
+	 * @author MVM
 	 * @param node the vista node to be swapped in.
 	 */
 	public void setVista(Node node) {
@@ -142,7 +144,7 @@ public class MainController {
 
 	/**
 	 * Event handler fired when the user requests a new vista.
-	 *
+	 * @author MVM
 	 * @param event the event that triggered the handler.
 	 */
 	@FXML
@@ -152,7 +154,7 @@ public class MainController {
 
 	/**
 	 * Event handler fired when the user requests a new vista.
-	 *
+	 * @author MVM
 	 * @param event the event that triggered the handler.
 	 */
 	@FXML
@@ -162,7 +164,7 @@ public class MainController {
 
 	/**
 	 * Event handler fired when the user requests a new vista.
-	 *
+	 * @author MVM
 	 * @param event the event that triggered the handler.
 	 */
 	@FXML
@@ -173,17 +175,120 @@ public class MainController {
 
 	/**
 	 * Event handler fired when the user requests a new vista.
-	 *
+	 * @author MVM
 	 * @param event the event that triggered the handler.
 	 */
 	@FXML
 	void goVueChoixAccompagnement(ActionEvent event) {
 		VistaNavigator.loadVista(VistaNavigator.ACCOMPAGNEMENT);
 	}
+	
+	/**
+	 * Event handler fired when the user requests a new vista.
+	 * @author MVM
+	 * @param event the event that triggered the handler.
+	 */
+	@FXML
+	void goNewUser(ActionEvent event) {
+		VistaNavigator.loadVista(VistaNavigator.NEWUSER);
+	}
 
 	/**
 	 * Event handler fired when the user requests a new vista.
-	 *
+	 * @author MVM
+	 * @param event the event that triggered the handler.
+	 */
+	@FXML
+	void goVuePanier(ActionEvent event) {
+		VistaNavigator.loadVista(VistaNavigator.PANIER);
+	}
+
+	/**
+	 * Event handler fired when the user requests a new vista.
+	 * @author MVM
+	 * @param event the event that triggered the handler.
+	 */
+	@FXML
+	void goVueReglement(ActionEvent event) {
+		VistaNavigator.loadVista(VistaNavigator.REGLEMENT);
+	}
+
+	/**
+	 * Event handler fired when the user requests a new vista.
+	 * @author MVM
+	 * @param event the event that triggered the handler.
+	 */
+	@FXML
+	void goVueInfoUser(ActionEvent event) {
+		VistaNavigator.loadVista(VistaNavigator.INFOUSER);
+	}
+
+	/**
+	 * Event handler fired when the user requests a new vista.
+	 * @author MVM
+	 * @param event the event that triggered the handler.
+	 */
+	@FXML
+	void goVueAdminFilm(ActionEvent event) {
+		VistaNavigator.loadVista(VistaNavigator.ADMINFILM);
+	}
+
+	/**
+	 * Event handler fired when the user requests a new vista.
+	 * @author MVM
+	 * @param event the event that triggered the handler.
+	 */
+	@FXML
+	void goVueAdminCinema(ActionEvent event) {
+		VistaNavigator.loadVista(VistaNavigator.ADMINCINEMA);
+	}
+	
+	/**
+	 * Event handler fired when the user requests a new vista.
+	 * @author MVM
+	 * @param event the event that triggered the handler.
+	 */
+	@FXML
+	void goVueAdminSeanceFilm(ActionEvent event) {
+		VistaNavigator.loadVista(VistaNavigator.ACCOMPAGNEMENT);
+	}
+	
+	/**
+	 * Event handler fired when the user requests a new vista.
+	 * @author MVM
+	 * @param event the event that triggered the handler.
+	 */
+	@FXML
+	void goHistorique(ActionEvent event) {
+		VistaNavigator.loadVista(VistaNavigator.HISTORIQUE);
+	}
+	
+	/**
+	 * Event handler fired when the user requests a new vista.
+	 * @author MVM
+	 * @param event the event that triggered the handler.
+	 */
+	@FXML
+	void goImportExport(ActionEvent event) {
+		VistaNavigator.loadVista(VistaNavigator.IMPORTEXPORT);
+	}
+	
+	/**
+	 * function disable / enable button in the below bar button 
+	 * @author MVM
+	 */
+	@FXML
+	public void buttonPressed(KeyEvent e)
+	{
+	    if(e.getCode().toString().equals("ENTER"))
+	    {
+	    	autentification();
+	    }
+	}
+	
+	/**
+	 * Event handler fired when the user requests a new vista.
+	 * @author MVM
 	 * @param event the event that triggered the handler.
 	 */
 	@FXML
@@ -197,105 +302,6 @@ public class MainController {
 
 	public static void setDonnees(Donnees donnees) {
 		MainController.donnees = donnees;
-	}
-	
-	/**
-	 * Event handler fired when the user requests a new vista.
-	 *
-	 * @param event the event that triggered the handler.
-	 */
-	@FXML
-	void goNewUser(ActionEvent event) {
-		VistaNavigator.loadVista(VistaNavigator.NEWUSER);
-	}
-
-	/**
-	 * Event handler fired when the user requests a new vista.
-	 *
-	 * @param event the event that triggered the handler.
-	 */
-	@FXML
-	void goVuePanier(ActionEvent event) {
-		VistaNavigator.loadVista(VistaNavigator.PANIER);
-	}
-
-	/**
-	 * Event handler fired when the user requests a new vista.
-	 *
-	 * @param event the event that triggered the handler.
-	 */
-	@FXML
-	void goVueReglement(ActionEvent event) {
-		VistaNavigator.loadVista(VistaNavigator.REGLEMENT);
-	}
-
-	/**
-	 * Event handler fired when the user requests a new vista.
-	 *
-	 * @param event the event that triggered the handler.
-	 */
-	@FXML
-	void goVueInfoUser(ActionEvent event) {
-		VistaNavigator.loadVista(VistaNavigator.INFOUSER);
-	}
-
-	/**
-	 * Event handler fired when the user requests a new vista.
-	 *
-	 * @param event the event that triggered the handler.
-	 */
-	@FXML
-	void goVueAdminFilm(ActionEvent event) {
-		VistaNavigator.loadVista(VistaNavigator.ADMINFILM);
-	}
-
-	/**
-	 * Event handler fired when the user requests a new vista.
-	 *
-	 * @param event the event that triggered the handler.
-	 */
-	@FXML
-	void goVueAdminCinema(ActionEvent event) {
-		VistaNavigator.loadVista(VistaNavigator.ADMINCINEMA);
-	}
-	
-	/**
-	 * Event handler fired when the user requests a new vista.
-	 *
-	 * @param event the event that triggered the handler.
-	 */
-	@FXML
-	void goVueAdminSeanceFilm(ActionEvent event) {
-		VistaNavigator.loadVista(VistaNavigator.ACCOMPAGNEMENT);
-	}
-	
-	/**
-	 * Event handler fired when the user requests a new vista.
-	 *
-	 * @param event the event that triggered the handler.
-	 */
-	@FXML
-	void goHistorique(ActionEvent event) {
-		VistaNavigator.loadVista(VistaNavigator.HISTORIQUE);
-	}
-	
-	/**
-	 * Event handler fired when the user requests a new vista.
-	 *
-	 * @param event the event that triggered the handler.
-	 */
-	@FXML
-	void goImportExport(ActionEvent event) {
-		VistaNavigator.loadVista(VistaNavigator.IMPORTEXPORT);
-	}
-	
-	@FXML
-	public void buttonPressed(KeyEvent e)
-	{
-	    if(e.getCode().toString().equals("ENTER"))
-	    {
-	    	autentification();
-	    }
 	}
 
 }

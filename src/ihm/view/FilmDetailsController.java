@@ -32,6 +32,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * FilmDetailController controller class for the entire layout.
+ * 
+ * @author MVM
+ */
 public class FilmDetailsController {
 	@FXML
 	private ListView<String> listView;
@@ -74,7 +79,9 @@ public class FilmDetailsController {
 	private Cinema cinema = new Cinema();
 
 
-	/**This function initialize parameters of this view  
+	/**This function initialize parameters of this view
+	 * load the film for the cinema selected
+	 * @author MVM
 	 */
 	public void initialize(){
 		if (APILoadOK == false){

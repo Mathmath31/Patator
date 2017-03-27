@@ -1,11 +1,13 @@
 package ihm.view;
 
-import dao.bddsql.ComplementDAO;
-import dao.bddsql.VilleDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
+/**
+ * VueInfoUserController controller class for the entire layout.
+ * 
+ * @author MVM
+ */
 public class VueInfoUserController {
 	@FXML
 	private Label login;
@@ -43,6 +45,11 @@ public class VueInfoUserController {
 	@FXML
 	private Label cp;
 	
+	/**
+	 * function called when the fxml view is called
+	 * add user information to label
+	 * @author MVM
+	 */
 	public void initialize(){	
 		login.setText(MainController.donnees.getClientHistorique().getLoginClient());
 		nom.setText(MainController.donnees.getClientHistorique().getNomClient());
