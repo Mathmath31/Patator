@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1200.0" stylesheets="@../style/vista.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" stylesheets="@../style/vista.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihm.view.VuePanierController">
    <children>
       <SplitPane dividerPositions="0.7504173622704507" layoutX="491.0" layoutY="195.0" prefHeight="600.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -27,26 +27,27 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="background">
                            <children>
-                              <TableView layoutX="14.0" layoutY="51.0" prefHeight="200.0" prefWidth="868.0">
+                              <TableView fx:id="tableViewPlace" layoutX="14.0" layoutY="51.0" prefHeight="200.0" prefWidth="868.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="Date" />
-                                  <TableColumn prefWidth="75.0" text="Film" />
-                                    <TableColumn prefWidth="75.0" text="Sceance" />
-                                    <TableColumn prefWidth="75.0" text="Salle" />
-                                    <TableColumn prefWidth="75.0" text="x siege" />
-                                    <TableColumn prefWidth="75.0" text="y siege" />
-                                    <TableColumn prefWidth="75.0" text="Prix" />
+                                  <TableColumn fx:id="placeDate" prefWidth="75.0" text="Date" />
+                                  <TableColumn fx:id="placeFilm" prefWidth="75.0" text="Film" />
+                                    <TableColumn fx:id="placeSceance" prefWidth="75.0" text="Sceance" />
+                                    <TableColumn fx:id="placeSalle" prefWidth="75.0" text="Salle" />
+                                    <TableColumn fx:id="placeSiegeX" prefWidth="75.0" text="x siege" />
+                                    <TableColumn fx:id="placeSiegeY" prefWidth="75.0" text="y siege" />
+                                    <TableColumn fx:id="placePrix" prefWidth="75.0" text="Prix" />
                                 </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <TableView layoutX="14.0" layoutY="304.0" prefHeight="227.0" prefWidth="868.0">
+                              <TableView fx:id="tableViewAccompagnement" layoutX="14.0" layoutY="304.0" prefHeight="227.0" prefWidth="868.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="Nom" />
-                                  <TableColumn prefWidth="75.0" text="Quantité" />
-                                    <TableColumn prefWidth="75.0" text="Prix" />
-                                    <TableColumn prefWidth="75.0" text="Id" visible="false" />
+                                  <TableColumn fx:id="accName" prefWidth="75.0" text="Nom" />
+                                    <TableColumn fx:id="accDesc" prefWidth="75.0" text="Description" />
+                                  <TableColumn fx:id="accQty" prefWidth="75.0" text="Quantité" />
+                                    <TableColumn fx:id="accPrix" prefWidth="75.0" text="Prix" />
+                                    <TableColumn fx:id="accID" prefWidth="75.0" text="Id" visible="false" />
                                 </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

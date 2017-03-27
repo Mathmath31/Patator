@@ -1,7 +1,12 @@
 package ihm.view;
 
 import ihm.VistaNavigator;
+import ihm.model.InfoAccompagnement;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+
+
 
 /**
  * VuePanierController controller class for the entire layout.
@@ -9,6 +14,36 @@ import javafx.fxml.FXML;
  * @author MVM
  */
 public class VuePanierController {
+	
+	@FXML
+	private TableView<InfoAccompagnement> tableViewAccompagnement;
+	@FXML
+	private TableColumn<InfoAccompagnement, String> accName;
+	@FXML
+	private TableColumn<InfoAccompagnement, String> accDesc;
+	@FXML
+	private TableColumn<InfoAccompagnement, String> accPrix;
+	@FXML
+	private TableColumn<InfoAccompagnement, String> accID;
+	@FXML
+	private TableColumn<InfoAccompagnement, String> accQty;
+	
+	@FXML
+	private TableView<InfoAccompagnement> tableViewPlace;
+	@FXML
+	private TableColumn<InfoAccompagnement, String> placeDate;
+	@FXML
+	private TableColumn<InfoAccompagnement, String> placeFilm;
+	@FXML
+	private TableColumn<InfoAccompagnement, String> placeSceance;
+	@FXML
+	private TableColumn<InfoAccompagnement, String> placeSalle;
+	@FXML
+	private TableColumn<InfoAccompagnement, String> placeSiegeX;
+	@FXML
+	private TableColumn<InfoAccompagnement, String> placeSiegeY;
+	@FXML
+	private TableColumn<InfoAccompagnement, String> placePrix;
 	
 	/**
 	 * Event handler fired when the user requests a new vista.
@@ -26,6 +61,6 @@ public class VuePanierController {
 	 * @author MVM
 	 */
 	public void initialize(){
-		
+		//TODO charger les items place et accompagnement
 	}
 }
