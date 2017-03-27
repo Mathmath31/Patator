@@ -22,7 +22,7 @@ public class TestXml {
 		
 		
 		
-		xmltest.saveToXML(cine);
+		xmltest.saveToXML(cine,"export");
 		System.out.println("\n Avant création d'un objet positionCase :");
 
 	}

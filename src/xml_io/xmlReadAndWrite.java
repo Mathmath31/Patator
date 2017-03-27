@@ -144,11 +144,11 @@ public class xmlReadAndWrite {
 	}
 
 
-	public void saveToXML(ArrayList<Cinema> listCinema) {
+	public void saveToXML(ArrayList<Cinema> listCinema, String fileName) {
 		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		String timeStamp = new SimpleDateFormat("ddMMyyyy").format(Calendar.getInstance().getTime());
-		String cineExport = "";
-		String salleExport ="( ";
+		/*String cineExport = "";
+		String salleExport ="( ";*/
 		try {
 			/*
 			 * Création d'un parseur
@@ -194,10 +194,10 @@ public class xmlReadAndWrite {
 						salle.appendChild(sieges);
 					}
 					cine.appendChild(salle);
-					salleExport += p.getNomPlanSalle() +" " ;
+					/*salleExport += p.getNomPlanSalle() +" " ;*/
 				}	
-				salleExport += ")";
-				cineExport += " " + c.getNomCine() + salleExport;
+				/*salleExport += ")";
+				cineExport += " " + c.getNomCine() + salleExport;*/
 				cinemas.appendChild(cine);
 			}
 			racine.appendChild(cinemas);
@@ -208,7 +208,7 @@ public class xmlReadAndWrite {
 			final TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			final Transformer transformer = transformerFactory.newTransformer();
 			final DOMSource source = new DOMSource(document);
-			final StreamResult sortie = new StreamResult(new File("ExportCinego_" + cineExport + "_" +  timeStamp + ".xml"));
+			final StreamResult sortie = new StreamResult(new File(fileName + ".xml"));
 			//final StreamResult result = new StreamResult(System.out);
 
 			//prologue

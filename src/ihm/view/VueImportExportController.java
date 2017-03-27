@@ -1,5 +1,9 @@
 package ihm.view;
 
+import java.util.ArrayList;
+
+import classes.Cinema;
+import classes.PlanSalle;
 import ihm.model.ExportCine;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -97,6 +101,19 @@ public class VueImportExportController {
 	@FXML
 	private void exporter()
 	{
+		ArrayList<Cinema> cine=new ArrayList<Cinema>();
+		int[] idCines= new int[20];
+		
+		
+		
+		for(int i=0;i<nblig;i++){
+			
+			tableViewChoix2.getItems().get(nblig).getIdSalle();
+		}
+		
+		for(int i=0;i<nblig;i++){
+			tableViewChoix2.getItems().get(nblig).getIdSalle();
+		}
 		
 	}
 	
@@ -111,10 +128,14 @@ public class VueImportExportController {
 	
 	public void initialize()
 	{
-		exportCine1.add(new ExportCine("1","Cine1","1","Salle1"));
-		exportCine1.add(new ExportCine("1","Cine1","2","Salle2"));
-		exportCine1.add(new ExportCine("2","Cine2","3","Salle3"));
-		exportCine1.add(new ExportCine("2","Cine2","4","Salle4"));
+		int i=0;
+		for(Cinema c : MainController.donnees.getCinemas()){
+			for(PlanSalle p: MainController.donnees.getCinemas().get(i).getListPlanSalle()){
+				exportCine1.add(new ExportCine(String.valueOf(c.getId()),c.getNomCine(),String.valueOf(p.getId()),p.getNomPlanSalle()));
+			}
+			i++;
+		}
+
 		
 		idCine1.setCellValueFactory(cellData -> cellData.getValue().idCinemaProperty());
 		nomCine1.setCellValueFactory(cellData -> cellData.getValue().nomCinemaProperty());
