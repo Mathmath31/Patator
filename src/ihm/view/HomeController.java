@@ -1,6 +1,7 @@
 package ihm.view;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -16,6 +17,10 @@ public class HomeController {
 	@FXML
 	private ImageView logo;
 	
+	@FXML
+	public ProgressBar progress;
+	
+	
 	/**
 	 * function called when the fxml view is called
 	 * add logo to Image view
@@ -25,5 +30,8 @@ public class HomeController {
 		String imageURI = "LogoCinego.PNG";
 		Image image = new Image(imageURI);
 		logo.setImage(image);
+		
+		
+		
 	}
 }

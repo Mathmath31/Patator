@@ -10,14 +10,35 @@
     -fx-padding: 5px;
 }
 
-#vistaHolder {
-    -fx-background-color: #FEDE94;
-}
+/* #vistaHolder {
+//    -fx-background-color: #FEDE94;
+}*/
 
 .button {
     -fx-base: lightblue;
 }
 
 .pane {
-	-fx-background-color: coral;
+	-fx-base: coral;
+	-fx-background-color: #FEDE94
 }
+
+.anchor-pane
+{
+	-fx-base: coral;
+	-fx-background-color: #FEDE94
+}
+
+.background {
+    -fx-background-color: #1d1d1d;
+}
+
+
+/* .table-view {
+//    -fx-base: #1d1d1d;
+//    -fx-control-inner-background: #1d1d1d;
+//    -fx-background-color: #1d1d1d;
+//    -fx-table-cell-border-color: transparent;
+//    -fx-table-header-border-color: transparent;
+//    -fx-padding: 5;
+}*/
