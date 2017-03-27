@@ -8,13 +8,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihm.view.AdminCinemaController">
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" styleClass="background" stylesheets="@../style/vista.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihm.view.AdminCinemaController">
    <children>
-      <SplitPane dividerPositions="0.8528428093645485" layoutX="536.0" layoutY="188.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.8528428093645485" layoutX="536.0" layoutY="188.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="1200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="background">
                <children>
-                  <SplitPane dividerPositions="0.7951505016722408" layoutX="579.0" layoutY="179.0" prefHeight="517.0" prefWidth="1198.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.7951505016722408" layoutX="579.0" layoutY="179.0" prefHeight="517.0" prefWidth="1198.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
@@ -35,14 +35,14 @@
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
                               <Button layoutX="59.0" layoutY="240.0" mnemonicParsing="false" onAction="#suppCine" text="Supprimer le cinema" />
-                              <Label fx:id="message" layoutX="31.0" layoutY="36.0" />
+                              <Label fx:id="message" layoutX="31.0" layoutY="36.0" prefHeight="135.0" prefWidth="181.0" wrapText="true" />
                            </children>
                         </AnchorPane>
                     </items>
                   </SplitPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="background">
                <children>
                   <Button layoutX="1020.0" layoutY="12.0" mnemonicParsing="false" onAction="#modifCine" text="Modifier le cinema" />
                   <Button layoutX="1020.0" layoutY="48.0" mnemonicParsing="false" onAction="#ajoutCine" prefHeight="25.0" prefWidth="115.0" text="Ajouter le cinema" />

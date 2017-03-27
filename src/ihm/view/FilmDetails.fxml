@@ -10,7 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihm.view.FilmDetailsController">
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" styleClass="background" stylesheets="@../style/vista.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihm.view.FilmDetailsController">
    <children>
       <SplitPane dividerPositions="0.1686143572621035" layoutX="52.0" layoutY="60.0" prefHeight="600.0" prefWidth="694.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -27,22 +27,22 @@
                            <children>
                               <SplitPane dividerPositions="0.11616161616161616" layoutX="23.0" layoutY="89.0" orientation="VERTICAL" prefHeight="596.0" prefWidth="576.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <items>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="40.0" prefWidth="557.0">
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="40.0" prefWidth="557.0" styleClass="background">
                                        <children>
                                           <Label fx:id="nomFilm" layoutX="245.0" layoutY="25.0" text="Titre du Film" />
                                        </children>
                                     </AnchorPane>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="background">
                                        <children>
                                           <SplitPane dividerPositions="0.6865384615384615" layoutX="22.0" layoutY="192.0" orientation="VERTICAL" prefHeight="522.0" prefWidth="574.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <items>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="554.0">
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="554.0" styleClass="background">
                                                    <children>
                                                       <TextArea fx:id="synopsis" prefHeight="354.0" prefWidth="555.0" text="Synopsis" />
                                                       <Label fx:id="message" layoutX="35.0" layoutY="332.0" textFill="#ff0202" />
                                                    </children>
                                                 </AnchorPane>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="background">
                                                    <children>
                                                       <DatePicker fx:id="dateSeance" layoutX="34.0" layoutY="23.0" />
                                                       <ComboBox fx:id="heureSeance" layoutX="333.0" layoutY="23.0" prefHeight="25.0" prefWidth="174.0" promptText="Scéances" />
@@ -61,9 +61,9 @@
                               </SplitPane>
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="596.0" prefWidth="298.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="596.0" prefWidth="298.0" styleClass="background">
                            <children>
-                              <ImageView fx:id="viewImageFilm" fitHeight="598.0" fitWidth="426.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <ImageView fx:id="viewImageFilm" fitHeight="598.0" fitWidth="426.0" pickOnBounds="true" preserveRatio="true" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                     </items>

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" stylesheets="@../style/vista.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.7504173622704507" layoutX="491.0" layoutY="195.0" prefHeight="600.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -16,7 +16,7 @@
                <children>
                   <SplitPane dividerPositions="0.08053691275167785" layoutX="338.0" layoutY="173.0" orientation="VERTICAL" prefHeight="598.0" prefWidth="896.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="38.0" prefWidth="894.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="38.0" prefWidth="894.0" styleClass="background">
                            <children>
                               <Label layoutX="347.0" layoutY="9.0" text="Verifier votre commande:">
                                  <font>
@@ -25,7 +25,7 @@
                               </Label>
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="background">
                            <children>
                               <TableView layoutX="14.0" layoutY="51.0" prefHeight="200.0" prefWidth="868.0">
                                 <columns>
@@ -60,7 +60,7 @@
                   </SplitPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="background">
                <children>
                   <Button layoutX="56.0" layoutY="439.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="185.0" text="Procéder au reglement" />
                </children>
