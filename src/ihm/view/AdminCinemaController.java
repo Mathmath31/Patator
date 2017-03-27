@@ -18,6 +18,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * Admin cinema controller class for the entire layout.
+ * 
+ * @author MVM
+ */
 public class AdminCinemaController {
 
 	@FXML
@@ -47,7 +52,11 @@ public class AdminCinemaController {
 	
 	private ObservableList<InfoCine> cineData = FXCollections.observableArrayList();
 	
-	
+	/**
+	 * function called when the fxml view is called
+	 * Populate the tableView with the cinema information in the database
+	 * @author MVM
+	 */
 	public void initialize(){
 
 		for(Cinema c:MainController.donnees.getCinemas()){
@@ -166,12 +175,23 @@ public class AdminCinemaController {
 		}
     }
 	
-	
+	/**
+	 * change the textfield with the information of selected row
+	 * @author MVM
+     * @param event the event that triggered the handler.
+     * 
+     */
 	@FXML
     void tableViewSelectionChanged(MouseEvent event) {
 		chargerTextField();
     }
 	
+	/**
+	 * change the textfield with the information of selected row
+	 * @author MVM
+     * @param event the event that triggered the handler.
+     * 
+     */
 	void chargerTextField()
 	{
 		adminNomCine.setText(tableView.getSelectionModel().getSelectedItem().getCinemaName());

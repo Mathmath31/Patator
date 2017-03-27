@@ -17,6 +17,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * ChoixAccompagnement controller class for the entire layout.
+ * 
+ * @author MVM
+ */
 public class ChoixAccompagnementController {
 
 	@FXML
@@ -59,6 +64,11 @@ public class ChoixAccompagnementController {
 	private ObservableList<InfoAccompagnement> accData = FXCollections.observableArrayList();
 	private ObservableList<InfoAccompagnement> accData2 = FXCollections.observableArrayList();
 	
+	/**
+	 * function called when the fxml view is called
+	 * Populate the tableView with accompagnement information from the database
+	 * @author MVM
+	 */
 	public void initialize(){	
 		
 		ArrayList<Produit> produits= new ArrayList<Produit>();
@@ -82,6 +92,11 @@ public class ChoixAccompagnementController {
 
 	}
 	
+	/**
+	 * function to add accompagnement
+	 * 
+	 * @author MVM
+	 */
 	@FXML
 	public void ajouter(){
 		boolean present = false;
@@ -127,6 +142,12 @@ public class ChoixAccompagnementController {
 			nombreProduit ++;
 	}
 	
+	
+	/**
+	 * function to remove accompagnement
+	 * 
+	 * @author MVM
+	 */
 	@FXML
 	public void supprimer(){
 		int qty = Integer.valueOf(tableViewChoix2.getItems().get(tableViewChoix2.getSelectionModel().getSelectedIndex()).getAccQty());
@@ -147,11 +168,21 @@ public class ChoixAccompagnementController {
 		}
 	}
 	
+	/**
+	 * function to validate accompagnement and to load next view
+	 * 
+	 * @author MVM
+	 */
 	@FXML
 	public void valider(){
 		VistaNavigator.loadVista(VistaNavigator.PANIER);
 	}
 	
+	/**
+	 * function to update picture of accompagnement
+	 * 
+	 * @author MVM
+	 */
 	@FXML
 	public void selectionChanged(){
 			//TODO récuperer le lien de l'image et l'afficher dans imgAccompagnement

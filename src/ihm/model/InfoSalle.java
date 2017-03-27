@@ -3,13 +3,14 @@ package ihm.model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Model class for a Salle.
+ *
+ * @author MVM
+ */
 public class InfoSalle {
 	
-	/**
-	 * Model class for a Salle.
-	 *
-	 * @author MVM
-	 */
+
     	private final StringProperty salleID;
 	    private final StringProperty salleName;
 	    private final StringProperty salleNum;
@@ -23,8 +24,9 @@ public class InfoSalle {
 	    /**
 	     * Constructor with some initial data.
 	     * 
-	     * @param salleName
 	     * @param salleID
+	     * @param salleName
+	     * @param salleNum
 	     */
 	    public InfoSalle(String salleID,String salleName, String salleNum) {
 	        this.salleName = new SimpleStringProperty(salleName);

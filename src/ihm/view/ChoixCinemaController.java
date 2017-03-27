@@ -17,6 +17,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * ChoixCinema controller class for the entire layout.
+ * 
+ * @author MVM
+ */
 public class ChoixCinemaController {
 
 	@FXML
@@ -38,7 +43,11 @@ public class ChoixCinemaController {
 	private Cinema cinema = new Cinema();
 
     
-	
+	/**
+	 * function called when the fxml view is called
+	 * Populate the tableView with cinema information from the database
+	 * @author MVM
+	 */
 	public void initialize(){	
 
 		for(Iterator<Cinema> i = MainController.donnees.getCinemas().iterator(); i.hasNext(); ) {
@@ -46,9 +55,6 @@ public class ChoixCinemaController {
 		    System.out.println(item);
 			cineData.add(new InfoCine(item.getNomCine(),item.getnVoieCine(),item.getVilleCine().getCpVille(),item.getVilleCine().getNomVille(),""+item.getId()));
 		}
-//		cineData.add(new InfoCine("Gaumont","", "Labege","",1));
-//		cineData.add(new InfoCine("Pathé","", "Montaudran","",2));
-//		cineData.add(new InfoCine("Mega CGR","", "Moncul","",3));
 
 		cinemaName.setCellValueFactory(cellData -> cellData.getValue().cinemaNameProperty());
 		cinemaAdresse.setCellValueFactory(cellData -> cellData.getValue().cinemaAdresseProperty());
@@ -58,6 +64,11 @@ public class ChoixCinemaController {
 		tableView.getItems().setAll(cineData);
 		tableView.getSelectionModel().selectFirst();
 		
+		/**
+		 * function called when the user choicethe cinema
+		 * call the next view
+		 * @author MVM
+		 */
 		buttonValidCine.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
