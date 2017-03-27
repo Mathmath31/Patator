@@ -696,4 +696,34 @@ public static int nbHandicapePlacesSeance(int idSeance) {
 		Connection.close();
 		return casesres;
 	}
+	
+public static int idCaseSallebySalleXY(int idPlanSalle, int X, int Y) {
+		
+
+		int idCaseSalle = 0;
+		
+		
+		try {
+			ResultSet result = Connection.selectFrom("SELECT cs.idCaseSalle FROM  casesalle cs "
+					 								+ " INNER JOIN positioncase pc ON cs.idPositionCase=pc.idPositionCase "
+					 								+ " WHERE cs.idPlanSalle=" + idPlanSalle 
+					 								+ " AND pc.posXpositionCase=" + X 
+					 								+ " AND pc.posYpositionCase=" + Y + ";");
+			while(result.next())
+			{
+				idCaseSalle = result.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		Connection.close();
+		return idCaseSalle;
+		
+	}
 }
+
+
