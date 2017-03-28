@@ -32,8 +32,9 @@ public class VueReglementController {
 	 * function called when we click on "Valider"
 	 * @author MVM
 	 */
+	@FXML
 	private void confirmer(){
-		
+		message.setText("Paiement Confirmé");
 	}
 	
 
