@@ -207,16 +207,16 @@ public class ChoixAccompagnementController {
 		switch (index)
 		{
 		case 1:
-			imageURI = "http://coca-cola-france.fr/content/dam/journey/us/en/private/2015/02/chronology10-1280-900-bfb7f27c.jpg";
+			imageURI = "MexicanCola.PNG";
 			break;
 		case 2:
-			imageURI = "https://upload.wikimedia.org/wikipedia/fr/8/82/Logo_Evian.jpg";
+			imageURI = "MexicanWater.PNG";
 			break;
 		case 3:
-			imageURI = "http://fr.ubergizmo.com/wp-content/uploads/2013/12/candy-cavity.jpg"; 
+			imageURI = "MexicanBonbon.PNG"; 
 			break;
 		case 4:
-			imageURI = "http://i.utdstc.com/icons/120/popcorn-time-android.png";
+			imageURI = "MexicanPopcorn.PNG";
 			break;
 		default:
 		}

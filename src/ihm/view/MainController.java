@@ -69,7 +69,7 @@ public class MainController {
 	 */
 	@FXML
 	public void initialize(){
-		String imageURI = "MiniatureCinego.PNG";
+		String imageURI = "LogoCinego.PNG";
 		Image image = new Image(imageURI);
 		miniLogo.setImage(image);
 	}

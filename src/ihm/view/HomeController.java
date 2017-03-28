@@ -17,9 +17,6 @@ public class HomeController {
 	@FXML
 	private ImageView logo;
 	
-	@FXML
-	public ProgressBar progress;
-	
 	
 	/**
 	 * function called when the fxml view is called

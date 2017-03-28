@@ -24,9 +24,18 @@
 }
 
  .table-view {
-    -fx-base: #1d1d1d;
-    -fx-control-inner-background: #1d1d1d;
-    -fx-background-color: #1d1d1d;
+    -fx-base: #AB1E26;
+    -fx-control-inner-background: #EDD665;
+    -fx-background-color: #AB1E26;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+ .list-view {
+    -fx-base: #AB1E26;
+    -fx-control-inner-background: #EDD665;
+    -fx-background-color: #AB1E26;
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
     -fx-padding: 5;
