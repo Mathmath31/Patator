@@ -213,7 +213,7 @@ public class ChoixAccompagnementController {
 		switch (index)
 		{
 		case 1:
-			imageURI = "www.coca-cola-france.fr/content/dam/journey/us/en/private/2015/02/chronology10-1280-900-bfb7f27c.jpg";
+			imageURI = "http://coca-cola-france.fr/content/dam/journey/us/en/private/2015/02/chronology10-1280-900-bfb7f27c.jpg";
 			break;
 		case 2:
 			imageURI = "https://upload.wikimedia.org/wikipedia/fr/8/82/Logo_Evian.jpg";
