@@ -21,7 +21,7 @@ import javafx.scene.input.MouseEvent;
 /**
  * Admin cinema controller class for the entire layout.
  * 
- * @author MVM
+ * @author MVM,Thomas
  */
 public class AdminCinemaController {
 
@@ -55,7 +55,7 @@ public class AdminCinemaController {
 	/**
 	 * function called when the fxml view is called
 	 * Populate the tableView with the cinema information in the database
-	 * @author MVM
+	 * @author MVM, Thomas
 	 */
 	public void initialize(){
 

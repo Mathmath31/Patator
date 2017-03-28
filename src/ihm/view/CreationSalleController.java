@@ -131,7 +131,7 @@ public class CreationSalleController {
 	
 	/**
 	 * populate the grid view with the good salle
-	 * @author MVM
+	 * @author MVM,Thomas
 	 */
 	@FXML
 	private void remplirTableau(){
@@ -183,7 +183,7 @@ public class CreationSalleController {
 	
 	/**
 	 * function to load the selected salle in the gridview
-	 * @author MVM
+	 * @author MVM,Thomas
 	 */
 	@FXML
 	private void selectionSalles(){
@@ -243,7 +243,7 @@ public class CreationSalleController {
         
     	/**
     	 * function to set the color of rectangle 
-    	 * @author MVM
+    	 * @author MVM,Thomas
     	 */
         for(CaseSalle cs: planSalleEnCours.getListCaseSalle()){
         	Rectangle rect=new Rectangle();
@@ -382,7 +382,7 @@ public class CreationSalleController {
 	
 	/**
 	 * function to set color of rectangle
-	 * @author MVM
+	 * @author MVM,Thomas
 	 */
 	public void click(int i, int j, Rectangle rect){
 		System.out.println(i + "/" + j);
@@ -419,7 +419,7 @@ public class CreationSalleController {
 	
 	/**
 	 * function to add salle in the database 
-	 * @author MVM
+	 * @author MVM,Thomas
 	 */
 	public void ajouterSalle(){
 		planSalleEnCours= new PlanSalle();
@@ -492,7 +492,7 @@ public class CreationSalleController {
 	
 	/**
 	 * function modify salle in the database 
-	 * @author MVM
+	 * @author MVM,Thomas
 	 */
 	public void modifierSalle(){
 		planSalleEnCours= new PlanSalle();
@@ -570,7 +570,7 @@ public class CreationSalleController {
 	
 	/**
 	 * function for load salle from cinema in the database
-	 * @author MVM
+	 * @author MVM,Thomas
 	 */
 	public void selCinema(){
 		ObservableList<InfoSalle> salleData = FXCollections.observableArrayList();

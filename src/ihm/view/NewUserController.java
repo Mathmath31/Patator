@@ -17,7 +17,7 @@ import ihm.VistaNavigator;
 /**
  * Home controller class for the entire layout.
  * 
- * @author MVM
+ * @author MVM,Thomas
  */
 public class NewUserController {
 	
