@@ -175,22 +175,23 @@ public class ChoixAccompagnementController {
 	 */
 	@FXML
 	public void valider(){
-		/*
-	private int idProduit;
-	private int idPlace;
-	private int quantite;
-	private boolean livrer;
-		 */
+		produits = ComplementDAO.listofProduits();
 
 		for (int i = 0 ; i < tableViewChoix2.getItems().size() ; i++){
-			AjouterProduit ajouterProduit = new AjouterProduit();	
-			for(int j = 0 ; j < tableViewChoix2.getItems().size() ; j++){
+			AjouterProduit ajouterProduit = new AjouterProduit();
+			Produit produit = new Produit();
+			for(int j = 0 ; j < produits.size() ; j++){
 				if(produits.get(j).getNomProduit() == tableViewChoix2.getItems().get(j).getAccName()){
-					ajouterProduit.setProduit(produits.get(j));
+					produit.setId(Integer.parseInt(tableViewChoix2.getItems().get(j).getAccID()));
+					produit.setDescriptionProduit(tableViewChoix2.getItems().get(j).getAccDescription());
+					produit.setPrixProduit(Double.parseDouble(tableViewChoix2.getItems().get(j).getAccPrix()));
+					produit.setNomProduit(tableViewChoix.getItems().get(j).getAccName());
+					//System.out.println(produit.toString() + "  --- add  : " + System.identityHashCode(produit));
 				}
 			}
-			ajouterProduit.setIdPlace(MainController.donnees.getClientCommande().getListPlace().get(0).getId());
+			ajouterProduit.setProduit(produit);
 			ajouterProduit.setIdProduit(Integer.parseInt(tableViewChoix2.getItems().get(i).getAccID()));
+			ajouterProduit.setIdPlace(MainController.donnees.getClientCommande().getListPlace().get(0).getId());
 			ajouterProduit.setLivrer(livraison.isSelected());
 			ajouterProduit.setQuantite(Integer.parseInt(tableViewChoix2.getItems().get(i).getAccQty()));
 			MainController.donnees.getClientCommande().getListPlace().get(0).getListAjouterProduit().add(ajouterProduit);

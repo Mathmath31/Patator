@@ -120,9 +120,10 @@ public class VuePanierController {
 			accomData.add(new InfoAccompagnement(
 					a.getProduit().getNomProduit(),
 					a.getProduit().getDescriptionProduit(),
-					String.valueOf(a.getQuantite()),
+					String.valueOf(a.getProduit().getPrixProduit()*a.getQuantite()),
 					"",
-					String.valueOf(a.getProduit().getPrixProduit()*a.getQuantite())
+					String.valueOf(a.getQuantite())
+
 					));
 		}
 		accName.setCellValueFactory(cellData -> cellData.getValue().accNameProperty());
