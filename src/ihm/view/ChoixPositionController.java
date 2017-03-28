@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import classes.CaseSalle;
 import classes.Place;
 import classes.PlanSalle;
+import classes.PositionCase;
+import classes.Produit;
 import dao.DAO;
 import dao.DAOFactory;
 import dao.bddsql.ComplementDAO;
@@ -240,6 +242,12 @@ public class ChoixPositionController {
 	@FXML
 	private void valider()
 	{	
+		
+		DAO<PlanSalle> PlanSalleDAO = DAOFactory.getPlanSalleDAO();
+		PlanSalle pstemp=new PlanSalle();
+		pstemp=PlanSalleDAO.find(idPlanSalle);
+		MainController.donnees.getCinemaCommande().getListPlanSalle().set(0, pstemp);
+		
 		if(nombreDePlacePrise != nombreDePlace || nombreDePlacePriseHandi != nombreDePlaceHandi){
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Erreur");
@@ -248,7 +256,7 @@ public class ChoixPositionController {
 			alert.showAndWait();
 		}
 		else{
-			System.out.println(nombreDePlacePrise+" " + " " +nombreDePlace + " "+ " "+ nombreDePlacePriseHandi + " " + nombreDePlaceHandi);
+		System.out.println(nombreDePlacePrise+" " + " " +nombreDePlace + " "+ " "+ nombreDePlacePriseHandi + " " + nombreDePlaceHandi);
 		nombreDePlacePrise = 0;
 		nombreDePlacePriseHandi = 0;
 
@@ -257,14 +265,21 @@ public class ChoixPositionController {
 				Integer idCaseSalle = 0;
 				Rectangle rect = new Rectangle();
 				rect=(Rectangle)(gridPane.getChildren().get(i*nombreLig+j+1));
+				PositionCase poscas=new PositionCase();
+				CaseSalle casesall=new CaseSalle();
+				
 				//Place Normale
 				if (rect.getFill()==Color.LIGHTGREEN){
 					// add function find idcasesalle
 					idCaseSalle = ComplementDAO.idCaseSallebySalleXY(idPlanSalle, i, j);
 					System.out.println("idcasesalle : " + idCaseSalle + " nombreDePlacePrise : " + nombreDePlacePrise );
 					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlacePrise).getComposerPlace().setIdCaseSalle(idCaseSalle);
-					MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(nombreDePlacePrise).getPosition().setPosX(j);
-					MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(nombreDePlacePrise).getPosition().setPosY(i);
+				
+					poscas.setPosX(i+1);
+					poscas.setPosY(j+1);
+					MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().set(nombreDePlacePrise, casesall);
+					MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(nombreDePlacePrise).setPosition(poscas);
+
 					nombreDePlacePrise ++;
 				}
 				//Place Handi
@@ -273,8 +288,11 @@ public class ChoixPositionController {
 					idCaseSalle = ComplementDAO.idCaseSallebySalleXY(idPlanSalle, i, j);
 					System.out.println("idcasesallehandi : " + idCaseSalle + " nombreDePlacePrise + nombreDePlacePriseHandi: " + (nombreDePlace + nombreDePlacePriseHandi));
 					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlace + nombreDePlacePriseHandi).getComposerPlace().setIdCaseSalle(idCaseSalle);
-					MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(nombreDePlace + nombreDePlacePriseHandi).getPosition().setPosX(j);
-					MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(nombreDePlace + nombreDePlacePriseHandi).getPosition().setPosY(i);
+					
+					poscas.setPosX(i+1);
+					poscas.setPosY(j+1);
+					MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().set(nombreDePlace + nombreDePlacePriseHandi, casesall);
+					MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(nombreDePlace + nombreDePlacePriseHandi).setPosition(poscas);
 					nombreDePlacePriseHandi ++;
 				}
 			}

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import classes.AjouterProduit;
 import classes.Produit;
+import dao.DAO;
+import dao.DAOFactory;
 import dao.bddsql.ComplementDAO;
 import ihm.VistaNavigator;
 import ihm.model.InfoAccompagnement;
@@ -175,21 +177,12 @@ public class ChoixAccompagnementController {
 	 */
 	@FXML
 	public void valider(){
-		produits = ComplementDAO.listofProduits();
-
+		
+		DAO<Produit> ProduitDAO = DAOFactory.getProduitDAO();
 		for (int i = 0 ; i < tableViewChoix2.getItems().size() ; i++){
+			
 			AjouterProduit ajouterProduit = new AjouterProduit();
-			Produit produit = new Produit();
-			for(int j = 0 ; j < produits.size() ; j++){
-				if(produits.get(j).getNomProduit() == tableViewChoix2.getItems().get(j).getAccName()){
-					produit.setId(Integer.parseInt(tableViewChoix2.getItems().get(j).getAccID()));
-					produit.setDescriptionProduit(tableViewChoix2.getItems().get(j).getAccDescription());
-					produit.setPrixProduit(Double.parseDouble(tableViewChoix2.getItems().get(j).getAccPrix()));
-					produit.setNomProduit(tableViewChoix.getItems().get(j).getAccName());
-					//System.out.println(produit.toString() + "  --- add  : " + System.identityHashCode(produit));
-				}
-			}
-			ajouterProduit.setProduit(produit);
+			ajouterProduit.setProduit(ProduitDAO.find(Integer.parseInt(tableViewChoix2.getItems().get(i).getAccID())));
 			ajouterProduit.setIdProduit(Integer.parseInt(tableViewChoix2.getItems().get(i).getAccID()));
 			ajouterProduit.setIdPlace(MainController.donnees.getClientCommande().getListPlace().get(0).getId());
 			ajouterProduit.setLivrer(livraison.isSelected());

@@ -68,19 +68,6 @@ public class VuePanierController {
 	@FXML
 	private void Reglement(){
 		
-		DAO<Place> PlaceDAO = DAOFactory.getPlaceDAO();
-		DAO<ComposerPlace> ComposerPlaceDAO = DAOFactory.getComposerPlaceDAO();
-		DAO<AjouterProduit> AjouterProduitDAO = DAOFactory.getAjouterProduitDAO();
-		
-		for(Place p:MainController.donnees.getClientCommande().getListPlace()){
-			PlaceDAO.create(p);
-			ComposerPlaceDAO.create(p.getComposerPlace());
-			
-			for(AjouterProduit a:p.getListAjouterProduit()){
-				AjouterProduitDAO.create(a);
-			}
-		}
-		
 		VistaNavigator.loadVista(VistaNavigator.REGLEMENT);
 	}
 	
@@ -91,7 +78,7 @@ public class VuePanierController {
 	 */
 	public void initialize(){
 		
-		
+		int i=0;
 		for(Place p:MainController.donnees.getClientCommande().getListPlace()){
 			
 			
@@ -100,10 +87,11 @@ public class VuePanierController {
 					p.getComposerPlace().getSeanceT().getFilmT().getNomFilm(),
 					p.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().getHeureDebutCreneau(),
 					MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getNomPlanSalle(),
-					String.valueOf(MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(0).getPosition().getPosX()),
-					String.valueOf(MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(0).getPosition().getPosY()),
+					String.valueOf(MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(i).getPosition().getPosX()),
+					String.valueOf(MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(i).getPosition().getPosY()),
 					"12,5"
 					));
+			i++;
 		}
 
 		placeDate.setCellValueFactory(cellData -> cellData.getValue().placeDateProperty());
