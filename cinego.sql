@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 26 Mars 2017 à 17:57
+-- Généré le :  Mar 28 Mars 2017 à 04:48
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -4705,18 +4705,19 @@ CREATE TABLE `produit` (
   `idProduit` int(11) NOT NULL,
   `nomProduit` varchar(25) DEFAULT NULL,
   `descriptionProduit` varchar(100) DEFAULT NULL,
-  `prixProduit` float DEFAULT NULL
+  `prixProduit` float DEFAULT NULL,
+  `urlProduit` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `produit`
 --
 
-INSERT INTO `produit` (`idProduit`, `nomProduit`, `descriptionProduit`, `prixProduit`) VALUES
-(1, 'Soda Cola 50 cl', 'Au bon goût de cola, plein de bulles', 3.5),
-(2, 'Eau plate 50 cl', 'En direct des vallées des volcans', 1.5),
-(3, 'Bonbons 200 gr', 'Hum du sucre !', 4.5),
-(4, 'Popcorn 600 gr', 'Le classique à ne jamais oublier', 6);
+INSERT INTO `produit` (`idProduit`, `nomProduit`, `descriptionProduit`, `prixProduit`, `urlProduit`) VALUES
+(1, 'Soda Cola 50 cl', 'Au bon goût de cola, plein de bulles', 3.5, ''),
+(2, 'Eau plate 50 cl', 'En direct des vallées des volcans', 1.5, ''),
+(3, 'Bonbons 200 gr', 'Hum du sucre !', 4.5, ''),
+(4, 'Popcorn 600 gr', 'Le classique à ne jamais oublier', 6, '');
 
 -- --------------------------------------------------------
 
