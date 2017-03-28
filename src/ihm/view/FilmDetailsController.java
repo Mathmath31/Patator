@@ -38,7 +38,7 @@ import javafx.scene.web.WebView;
 /**
  * FilmDetailController controller class for the entire layout.
  * 
- * @author MVM
+ * @author MVM + PAULY Matthieu
  */
 public class FilmDetailsController {
 	@FXML
@@ -86,7 +86,7 @@ public class FilmDetailsController {
 
 	/**This function initialize parameters of this view
 	 * load the film for the cinema selected
-	 * @author MVM
+	 * @author MVM PAULY MAtthieu
 	 */
 	public void initialize(){
 		if (APILoadOK == false){
@@ -214,7 +214,7 @@ public class FilmDetailsController {
 						place=placetemp;
 						client.getListPlace().add(place);
 						casesalle.getType().setId(8);
-						casesalle.getType().setNomTypeCase("Handicapé");
+						casesalle.getType().setNomTypeCase("Handicapï¿½");
 						cinema.getListPlanSalle().get(0).getListCaseSalle().add(casesalle);
 					}
 					cinema.setId(MainController.donnees.getCinemaCommande().getId());
@@ -229,15 +229,15 @@ public class FilmDetailsController {
 				else{
 					if( dateSeance.getValue() == null || dateSeance.getValue().toString() == "" )
 					{
-						message.setText("Veuillez sélectionner une date");
+						message.setText("Veuillez sï¿½lectionner une date");
 					}
 					else if(heureSeance.getValue() == null)
 					{
-						message.setText("Veuillez sélectionner une heure");
+						message.setText("Veuillez sï¿½lectionner une heure");
 					}
 					else if((nbPlacesNormal + nbPlacesHandi) == 0)
 					{
-						message.setText("Veuillez sélectionner au moins une place");
+						message.setText("Veuillez sï¿½lectionner au moins une place");
 					}
 				}
 			}
@@ -279,6 +279,9 @@ public class FilmDetailsController {
 		nbPlace.getSelectionModel().clearSelection();
 		nbPlaceHandicape.getSelectionModel().clearSelection();
 	}
+	/*
+	 * @author PAULY Matthieu
+	 */
 	@FXML
 	private void startVideo(){
 		webView.setVisible(true);

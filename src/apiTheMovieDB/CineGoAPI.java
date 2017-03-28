@@ -21,9 +21,9 @@ import javax.imageio.*;
 
 public class CineGoAPI {
 
-	private String APIKey = "api_key=975c60bf70cb45fdc950f4d55f22cf3a";		// Key of l'API
-	private String URLImgVideo = "&append_to_response=videos,images";		// Options of l'API
-	private List<CineGoFilm> tabFilms = new ArrayList<CineGoFilm>();		// Array of CineGoFilm
+	private String APIKey = "api_key=975c60bf70cb45fdc950f4d55f22cf3a";					// Key of l'API
+	private String URLImgVideo = "&append_to_response=videos,images&language=fr";		// Options of l'API
+	private List<CineGoFilm> tabFilms = new ArrayList<CineGoFilm>();					// Array of CineGoFilm
 
 	/**
 	 * Constructor of CineGoAPI
