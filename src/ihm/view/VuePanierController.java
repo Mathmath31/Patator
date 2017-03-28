@@ -1,7 +1,19 @@
 package ihm.view;
 
+import classes.AjouterProduit;
+import classes.ComposerPlace;
+import classes.CreerSeance;
+import classes.Creneau;
+import classes.Place;
+import classes.PlanSalle;
+import classes.Seance;
+import dao.DAO;
+import dao.DAOFactory;
 import ihm.VistaNavigator;
 import ihm.model.InfoAccompagnement;
+import ihm.model.InfoPlace;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -29,38 +41,97 @@ public class VuePanierController {
 	private TableColumn<InfoAccompagnement, String> accQty;
 	
 	@FXML
-	private TableView<InfoAccompagnement> tableViewPlace;
+	private TableView<InfoPlace> tableViewPlace;
 	@FXML
-	private TableColumn<InfoAccompagnement, String> placeDate;
+	private TableColumn<InfoPlace, String> placeDate;
 	@FXML
-	private TableColumn<InfoAccompagnement, String> placeFilm;
+	private TableColumn<InfoPlace, String> placeFilm;
 	@FXML
-	private TableColumn<InfoAccompagnement, String> placeSceance;
+	private TableColumn<InfoPlace, String> placeSceance;
 	@FXML
-	private TableColumn<InfoAccompagnement, String> placeSalle;
+	private TableColumn<InfoPlace, String> placeSalle;
 	@FXML
-	private TableColumn<InfoAccompagnement, String> placeSiegeX;
+	private TableColumn<InfoPlace, String> placeSiegeX;
 	@FXML
-	private TableColumn<InfoAccompagnement, String> placeSiegeY;
+	private TableColumn<InfoPlace, String> placeSiegeY;
 	@FXML
-	private TableColumn<InfoAccompagnement, String> placePrix;
+	private TableColumn<InfoPlace, String> placePrix;
 	
+	
+	private ObservableList<InfoPlace> placeData = FXCollections.observableArrayList();
+	private ObservableList<InfoAccompagnement> accomData = FXCollections.observableArrayList();
 	/**
 	 * Event handler fired when the user requests a new vista.
-	 * @author MVM
+	 * @author MVM, Thomas
 	 * @param event the event that triggered the handler.
 	 */
 	@FXML
 	private void Reglement(){
+		
+		DAO<Place> PlaceDAO = DAOFactory.getPlaceDAO();
+		DAO<ComposerPlace> ComposerPlaceDAO = DAOFactory.getComposerPlaceDAO();
+		DAO<AjouterProduit> AjouterProduitDAO = DAOFactory.getAjouterProduitDAO();
+		
+		for(Place p:MainController.donnees.getClientCommande().getListPlace()){
+			PlaceDAO.create(p);
+			ComposerPlaceDAO.create(p.getComposerPlace());
+			
+			for(AjouterProduit a:p.getListAjouterProduit()){
+				AjouterProduitDAO.create(a);
+			}
+		}
+		
 		VistaNavigator.loadVista(VistaNavigator.REGLEMENT);
 	}
 	
 	/**
 	 * function called when the fxml view is called
 	 * add panier information
-	 * @author MVM
+	 * @author MVM, Thomas
 	 */
 	public void initialize(){
-		//TODO charger les items place et accompagnement
+		
+		
+		for(Place p:MainController.donnees.getClientCommande().getListPlace()){
+			
+			
+			placeData.add(new InfoPlace(
+					p.getComposerPlace().getSeanceT().getCreerSeanceT().getDatesT().getSeanceDate().toString(),
+					p.getComposerPlace().getSeanceT().getFilmT().getNomFilm(),
+					p.getComposerPlace().getSeanceT().getCreerSeanceT().getCreneauT().getHeureDebutCreneau(),
+					MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getNomPlanSalle(),
+					String.valueOf(MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(0).getPosition().getPosX()),
+					String.valueOf(MainController.donnees.getCinemaCommande().getListPlanSalle().get(0).getListCaseSalle().get(0).getPosition().getPosY()),
+					"12,5"
+					));
+		}
+
+		placeDate.setCellValueFactory(cellData -> cellData.getValue().placeDateProperty());
+		placeFilm.setCellValueFactory(cellData -> cellData.getValue().placeFilmProperty());
+		placeSceance.setCellValueFactory(cellData -> cellData.getValue().placeSeanceProperty());
+		placeSalle.setCellValueFactory(cellData -> cellData.getValue().placeSalleProperty());
+		placeSiegeX.setCellValueFactory(cellData -> cellData.getValue().placeXSiegeProperty());
+		placeSiegeY.setCellValueFactory(cellData -> cellData.getValue().placeYSiegeProperty());
+		placePrix.setCellValueFactory(cellData -> cellData.getValue().placePrixProperty());
+		
+		tableViewPlace.getItems().setAll(placeData);
+		
+		for(AjouterProduit a:MainController.donnees.getClientCommande().getListPlace().get(0).getListAjouterProduit()){
+			accomData.add(new InfoAccompagnement(
+					a.getProduit().getNomProduit(),
+					a.getProduit().getDescriptionProduit(),
+					String.valueOf(a.getQuantite()),
+					"",
+					String.valueOf(a.getProduit().getPrixProduit()*a.getQuantite())
+					));
+		}
+		accName.setCellValueFactory(cellData -> cellData.getValue().accNameProperty());
+		accDesc.setCellValueFactory(cellData -> cellData.getValue().accDescriptionProperty());
+		accPrix.setCellValueFactory(cellData -> cellData.getValue().accPrixProperty());
+		accID.setCellValueFactory(cellData -> cellData.getValue().accIDProperty());
+		accQty.setCellValueFactory(cellData -> cellData.getValue().accQtyProperty());
+		
+		tableViewAccompagnement.getItems().setAll(accomData);
+	
 	}
 }

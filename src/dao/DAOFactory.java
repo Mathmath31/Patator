@@ -1,6 +1,7 @@
 package dao;
 
 
+import classes.AjouterProduit;
 import classes.CaseSalle;
 import classes.Cinema;
 import classes.Client;
@@ -16,6 +17,7 @@ import classes.Produit;
 import classes.Seance;
 import classes.TypeCase;
 import classes.Ville;
+import dao.bddsql.AjouterProduitDAO;
 import dao.bddsql.CaseSalleDAO;
 import dao.bddsql.CinemaDAO;
 import dao.bddsql.ClientDAO;
@@ -37,6 +39,10 @@ import dao.bddsql.VilleDAO;
  * @author Thomas
  */ 
 public class DAOFactory {
+	
+	public static DAO<AjouterProduit> getAjouterProduitDAO(){
+		return new AjouterProduitDAO();
+	}
 	
 	public static DAO<CaseSalle> getCaseSalleDAO(){
 		return new CaseSalleDAO();
