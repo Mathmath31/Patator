@@ -181,9 +181,9 @@ public class ChoixAccompagnementController {
 	private int quantite;
 	private boolean livrer;
 		 */
+
 		for (int i = 0 ; i < tableViewChoix2.getItems().size() ; i++){
 			AjouterProduit ajouterProduit = new AjouterProduit();	
-
 			for(int j = 0 ; j < tableViewChoix2.getItems().size() ; j++){
 				if(produits.get(j).getNomProduit() == tableViewChoix2.getItems().get(j).getAccName()){
 					ajouterProduit.setProduit(produits.get(j));
