@@ -56,4 +56,12 @@ public class ComposerPlace {
 	public void setSeanceT(Seance seanceT) {
 		this.seanceT = seanceT;
 	}
+
+	@Override
+	public String toString() {
+		return "ComposerPlace [idPlace=" + idPlace + ", idCaseSalle=" + idCaseSalle + ", idSeance=" + idSeance
+				+ ", seanceT=" + seanceT + "]";
+	}
+	
+	
 }

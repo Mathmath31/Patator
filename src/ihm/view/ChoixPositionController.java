@@ -274,6 +274,9 @@ public class ChoixPositionController {
 					idCaseSalle = ComplementDAO.idCaseSallebySalleXY(idPlanSalle, i, j);
 					System.out.println("idcasesalle : " + idCaseSalle + " nombreDePlacePrise : " + nombreDePlacePrise );
 					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlacePrise).getComposerPlace().setIdCaseSalle(idCaseSalle);
+					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlacePrise).getComposerPlace().setIdPlace(MainController.donnees.getClientCommande().getListPlace().get(nombreDePlacePrise).getId());
+					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlacePrise).getComposerPlace().setIdSeance(MainController.donnees.getClientCommande().getListPlace().get(0).getComposerPlace().getSeanceT().getId());
+
 				
 					poscas.setPosX(i+1);
 					poscas.setPosY(j+1);
@@ -288,6 +291,8 @@ public class ChoixPositionController {
 					idCaseSalle = ComplementDAO.idCaseSallebySalleXY(idPlanSalle, i, j);
 					System.out.println("idcasesallehandi : " + idCaseSalle + " nombreDePlacePrise + nombreDePlacePriseHandi: " + (nombreDePlace + nombreDePlacePriseHandi));
 					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlace + nombreDePlacePriseHandi).getComposerPlace().setIdCaseSalle(idCaseSalle);
+					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlace + nombreDePlacePriseHandi).getComposerPlace().setIdPlace(MainController.donnees.getClientCommande().getListPlace().get(nombreDePlace + nombreDePlacePriseHandi).getId());
+					MainController.donnees.getClientCommande().getListPlace().get(nombreDePlace + nombreDePlacePriseHandi).getComposerPlace().setIdSeance(MainController.donnees.getClientCommande().getListPlace().get(0).getComposerPlace().getSeanceT().getId());
 					
 					poscas.setPosX(i+1);
 					poscas.setPosY(j+1);

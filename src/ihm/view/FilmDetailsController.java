@@ -15,6 +15,8 @@ import classes.Film;
 import classes.Place;
 import classes.PlanSalle;
 import classes.Seance;
+import dao.DAO;
+import dao.DAOFactory;
 import dao.bddsql.ComplementDAO;
 import ihm.VistaNavigator;
 import javafx.collections.FXCollections;
@@ -173,6 +175,9 @@ public class FilmDetailsController {
 		buttonValidFilm.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
+				MainController.donnees.getClientCommande().setId(MainController.donnees.getClientHistorique().getId());
+				
+				DAO<Place> PlaceDAO = DAOFactory.getPlaceDAO();
 				if(nbPlace.getValue() != null){
 					nbPlacesNormal = Integer.parseInt(nbPlace.getValue());
 				}
@@ -183,8 +188,14 @@ public class FilmDetailsController {
 					cinema.getListPlanSalle().add(new PlanSalle());
 					for (int i = 0 ; i < Integer.parseInt(nbPlace.getValue()) ; i++){
 						Place place = new Place();
+						Place placetemp = new Place();
 						CaseSalle casesalle = new CaseSalle();
-						place.getComposerPlace().setSeanceT(seances.get(heureSeance.getSelectionModel().getSelectedIndex()));
+						//place.getComposerPlace().setSeanceT(seances.get(heureSeance.getSelectionModel().getSelectedIndex()));
+						placetemp.getComposerPlace().setSeanceT(seances.get(heureSeance.getSelectionModel().getSelectedIndex()));
+						placetemp.setIdClient(MainController.donnees.getClientCommande().getId());
+						placetemp.setChoixPlace(true);
+						placetemp=PlaceDAO.create(placetemp);
+						place=placetemp;
 						client.getListPlace().add(place);
 						casesalle.getType().setId(6);
 						casesalle.getType().setNomTypeCase("Normal");
@@ -193,8 +204,14 @@ public class FilmDetailsController {
 					}
 					for (int i = 0 ; i < Integer.parseInt(nbPlaceHandicape.getValue()) ; i++){
 						Place place = new Place();
+						Place placetemp = new Place();
 						CaseSalle casesalle = new CaseSalle();
-						place.getComposerPlace().setSeanceT(seances.get(heureSeance.getSelectionModel().getSelectedIndex()));
+						//place.getComposerPlace().setSeanceT(seances.get(heureSeance.getSelectionModel().getSelectedIndex()));
+						placetemp.getComposerPlace().setSeanceT(seances.get(heureSeance.getSelectionModel().getSelectedIndex()));
+						placetemp.setIdClient(MainController.donnees.getClientCommande().getId());
+						placetemp.setChoixPlace(true);
+						placetemp=PlaceDAO.create(placetemp);
+						place=placetemp;
 						client.getListPlace().add(place);
 						casesalle.getType().setId(8);
 						casesalle.getType().setNomTypeCase("Handicapé");

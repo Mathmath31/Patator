@@ -87,8 +87,11 @@ public class PlaceDAO extends DAO<Place> {
 		int i = 0;
 		try
 		{
-			result.last();
-			i = result.getInt("idPlace");
+			while(result.next()){
+				i = result.getInt("idPlace");
+			}
+
+			
 		} catch (SQLException e)
 		{
 			e.printStackTrace();

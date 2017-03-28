@@ -68,6 +68,20 @@ public class VuePanierController {
 	@FXML
 	private void Reglement(){
 		
+		DAO<Place> PlaceDAO = DAOFactory.getPlaceDAO();
+		DAO<ComposerPlace> ComposerPlaceDAO = DAOFactory.getComposerPlaceDAO();
+		DAO<AjouterProduit> AjouterProduitDAO = DAOFactory.getAjouterProduitDAO();
+		
+		for(Place p:MainController.donnees.getClientCommande().getListPlace()){
+			System.out.println(p);
+			PlaceDAO.create(p);
+			ComposerPlaceDAO.create(p.getComposerPlace());
+			System.out.println(p.getComposerPlace());
+			for(AjouterProduit a:p.getListAjouterProduit()){
+				AjouterProduitDAO.create(a);
+				System.out.println(a);
+			}
+		}
 		VistaNavigator.loadVista(VistaNavigator.REGLEMENT);
 	}
 	
